@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Java - Use bounded wildcards to increase API flexibility | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Effective Java,Java">
+    
+    <meta name="description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Use bounded wildcards to increase API flexibility">
+<meta property="og:url" content="https://kodakyung.github.io/2019/07/12/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-11T19:50:24.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Use bounded wildcards to increase API flexibility">
+<meta name="twitter:description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+    
+
+    
+        <link rel="alternate" href="/" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.md">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java - Use bounded wildcards to increase API flexibility
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/07/12/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/" class="article-date">
+            <time datetime="2019-07-11T19:50:24.811Z" itemprop="datePublished">2019-07-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Effective-Java/">Effective Java</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Effective-Java-Item-31"><a href="#Effective-Java-Item-31" class="headerlink" title="Effective Java Item 31"></a>Effective Java Item 31</h2><blockquote>
+<p>한정적 와일드카드를 사용해 API 유연성을 높여라</p>
+</blockquote>
+<br>
+
+<ul>
+<li>한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(<code>List&lt;String&gt;</code>, <code>List&lt;Integer&gt;</code> 등)이 불공변이기 때문이다. </li>
+<li>불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다.</li>
+<li>따라서 책의 예시와 같이 <code>Stact&lt;E&gt;</code>에 <code>Stact&lt;Number&gt;</code>를 선언후 Integer 타입을 넣으면 <code>incompatible types</code>라는 에러가 발생한다. </li>
+<li>보다 제네릭을 유연하게 사용하기 위해 한정적 와일드카드가 필요하다.</li>
+</ul>
+<h3 id="lt-extends-T-gt"><a href="#lt-extends-T-gt" class="headerlink" title="&lt;? extends T&gt;"></a>&lt;? extends T&gt;</h3><ul>
+<li>T의 하위 타입을 허용한다는 의미이다. </li>
+<li>push 메소드와 같이 원소를 생산하는 메소드의 매개변수에 사용한다. </li>
+<li>ex) 위처럼 <code>Number</code>로 생성 후 <code>Integer</code>로 받는게 가능해진다.</li>
+</ul>
+<h3 id="lt-super-T-gt"><a href="#lt-super-T-gt" class="headerlink" title="&lt;? super T&gt;"></a>&lt;? super T&gt;</h3><ul>
+<li>T의 상위 타입을 허용한다는 의미이다. </li>
+<li>pop 메소드와 같이 원소를 소비하는 메소드의 매개변수에 사용한다. </li>
+<li>ex) <code>Stack&lt;Number&gt;</code> 원소를 <code>Collection&lt;Object&gt;</code>로 꺼내고 싶은 경우 </li>
+</ul>
+<h3 id="한정적-와일드카드-사용-규칙"><a href="#한정적-와일드카드-사용-규칙" class="headerlink" title="한정적 와일드카드 사용 규칙"></a>한정적 와일드카드 사용 규칙</h3><ul>
+<li>입력 매개변수가 생산자나 소비자의 역할만 한다면 입력 매개변수에 와일드카드 타입을 사용해 유연성을 높이는 것이 좋다. </li>
+<li>입력 매개변수가 생산자와 소비자 역할을 동시에 한다면 정확한 타입을 지정하는 것이 좋다. </li>
+<li>PECS : producer-extends, consumer-super</li>
+<li>생산자라면 <code>&lt;? extends T&gt;</code>, 소비자라면 <code>&lt;? super T&gt;</code>를 사용 </li>
+<li>메소드의 반환 타입은 한정적 와일드 카드 타입을 사용하면 안된다. 클라이언트 쪽에서도 와일드 카드 타입을 써야하기 때문.</li>
+<li>사용자가 와일드 카드 타입을 신경써야한다면 그 메소드는 잘못 짜여진 메소드이다. </li>
+<li>자바 7까지는 명시적 타입 인수를 사용해야한다. </li>
+</ul>
+<h3 id="Comparator를-직접-구현하지-않은-경우의-한정적-와일드-카드"><a href="#Comparator를-직접-구현하지-않은-경우의-한정적-와일드-카드" class="headerlink" title="Comparator를 직접 구현하지 않은 경우의 한정적 와일드 카드"></a>Comparator를 직접 구현하지 않은 경우의 한정적 와일드 카드</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;E&gt;&gt; <span class="function">E <span class="title">max</span><span class="params">(List&lt;E&gt; list)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>기존 코드를 PECS에 맞춰 변경해보면</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;? <span class="keyword">super</span> E&gt;&gt; <span class="function">E <span class="title">max</span><span class="params">(List&lt;? extends E&gt; list)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Comparable</code>은 E 인스턴스를 소비해 natural ordering에 해당하는 정수를 생산한다. </li>
+<li>따라서 <code>Comparable</code>은 소비자의 역할이므로 <code>&lt;? super E&gt;</code>로 인스턴스를 변경한다. </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ScheduledFuture&lt;?&gt;&gt; scheduledFutures = ... ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>이렇게 복잡한 선언을 하는 이유는 위의 리스트와 같이 <strong>Comparable(or Comparator)를 직접 구현하지 않고 직접 구현한 다른 타입을 extends 한 경우를 지원하기 때문이다.</strong></li>
+<li>ScheduledFuture는 직접 Comparator를 구현하지 않고 Comparator를 구현한 상위 타입을 extends 하고있다. </li>
+<li><code>Comparable&lt;? super E&gt;</code>로 명시하지 않으면 ScheduledFuture 뿐 아니라 그 상위 클래스의 인스턴스와도 비교할 수 있기 때문에 에러가 발생한다. </li>
+</ul>
+<h3 id="타입-매개변수와-와일드카드-lt-E-gt-vs-lt-gt"><a href="#타입-매개변수와-와일드카드-lt-E-gt-vs-lt-gt" class="headerlink" title="타입 매개변수와 와일드카드 &lt;E&gt; vs &lt;?&gt;"></a>타입 매개변수와 와일드카드 &lt;E&gt; vs &lt;?&gt;</h3><pre><code class="java"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(List&lt;E&gt; list, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>; <span class="comment">// (1)</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(List&lt;?&gt; list, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> <span class="comment">// (2)</span></span></code></pre>
+<ul>
+<li>이 메서드를 정의할 때 <code>&lt;E&gt;</code>와 <code>&lt;?&gt;</code>는 parameter에서 같은 역할을 한다. </li>
+<li>이 책의 필자는 public api인 경우 좀 더 깔끔한 선언을 위해 두번째 방식을 추천하고 있다.</li>
+<li>하지만 두번째 방식의 경우 원소를 꺼낸 뒤 다시 넣을 때 에러가 날 수 있다. - List&lt;?&gt;는 null 외에 아무 값도 넣을 수 없기 때문 (parameter에서 모든 인자를 받는 역할을 함)</li>
+<li>따라서 public api를 와일드카드(?)를 사용하고 내부적으로 값을 넣고 변경해야한다면, 와일드카드 타입의 실제 타입을 알려주는 도우미 메서드를 작성하는 것이 좋다. </li>
+<li>도우미 메서드는 (1)의 메소드 선언과 같다. </li>
+</ul>
+<br>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2019/07/12/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/" data-id="cjxz37re8006enk6kbkr51oza" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Java - Use bounded wildcards to increase API flexibility",
+        "image": "https://kodakyung.github.io",
+        "keywords": "Effective Java Java",
+        "genre": "",
+        "datePublished": "2019-07-12",
+        "dateCreated": "2019-07-12",
+        "dateModified": "2019-07-12",
+        "url": "https://kodakyung.github.io/2019/07/12/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/",
+        "description": "Effective Java Item 31
+한정적 와일드카드를 사용해 API 유연성을 높여라
+
+
+
+
+한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&lt;String&gt;, List&lt;Integer&gt; 등)이 불공변이기 때문이다. 
+불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다.
+따라서 책"
+        "wordCount": 469
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/07/12/old-post-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Use instance fields instead of ordinals
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/07/12/old-post-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Don&#39;t use raw types</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.848Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.844Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.838Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/" class="title">Java - Prefer side-effect-free functions in streams</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.828Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" class="title">Java - Prefer method references to lambdas</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.823Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">63</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authrization/" style="font-size: 11px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 19px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 13px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 16px;">Netty</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 15px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12px;">WEB</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/생활코딩/" style="font-size: 18px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'Jade&#39;s Blog';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2019/07/12/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

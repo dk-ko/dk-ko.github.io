@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>WEB - HTTP | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="생활코딩,WEB,HTTP">
+    
+    <meta name="description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+<meta name="keywords" content="생활코딩,WEB,HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB - HTTP">
+<meta property="og:url" content="https://kodakyung.github.io/2019/07/12/old-post-WEB-2018-09-21-WEB-HTTP/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19236425/45915871-ba50d980-be97-11e8-8aee-6be940dacdc1.png">
+<meta property="og:updated_time" content="2019-07-11T19:50:24.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB - HTTP">
+<meta name="twitter:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19236425/45915871-ba50d980-be97-11e8-8aee-6be940dacdc1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.md">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-old-post-WEB-2018-09-21-WEB-HTTP" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        WEB - HTTP
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/07/12/old-post-WEB-2018-09-21-WEB-HTTP/" class="article-date">
+            <time datetime="2019-07-11T19:50:24.101Z" itemprop="datePublished">2019-07-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTTP/">HTTP</a>, <a class="tag-link" href="/tags/WEB/">WEB</a>, <a class="tag-link" href="/tags/생활코딩/">생활코딩</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>WEB의 구성 요소중 하나인 HTTP의 기본 개념</p>
+<h2 id="HTTP-HyperText-Trasfer-Protocol"><a href="#HTTP-HyperText-Trasfer-Protocol" class="headerlink" title="HTTP (HyperText Trasfer Protocol)"></a>HTTP (HyperText Trasfer Protocol)</h2><ul>
+<li>웹의 구성 요소</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. HTML</span><br><span class="line">2. URL &amp; URI</span><br><span class="line">3. Web Browser &amp; Web Server</span><br><span class="line">4. HTTP</span><br></pre></td></tr></table></figure>
+
+<p>이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 <code>Request</code>,<br>Server가 HTML을 주면서 응답하는 것을 <code>Response</code>라 한다.</p>
+<p>사용하고 있는 인터넷 브라우저의 [검사]- [Network] 탭을 통해 웹 브라우저와 웹 서버가 주고받은 http 코드를 볼 수 있다.<br>[Headers]를 통해 <code>Request Headers</code>/<code>Response Headers</code>를 확인할 수 있다. 웹 브라우저가 웹 서버에게 요청한 데이터와 웹서버가 응답한 데이터이다.</p>
+<ul>
+<li>Request Headers : 방식(GET/POST 등), HTTP 버전, 접속 HOST 등</li>
+<li>Response Headers : HTTP 버전, 응답(200,400 등), Content-Length, Content-Type 등 을 표시</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 웹브라우저는 사용자가 요청한 정보를 Header라는 텍스트 정보를 만들어서 웹 서버에게 대신 물어보는 역할을 한다.  </span><br><span class="line">2. 웹 서버는 자신이 가진 정보를 보내주면서 응답 헤더를 보낸다.  </span><br><span class="line">3. 그리고 웹 브라우저는 서버에게 받는 정보를 그려주는 역할을 한다.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Request-Message"><a href="#Request-Message" class="headerlink" title="Request Message"></a>Request Message</h2><blockquote>
+<p>Request Header 형식에 대해 검색한다면<br>&gt; http request header format</p>
+</blockquote>
+<img width="734" alt="2018-09-22 18 44 59" src="https://user-images.githubusercontent.com/19236425/45915871-ba50d980-be97-11e8-8aee-6be940dacdc1.png">
+
+<ul>
+<li>Request Header의 구성 요소</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Request Line + Request Headers = Request Message Header</span><br><span class="line">2. Blank Line 으로 구분</span><br><span class="line">3. 실제 전송하는 내용 = Body(= Payload)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Request-Line"><a href="#Request-Line" class="headerlink" title="Request Line"></a>Request Line</h3><p>전송 방식을 나타낸다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- GET : 데이터를 웹서버로부터 가져올 때</span><br><span class="line">- POST : 데이터 전송할 때</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>HTTP/1.1 메소드</strong></p>
+<ul>
+<li><dl><dt>GET : 리소스 획득</dt><dd>리퀘스트 URI로 식별된 리소드를 가져올 수 있도록 요구한다. 소스가 텍스트면 그대로 반환, GGI같은 프로그램이면 실행해서 출력된 내용을 반환한다.</dd></dl></li>
+<li><dl><dt>POST : 엔티티 전송</dt><dd>GET으로도 엔티티를 전송할 수 있지만 일반적으로 POST를 사용한다.</dd></dl></li>
+<li><dl><dt>PUT : 파일 전송</dt><dd>파일을 전송하기 위해 사용된다. 하지만 HTTP/1.1 PUT자체에는 인증 기능이 없어서 누구든지 파일 업로드가 가능해 보안 상의 문제가 있다. 웹 애플리케이션 등의 인증 기능과 함께 쓰거나 REST와 같은 웹끼리 연계하는 설계 방식을 사용할 때 이용하는 경우가 있다.</dd></dl></li>
+<li><dl><dt>HEAD : 메세지 헤더 취득</dt><dd>GET과 같은 기능이지만 메세지 바디를 돌려주지 않는다. URI 유효성과 리소스 갱신 시간등을 확인하는 목적 등으로 사용된다.</dd></dl></li>
+<li><dl><dt>DELETE : 파일 삭제</dt><dd>파일을 삭제하기 위해 사용된다. PUT 메소드와 반대로 동작하며 리퀘스트 URI로 지정된 리소스의 삭제를 요구한다. 단점과 이용또한 PUT과 마찬가지로 인증 기능이 없다.</dd></dl></li>
+<li><dl><dt>OPTIONS : 제공하고 있는 메소드의 문의</dt><dd>리퀘스트 URI로 지정한 메소드가 제공하고 있는 메소드를 조사하기 위해 사용한다.</dd></dl></li>
+<li><dl><dt>TRACE : 경로 조사</dt><dd>WEB 서버에 접속해서 자신에게 통신을 되돌려 받는 루프백(loop-back)을 발생시킨다. 리퀘스트를 보낼 때 <code>Max-Forward</code>라는 헤더 필드에 수치를 포함시켜 서버를 통과할 때마다 수치를 줄여간다. 0이 된 곳을 끝이로 리퀘스트를 수신한 측해서 상태 코드 200 OK response를 돌려준다.<br>클라이언트는 TRACE 메소드를 사용함으로써 리퀘스트를 보낸 곳에 어떤 리퀘스트가 가공되어 있는지 등을 조사할 수 있다.<br>하지만 TRACE 메소드는 XST와 같은 보안상의 문제가 있기 때문에 보통 사용되지 않는다.</dd></dl></li>
+<li><dl><dt>CONNECT : 프록시에 터널링 요구</dt><dd>TCP 통신을 터널링 시키기 위해 사용된다. 주로 SSL이나 TLS 등의 프로토콜로 암호화된 것을 터널링 시키기 위해서 사용된다.</dd></dl><ul>
+<li>CONNECT 메소드 양식<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 프록시 서버 : 포트 HTTP 버전</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Request-Headers"><a href="#Request-Headers" class="headerlink" title="Request Headers"></a>Request Headers</h3><ul>
+<li><p>Host : 요청하는 웹서버의 주소로 필수로 기입되어있어야 한다.  </p>
+<ul>
+<li><p>웹 호스팅 서비스(Web hosting service) : 인터넷 호스팅 서비스의 일종으로 개인과 단체가 월드 와이드 웹을 통하여 웹사이트를 제공하는 것을 뜻한다.</p>
+</li>
+<li><p>가상 호스트 : 하나의 웹서버가 여러개의 도메인을 서비스할 수 있는데, 그런 경우에 A라는 웹서버가 <figure class="highlight plain"><figcaption><span>B.com C.com``` 호스팅을 하고, 각 주소별로 다른 웹사이트라면 HOST에 적힌 주소에 따라서 다른 정보를 보내줄 수 있다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- Post : 한대의 컴퓨터에 여러개의 서버가 설치될 수 있는데 포트번호로 구분한다.</span><br><span class="line">- User-Agent : 웹 브라우저의 다른 표현. 사용자의 OS 환경도 확인할 수 있다. 사용자 정보를 수집하거나 bot을 확인 후 차단할 수 있다.</span><br><span class="line">- Accept-Encoding : 전송하는 데이터 양이 많은 경우 압축해서 보내고 받아서 풀어서 사용한다. 웹 브라우저가 어떤 압축 방식을 지원하는지 알려준다.</span><br><span class="line">- If-Modified-Since : 데이터를 요청할 때마다 다운로드 받는 것은 비효율적이으로 데이터를 요청할 때마다 항상 다운 받지 않는다. 따라서 내가 갖고 있는 파일을 마지막으로 언제 다운로드받은 것인지 웹서버에게 알려주고 웹 서버가 응답할 때 최신 여부를 비교해서 전송 또는 비전송 여부를 결정한다.</span><br><span class="line"></span><br><span class="line">## Response Message</span><br><span class="line">&gt; HTTP 응답 메세지 형식에 대해 검색한다면  </span><br><span class="line">\&gt; http response header format</span><br><span class="line"></span><br><span class="line">&lt;img width=&quot;519&quot; alt=&quot;2018-09-22 18 44 50&quot; src=&quot;https://user-images.githubusercontent.com/19236425/45915870-ba50d980-be97-11e8-84b9-74d8aa1b5fbf.png&quot;&gt;</span><br><span class="line"></span><br><span class="line">- status : HTTP version, status code(응답 결과), phrase(응답 결과를 풀어쓴 것)를 보여준다.</span><br><span class="line">  - 예) HTTP/1.1 200 OK</span><br><span class="line">  &gt; http status code 검색</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>1xx : Information // 리퀘스트를 받아들여 처리중</p>
+</li>
+<li><p>2xx : Success // 리퀘스트를 정상적으로 처리했음</p>
+<ul>
+<li>200 OK<br>: 클라이언트가 보낸 리퀘스트를 서버가 정상 처리 했음</li>
+<li>201 Created</li>
+<li>204 No Content<br>: 서버가 리퀘스트를 받아서 처리하는데 성공했지만 돌려줄 리소스가 없는 경우</li>
+<li>206 Partial Content<br>: Range에 의해서 범위가 지정된 리퀘스트에 의해 서버가 부분적으로 GET 리퀘스트를 받았음을 나타낸다.<br>리스폰스에는 Content-Range로 지정된 범위의 엔티티가 포함된다.</li>
+</ul>
+</li>
+<li><p>3xx : Redirection // 리퀘스트를 완료하기 위해서 추가동작이 필요</p>
+</li>
+<li><p>4xx : Client Errors // 서버는 리퀘스트 이해 불가능</p>
+<ul>
+<li>400 Bad Request<br>: 리퀘스트 구문이 잘못되었음. 브라우저는 이것을 200 OK와 같은 취급을 한다.</li>
+<li>401 Unauthorized<br>: 송신한 리퀘스트에 HTTP인증 정보가 필요한다는 것을 나타낸다.</li>
+<li>403 Forbidden<br>: 접속하면 안되는 곳을 접속했을 때</li>
+<li>404 Not Found<br>: 어떤 주소를 요청했는데 서버에 없는 경우</li>
+</ul>
+</li>
+<li><p>5xx : Server Errors // 서버의 리퀘스트 처리 실패</p>
+<ul>
+<li>500 Internel Server Error<br>: 서버에서 리퀘스트를 처리하는 도중에 에러가 발생함.</li>
+<li>503 Service Unavaliable<br>: 일시적으로 서버가 과부하 상태이거나 점검 중이기때문에 현재 리퀘스트를 처리할 수 없음을 나타냄.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- headers</span><br><span class="line"></span><br><span class="line">  - Content-Type : text/HTML  </span><br><span class="line">    - 웹 브라우저가 Content-Type을 보고 HTML로 해석해서 보여준다.</span><br><span class="line">  - Content-Length : 전체 크기(Byte)</span><br><span class="line">  - Content-Encoding : 압축 방식을 알려준다.</span><br><span class="line">  - Last-Modified : 이 정보가 마지막으로 수정된 날짜를 보여준다.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 웹브라우저와 웹 서버의 커뮤니케이션 과정</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>웹 브라우저가 Request Headers를 생성하고</li>
+<li>추가로(POST인 경우 등) 한줄 띄우고 웹서버로 전송할 정보를 담아서</li>
+<li>메세지를 만든 다음에 인터넷을 통해 웹서버로 보낸다.</li>
+<li>웹서버는 메세지를 해석해서 응답메세지를 만든다.(Response Headers)</li>
+<li>그리고 한줄 띄우고 실제 HTML코드를 합쳐서 인터넷을 통해 요청한 컴퓨터로 보낸다.</li>
+<li>웹브라우저는 이를 통해 헤더와 본문을 참조해서 사용자에게 화면을 보여준다.<pre><code></code></pre></li>
+</ol>
+<h2 id="앞으로-공부할-주제"><a href="#앞으로-공부할-주제" class="headerlink" title="앞으로 공부할 주제"></a>앞으로 공부할 주제</h2><ul>
+<li>HTTP와 HTTPS(Http Secure)의 차이(SSL)</li>
+<li>Cache(저장) : 데이터를 항상 새로 받아오지 않고 따로 저장해둠으로써 속도를 향상시킨다.<ul>
+<li>문제점 : 내용이 갱신되었을 때 웹 브라우저가 알아채지 못한다.(F5가 캐시 갱신)</li>
+<li>해결하기 위한 테크닉 : cache-control / pragma / application cache 등 - 성능 향상에 관심이 있다면 살펴볼 문제</li>
+</ul>
+</li>
+<li>개인화 : 이전 로그인 기록을 웹사이트 / 웹브라우저가 기억하고 있는 것 Cookie 이용</li>
+<li>Cookie : 쿠키값을 웹 브라우저에 설정하면 접속할때마다 설정된 쿠키값을 서버에 전송 함으로써 사용자의 상태를 유지, 식별할 수 있다.</li>
+<li>web storage : 쿠키보다 발전되고 안전한 기술.</li>
+<li>proxy server : 웹 브라우저와 웹 서버 사이에 중계 서버를 두어서 중간에 있는 서버가 캐시를 대신해주거나 보안과 관련된 공격을 막아주거나 사용자의 요청을 여러대로 분산하는 경우 등의 역할을 한다.</li>
+<li>Network Monitoring : 가장 간단한 툴은 웹 브라우저에 개발자 도구의 [네트워크] 모니터링 기능. 또는 Wireshark. 컴퓨터의 모든 네트워크 트래픽을 볼 수 있다.</li>
+</ul>
+<blockquote>
+<p>출처 : 생활코딩 - HTTP</p>
+</blockquote>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2019/07/12/old-post-WEB-2018-09-21-WEB-HTTP/" data-id="cjxz37rg9008gnk6k18qkccx4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "WEB - HTTP",
+        "image": "https://kodakyung.github.iohttps://user-images.githubusercontent.com/19236425/45915871-ba50d980-be97-11e8-8aee-6be940dacdc1.png",
+        "keywords": "생활코딩 WEB HTTP",
+        "genre": "",
+        "datePublished": "2019-07-12",
+        "dateCreated": "2019-07-12",
+        "dateModified": "2019-07-12",
+        "url": "https://kodakyung.github.io/2019/07/12/old-post-WEB-2018-09-21-WEB-HTTP/",
+        "description": "WEB의 구성 요소중 하나인 HTTP의 기본 개념
+HTTP (HyperText Trasfer Protocol)
+웹의 구성 요소
+
+12341. HTML2. URL &amp; URI3. Web Browser &amp; Web Server4. HTTP
+
+이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 "
+        "wordCount": 1067
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/07/12/old-post-Hibernate-2018-11-16-jpa-cascade/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            JPA - Cascade
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/07/12/old-post-Troubleshooting-2018-05-19-Spring-MVC-Server-강제-종료-후-실행-오류-for-Mac/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Spring MVC - Server 강제 종료 후 실행 오류(for Mac)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.848Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.844Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.838Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/" class="title">Java - Prefer side-effect-free functions in streams</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.828Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" class="title">Java - Prefer method references to lambdas</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.823Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">63</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authrization/" style="font-size: 11px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 19px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 13px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 16px;">Netty</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 15px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12px;">WEB</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/생활코딩/" style="font-size: 18px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'Jade&#39;s Blog';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2019/07/12/old-post-WEB-2018-09-21-WEB-HTTP/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

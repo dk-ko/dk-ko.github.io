@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>코딩야학 Javascript 10일차 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="생활코딩,Javascript">
+    
+    <meta name="description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~함수의 활용  학습할 내용 함수의 기본 문법 Parameter, Argument return  함수의 기본 문법반복문을 사용할 수 없는 경우 (연속적이지 않다면)함수가 필요하다. 1234function two()&amp;#123;    document.write(&apos;&amp;lt;li&amp;gt;2-1&amp;lt;/li&amp;gt">
+<meta name="keywords" content="생활코딩,Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="코딩야학 Javascript 10일차">
+<meta property="og:url" content="https://kodakyung.github.io/2019/07/12/old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~함수의 활용  학습할 내용 함수의 기본 문법 Parameter, Argument return  함수의 기본 문법반복문을 사용할 수 없는 경우 (연속적이지 않다면)함수가 필요하다. 1234function two()&amp;#123;    document.write(&apos;&amp;lt;li&amp;gt;2-1&amp;lt;/li&amp;gt">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-11T19:50:24.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="코딩야학 Javascript 10일차">
+<meta name="twitter:description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~함수의 활용  학습할 내용 함수의 기본 문법 Parameter, Argument return  함수의 기본 문법반복문을 사용할 수 없는 경우 (연속적이지 않다면)함수가 필요하다. 1234function two()&amp;#123;    document.write(&apos;&amp;lt;li&amp;gt;2-1&amp;lt;/li&amp;gt">
+    
+
+    
+        <link rel="alternate" href="/" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.md">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        코딩야학 Javascript 10일차
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/07/12/old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차/" class="article-date">
+            <time datetime="2019-07-11T19:50:24.599Z" itemprop="datePublished">2019-07-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Javascript/">Javascript</a>, <a class="tag-link" href="/tags/생활코딩/">생활코딩</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="스터디에서-다룬-내용"><a href="#스터디에서-다룬-내용" class="headerlink" title="스터디에서 다룬 내용"></a>스터디에서 다룬 내용</h3><p><a href="https://opentutorials.org/course/3085/18883" target="_blank" rel="noopener">생활코딩 WEB2 Javascript ~함수의 활용 </a></p>
+<h2 id="학습할-내용"><a href="#학습할-내용" class="headerlink" title="학습할 내용"></a>학습할 내용</h2><ul>
+<li>함수의 기본 문법</li>
+<li>Parameter, Argument</li>
+<li>return</li>
+</ul>
+<h3 id="함수의-기본-문법"><a href="#함수의-기본-문법" class="headerlink" title="함수의 기본 문법"></a>함수의 기본 문법</h3><p>반복문을 사용할 수 없는 경우 (연속적이지 않다면)<br>함수가 필요하다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">two</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">'&lt;li&gt;2-1&lt;/li&gt;'</span>);</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">'&lt;li&gt;2-2&lt;/li&gt;'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameter-amp-Argument-매개변수와-인자"><a href="#Parameter-amp-Argument-매개변수와-인자" class="headerlink" title="Parameter &amp; Argument (매개변수와 인자)"></a>Parameter &amp; Argument (매개변수와 인자)</h3><p>자판기, 수학적인 함수 입력과 출력이 존재. 프로그래밍의 함수또한 마찬가지이다.  </p>
+<p>입력값에 따라 다른 값을 출력하고 싶다면 매개변수와 인자를 이용 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onePlusOne</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="number">1</span>+<span class="number">1</span>+<span class="string">'&lt;br&gt;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  onePlusOne();</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">left, right</span>) </span>&#123; <span class="comment">// left, right는 Parameter</span></span><br><span class="line">    <span class="built_in">document</span>.write(left+right+<span class="string">'&lt;br&gt;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  sum(<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 5, 2와 3은 Argument</span></span><br><span class="line">  sum(<span class="number">3</span>,<span class="number">4</span>); <span class="comment">// 7</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Return-출력"><a href="#Return-출력" class="headerlink" title="Return (출력)"></a>Return (출력)</h3><ul>
+<li><p>표현식이란 ?  </p>
+<ul>
+<li>1+1의 결과 값 2 : 1+1은 2에 대한 표현식</li>
+<li>1===1의 결과 값 true : true는 1===1에 대한 표현식</li>
+</ul>
+</li>
+<li><p>return을 이용해 표현식을 이용함으로써 함수의 활용도를 높일 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum2</span>(<span class="params">left, right</span>)</span>&#123; <span class="comment">// 5에 대한 표현식이 되도록.</span></span><br><span class="line">  <span class="keyword">return</span> left+right;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.write(sum2(<span class="number">2</span>,<span class="number">3</span>)+<span class="string">'&lt;br/&gt;'</span>);</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">'&lt;div style="color:red"&gt;'</span>+sum2(<span class="number">2</span>,<span class="number">3</span>)+<span class="string">'&lt;/div&gt;&lt;br/&gt;'</span>);</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">'&lt;div style="font-size:3rem;"&gt;'</span>+sum2(<span class="number">2</span>,<span class="number">3</span>)+<span class="string">'&lt;/div&gt;'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="함수의-활용"><a href="#함수의-활용" class="headerlink" title="함수의 활용"></a>함수의 활용</h3><p>onclick안의 <code>this</code>는 이벤트 안의 태그를 가르키도록 되어있다<br>독립된 함수의 <code>this</code>는 해당 태그가 아닌 전역 객체를 가리키게 되어 있다. 웹브라우저 전역 객체는 <code>window</code>이다.</p>
+<p>따라서 태그에서 함수를 실행시킬때 <code>this 매개변수</code>를 주고<br>함수에서 (관례적으로)<code>self</code>라는 이름으로 받는다.</p>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2019/07/12/old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차/" data-id="cjxz37rfv007xnk6kmezddqha" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "코딩야학 Javascript 10일차",
+        "image": "https://kodakyung.github.io",
+        "keywords": "생활코딩 Javascript",
+        "genre": "",
+        "datePublished": "2019-07-12",
+        "dateCreated": "2019-07-12",
+        "dateModified": "2019-07-12",
+        "url": "https://kodakyung.github.io/2019/07/12/old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차/",
+        "description": "스터디에서 다룬 내용생활코딩 WEB2 Javascript ~함수의 활용 
+학습할 내용
+함수의 기본 문법
+Parameter, Argument
+return
+
+함수의 기본 문법반복문을 사용할 수 없는 경우 (연속적이지 않다면)함수가 필요하다.
+1234function two()&#123;    document.write('&lt;li&gt;2-1&lt;/li&gt"
+        "wordCount": 310
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/07/12/old-post-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Netty EmbeddedChannel 이용한 단위 테스트
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/07/12/old-post-EffectiveJava-2018-11-04-java-comparable-comparator/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Comparable / Comparator</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.848Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.844Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.838Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/" class="title">Java - Prefer side-effect-free functions in streams</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.828Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" class="title">Java - Prefer method references to lambdas</a></p>
+                            <p class="item-date"><time datetime="2019-07-11T19:50:24.823Z" itemprop="datePublished">2019-07-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">63</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authrization/" style="font-size: 11px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 19px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 13px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 16px;">Netty</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 15px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12px;">WEB</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/생활코딩/" style="font-size: 18px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'Jade&#39;s Blog';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2019/07/12/old-post-Javascript-2018-08-23-코딩야학-JavaScript-10일차/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
