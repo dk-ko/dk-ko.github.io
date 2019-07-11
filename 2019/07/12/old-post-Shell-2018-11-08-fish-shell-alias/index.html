@@ -182,13 +182,13 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>일반적으로 <code>bash</code>와 같은 쉘들은 <code>alias</code> 명령을 통해 <code>alias</code>를 지정해준다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env bash</span><br><span class="line"><span class="meta">#</span> ~/.bashrc</span><br><span class="line">alias name="#statement"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ~/.bashrc</span></span><br><span class="line">alias name="#statement"</span><br></pre></td></tr></table></figure>
 
 <br>
 fish shell은 `alias`가 따로 존재하지 않고 함수(`function`)로 이를 처리한다.
 
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env fish</span><br><span class="line"><span class="meta">&gt;</span> function name</span><br><span class="line"><span class="meta">  #</span>statements</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="keyword">function</span> name</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">statements</span></span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/2018-11-08/01.png" alt="fish shell  function alias example"></p>
 <p>fish의 인수는 숫자가 매겨진 변수(<code>$1</code>)가 아닌 <code>$argv</code> 단일 목록으로 전달된다.</p>
@@ -196,7 +196,7 @@ fish shell은 `alias`가 따로 존재하지 않고 함수(`function`)로 이를
 <p><code>function</code>을 영구적으로 저장하고 싶다면 <code>~/.config/fish/functions/</code>경로에 <code>function_name.fish</code> 파일을 생성해야한다.</p>
 <p><img src="/images/2018-11-08/03.png" alt="fish 파일 생성"><br><img src="/images/2018-11-08/04.png" alt="fish 파일 확인"><br><img src="/images/2018-11-08/05.png" alt="명령어 실행 확인"></p>
 <p>전체 함수의 목록은 아래 명령어로 확인할 수 있다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env fish</span><br><span class="line"><span class="meta">&gt;</span> functions</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">functions</span></span></span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -206,7 +206,7 @@ fish shell은 `alias`가 따로 존재하지 않고 함수(`function`)로 이를
 
 
 
-    <a data-url="https://kodakyung.github.io/2019/07/12/old-post-Shell-2018-11-08-fish-shell-alias/" data-id="cjxz37rg10086nk6kmabkmkzo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/07/12/old-post-Shell-2018-11-08-fish-shell-alias/" data-id="cjxz4s87w0059z26kvfx1zmfq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -292,7 +292,7 @@ fish shell은 `alias`가 따로 존재하지 않고 함수(`function`)로 이를
 
 
 1234#!/usr/bin/env fish&gt; function"
-        "wordCount": 116
+        "wordCount": 125
     }
 </script>
 
@@ -340,20 +340,20 @@ fish shell은 `alias`가 따로 존재하지 않고 함수(`function`)로 이를
         
 <nav id="article-nav">
     
-        <a href="/2019/07/12/old-post-Security-2018-09-20-WEB-OAuth2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2019/07/12/old-post-Netty-2018-05-09-Netty-특징과-아키텍처/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            WEB - OAuth2.0
+            Netty 특징과 아키텍처
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2019/07/12/old-post-Test-2018-09-24-Refactoring-and-tdd/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/07/12/old-post-Security-2018-09-20-WEB-OAuth2/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Refactoring과 Test/TDD</p>
+        <p class="article-nav-title">WEB - OAuth2.0</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
