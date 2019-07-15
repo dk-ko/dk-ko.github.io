@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Docker 스터디 2차 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Docker,Study">
+    
+    <meta name="description" content="Date 2018.07.10 / Time PM 6:30~8:00 / Place 일만관 2B201 이번주 스터디 내용: 가장 빨리 만나는 Docker 3장~5장 내용 진행Docker 기본 명령어, Dockerfile Docker 기본 명령어 Docker는 항상 root 권한으로 실행해야하기 때문에 sudo를 붙여서 사용한다. 아래 명령어에서는 생략함.  do">
+<meta name="keywords" content="Docker,Study">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 스터디 2차">
+<meta property="og:url" content="https://kodakyung.github.io/2018/07/10/old-post-Docker-2018-07-10-Docker-스터디-2차/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Date 2018.07.10 / Time PM 6:30~8:00 / Place 일만관 2B201 이번주 스터디 내용: 가장 빨리 만나는 Docker 3장~5장 내용 진행Docker 기본 명령어, Dockerfile Docker 기본 명령어 Docker는 항상 root 권한으로 실행해야하기 때문에 sudo를 붙여서 사용한다. 아래 명령어에서는 생략함.  do">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-15T07:22:17.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 스터디 2차">
+<meta name="twitter:description" content="Date 2018.07.10 / Time PM 6:30~8:00 / Place 일만관 2B201 이번주 스터디 내용: 가장 빨리 만나는 Docker 3장~5장 내용 진행Docker 기본 명령어, Dockerfile Docker 기본 명령어 Docker는 항상 root 권한으로 실행해야하기 때문에 sudo를 붙여서 사용한다. 아래 명령어에서는 생략함.  do">
+    
+
+    
+        <link rel="alternate" href="/" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/DataBase/">DataBase</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/ORM/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/dakyung">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/System/">System</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/System/Docker/">Docker</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-old-post-Docker-2018-07-10-Docker-스터디-2차" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 스터디 2차
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/07/10/old-post-Docker-2018-07-10-Docker-스터디-2차/" class="article-date">
+            <time datetime="2018-07-09T15:00:00.000Z" itemprop="datePublished">2018-07-10</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Docker/">Docker</a>, <a class="tag-link" href="/tags/Study/">Study</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Date 2018.07.10 / Time PM 6:30~8:00 / Place 일만관 2B201</p>
+<h1 id="이번주-스터디-내용"><a href="#이번주-스터디-내용" class="headerlink" title="이번주 스터디 내용"></a>이번주 스터디 내용</h1><p>: <a href="http://pyrasis.com/docker.html" target="_blank" rel="noopener">가장 빨리 만나는 Docker</a> 3장~5장 내용 진행<br>Docker 기본 명령어, Dockerfile</p>
+<h2 id="Docker-기본-명령어"><a href="#Docker-기본-명령어" class="headerlink" title="Docker 기본 명령어"></a>Docker 기본 명령어</h2><blockquote>
+<p>Docker는 항상 root 권한으로 실행해야하기 때문에 sudo를 붙여서 사용한다. 아래 명령어에서는 생략함.</p>
+</blockquote>
+<h3 id="docker-search-lt-name-gt"><a href="#docker-search-lt-name-gt" class="headerlink" title="docker search &lt;name&gt;"></a>docker search &lt;name&gt;</h3><p>도커는 <a href="https://registry.hub.docker.com" target="_blank" rel="noopener">Docker Hub</a>을 통해 이미지를 공유하는데 여기의 이미지를 검색할 수 있는 명령어이다.</p>
+<h3 id="docker-pull-lt-image-gt-lt-tag-gt"><a href="#docker-pull-lt-image-gt-lt-tag-gt" class="headerlink" title="docker pull &lt;image&gt;:&lt;tag&gt;"></a>docker pull &lt;image&gt;:&lt;tag&gt;</h3><p>이미지 다운로드 받는 명령어. latest 설정시 최신 버전을 받을 수 있다.</p>
+<h3 id="docker-images"><a href="#docker-images" class="headerlink" title="docker images"></a>docker images</h3><p>다운받은 이미지 목록을 전부 출력한다.</p>
+<h3 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run   "></a>docker run <option> <image> <runningfile></runningfile></image></option></h3><p>다운받은 이미지로 컨테이너를 생성한다.<br>-i(interactive), -t(Peudo-tty)옵션 사용하면 실행된 셸에 입출력을 할 수 있다. –name 옵션으로 이름 설정이 가능하다.</p>
+<h3 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h3><p>실행 중인 컨테이너 목록을 출력한다. -a 옵션을 사용하면 정지된 컨테이너까지 모두 출력한다.</p>
+<h3 id="docker-start"><a href="#docker-start" class="headerlink" title="docker start "></a>docker start <container></container></h3><p>컨테이너를 시작하는 명령어이다. 컨테이너 이름이나 ID를 사용할 수 있다.</p>
+<h3 id="docker-restart"><a href="#docker-restart" class="headerlink" title="docker restart "></a>docker restart <container></container></h3><p>컨테이너 재시작하는 명령어이다.</p>
+<h3 id="docker-attach"><a href="#docker-attach" class="headerlink" title="docker attach "></a>docker attach <container></container></h3><p>컨테이너에 접속하는 명령. 명령어를 입력할 수는 있지만 외부 애플리케이션을 실행하면 입력할 수 없고 출력만 볼 수 있다.</p>
+<h3 id="docker-exec"><a href="#docker-exec" class="headerlink" title="docker exec   "></a>docker exec <container> <command> <args></args></container></h3><p>외부에서 컨테이너 안에 명령을 실행. 컨테이너가 실행되고 있는 상태에서만 사용가능하다.</p>
+<h3 id="docker-stop"><a href="#docker-stop" class="headerlink" title="docker stop "></a>docker stop <container></container></h3><p>컨테이너 정지하는 명령어이다.</p>
+<h3 id="docker-rm"><a href="#docker-rm" class="headerlink" title="docker rm "></a>docker rm <container></container></h3><p>컨테이너를 삭제하는 명령어이다.</p>
+<h3 id="docker-rmi-lt-image-gt-lt-tags-gt"><a href="#docker-rmi-lt-image-gt-lt-tags-gt" class="headerlink" title="docker rmi &lt;image&gt;:&lt;tags&gt;"></a>docker rmi &lt;image&gt;:&lt;tags&gt;</h3><p>컨테이너 이미지를 삭제하는 명령어이다. 태그를 따로 지정하지 않으면 image 이름에 해당하는 모든 이미지가 삭제된다.</p>
+<h2 id="Docekerfile"><a href="#Docekerfile" class="headerlink" title="Docekerfile"></a>Docekerfile</h2><blockquote>
+<p>파일명 Dockerfile로 생성. FROM, MAINTAINER, RUN, CMD, WORKDIR, EXPOSE 등의 명령어 사용</p>
+</blockquote>
+<h2 id="docker-build"><a href="#docker-build" class="headerlink" title="docker build"></a>docker build</h2><p><code>docker build &lt;option&gt; &lt;Dockerfile path&gt;</code> 형식. Dockerfile 작성 후 이미지 생성. –tag 옵션으로 태그 지정 가능.</p>
+<h3 id="docker-history-lt-image-gt"><a href="#docker-history-lt-image-gt" class="headerlink" title="docker history &lt;image&gt;"></a>docker history &lt;image&gt;</h3><p>Docker 이미지 히스토리 조회</p>
+<h3 id="docker-cp-lt-container-gt-lt-path-gt-lt-host-path-gt"><a href="#docker-cp-lt-container-gt-lt-path-gt-lt-host-path-gt" class="headerlink" title="docker cp &lt;container&gt;:&lt;path&gt; &lt;host path&gt;"></a>docker cp &lt;container&gt;:&lt;path&gt; &lt;host path&gt;</h3><p>컨테이너에서 파일 복사해 꺼내기</p>
+<h3 id="docker-commit-lt-option-gt-lt-container-gt-lt-image-gt-lt-tag-gt"><a href="#docker-commit-lt-option-gt-lt-container-gt-lt-image-gt-lt-tag-gt" class="headerlink" title="docker commit &lt;option&gt; &lt;container&gt; &lt;image&gt;:&lt;tag&gt;"></a>docker commit &lt;option&gt; &lt;container&gt; &lt;image&gt;:&lt;tag&gt;</h3><p>컨테이너의 변경 사항을 이미지 파일로 생성</p>
+<h3 id="docker-diff-lt-container-gt"><a href="#docker-diff-lt-container-gt" class="headerlink" title="docker diff &lt;container&gt;"></a>docker diff &lt;container&gt;</h3><p>컨테이너에서 변경된 파일 확인</p>
+<h3 id="docker-inspect-lt-image-or-container-gt"><a href="#docker-inspect-lt-image-or-container-gt" class="headerlink" title="docker inspect &lt;image or container&gt;"></a>docker inspect &lt;image or container&gt;</h3><p>Docker 이미지와 컨테이너의 세부 정보 확인. 이름 또는 ID를 사용해도 됨.</p>
+<hr>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/07/10/old-post-Docker-2018-07-10-Docker-스터디-2차/" data-id="cjy321uto0022co6kqu0zhmgx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Docker 스터디 2차",
+        "image": "https://kodakyung.github.io",
+        "keywords": "Docker Study",
+        "genre": "System Docker",
+        "datePublished": "2018-07-10",
+        "dateCreated": "2018-07-10",
+        "dateModified": "2019-07-15",
+        "url": "https://kodakyung.github.io/2018/07/10/old-post-Docker-2018-07-10-Docker-스터디-2차/",
+        "description": "Date 2018.07.10 / Time PM 6:30~8:00 / Place 일만관 2B201
+이번주 스터디 내용: 가장 빨리 만나는 Docker 3장~5장 내용 진행Docker 기본 명령어, Dockerfile
+Docker 기본 명령어
+Docker는 항상 root 권한으로 실행해야하기 때문에 sudo를 붙여서 사용한다. 아래 명령어에서는 생략함.
+
+do"
+        "wordCount": 369
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/07/17/old-post-Docker-2018-07-17-Docker-스터디-3차/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Docker 스터디 3차
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/07/09/old-post-Docker-2018-07-09-Docker-스터디-개요-1차/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Docker 스터디 개요, 1차</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/" class="title">SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</a></p>
+                            <p class="item-date"><time datetime="2019-06-15T15:00:00.000Z" itemprop="datePublished">2019-06-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Server/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2019/06/11/old-post-IntelliJ-2019-06-11-intellij-devtools/" class="title">IntelliJ에서 SpringBoot DevTools 사용하기</a></p>
+                            <p class="item-date"><time datetime="2019-06-10T15:00:00.000Z" itemprop="datePublished">2019-06-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/18/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-04-17T15:00:00.000Z" itemprop="datePublished">2019-04-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/17/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T15:00:00.000Z" itemprop="datePublished">2019-04-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/10/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
+                            <p class="item-date"><time datetime="2019-04-09T15:00:00.000Z" itemprop="datePublished">2019-04-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/DataBase/">DataBase</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/ORM/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/System/Docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/Shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Troubleshooting/">Troubleshooting</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authrization/" style="font-size: 11.25px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 18.75px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hibernate/" style="font-size: 12.5px;">Hibernate</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 10px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 16.25px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 15px;">Netty</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12.5px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11.25px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 13.75px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 11.25px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12.5px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12.5px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 13.75px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12.5px;">WEB</a> <a href="/tags/생활코딩/" style="font-size: 17.5px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'koda93-github-io';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2018/07/10/old-post-Docker-2018-07-10-Docker-스터디-2차/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

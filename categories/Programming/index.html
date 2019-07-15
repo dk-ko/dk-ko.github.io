@@ -74,10 +74,10 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/DataBase/">DataBase</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/ORM/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Web/">Web</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.md">About</a>
+                                    <a class="main-nav-list-link" href="https://about.me/dakyung">About</a>
                                 </li>
                             
                         </ul>
@@ -146,7 +146,7 @@
         
         <section class="archives-wrap">
             <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
             </div>
             <div class="archives">
     
@@ -161,26 +161,361 @@
             <div class="category">
             <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
             </div>
-            <div class="date"><time datetime="2018-10-13T15:00:00.000Z" itemprop="datePublished">2018-10-14</time></div>
+            <div class="date"><time datetime="2019-04-17T15:00:00.000Z" itemprop="datePublished">2019-04-18</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/10/14/old-post-EffectiveJava-2018-10-14-Java-singleton-pattern/">Java - 싱글턴 패턴(Singleton Pattern)</a>
+        <a href="/2019/04/18/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/">Java - Use overloading judiciously</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Effective Java 규칙 3
-private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라
+            Effective Java Item 52
+다중정의(Overloading)는 신중히 사용하라
 
-Singleton 이란 ?
-객체를 하나만 만들 수 있는 클래스보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.
+Overriding VS Overloading
+Overriding한 메소드는 동적으로 선택되고, Overloading한 메소드는 정적으로 선택된다.
+따라서 Overloading의 경우 해당 객체의  타입이 어떤 메소드를 호출할지 기준이 된다.
 
-Singleton을 구현하는 방법
-private 생성자의 이용
-정적 팩터리 메소드 이용 // JDK 1.5 이전의 구현 방식
-en
+Overriding 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-04-16T15:00:00.000Z" itemprop="datePublished">2019-04-17</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/04/17/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/">Java - Design method signatures carefully</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 51
+메서드 시그니처를 신중히 설계하라
+
+API 설계 요령1. 메서드 이름을 신중히
+표준 명명 규칙을 따른다
+E.J의 아이템 68 참고
+
+
+
+2. 지나친 편의 메서드 남발 금물
+아주 자주 쓰일 때만 별도의 편의 메서드로 작성한다.
+이 부분에 관점에 따라 상충되는 듯하다. 
+예를 들면 박재성(자바지기)님의 경우 Test를 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-04-09T15:00:00.000Z" itemprop="datePublished">2019-04-10</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/04/10/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/">Java - Make defensive copies when needed</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 50
+적시에 방어적 복사본을 만들라
+
+
+자바는 비교적 안전한 언어이지만, 불변식이 깨질 수 있다는 가정하에 최대한 방어적으로 프로그래밍해야한다. 
+어떤 객체든 허락없이 외부에서 내부를 수정하는 일은 불가해야한다. 
+가변 타입으로 작성된 코드도 불변식을 깨지지 않게 하기 위해 필요하다.
+자기 자신 외에는 가변 필드에 접근할
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-03-22T15:00:00.000Z" itemprop="datePublished">2019-03-23</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/03/23/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/">Java - Prefer side-effect-free functions in streams</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 46
+스트림에서는 부작용 없는 함수를 사용하라.
+
+스트림 패러다임
+스트림은 함수형 프로그래밍 패러다임이다. 
+스트림을 통해 표현력, 속도, 병렬성을 얻을 수 있다. 
+계산을 일련의 변환으로 재구성한다.
+각 변환 단계를 가능한 이전 단계의 결과를 받아 처리하는 순수 함수여야한다.
+순수 함수란 오직 입력만이 결과에 영향을 주
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-02-20T15:00:00.000Z" itemprop="datePublished">2019-02-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/02/21/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/">Java - Prefer method references to lambdas</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 43
+람다보다는 메소드 참조를 사용하라
+
+
+
+lambda VS method reference
+함수 객체를 람다보다 간결하게 표현할 수 있는 것이 method reference(메소드 참조)이다.
+이 중 람다의 코드가 의미 없이 길다면 또는 이미 구현된 라이브러리로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-02-19T15:00:00.000Z" itemprop="datePublished">2019-02-20</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/02/20/old-post-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/">Java - Use instance fields instead of ordinals</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 35
+ordinal 메서드 대신 인스턴스 필드를 사용하라 
+
+
+
+ordinal method
+enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다. 
+enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다. 
+
+ordinal 대신 인스턴스
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-30T15:00:00.000Z" itemprop="datePublished">2019-01-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/31/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/">Java - Use bounded wildcards to increase API flexibility</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 31
+한정적 와일드카드를 사용해 API 유연성을 높여라
+
+
+
+
+한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&lt;String&gt;, List&lt;Integer&gt; 등)이 불공변이기 때문이다. 
+불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다.
+따라서 책
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-27T15:00:00.000Z" itemprop="datePublished">2019-01-28</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/28/old-post-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/">Java - Don&#39;t use raw types</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 26
+로 타입은 사용하지 말라. 
+
+
+
+제네릭(Generic)
+제네릭을 사용하는 이유는 컬렉션이 담을 수 있는 타입을 컴파일러에 알려주기 위한 것. 
+제네릭 지원 전에는 컬렉션에서 객체를 꺼낼 때마다 형변환을 해야했고, 잘못된 객체를 넣은 경우 형변환 오류가 발생했다. 
+제네릭을 통해 컴파일러는 형변환 코드 추가 가능, 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-26T15:00:00.000Z" itemprop="datePublished">2019-01-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/27/old-post-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/">Java - Limit source files to a single top-level class</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 25
+톱 레벨 클래스는 한 파일에 하나만 담으라. 
+
+
+
+
+한 파일에 여러가지의 톱 레벨 클래스를 담아도 컴파일 에러가 발생하진 않는다.
+하지만, 컴파일러에 따라 동작이 달라질 수 있다.
+
+
+
+12345678910111213141516171819202122// Main.javapublic class Main &#123; 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-23T15:00:00.000Z" itemprop="datePublished">2019-01-24</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/24/old-post-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/">Java - Prefer class hierarchies to tagged classes</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 23
+태그 달린 클래스보다는 클래스 계층구조를 활용하라 
+
+
+
+태그 달린 클래스란 ?
+이 책에서 말하는 태그 달린 클래스는 enum으로 타입을 결정하고, 타입별로 쓰이는 필드와 메소드가 다른데 한 클래스에 모든 코드가 있는 경우를 일컫는다. 
+즉, 한 클래스에서 태그(enum)에 따라 동작을 달리하는 코드를 의미한다. 
+
         </p>
     </div>
 </article>
@@ -191,6 +526,11 @@ en
 
     </div></section>
 
+
+    <nav id="page-nav">
+        <span class="pages">Page 1 of 4</span>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/Programming/page/2/">2</a><a class="page-number" href="/categories/Programming/page/3/">3</a><a class="page-number" href="/categories/Programming/page/4/">4</a><a class="extend next" rel="next" href="/categories/Programming/page/2/">&raquo;</a>
+    </nav>
 
 
 
@@ -236,45 +576,45 @@ en
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
-                            <p class="item-date"><time datetime="2019-07-11T19:50:24.848Z" itemprop="datePublished">2019-07-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/" class="title">SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</a></p>
+                            <p class="item-date"><time datetime="2019-06-15T15:00:00.000Z" itemprop="datePublished">2019-06-16</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
-                            <p class="item-date"><time datetime="2019-07-11T19:50:24.844Z" itemprop="datePublished">2019-07-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Server/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2019/06/11/old-post-IntelliJ-2019-06-11-intellij-devtools/" class="title">IntelliJ에서 SpringBoot DevTools 사용하기</a></p>
+                            <p class="item-date"><time datetime="2019-06-10T15:00:00.000Z" itemprop="datePublished">2019-06-11</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
-                            <p class="item-date"><time datetime="2019-07-11T19:50:24.838Z" itemprop="datePublished">2019-07-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/18/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-04-17T15:00:00.000Z" itemprop="datePublished">2019-04-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/" class="title">Java - Prefer side-effect-free functions in streams</a></p>
-                            <p class="item-date"><time datetime="2019-07-11T19:50:24.828Z" itemprop="datePublished">2019-07-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/17/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T15:00:00.000Z" itemprop="datePublished">2019-04-17</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/07/12/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" class="title">Java - Prefer method references to lambdas</a></p>
-                            <p class="item-date"><time datetime="2019-07-11T19:50:24.823Z" itemprop="datePublished">2019-07-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/10/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/" class="title">Java - Make defensive copies when needed</a></p>
+                            <p class="item-date"><time datetime="2019-04-09T15:00:00.000Z" itemprop="datePublished">2019-04-10</time></p>
                         </div>
                     </li>
                 
@@ -287,7 +627,7 @@ en
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/DataBase/">DataBase</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/ORM/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/System/Docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/Shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Troubleshooting/">Troubleshooting</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -297,7 +637,7 @@ en
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">63</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
         </div>
     </div>
 
@@ -307,7 +647,7 @@ en
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Authrization/" style="font-size: 11px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 19px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 13px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 16px;">Netty</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 15px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12px;">WEB</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/생활코딩/" style="font-size: 18px;">생활코딩</a>
+            <a href="/tags/Authrization/" style="font-size: 11.25px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 18.75px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hibernate/" style="font-size: 12.5px;">Hibernate</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 10px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 16.25px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 15px;">Netty</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12.5px;">OAuth2</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11.25px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 13.75px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 11.25px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12.5px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12.5px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 13.75px;">Troubleshooting</a> <a href="/tags/WEB/" style="font-size: 12.5px;">WEB</a> <a href="/tags/생활코딩/" style="font-size: 17.5px;">생활코딩</a>
         </div>
     </div>
 
@@ -344,7 +684,7 @@ en
         
     
     <script>
-    var disqus_shortname = 'Jade&#39;s Blog';
+    var disqus_shortname = 'koda93-github-io';
     
     
     (function() {
