@@ -12,18 +12,18 @@
     
         <meta name="keywords" content="Hibernate">
     
-    <meta name="description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.  특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.  CASCADE 옵션  즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.   CASC">
+    <meta name="description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능. 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용. CASCADE 옵션   즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.     CAS">
 <meta name="keywords" content="Hibernate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JPA - Cascade">
 <meta property="og:url" content="https://kodakyung.github.io/2018/11/16/old-post-Hibernate-2018-11-16-jpa-cascade/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.  특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.  CASCADE 옵션  즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.   CASC">
+<meta property="og:description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능. 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용. CASCADE 옵션   즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.     CAS">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-15T07:23:36.210Z">
+<meta property="og:updated_time" content="2019-07-20T14:18:38.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JPA - Cascade">
-<meta name="twitter:description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.  특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.  CASCADE 옵션  즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.   CASC">
+<meta name="twitter:description" content="영속성 전이와 고아 객체 영속성 전이(Transitive Persistence) 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능. 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용. CASCADE 옵션   즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.     CAS">
     
 
     
@@ -181,17 +181,17 @@
         <div class="article-entry" itemprop="articleBody">
             <p>영속성 전이와 고아 객체</p>
 <h2 id="영속성-전이-Transitive-Persistence"><a href="#영속성-전이-Transitive-Persistence" class="headerlink" title="영속성 전이(Transitive Persistence)"></a>영속성 전이(Transitive Persistence)</h2><ul>
-<li><p>연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.</p>
-</li>
-<li><p>특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.</p>
-</li>
-<li><p><code>CASCADE</code> 옵션</p>
+<li>연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.</li>
+<li>특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.</li>
+<li><code>CASCADE</code> 옵션</li>
+</ul>
 <blockquote>
 <p>즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.</p>
 </blockquote>
-</li>
-<li><p>CASCADE 설정이 없는 경우</p>
-</li>
+<br>
+
+<ul>
+<li>CASCADE 설정이 없는 경우</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// save parent</span></span><br><span class="line">Parent parent = <span class="keyword">new</span> Parent();</span><br><span class="line">em.persist(parent);</span><br><span class="line"></span><br><span class="line"><span class="comment">// save child1</span></span><br><span class="line">Child child1 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.setParent(parent); <span class="comment">// child1 &gt; parent 연관관계 설정</span></span><br><span class="line">parent.getChildren().add(child1); <span class="comment">// parent &gt; child1</span></span><br><span class="line">em.persist(child1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// save child2</span></span><br><span class="line">Child child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child2.setParent(parent); <span class="comment">// child2 &gt; parent</span></span><br><span class="line">parent.getChildren().add(child2); <span class="comment">// parent &gt; child2</span></span><br><span class="line">em.persist(child2);</span><br></pre></td></tr></table></figure>
 
@@ -289,7 +289,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/11/16/old-post-Hibernate-2018-11-16-jpa-cascade/" data-id="cjy7d0m3h004l0v6kf21lc8e2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/11/16/old-post-Hibernate-2018-11-16-jpa-cascade/" data-id="cjy7dp8e2004exl6kxoi8eil5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -365,20 +365,21 @@
         "genre": "Server ORM",
         "datePublished": "2018-11-16",
         "dateCreated": "2018-11-16",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-20",
         "url": "https://kodakyung.github.io/2018/11/16/old-post-Hibernate-2018-11-16-jpa-cascade/",
         "description": "영속성 전이와 고아 객체
 영속성 전이(Transitive Persistence)
 연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.
-
 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.
-
 CASCADE 옵션
+
 
 즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.
 
 
-CASC"
+
+
+CAS"
         "wordCount": 652
     }
 </script>

@@ -21,7 +21,7 @@
 <meta property="og:description" content="일반적으로 bash와 같은 쉘들은 alias 명령을 통해 alias를 지정해준다. 123#!/usr/bin/env bash# ~/.bashrcalias name=&quot;#statement&quot;    fish shell은 alias가 따로 존재하지 않고 함수(function)로 이를 처리한다. 1234#!/usr/bin/env fish&amp;gt; function name">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2018-11-08/01.png">
-<meta property="og:updated_time" content="2019-07-15T06:06:00.687Z">
+<meta property="og:updated_time" content="2019-07-19T09:54:50.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fish Shell - Alias 설정">
 <meta name="twitter:description" content="일반적으로 bash와 같은 쉘들은 alias 명령을 통해 alias를 지정해준다. 123#!/usr/bin/env bash# ~/.bashrcalias name=&quot;#statement&quot;    fish shell은 alias가 따로 존재하지 않고 함수(function)로 이를 처리한다. 1234#!/usr/bin/env fish&amp;gt; function name">
@@ -182,20 +182,26 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>일반적으로 <code>bash</code>와 같은 쉘들은 <code>alias</code> 명령을 통해 <code>alias</code>를 지정해준다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env bash</span><br><span class="line"><span class="meta">#</span> ~/.bashrc</span><br><span class="line">alias name="#statement"</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># ~/.bashrc</span></span><br><span class="line"><span class="built_in">alias</span> name=<span class="string">"#statement"</span></span><br></pre></td></tr></table></figure>
 
 <br>
 
 <p>fish shell은 <code>alias</code>가 따로 존재하지 않고 함수(<code>function</code>)로 이를 처리한다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env fish</span><br><span class="line"><span class="meta">&gt;</span> function name</span><br><span class="line"><span class="meta">  #</span>statements</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env fish</span></span><br><span class="line">&gt; <span class="keyword">function</span> name</span><br><span class="line">  <span class="comment">#statements</span></span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/2018-11-08/01.png" alt="fish shell  function alias example"></p>
+<br>
+
 <p>fish의 인수는 숫자가 매겨진 변수(<code>$1</code>)가 아닌 <code>$argv</code> 단일 목록으로 전달된다.</p>
 <p><img src="/images/2018-11-08/02.png" alt="fish shell  function alias argv example"></p>
+<br>
+
 <p><code>function</code>을 영구적으로 저장하고 싶다면 <code>~/.config/fish/functions/</code>경로에 <code>function_name.fish</code> 파일을 생성해야한다.</p>
 <p><img src="/images/2018-11-08/03.png" alt="fish 파일 생성"><br><img src="/images/2018-11-08/04.png" alt="fish 파일 확인"><br><img src="/images/2018-11-08/05.png" alt="명령어 실행 확인"></p>
+<br>
+
 <p>전체 함수의 목록은 아래 명령어로 확인할 수 있다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/env fish</span><br><span class="line"><span class="meta">&gt;</span> functions</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">functions</span></span></span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -205,7 +211,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/" data-id="cjy7d0m4b006u0v6kzp8s6ckk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/" data-id="cjy7dp8f9007exl6k61tulmhq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -281,7 +287,7 @@
         "genre": "System Shell",
         "datePublished": "2018-10-24",
         "dateCreated": "2018-10-24",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-19",
         "url": "https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/",
         "description": "일반적으로 bash와 같은 쉘들은 alias 명령을 통해 alias를 지정해준다.
 123#!/usr/bin/env bash# ~/.bashrcalias name="#statement"
@@ -290,7 +296,7 @@
 
 fish shell은 alias가 따로 존재하지 않고 함수(function)로 이를 처리한다.
 1234#!/usr/bin/env fish&gt; function name"
-        "wordCount": 116
+        "wordCount": 121
     }
 </script>
 
@@ -338,20 +344,20 @@ fish shell은 alias가 따로 존재하지 않고 함수(function)로 이를 처
         
 <nav id="article-nav">
     
-        <a href="/2018/10/25/old-post-EffectiveJava-2018-10-25-java-finalizer/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/10/24/old-post-Security-2018-10-24-토크ON세미나-oauth2/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            Java - 종료자(finalizer)
+            토크ON세미나 - OAuth2.0
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2018/10/24/old-post-Security-2018-10-24-토크ON세미나-oauth2/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/10/15/old-post-EffectiveJava-2018-10-15-Java-private-constructor/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">토크ON세미나 - OAuth2.0</p>
+        <p class="article-nav-title">Java - Private 생성자</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     

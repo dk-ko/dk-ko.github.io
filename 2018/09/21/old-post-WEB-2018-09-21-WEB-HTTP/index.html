@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="생활코딩,WEB,HTTP">
     
-    <meta name="description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+    <meta name="description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소    HTML URL &amp;amp; URI Web Browser &amp;amp; Web Server HTTP   이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 주면서 응답하는 것">
 <meta name="keywords" content="생활코딩,WEB,HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WEB - HTTP">
 <meta property="og:url" content="https://kodakyung.github.io/2018/09/21/old-post-WEB-2018-09-21-WEB-HTTP/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+<meta property="og:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소    HTML URL &amp;amp; URI Web Browser &amp;amp; Web Server HTTP   이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 주면서 응답하는 것">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2018-09-21/01.png">
-<meta property="og:updated_time" content="2019-07-15T07:08:05.588Z">
+<meta property="og:updated_time" content="2019-07-20T13:59:35.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WEB - HTTP">
-<meta name="twitter:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소  12341. HTML2. URL &amp;amp; URI3. Web Browser &amp;amp; Web Server4. HTTP  이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을">
+<meta name="twitter:description" content="WEB의 구성 요소중 하나인 HTTP의 기본 개념 HTTP (HyperText Trasfer Protocol) 웹의 구성 요소    HTML URL &amp;amp; URI Web Browser &amp;amp; Web Server HTTP   이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 주면서 응답하는 것">
 <meta name="twitter:image" content="https://kodakyung.github.io/images/2018-09-21/01.png">
     
 
@@ -185,8 +185,14 @@
 <h2 id="HTTP-HyperText-Trasfer-Protocol"><a href="#HTTP-HyperText-Trasfer-Protocol" class="headerlink" title="HTTP (HyperText Trasfer Protocol)"></a>HTTP (HyperText Trasfer Protocol)</h2><ul>
 <li>웹의 구성 요소</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. HTML</span><br><span class="line">2. URL &amp; URI</span><br><span class="line">3. Web Browser &amp; Web Server</span><br><span class="line">4. HTTP</span><br></pre></td></tr></table></figure>
-
+<hr>
+<ol>
+<li>HTML</li>
+<li>URL &amp; URI</li>
+<li>Web Browser &amp; Web Server</li>
+<li>HTTP</li>
+</ol>
+<hr>
 <p>이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 <code>Request</code>,<br>Server가 HTML을 주면서 응답하는 것을 <code>Response</code>라 한다.</p>
 <p>사용하고 있는 인터넷 브라우저의 [검사]- [Network] 탭을 통해 웹 브라우저와 웹 서버가 주고받은 http 코드를 볼 수 있다.<br>[Headers]를 통해 <code>Request Headers</code>/<code>Response Headers</code>를 확인할 수 있다. 웹 브라우저가 웹 서버에게 요청한 데이터와 웹서버가 응답한 데이터이다.</p>
 <ul>
@@ -200,11 +206,11 @@
 </blockquote>
 <img width="734" alt="http request header format" src="/images/2018-09-21/01.png">
 
-<ul>
-<li>Request Header의 구성 요소</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Request Line + Request Headers = Request Message Header</span><br><span class="line">2. Blank Line 으로 구분</span><br><span class="line">3. 실제 전송하는 내용 = Body(= Payload)</span><br></pre></td></tr></table></figure>
-
+<h3 id="Request-Header의-구성-요소"><a href="#Request-Header의-구성-요소" class="headerlink" title="Request Header의 구성 요소"></a>Request Header의 구성 요소</h3><ol>
+<li>Request Line + Request Headers = Request Message Header</li>
+<li>Blank Line 으로 구분</li>
+<li>실제 전송하는 내용 = Body(= Payload)</li>
+</ol>
 <h3 id="Request-Line"><a href="#Request-Line" class="headerlink" title="Request Line"></a>Request Line</h3><p>전송 방식을 나타낸다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- GET : 데이터를 웹서버로부터 가져올 때</span><br><span class="line">- POST : 데이터 전송할 때</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
@@ -243,20 +249,39 @@
 </blockquote>
 <img width="519" alt="http response header format" src="/images/2018-09-21/02.png">
 
+<h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>: HTTP version, status code(응답 결과), phrase(응답 결과를 풀어쓴 것)를 보여준다.</p>
 <ul>
-<li>status : HTTP version, status code(응답 결과), phrase(응답 결과를 풀어쓴 것)를 보여준다.<ul>
-<li>예) HTTP/1.1 200 OK<blockquote>
-<p>http status code 검색</p>
-</blockquote>
+<li>예) HTTP/1.1 200 OK</li>
+</ul>
+<h4 id="Http-status-code"><a href="#Http-status-code" class="headerlink" title="Http status code"></a>Http status code</h4><ul>
+<li><p>1xx : Information // 리퀘스트를 받아들여 처리중</p>
 </li>
+<li><p>2xx : Success // 리퀘스트를 정상적으로 처리했음</p>
+<ul>
+<li>200 OK<br>: 클라이언트가 보낸 리퀘스트를 서버가 정상 처리 했음</li>
+<li>201 Created</li>
+<li>204 No Content<br>: 서버가 리퀘스트를 받아서 처리하는데 성공했지만 돌려줄 리소스가 없는 경우</li>
+<li>206 Partial Content<br>: Range에 의해서 범위가 지정된 리퀘스트에 의해 서버가 부분적으로 GET 리퀘스트를 받았음을 나타낸다.<br>리스폰스에는 Content-Range로 지정된 범위의 엔티티가 포함된다.</li>
+</ul>
+</li>
+<li><p>3xx : Redirection // 리퀘스트를 완료하기 위해서 추가동작이 필요</p>
+</li>
+<li><p>4xx : Client Errors // 서버는 리퀘스트 이해 불가능</p>
+<ul>
+<li>400 Bad Request<br>: 리퀘스트 구문이 잘못되었음. 브라우저는 이것을 200 OK와 같은 취급을 한다.</li>
+<li>401 Unauthorized<br>: 송신한 리퀘스트에 HTTP인증 정보가 필요한다는 것을 나타낸다.</li>
+<li>403 Forbidden<br>: 접속하면 안되는 곳을 접속했을 때</li>
+<li>404 Not Found<br>: 어떤 주소를 요청했는데 서버에 없는 경우</li>
+</ul>
+</li>
+<li><p>5xx : Server Errors // 서버의 리퀘스트 처리 실패</p>
+<ul>
+<li>500 Internel Server Error<br>: 서버에서 리퀘스트를 처리하는 도중에 에러가 발생함.</li>
+<li>503 Service Unavaliable<br>: 일시적으로 서버가 과부하 상태이거나 점검 중이기때문에 현재 리퀘스트를 처리할 수 없음을 나타냄.</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- 1xx : Information // 리퀘스트를 받아들여 처리중</span><br><span class="line">- 2xx : Success // 리퀘스트를 정상적으로 처리했음</span><br><span class="line">  - 200 OK  </span><br><span class="line">    : 클라이언트가 보낸 리퀘스트를 서버가 정상 처리 했음</span><br><span class="line">  - 201 Created</span><br><span class="line">  - 204 No Content  </span><br><span class="line">    : 서버가 리퀘스트를 받아서 처리하는데 성공했지만 돌려줄 리소스가 없는 경우</span><br><span class="line">  - 206 Partial Content  </span><br><span class="line">    : Range에 의해서 범위가 지정된 리퀘스트에 의해 서버가 부분적으로 GET 리퀘스트를 받았음을 나타낸다.</span><br><span class="line">    리스폰스에는 Content-Range로 지정된 범위의 엔티티가 포함된다.</span><br><span class="line">- 3xx : Redirection // 리퀘스트를 완료하기 위해서 추가동작이 필요</span><br><span class="line">- 4xx : Client Errors // 서버는 리퀘스트 이해 불가능</span><br><span class="line">  - 400 Bad Request  </span><br><span class="line">    : 리퀘스트 구문이 잘못되었음. 브라우저는 이것을 200 OK와 같은 취급을 한다.</span><br><span class="line">  - 401 Unauthorized  </span><br><span class="line">    : 송신한 리퀘스트에 HTTP인증 정보가 필요한다는 것을 나타낸다.</span><br><span class="line">  - 403 Forbidden</span><br><span class="line">    : 접속하면 안되는 곳을 접속했을 때</span><br><span class="line">  - 404 Not Found</span><br><span class="line">    : 어떤 주소를 요청했는데 서버에 없는 경우</span><br><span class="line">- 5xx : Server Errors // 서버의 리퀘스트 처리 실패</span><br><span class="line">  - 500 Internel Server Error  </span><br><span class="line">    : 서버에서 리퀘스트를 처리하는 도중에 에러가 발생함.</span><br><span class="line">  - 503 Service Unavaliable  </span><br><span class="line">    : 일시적으로 서버가 과부하 상태이거나 점검 중이기때문에 현재 리퀘스트를 처리할 수 없음을 나타냄.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>headers</p>
-<ul>
+<h4 id="headers"><a href="#headers" class="headerlink" title="headers"></a>headers</h4><ul>
 <li>Content-Type : text/HTML  <ul>
 <li>웹 브라우저가 Content-Type을 보고 HTML로 해석해서 보여준다.</li>
 </ul>
@@ -265,13 +290,14 @@
 <li>Content-Encoding : 압축 방식을 알려준다.</li>
 <li>Last-Modified : 이 정보가 마지막으로 수정된 날짜를 보여준다.</li>
 </ul>
-</li>
-</ul>
-<ul>
-<li>웹브라우저와 웹 서버의 커뮤니케이션 과정</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 웹 브라우저가 Request Headers를 생성하고</span><br><span class="line">2. 추가로(POST인 경우 등) 한줄 띄우고 웹서버로 전송할 정보를 담아서</span><br><span class="line">3. 메세지를 만든 다음에 인터넷을 통해 웹서버로 보낸다.</span><br><span class="line">4. 웹서버는 메세지를 해석해서 응답메세지를 만든다.(Response Headers)</span><br><span class="line">5. 그리고 한줄 띄우고 실제 HTML코드를 합쳐서 인터넷을 통해 요청한 컴퓨터로 보낸다.</span><br><span class="line">6. 웹브라우저는 이를 통해 헤더와 본문을 참조해서 사용자에게 화면을 보여준다.</span><br></pre></td></tr></table></figure>
-
+<h4 id="웹브라우저와-웹-서버의-커뮤니케이션-과정"><a href="#웹브라우저와-웹-서버의-커뮤니케이션-과정" class="headerlink" title="웹브라우저와 웹 서버의 커뮤니케이션 과정"></a>웹브라우저와 웹 서버의 커뮤니케이션 과정</h4><ol>
+<li>웹 브라우저가 Request Headers를 생성하고</li>
+<li>추가로(POST인 경우 등) 한줄 띄우고 웹서버로 전송할 정보를 담아서</li>
+<li>메세지를 만든 다음에 인터넷을 통해 웹서버로 보낸다.</li>
+<li>웹서버는 메세지를 해석해서 응답메세지를 만든다.(Response Headers)</li>
+<li>그리고 한줄 띄우고 실제 HTML코드를 합쳐서 인터넷을 통해 요청한 컴퓨터로 보낸다.</li>
+<li>웹브라우저는 이를 통해 헤더와 본문을 참조해서 사용자에게 화면을 보여준다.</li>
+</ol>
 <h2 id="앞으로-공부할-주제"><a href="#앞으로-공부할-주제" class="headerlink" title="앞으로 공부할 주제"></a>앞으로 공부할 주제</h2><ul>
 <li>HTTP와 HTTPS(Http Secure)의 차이(SSL)</li>
 <li>Cache(저장) : 데이터를 항상 새로 받아오지 않고 따로 저장해둠으로써 속도를 향상시킨다.<ul>
@@ -296,7 +322,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/09/21/old-post-WEB-2018-09-21-WEB-HTTP/" data-id="cjy7d0m4q007x0v6kueexj55o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/09/21/old-post-WEB-2018-09-21-WEB-HTTP/" data-id="cjy7dp8fn008axl6kq4jnr356" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -372,16 +398,22 @@
         "genre": "Web",
         "datePublished": "2018-09-21",
         "dateCreated": "2018-09-21",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-20",
         "url": "https://kodakyung.github.io/2018/09/21/old-post-WEB-2018-09-21-WEB-HTTP/",
         "description": "WEB의 구성 요소중 하나인 HTTP의 기본 개념
 HTTP (HyperText Trasfer Protocol)
 웹의 구성 요소
 
-12341. HTML2. URL &amp; URI3. Web Browser &amp; Web Server4. HTTP
 
-이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 "
-        "wordCount": 1146
+
+HTML
+URL &amp; URI
+Web Browser &amp; Web Server
+HTTP
+
+
+이 때 Client가 Server에게 HTML을 달라고 요청하는 것을 Request,Server가 HTML을 주면서 응답하는 것"
+        "wordCount": 979
     }
 </script>
 

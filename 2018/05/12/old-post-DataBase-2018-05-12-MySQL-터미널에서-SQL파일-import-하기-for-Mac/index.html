@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="MySQL">
     
-    <meta name="description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;  {: w">
+    <meta name="description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 터미널에서 SQL파일 import&#x2F;export 하기(for Mac)">
 <meta property="og:url" content="https://kodakyung.github.io/2018/05/12/old-post-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;  {: w">
+<meta property="og:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2018-05-12/01.png">
-<meta property="og:updated_time" content="2019-07-14T14:28:55.656Z">
+<meta property="og:updated_time" content="2019-07-20T14:31:45.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 터미널에서 SQL파일 import&#x2F;export 하기(for Mac)">
-<meta name="twitter:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;  {: w">
+<meta name="twitter:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
 <meta name="twitter:image" content="https://kodakyung.github.io/images/2018-05-12/01.png">
     
 
@@ -187,14 +187,23 @@
 <h2 id="SQL-파일-Import"><a href="#SQL-파일-Import" class="headerlink" title="SQL 파일 Import"></a>SQL 파일 Import</h2><p>  <strong>1. sql 파일을 추가할 데이터베이스를 만든다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database &apos;db_name&apos;;</span><br><span class="line">mysql&gt; use &apos;db_name&apos;;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/2018-05-12/01.png" alt="Add Database">{: width=”762px”}<br><br></p>
+<img width="762" alt="Add Database" src="/images/2018-05-12/01.png">
+
+<br>
+
 <p>  <strong>2. sql 파일에 대해 source 명령을 실행한다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; source &apos;db_path.sql&apos;;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/2018-05-12/02.png" alt="sql source">{: width=”762px”}<br>Query OK가 출력되면 성공한 것.<br><br><br></p>
+<img width="762" alt="sql source" src="/images/2018-05-12/02.png">
+
+<p>Query OK가 출력되면 성공한 것.</p>
+<p><br><br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use db_name;</span><br><span class="line">mysql&gt; show tables;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/2018-05-12/03.png" alt="Database 확인">{: width=”762px”}<br>명령어로 확인해보면 DB가 잘 추가된 것을 확인할 수 있다.<br><br><br></p>
+<img width="762" alt="Database 확인" src="/images/2018-05-12/03.png">
+
+<p>명령어로 확인해보면 DB가 잘 추가된 것을 확인할 수 있다.</p>
+<p><br><br></p>
 <p>  <strong>3. 사용자(Account)에게 DB 사용권한을 부여한다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on dbname.table to userid@localhost identified by &apos;password&apos;;</span><br><span class="line">mysql&gt; grant select on dbname.* to userid@&apos;192.168.%&apos; identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure>
 
@@ -204,7 +213,14 @@
 <p>변경된 권한을 적용한다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants for userid@host;</span><br></pre></td></tr></table></figure>
 
-<p>사용자에게 부여된 권한을 확인한다.<br><br><br><img src="/images/2018-05-12/04.png" alt="권한 부여/확인">{: width=”762px”}<br><br><br>  <strong>4. 사용자(Account)가 없다면 생성해준 뒤 3번을 진행한다.</strong></p>
+<p>사용자에게 부여된 권한을 확인한다.</p>
+<br>
+
+<img width="762" alt="권한 부여/확인" src="/images/2018-05-12/04.png">
+
+<br>
+
+<p>  <strong>4. 사용자(Account)가 없다면 생성해준 뒤 3번을 진행한다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user userid@localhost identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure>
 
 <p>localhost 부분을 %로 한다면 외부 접근이 허용된다.</p>
@@ -221,7 +237,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/05/12/old-post-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/" data-id="cjy7d0m2000220v6kj7q53qim" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/05/12/old-post-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/" data-id="cjy7dp8d6002nxl6krxl7niog" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -297,7 +313,7 @@
         "genre": "CS DataBase",
         "datePublished": "2018-05-12",
         "dateCreated": "2018-05-12",
-        "dateModified": "2019-07-14",
+        "dateModified": "2019-07-20",
         "url": "https://kodakyung.github.io/2018/05/12/old-post-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/",
         "description": "MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.
 
@@ -305,7 +321,11 @@
 SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다.
 12mysql&gt; create database &apos;db_name&apos;;mysql&gt; use &apos;db_name&apos;;
 
-{: w"
+
+
+
+
+"
         "wordCount": 206
     }
 </script>

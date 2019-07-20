@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="JPA TESTJPA는 엔티티 매핑 / API 호출 두 부분으로 나뉜다.    처음에는 객체가 어떻게 DB 테이블에 매핑되는지 정의한다. 보통 자바 Annotation 이용   다음으로 EntityManager 객체를 이용해 이 객체들을 DB에 저장하거나 읽어온다. JPA 쿼리를 사용해 객체를 만들고 지우고 전달하는 등의 작업    따라서 위의 두가지를 독">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-15T06:13:01.864Z">
+<meta property="og:updated_time" content="2019-07-19T09:56:23.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JPA 테스트의 특징">
 <meta name="twitter:description" content="JPA TESTJPA는 엔티티 매핑 / API 호출 두 부분으로 나뉜다.    처음에는 객체가 어떻게 DB 테이블에 매핑되는지 정의한다. 보통 자바 Annotation 이용   다음으로 EntityManager 객체를 이용해 이 객체들을 DB에 저장하거나 읽어온다. JPA 쿼리를 사용해 객체를 만들고 지우고 전달하는 등의 작업    따라서 위의 두가지를 독">
@@ -210,8 +210,18 @@
 </ul>
 <br>
 하지만 임베디드 데이터베이스를 사용한다면 트랜잭션 커밋 방식을 사용해도 괜찮다.
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 임베디드 데이터 베이스는 속도가 빠르다. 매번 전체 DB를 새로 만들어도 괜찮을 정도.</span><br><span class="line">- 필요하면 tearDown 중 데이터베이스를 정리할 수 있다. 임베디드 DB에선 저렴한 연산.</span><br><span class="line">- 트랜잭션을 롤백하면 JPA 벤더가 DB 실제 SQL을 전송하지 않을 수 있다.</span><br><span class="line">  - 이 경우 테스트 케이스는 통과하지만 실제 환경에서 실패하게 된다.</span><br><span class="line">- JPA 트랜잭션이나 세션 밖에서 영구 저장된 객체의 동작을 테스트해보길 원할경우 사용할 수 있다.</span><br></pre></td></tr></table></figure>
 
+<hr>
+<ul>
+<li>임베디드 데이터 베이스는 속도가 빠르다. 매번 전체 DB를 새로 만들어도 괜찮을 정도.</li>
+<li>필요하면 tearDown 중 데이터베이스를 정리할 수 있다. 임베디드 DB에선 저렴한 연산.</li>
+<li>트랜잭션을 롤백하면 JPA 벤더가 DB 실제 SQL을 전송하지 않을 수 있다.<ul>
+<li>이 경우 테스트 케이스는 통과하지만 실제 환경에서 실패하게 된다.</li>
+</ul>
+</li>
+<li>JPA 트랜잭션이나 세션 밖에서 영구 저장된 객체의 동작을 테스트해보길 원할경우 사용할 수 있다.</li>
+</ul>
+<hr>
 <h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
 <li>Junit in Action</li>
 </ul>
@@ -223,7 +233,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/11/10/old-post-Test-2018-11-10-jpa-junit-test/" data-id="cjy7d0m4e00720v6khr16ojn0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/11/10/old-post-Test-2018-11-10-jpa-junit-test/" data-id="cjy7dp8fa007ixl6k8oxhhsds" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -299,7 +309,7 @@
         "genre": "Server Test",
         "datePublished": "2018-11-10",
         "dateCreated": "2018-11-10",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-19",
         "url": "https://kodakyung.github.io/2018/11/10/old-post-Test-2018-11-10-jpa-junit-test/",
         "description": "JPA TESTJPA는 엔티티 매핑 / API 호출 두 부분으로 나뉜다.  
 
@@ -313,7 +323,7 @@ JPA 쿼리를 사용해 객체를 만들고 지우고 전달하는 등의 작업
 
 
 따라서 위의 두가지를 독"
-        "wordCount": 281
+        "wordCount": 260
     }
 </script>
 

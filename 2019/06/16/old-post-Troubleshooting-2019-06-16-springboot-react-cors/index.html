@@ -21,7 +21,7 @@
 <meta property="og:description" content="SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2019-06-16/auth_code_flow.png">
-<meta property="og:updated_time" content="2019-07-15T06:35:01.678Z">
+<meta property="og:updated_time" content="2019-07-20T13:49:59.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제">
 <meta name="twitter:description" content="SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발">
@@ -223,7 +223,7 @@
 </ul>
 <hr>
 <p>위 에러 메세지를 기반으로 여러가지를 찾아봤는데 초기에는 Front 쪽에서 API를 호출할 때 Header에 CORS 허용을 하지 않아서(<code>Access-Control-Allow-Origin</code> 설정) 많은 시간을 허비했다. 하지만 이 이후에도 CORS 에러가 해결되지 않았다. 그리고 위 링크에서 Spring을 사용하는 경우 <code>@CrossOrigin</code> 어노테이션으로 쉽게 해결할 수 있다 했지만 OAuth Social Login Endpoint의 경우 <strong>컨트롤러를 직접 만드는 것이 아니기 때문에 위 문제로 해결할 수 없었다.</strong><br>(login / logout endpoint외에는 전부 Controller로 작성했기 때문에 CORS 관련 Config 설정을 하기 전에 임시로 @CrossOrigin 어노테이션을 붙여뒀다. 이 어노테이션을 붙이는 경우 Front에서 <code>Access-Control-Allow-Origin</code> 설정을 하지 않아도 API 호출에 CORS 에러가 발생하지 않는다. 이 부분 때문에 좀 더 헷갈렸던 것도 있다.)</p>
-<p><code>405</code>를 반환한다는 것은 허용되지 않은 메소드를 호출했다는 것인데 그래서 이후에는 <code>preflight</code> 확인 요청을 <code>OPTIONS method</code>로 보내는 과정에 문제가 있는지 찾아<br>보았다.</p>
+<p><code>405</code>를 반환한다는 것은 허용되지 않은 메소드를 호출했다는 것인데 그래서 이후에는 <code>preflight</code> 확인 요청을 <code>OPTIONS method</code>로 보내는 과정에 문제가 있는지 찾아보았다.</p>
 <p>이 <a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" target="_blank" rel="noopener">링크</a>를 참고해서 <code>Spring Security Config</code>에 <code>PreFlightRequest</code>를 허용해주었지만 이 코드도 동작하지 않았다.</p>
 <p>혹시나해서 Front쪽에서 <code>axios</code>가 아닌 <code>XMLHttpRequest</code>를 직접 사용해봤지만 새로운 에러만 발생했다. </p>
 <blockquote>
@@ -252,7 +252,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/" data-id="cjy7d0m4o007t0v6kwsmiwq8w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/" data-id="cjy7dp8fl0085xl6kd130djav" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -328,7 +328,7 @@
         "genre": "Troubleshooting",
         "datePublished": "2019-06-16",
         "dateCreated": "2019-06-16",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-20",
         "url": "https://kodakyung.github.io/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/",
         "description": "SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발"
         "wordCount": 1039

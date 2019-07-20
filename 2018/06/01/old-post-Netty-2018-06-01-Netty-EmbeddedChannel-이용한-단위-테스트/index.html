@@ -21,7 +21,7 @@
 <meta property="og:description" content="단위 테스트란? 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.  Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2018-06-01/01.jpg">
-<meta property="og:updated_time" content="2019-07-15T05:56:48.550Z">
+<meta property="og:updated_time" content="2019-07-19T09:44:49.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty EmbeddedChannel 이용한 단위 테스트">
 <meta name="twitter:description" content="단위 테스트란? 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.  Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해">
@@ -223,7 +223,8 @@
 <ul>
 <li>EmbeddedChannel 데이터 흐름</li>
 </ul>
-<p><img src="/images/2018-06-01/01.jpg" alt="EmbeddedChannel">{: .center-image}</p>
+<img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg">
+
 <p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p>
 <p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p>
 <p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p>
@@ -278,7 +279,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/06/01/old-post-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/" data-id="cjy7d0m45006e0v6ktce9ray6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/06/01/old-post-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/" data-id="cjy7dp8f2006yxl6kfusfir5t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -354,13 +355,13 @@
         "genre": "Server Netty",
         "datePublished": "2018-06-01",
         "dateCreated": "2018-06-01",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-19",
         "url": "https://kodakyung.github.io/2018/06/01/old-post-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/",
         "description": "단위 테스트란?
 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.
 
 Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해"
-        "wordCount": 2053
+        "wordCount": 2052
     }
 </script>
 
@@ -408,20 +409,20 @@ Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 
         
 <nav id="article-nav">
     
-        <a href="/2018/07/09/old-post-Docker-2018-07-09-Docker-스터디-개요-1차/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/06/01/old-post-Netty-2018-06-02-Netty-Codec-Framework/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            Docker 스터디 개요, 1차
+            Netty Codec Framework
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2018/06/01/old-post-Netty-2018-06-02-Netty-Codec-Framework/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/05/25/old-post-Netty-2018-05-25-Netty-채널-이벤트와-이벤트핸들러-그리고-파이프라인/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Netty Codec Framework</p>
+        <p class="article-nav-title">Netty 채널 이벤트와 이벤트핸들러, 그리고 파이프라인</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     

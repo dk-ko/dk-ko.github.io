@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-15T07:09:26.869Z">
+<meta property="og:updated_time" content="2019-07-19T09:49:07.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WEB - OAuth2.0">
 <meta name="twitter:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
@@ -249,11 +249,11 @@
 <p>Client가 Resource Server url에 접속하면 데이터를 보여준다.<br>즉 URL이 API처럼 되는 것.<br><strong>-&gt; 이 URL은 accessToken이 있어야 제대로 출력된다.<br>따라서 accessToken은 절대 남에게 공개하면 안된다.</strong></p>
 <p>API 핸들링 방식은 RS마다 다르므로 공식 문서를 찾아봐야한다.</p>
 <ul>
-<li>구글 api 사용 방법을 검색<blockquote>
+<li>구글 api 사용 방법을 검색</li>
+</ul>
+<blockquote>
 <p>google api accessToken oauth</p>
 </blockquote>
-</li>
-</ul>
 <p>구글은 accessToken을 Query Parameter로 보내거나 헤더의 Authorization에 Bearer로 보내는 두가지 방식을 사용한다.</p>
 <p>두가지 방식 중 헤더 값으로 Bearer를 보내는 방식이 더 선호된다.</p>
 <p>이 때 curl을 통해 좀 더 손쉽게 보낼 수 있음.</p>
@@ -263,11 +263,11 @@
 <h3 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h3><p>accessToken은 수명이 존재한다. 일반적으로 1~2시간, 길면 60~90일 등 수명이 끝나면 api가 정보를 주지 않는다.  </p>
 <p>수명이 끝나면 accessToken을 다시 발급 받아야 하는데 그때마다 사용자에게 인증을 받기 힘들다면 refresh token을 사용하면 된다.</p>
 <ul>
-<li>refresh token에 대해 검색<blockquote>
+<li>refresh token에 대해 검색</li>
+</ul>
+<blockquote>
 <p>oauth 2.0 rfc<br>rfc: 인터넷 관련된 표준안</p>
 </blockquote>
-</li>
-</ul>
 <p>위의 문서에서 Oauth-&gt;refresh token 항목을 참고하자.</p>
 <p>보통 accessToken을 발급할 때 refresh token도 발급 받는 경우가 많다.<br>만료 됐을 때 refresh token을 보내면서 accessToken을 다시 발급 받는다. 이때 refresh token을 같이 다시 발급 받는 경우도 있다.</p>
 <p>리소스 서버마다 refreshing 방법이 다르기 때문에 메뉴얼을 참고해야한다.</p>
@@ -285,7 +285,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/09/20/old-post-Security-2018-09-20-WEB-OAuth2/" data-id="cjy7d0m49006p0v6kxasa0yfe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/09/20/old-post-Security-2018-09-20-WEB-OAuth2/" data-id="cjy7dp8f8007axl6kbezbcczp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -361,7 +361,7 @@
         "genre": "Web",
         "datePublished": "2018-09-20",
         "dateCreated": "2018-09-20",
-        "dateModified": "2019-07-15",
+        "dateModified": "2019-07-19",
         "url": "https://kodakyung.github.io/2018/09/20/old-post-Security-2018-09-20-WEB-OAuth2/",
         "description": "OAuth2.0 인증 시스템의 원리
 OAuth2OAuth에는 세 개의 참여자가 등장한다.
