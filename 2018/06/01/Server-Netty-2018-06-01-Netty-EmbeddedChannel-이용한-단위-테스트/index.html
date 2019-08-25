@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Netty EmbeddedChannel 이용한 단위 테스트 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Network,Netty">
+    
+    <meta name="description" content="단위 테스트란? 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.  Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해">
+<meta name="keywords" content="Network,Netty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty EmbeddedChannel 이용한 단위 테스트">
+<meta property="og:url" content="https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="단위 테스트란? 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.  Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://kodakyung.github.io/images/2018-06-01/01.jpg">
+<meta property="og:updated_time" content="2019-07-19T09:44:49.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Netty EmbeddedChannel 이용한 단위 테스트">
+<meta name="twitter:description" content="단위 테스트란? 다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.  Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해">
+<meta name="twitter:image" content="https://kodakyung.github.io/images/2018-06-01/01.jpg">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/06/01/server-netty-2018-06-01-netty-embeddedchannel-이용한-단위-테스트/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/DataBase/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/OS/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programming/Javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/ORM/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/Test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/System/Shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/dakyung">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Server/Netty/">Netty</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Netty EmbeddedChannel 이용한 단위 테스트
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/" class="article-date">
+            <time datetime="2018-05-31T15:00:00.000Z" itemprop="datePublished">2018-06-01</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Netty/">Netty</a>, <a class="tag-link" href="/tags/Network/">Network</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="단위-테스트란"><a href="#단위-테스트란" class="headerlink" title="단위 테스트란?"></a>단위 테스트란?</h3><blockquote>
+<p>다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.</p>
+</blockquote>
+<p>Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 <code>EmbeddedChannel</code>을 통해 ChannelHandler의 단위 테스트를 제공한다.</p>
+<p>테스트하는 코드 모듈이나 단위를 보통 런타임 환경 밖에서 실행되므로 이를 실행하기 위한 프레임 워크나 도구가 필요하다. 여기서는 JUnit을 통해 테스트 해본다.</p>
+<br>
+
+<h2 id="EmbeddedChannel"><a href="#EmbeddedChannel" class="headerlink" title="EmbeddedChannel"></a>EmbeddedChannel</h2><p><code>EmbeddedChannel</code>은 인바운드 또는 아웃바운드 데이터를 EmbeddedChannel에 기록하고 <code>ChannelPipeline</code> 끝에 도달하는 항목이 있는지 확인한다. 이를 통해 메세지가 인코딩 또는 디코딩 됐는지 확인할 수 있고 트리거 된 <code>ChannelHandler</code> 작업이 있는지 여부도 알 수 있다.</p>
+<ul>
+<li>EmbeddedChannel 주요 메소드</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>writeInbound(Object… msgs)</td>
+<td>EmbeddedChannel에 인바운드 메세지를 기록한다. EmbeddedChannel에서 readInbound()를 통해 데이터를 읽을 수 있는 경우 true 반환</td>
+</tr>
+<tr>
+<td>readInbound()</td>
+<td>EmbeddedChannel에서 인바운드 메세지 읽는다. 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 데이터가 없으면 null 반환</td>
+</tr>
+<tr>
+<td>writeOutbound(Object… msgs)</td>
+<td>EmbeddedChannel에 아웃바운드 메세지를 기록한다. EmbeddedChannel에서 readOutbound()를 통해 데이터를 읽을 수 있는 경우 true를 반환</td>
+</tr>
+<tr>
+<td>writeInbound()</td>
+<td>EmbeddedChannel에서 아웃바운드 메세지를 읽음 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 항목이 없으면 null 반환</td>
+</tr>
+<tr>
+<td>finish</td>
+<td>EmbeddedChannel을 완료로 표시하고 전체 인바운드 또는 아웃바운드 데이터를 읽을 수 있는 경우 true를 반환한다. 이 메소드는  EmbeddedChannel의 close()를 호출함</td>
+</tr>
+</tbody></table>
+<ul>
+<li>EmbeddedChannel 데이터 흐름</li>
+</ul>
+<img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg">
+
+<p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p>
+<p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p>
+<p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p>
+<br>
+
+<h2 id="EmbeddedChannel을-이용한-ChannelHandler-테스트"><a href="#EmbeddedChannel을-이용한-ChannelHandler-테스트" class="headerlink" title="EmbeddedChannel을 이용한 ChannelHandler 테스트"></a>EmbeddedChannel을 이용한 ChannelHandler 테스트</h2><p>JUnit과 EmbeddedChannel을 이용해 ChannelHandler를 테스트 해보자  </p>
+<h3 id="Junit-Assert"><a href="#Junit-Assert" class="headerlink" title="Junit Assert"></a>Junit Assert</h3><blockquote>
+<p><code>org.junit.Assert</code> 클래스에는 테스트에 이용되는 여러 정적 메소드가 들어있다. 어설션이 실패하면 예외가 발생하고 현재 실행중인 테스트가 종료된다. 다음 import 문으로 사용할 수 있다. <code>import static org.junit.Assert.*;</code> 그리고 다음부터는 직접 Assert 메소드를 호출할 수 있다. <code>assertEquals(buf.readSlice(3), read);</code></p>
+</blockquote>
+<br>
+
+<h3 id="인바운드-메세지-테스트"><a href="#인바운드-메세지-테스트" class="headerlink" title="인바운드 메세지 테스트"></a>인바운드 메세지 테스트</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 처리하고 이를 메세지로 디코딩하기 위해서</span></span><br><span class="line">  <span class="comment">// ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> frameLength;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FixedLengthFrameDecoder</span><span class="params">(<span class="keyword">int</span> frameLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성할 프레임의 길이 지정</span></span><br><span class="line">    <span class="keyword">if</span>(frameLength &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">        <span class="string">"frameLength must be a positive integer:"</span>+frameLength);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.frameLength = frameLength;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="comment">// 다음 프레임을 처리하는 데 충분하게 바이트를 읽을 수 있는지 확인</span></span><br><span class="line">      <span class="keyword">while</span> (in.readableBytes() &gt;= frameLength) &#123;</span><br><span class="line">        ByteBuf buf = in.readBytes(frameLength);</span><br><span class="line">        <span class="comment">// ByteBuf에서 새로운 프레임을 읽음</span></span><br><span class="line">        out.add(buf);</span><br><span class="line">        <span class="comment">// 디코딩 된 메세지의 List에 프레임을 추가함</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ByteToMessageDecoder</code>는 고정된 3바이트의 프레임을 생성한다. 이 코드는 데이터가 충분히 있는 경우 고정 크기의 프레임을 생성한다. 반면에 읽을 데이터가 충분하지 않으면 다음 데이터를 기다린다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoderTest</span></span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="comment">//JUnit이 메소드를 실행하도록 @Test 어노테이션을 지정해줌</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트 저장</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FixedLengthFrameDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 3바이트 길이의 프레임으로 테스트할</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가함</span></span><br><span class="line">    assertTrue(channel.writeInbound(input.retain()));</span><br><span class="line">    <span class="comment">// EmbeddedChannel에 바이트를 기록</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처리된 메세지를 읽고 각각 3바이트 프레임이 3개인지 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>),read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    assertNull(channel.readInbound());</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>testFrameDecoded()</code> 메소드는 읽을 수 있는 9바이트를 포함하는 ByteBuf 1개가 3바이트를 포함하는 ByteBuf 3개로 디코딩되는지 확인한다. 그리고 <code>writeInbound()</code>를 한번 호출해 ByteBuf는 읽기 가능한 9바이트로 채운다. 그 다음에 finish()를 실행해 EmbeddedChannel을 완료로 표시하고 마지막으로 <code>readInbound()</code>를 호출해 EmbeddedChannel에서 프레임 3개와 null 1개를 읽었다.</p>
+<br>
+
+<h3 id="아웃바운드-메세지-테스트"><a href="#아웃바운드-메세지-테스트" class="headerlink" title="아웃바운드 메세지 테스트"></a>아웃바운드 메세지 테스트</h3><p>아웃바운드 메세지 테스트도 인바운드와 비슷하다. <code>ChannelOutboundHandler</code>는 메세지를 다른 포맷으로 변환하는 컴포넌트인 인코더 역할을 한다. 아래의 코드로 테스트 해보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoder</span> <span class="keyword">extends</span> <span class="title">MessageToMessageEncoder</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// MessageToMessageEncoder를 상속받아 메세지를 다른 포맷으로 인코딩 함</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(ChannelHandlerContext channelHandlerContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    ByteBuf in, List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(in.readableBytes() &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">// 인코딩할 바이트가 충분한지 확인</span></span><br><span class="line">        <span class="keyword">int</span> value = Math.abs(in.readint());</span><br><span class="line">        <span class="comment">// ByteBuf에서 다음 int를 읽고 절대값을 계산</span></span><br><span class="line">        out.add(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEncoded</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 음의 정수 9개 기록</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      buf.writeInd(i * -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> AbsIntegerEncoder());</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 테스트할 AbsIntegerEncoder를 추가</span></span><br><span class="line">    assertTrue(channel.writeOutbound(buf));</span><br><span class="line">    <span class="comment">// ByteBuf를 기록하고 readOutbound()가 데이터를 생성하는지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 값을 읽고 절댓 값을 포함하는지 확인</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      assertEquals(i, channel.readOutbound());</span><br><span class="line">    &#125;</span><br><span class="line">    assertNull(channel.readOutbound());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>ByteBuf</code>에 4바이트 음의 정수를 기록한다.</li>
+<li><code>EmbeddedChannel</code>을 생성하고 여기에 <code>AbsIntegerEncoder</code>를 할당한다.</li>
+<li><code>EmbeddedChannel</code>의 <code>writeOutbound()</code>를 호출해 ByteBuf를 기록한다.</li>
+<li><code>Channel</code>을 완료로 표시한다.</li>
+<li><code>EmbeddedChannel</code>의 아웃바운드 쪽에서 모든 정수를 읽고 절대값만 생성됐는지 확인한다.</li>
+</ol>
+<br>
+
+<h2 id="예외-처리-테스트"><a href="#예외-처리-테스트" class="headerlink" title="예외 처리 테스트"></a>예외 처리 테스트</h2><p>데이터 변환외에도 입력이 잘못되거나 데이터가 너무 많은 경우 적절하게 처리해야할 필요가 있다 이런 경우 예외 처리를 따로 해줄 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 메세지로 디코딩하기 위해 ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> maxFrameSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FrameChunkDecoder</span><span class="params">(<span class="keyword">int</span> maxFrameSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxFrameSize = maxFrameSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> readableBytes = in.readableBytes();</span><br><span class="line">      <span class="comment">// 생성할 프레임의 최대 허용 길이를 지정</span></span><br><span class="line">      <span class="keyword">if</span> (readableBytes &gt; maxFrameSize) &#123;</span><br><span class="line">        <span class="comment">// 프레임이 너무 큰 경우 폐기하고 TooLongFrameException을 생성함</span></span><br><span class="line">        in.clear();</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TooLongFrameException();</span><br><span class="line">      &#125;</span><br><span class="line">      ByteBuf buf = in.readBytes(readableBytes);</span><br><span class="line">      <span class="comment">// 그렇지 않은 경우 ByteBuf로부터 새 프레임을 읽음</span></span><br><span class="line">      out.add(buf);</span><br><span class="line">      <span class="comment">// 디코딩된 메세지의 List에 프레임을 추가</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>생성할 프레임의 최대 허용 길이를 설정하고 프레임의 크기가 이것을 넘어갈 경우 초과하는 바이트가 폐기되고 <code>TooLongFrameException</code>이 발생한다. 이 예외는 파이프라인의 <code>다른 ChannelHandler</code>에서 <code>exceptionCaught()</code>를 이용해 처리하거나 무시할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트를 기록</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FrameChunkDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 프레임 크기가 3인</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가</span></span><br><span class="line"></span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">2</span>)));</span><br><span class="line">    <span class="comment">// 2바이트를 기록한 후 새로운 프레임이 생성되는지 확인</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      channel.writeInbound(input.readBytes(<span class="number">4</span>));</span><br><span class="line">      <span class="comment">// 4바이트 프레임을 기록하고 예상되는 TooLongFrameException을 포착</span></span><br><span class="line">      Assert.fail();</span><br><span class="line">      <span class="comment">// 예외가 발생하지 않은 경우 이 메소드가 적용되고 테스트가 실패함</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (TooLongFrameException e)&#123;</span><br><span class="line">      <span class="comment">// 예상된 예외</span></span><br><span class="line">    &#125;</span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">3</span>)));</span><br><span class="line">    <span class="comment">// 남은 2바이트를 기록하고 프레임이 올바른지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 메세지를 읽고 값을 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">2</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.skipBytes(<span class="number">4</span>).readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 코드의 <code>try/catch</code> 블록은 EmbeddedChannel에서 특수하게 작용한다. <code>wrtie*</code> 메소드 중 하나에서 확인된 Exception이 발생하는 경우 이 <code>Exception</code>이 <code>RuntimeException</code>에 래핑된다. 이 방법을 데이터를 처리하는 동안 Exception이 처리됐는지 여부를 쉽게 테스트 할 수 있다. 그리고 이 테스트 방법은 <code>Exception</code>을 생성하는 모든 <code>ChannelHandler</code> 구현에 이용할 수 있다.</p>
+<hr>
+<ul>
+<li>참고 서적<ul>
+<li>네티 인 액션</li>
+</ul>
+</li>
+</ul>
+<br>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/" data-id="cjzra7dxg005gcj6kuz9q4ufq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Netty EmbeddedChannel 이용한 단위 테스트",
+        "image": "https://kodakyung.github.io/images/2018-06-01/01.jpg",
+        "keywords": "Network Netty",
+        "genre": "Server Netty",
+        "datePublished": "2018-06-01",
+        "dateCreated": "2018-06-01",
+        "dateModified": "2019-07-19",
+        "url": "https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/",
+        "description": "단위 테스트란?
+다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.
+
+Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해"
+        "wordCount": 2052
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Netty Codec Framework
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/25/Server-Netty-2018-05-25-Netty-채널-이벤트와-이벤트핸들러-그리고-파이프라인/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Netty 채널 이벤트와 이벤트핸들러, 그리고 파이프라인</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/CS/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/CS/OS/">OS</a></p>
+                            <p class="item-title"><a href="/2019/07/17/CS-OS-20190717-OS-동기화-Synchronization-와-임계-영역-Critical-Section/" class="title">OS - 동기화(Synchronization)와 임계 영역(Critical Section)</a></p>
+                            <p class="item-date"><time datetime="2019-07-17T14:46:37.000Z" itemprop="datePublished">2019-07-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/" class="title">SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</a></p>
+                            <p class="item-date"><time datetime="2019-06-15T15:00:00.000Z" itemprop="datePublished">2019-06-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Server/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/" class="title">IntelliJ에서 SpringBoot DevTools 사용하기</a></p>
+                            <p class="item-date"><time datetime="2019-06-10T15:00:00.000Z" itemprop="datePublished">2019-06-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" class="title">Java - Use overloading judiciously</a></p>
+                            <p class="item-date"><time datetime="2019-04-17T15:00:00.000Z" itemprop="datePublished">2019-04-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/" class="title">Java - Design method signatures carefully</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T15:00:00.000Z" itemprop="datePublished">2019-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/DataBase/">DataBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CS/OS/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/ORM/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/Test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/System/Docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/Shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Troubleshooting/">Troubleshooting</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Authrization/" style="font-size: 11.25px;">Authrization</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/Effective-Java/" style="font-size: 18.75px;">Effective Java</a> <a href="/tags/Fish-Shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hibernate/" style="font-size: 12.5px;">Hibernate</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JPA/" style="font-size: 10px;">JPA</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 16.25px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 15px;">Netty</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/OAuth2/" style="font-size: 12.5px;">OAuth2</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/ReactJS/" style="font-size: 10px;">ReactJS</a> <a href="/tags/Refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/STS/" style="font-size: 11.25px;">STS</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 13.75px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 11.25px;">SpringBoot</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Study/" style="font-size: 12.5px;">Study</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/Tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/Test/" style="font-size: 12.5px;">Test</a> <a href="/tags/Troubleshooting/" style="font-size: 13.75px;">Troubleshooting</a> <a href="/tags/Web/" style="font-size: 12.5px;">Web</a> <a href="/tags/생활코딩/" style="font-size: 17.5px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kodakyung';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -8,7 +8,271 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/12/old-post-DataBase-2018-05-12-MySQL-%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%90%EC%84%9C-SQL%ED%8C%8C%EC%9D%BC-import-%ED%95%98%EA%B8%B0-for-Mac/</loc>
+        <loc>https://kodakyung.github.io/2018/08/28/Programming-Java-2018-08-28-Java-equals-method-instanceof-Override/</loc>
+        <lastmod>2019-08-25T18:00:18.037Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/08/27/Programming-Java-2018-08-27-Java-%EA%B8%B0%EB%B3%B8%EC%9E%90%EB%A3%8C%ED%98%95%EA%B3%BC-%EC%B0%B8%EC%A1%B0%ED%98%95/</loc>
+        <lastmod>2019-08-25T18:00:12.282Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/17/Programming-Java-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/</loc>
+        <lastmod>2019-08-25T17:59:59.594Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/24/Web-2018-10-24-%ED%86%A0%ED%81%ACON%EC%84%B8%EB%AF%B8%EB%82%98-oauth2/</loc>
+        <lastmod>2019-08-25T17:56:57.956Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/09/21/Web-2018-09-21-WEB-HTTP/</loc>
+        <lastmod>2019-08-25T17:56:54.363Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/</loc>
+        <lastmod>2019-08-25T17:56:47.225Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/</loc>
+        <lastmod>2019-08-25T17:55:13.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/25/Server-ORM-2018-11-25-spring-data-jpa-query/</loc>
+        <lastmod>2019-08-25T17:53:34.577Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</loc>
+        <lastmod>2019-08-25T17:53:34.576Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</loc>
+        <lastmod>2019-08-25T17:53:34.576Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/09/11/Server-Spring-2018-09-11-CLI%EC%97%90%EC%84%9C-git-pull-clone-%ED%9B%84-STS%EC%97%90%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-import-%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2019-08-25T17:52:46.302Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/</loc>
+        <lastmod>2019-08-25T17:52:26.392Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/07/17/CS-OS-20190717-OS-%EB%8F%99%EA%B8%B0%ED%99%94-Synchronization-%EC%99%80-%EC%9E%84%EA%B3%84-%EC%98%81%EC%97%AD-Critical-Section/</loc>
+        <lastmod>2019-08-25T17:47:30.252Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%90%EC%84%9C-SQL%ED%8C%8C%EC%9D%BC-import-%ED%95%98%EA%B8%B0-for-Mac/</loc>
         <lastmod>2019-07-20T14:31:45.775Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -16,47 +280,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/12/old-post-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
-        <lastmod>2019-07-20T14:25:22.080Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/04/old-post-EffectiveJava-2018-11-04-java-comparable-comparator/</loc>
-        <lastmod>2019-07-20T14:24:32.176Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/26/old-post-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
-        <lastmod>2019-07-20T14:21:59.738Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/16/old-post-Hibernate-2018-11-16-jpa-cascade/</loc>
-        <lastmod>2019-07-20T14:18:38.386Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/15/old-post-Hibernate-2018-11-15-jpa-proxy/</loc>
-        <lastmod>2019-07-20T14:17:05.916Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/08/22/old-post-Javascript-2018-08-22-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-9%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/22/Programming-Javascript-2018-08-22-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-9%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-20T14:12:04.977Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -64,7 +288,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/17/old-post-Javascript-2018-08-17-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-5-6%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/17/Programming-Javascript-2018-08-17-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-5-6%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-20T14:11:36.716Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -72,7 +296,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/16/old-post-Javascript-2018-08-16-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-4%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/16/Programming-Javascript-2018-08-16-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-4%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-20T14:08:22.947Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -80,7 +304,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/14/old-post-Javascript-2018-08-14-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-2%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/14/Programming-Javascript-2018-08-14-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-2%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-20T14:06:30.446Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,7 +312,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/13/old-post-Javascript-2018-08-13-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-1%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/13/Programming-Javascript-2018-08-13-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-1%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-20T14:04:07.751Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -96,15 +320,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/09/21/old-post-WEB-2018-09-21-WEB-HTTP/</loc>
-        <lastmod>2019-07-20T13:59:35.097Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/06/16/old-post-Troubleshooting-2019-06-16-springboot-react-cors/</loc>
+        <loc>https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/</loc>
         <lastmod>2019-07-20T13:49:59.730Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -112,15 +328,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/09/11/old-post-Troubleshooting-2018-09-11-CLI%EC%97%90%EC%84%9C-git-pull-clone-%ED%9B%84-STS%EC%97%90%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-import-%ED%95%98%EA%B8%B0/</loc>
-        <lastmod>2019-07-20T13:48:41.607Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/05/19/old-post-Troubleshooting-2018-05-19-Spring-MVC-Server-%EA%B0%95%EC%A0%9C-%EC%A2%85%EB%A3%8C-%ED%9B%84-%EC%8B%A4%ED%96%89-%EC%98%A4%EB%A5%98-for-Mac/</loc>
+        <loc>https://kodakyung.github.io/2018/05/19/Troubleshooting-2018-05-19-Spring-MVC-Server-%EA%B0%95%EC%A0%9C-%EC%A2%85%EB%A3%8C-%ED%9B%84-%EC%8B%A4%ED%96%89-%EC%98%A4%EB%A5%98-for-Mac/</loc>
         <lastmod>2019-07-19T09:59:48.575Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -128,7 +336,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/10/old-post-Test-2018-11-10-jpa-junit-test/</loc>
+        <loc>https://kodakyung.github.io/2018/11/10/Server-Test-2018-11-10-jpa-junit-test/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -136,7 +344,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/</loc>
+        <loc>https://kodakyung.github.io/2018/10/24/System-Shell-2018-11-08-fish-shell-alias/</loc>
         <lastmod>2019-07-19T09:54:50.135Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -144,23 +352,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/10/24/old-post-Security-2018-10-24-%ED%86%A0%ED%81%ACON%EC%84%B8%EB%AF%B8%EB%82%98-oauth2/</loc>
-        <lastmod>2019-07-19T09:52:59.753Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/09/20/old-post-Security-2018-09-20-WEB-OAuth2/</loc>
-        <lastmod>2019-07-19T09:49:07.104Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/06/01/old-post-Netty-2018-06-02-Netty-Codec-Framework/</loc>
+        <loc>https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/</loc>
         <lastmod>2019-07-19T09:47:46.101Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -168,7 +360,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/06/01/old-post-Netty-2018-06-01-Netty-EmbeddedChannel-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8/</loc>
+        <loc>https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8/</loc>
         <lastmod>2019-07-19T09:44:49.725Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -176,7 +368,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/22/old-post-Netty-2018-05-22-Netty-Network-Transport-API/</loc>
+        <loc>https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/</loc>
         <lastmod>2019-07-19T09:43:34.757Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -184,7 +376,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/25/old-post-Netty-2018-05-25-Netty-%EC%B1%84%EB%84%90-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%99%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8%ED%95%B8%EB%93%A4%EB%9F%AC-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</loc>
+        <loc>https://kodakyung.github.io/2018/05/25/Server-Netty-2018-05-25-Netty-%EC%B1%84%EB%84%90-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%99%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8%ED%95%B8%EB%93%A4%EB%9F%AC-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</loc>
         <lastmod>2019-07-19T09:42:19.313Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -192,7 +384,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/23/old-post-Netty-2018-05-23-Netty%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-ByteBuf/</loc>
+        <loc>https://kodakyung.github.io/2018/05/23/Server-Netty-2018-05-23-Netty%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-ByteBuf/</loc>
         <lastmod>2019-07-19T09:36:18.482Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -200,7 +392,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/21/old-post-Netty-2018-05-21-Netty-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-Component/</loc>
+        <loc>https://kodakyung.github.io/2018/05/21/Server-Netty-2018-05-21-Netty-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-Component/</loc>
         <lastmod>2019-07-19T09:30:08.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,31 +400,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/07/17/OS-%EB%8F%99%EA%B8%B0%ED%99%94-Synchronization-%EC%99%80-%EC%9E%84%EA%B3%84-%EC%98%81%EC%97%AD-Critical-Section/</loc>
-        <lastmod>2019-07-17T17:04:56.105Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/09/old-post-Git-2018-11-09-git-gitignore-setting/</loc>
-        <lastmod>2019-07-15T07:24:10.265Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/25/old-post-Hibernate-2018-11-25-spring-data-jpa-query/</loc>
-        <lastmod>2019-07-15T07:23:34.964Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/07/09/old-post-Docker-2018-07-09-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-%EA%B0%9C%EC%9A%94-1%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/07/09/System-Docker-2018-07-09-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-%EA%B0%9C%EC%9A%94-1%EC%B0%A8/</loc>
         <lastmod>2019-07-15T07:22:18.143Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -240,7 +408,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/07/10/old-post-Docker-2018-07-10-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/07/10/System-Docker-2018-07-10-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%B0%A8/</loc>
         <lastmod>2019-07-15T07:22:17.474Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -248,7 +416,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/07/17/old-post-Docker-2018-07-17-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/07/17/System-Docker-2018-07-17-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%B0%A8/</loc>
         <lastmod>2019-07-15T07:22:16.202Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -256,7 +424,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/11/old-post-Netty-2018-05-11-Maven%EC%9C%BC%EB%A1%9C-Netty-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/</loc>
+        <loc>https://kodakyung.github.io/2018/05/11/Server-Netty-2018-05-11-Maven%EC%9C%BC%EB%A1%9C-Netty-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/</loc>
         <lastmod>2019-07-15T07:20:24.320Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +432,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/09/old-post-Netty-2018-05-09-Netty-%ED%8A%B9%EC%A7%95%EA%B3%BC-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/</loc>
+        <loc>https://kodakyung.github.io/2018/05/09/Server-Netty-2018-05-09-Netty-%ED%8A%B9%EC%A7%95%EA%B3%BC-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/</loc>
         <lastmod>2019-07-15T07:14:47.270Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,15 +440,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/06/11/old-post-IntelliJ-2019-06-11-intellij-devtools/</loc>
-        <lastmod>2019-07-15T07:11:54.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/09/29/old-post-Troubleshooting-2018-09-29-STS-cannot-be-run-on-server/</loc>
+        <loc>https://kodakyung.github.io/2018/09/29/Troubleshooting-2018-09-29-STS-cannot-be-run-on-server/</loc>
         <lastmod>2019-07-15T06:34:15.913Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -288,7 +448,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/20/old-post-Troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/</loc>
+        <loc>https://kodakyung.github.io/2018/05/20/Troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/</loc>
         <lastmod>2019-07-15T06:23:40.290Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -296,7 +456,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/09/24/old-post-Test-2018-09-24-Refactoring-and-tdd/</loc>
+        <loc>https://kodakyung.github.io/2018/09/24/Server-Test-2018-09-24-Refactoring-and-tdd/</loc>
         <lastmod>2019-07-15T06:14:08.725Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -304,7 +464,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/12/05/old-post-Test-2018-12-05-test-stub/</loc>
+        <loc>https://kodakyung.github.io/2018/12/05/Server-Test-2018-12-05-test-stub/</loc>
         <lastmod>2019-07-15T06:12:54.158Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -312,7 +472,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/25/old-post-Javascript-2018-08-25-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-12%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/25/Programming-Javascript-2018-08-25-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-12%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-14T17:10:11.835Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -320,7 +480,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/24/old-post-Javascript-2018-08-24-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-11%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/24/Programming-Javascript-2018-08-24-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-11%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-14T17:09:58.132Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -328,7 +488,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/23/old-post-Javascript-2018-08-23-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-10%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/23/Programming-Javascript-2018-08-23-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-10%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-14T17:09:25.609Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -336,168 +496,8 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/08/15/old-post-Javascript-2018-08-15-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-3%EC%9D%BC%EC%B0%A8/</loc>
+        <loc>https://kodakyung.github.io/2018/08/15/Programming-Javascript-2018-08-15-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-3%EC%9D%BC%EC%B0%A8/</loc>
         <lastmod>2019-07-14T16:55:10.705Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/08/27/old-post-Java-2018-08-27-Java-%EA%B8%B0%EB%B3%B8%EC%9E%90%EB%A3%8C%ED%98%95%EA%B3%BC-%EC%B0%B8%EC%A1%B0%ED%98%95/</loc>
-        <lastmod>2019-07-14T14:50:24.685Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/08/28/old-post-Java-2018-08-28-Java-equals-method-instanceof-Override/</loc>
-        <lastmod>2019-07-14T14:50:07.172Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/18/old-post-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</loc>
-        <lastmod>2019-07-14T14:40:57.841Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/17/old-post-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/</loc>
-        <lastmod>2019-07-14T14:40:35.564Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/10/old-post-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
-        <lastmod>2019-07-14T14:40:20.950Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/03/23/old-post-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
-        <lastmod>2019-07-14T14:39:55.356Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/02/21/old-post-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
-        <lastmod>2019-07-14T14:39:36.064Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/02/20/old-post-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
-        <lastmod>2019-07-14T14:39:22.094Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/31/old-post-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
-        <lastmod>2019-07-14T14:39:05.548Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/28/old-post-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
-        <lastmod>2019-07-14T14:38:49.555Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/27/old-post-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
-        <lastmod>2019-07-14T14:38:31.850Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/21/old-post-EffectiveJava-2019-01-21-Java-Minimize-mutability/</loc>
-        <lastmod>2019-07-14T14:37:55.129Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/24/old-post-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
-        <lastmod>2019-07-14T14:37:50.056Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/18/old-post-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
-        <lastmod>2019-07-14T14:37:01.546Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/17/old-post-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/</loc>
-        <lastmod>2019-07-14T14:36:38.147Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/13/old-post-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
-        <lastmod>2019-07-14T14:36:09.652Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/11/old-post-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
-        <lastmod>2019-07-14T14:35:19.387Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/25/old-post-EffectiveJava-2018-10-25-java-finalizer/</loc>
-        <lastmod>2019-07-14T14:34:13.428Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/15/old-post-EffectiveJava-2018-10-15-Java-private-constructor/</loc>
-        <lastmod>2019-07-14T14:33:39.647Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/14/old-post-EffectiveJava-2018-10-14-Java-singleton-pattern/</loc>
-        <lastmod>2019-07-14T14:33:07.359Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
