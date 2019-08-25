@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kodakyung.github.io/"/>
-  <updated>2019-07-17T17:04:56.105Z</updated>
+  <updated>2019-08-25T16:36:45.559Z</updated>
   <id>https://kodakyung.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RSS Test</title>
+    <link href="https://kodakyung.github.io/2019/08/26/RSS-Test/"/>
+    <id>https://kodakyung.github.io/2019/08/26/RSS-Test/</id>
+    <published>2019-08-25T16:36:19.000Z</published>
+    <updated>2019-08-25T16:36:45.559Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="RSS-Test"><a href="#RSS-Test" class="headerlink" title="RSS Test"></a>RSS Test</h2><p>Hello</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;RSS-Test&quot;&gt;&lt;a href=&quot;#RSS-Test&quot; class=&quot;headerlink&quot; title=&quot;RSS Test&quot;&gt;&lt;/a&gt;RSS Test&lt;/h2&gt;&lt;p&gt;Hello&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>OS - 동기화(Synchronization)와 임계 영역(Critical Section)</title>
@@ -831,36 +853,6 @@
   </entry>
   
   <entry>
-    <title>Fish Shell - Alias 설정</title>
-    <link href="https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/"/>
-    <id>https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/</id>
-    <published>2018-10-23T15:00:00.000Z</published>
-    <updated>2019-07-19T09:54:50.135Z</updated>
-    
-    <content type="html"><![CDATA[<p>일반적으로 <code>bash</code>와 같은 쉘들은 <code>alias</code> 명령을 통해 <code>alias</code>를 지정해준다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># ~/.bashrc</span></span><br><span class="line"><span class="built_in">alias</span> name=<span class="string">"#statement"</span></span><br></pre></td></tr></table></figure><br><p>fish shell은 <code>alias</code>가 따로 존재하지 않고 함수(<code>function</code>)로 이를 처리한다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env fish</span></span><br><span class="line">&gt; <span class="keyword">function</span> name</span><br><span class="line">  <span class="comment">#statements</span></span><br><span class="line">  end</span><br></pre></td></tr></table></figure><p><img src="/images/2018-11-08/01.png" alt="fish shell  function alias example"></p><br><p>fish의 인수는 숫자가 매겨진 변수(<code>$1</code>)가 아닌 <code>$argv</code> 단일 목록으로 전달된다.</p><p><img src="/images/2018-11-08/02.png" alt="fish shell  function alias argv example"></p><br><p><code>function</code>을 영구적으로 저장하고 싶다면 <code>~/.config/fish/functions/</code>경로에 <code>function_name.fish</code> 파일을 생성해야한다.</p><p><img src="/images/2018-11-08/03.png" alt="fish 파일 생성"><br><img src="/images/2018-11-08/04.png" alt="fish 파일 확인"><br><img src="/images/2018-11-08/05.png" alt="명령어 실행 확인"></p><br><p>전체 함수의 목록은 아래 명령어로 확인할 수 있다.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">functions</span></span></span><br></pre></td></tr></table></figure><br>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;일반적으로 &lt;code&gt;bash&lt;/code&gt;와 같은 쉘들은 &lt;code&gt;alias&lt;/code&gt; 명령을 통해 &lt;code&gt;alias&lt;/code&gt;를 지정해준다.&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl
-      
-    
-    </summary>
-    
-      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
-    
-      <category term="Shell" scheme="https://kodakyung.github.io/categories/System/Shell/"/>
-    
-    
-      <category term="Fish Shell" scheme="https://kodakyung.github.io/tags/Fish-Shell/"/>
-    
-      <category term="Shell" scheme="https://kodakyung.github.io/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
     <title>토크ON세미나 - OAuth2.0</title>
     <link href="https://kodakyung.github.io/2018/10/24/old-post-Security-2018-10-24-%ED%86%A0%ED%81%ACON%EC%84%B8%EB%AF%B8%EB%82%98-oauth2/"/>
     <id>https://kodakyung.github.io/2018/10/24/old-post-Security-2018-10-24-토크ON세미나-oauth2/</id>
@@ -889,6 +881,36 @@
       <category term="OAuth2" scheme="https://kodakyung.github.io/tags/OAuth2/"/>
     
       <category term="Tacademy" scheme="https://kodakyung.github.io/tags/Tacademy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fish Shell - Alias 설정</title>
+    <link href="https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/"/>
+    <id>https://kodakyung.github.io/2018/10/24/old-post-Shell-2018-11-08-fish-shell-alias/</id>
+    <published>2018-10-23T15:00:00.000Z</published>
+    <updated>2019-07-19T09:54:50.135Z</updated>
+    
+    <content type="html"><![CDATA[<p>일반적으로 <code>bash</code>와 같은 쉘들은 <code>alias</code> 명령을 통해 <code>alias</code>를 지정해준다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># ~/.bashrc</span></span><br><span class="line"><span class="built_in">alias</span> name=<span class="string">"#statement"</span></span><br></pre></td></tr></table></figure><br><p>fish shell은 <code>alias</code>가 따로 존재하지 않고 함수(<code>function</code>)로 이를 처리한다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env fish</span></span><br><span class="line">&gt; <span class="keyword">function</span> name</span><br><span class="line">  <span class="comment">#statements</span></span><br><span class="line">  end</span><br></pre></td></tr></table></figure><p><img src="/images/2018-11-08/01.png" alt="fish shell  function alias example"></p><br><p>fish의 인수는 숫자가 매겨진 변수(<code>$1</code>)가 아닌 <code>$argv</code> 단일 목록으로 전달된다.</p><p><img src="/images/2018-11-08/02.png" alt="fish shell  function alias argv example"></p><br><p><code>function</code>을 영구적으로 저장하고 싶다면 <code>~/.config/fish/functions/</code>경로에 <code>function_name.fish</code> 파일을 생성해야한다.</p><p><img src="/images/2018-11-08/03.png" alt="fish 파일 생성"><br><img src="/images/2018-11-08/04.png" alt="fish 파일 확인"><br><img src="/images/2018-11-08/05.png" alt="명령어 실행 확인"></p><br><p>전체 함수의 목록은 아래 명령어로 확인할 수 있다.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">functions</span></span></span><br></pre></td></tr></table></figure><br>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;일반적으로 &lt;code&gt;bash&lt;/code&gt;와 같은 쉘들은 &lt;code&gt;alias&lt;/code&gt; 명령을 통해 &lt;code&gt;alias&lt;/code&gt;를 지정해준다.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl
+      
+    
+    </summary>
+    
+      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
+    
+      <category term="Shell" scheme="https://kodakyung.github.io/categories/System/Shell/"/>
+    
+    
+      <category term="Fish Shell" scheme="https://kodakyung.github.io/tags/Fish-Shell/"/>
+    
+      <category term="Shell" scheme="https://kodakyung.github.io/tags/Shell/"/>
     
   </entry>
   
