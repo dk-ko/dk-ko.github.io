@@ -27,6 +27,7 @@
 <meta name="twitter:description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~조건문의 활용  비교 연산자와 블리언document.write() : 화면에 출력  === : 동등 비교 연산자, 이항 연산자 좌항과 우항이 같으면 True, 아니면 False 출력.  Boolean : True와 False를 묶어서 Boolean이라 함.  데이터 타입의 종류 :Number, 문자">
 <meta name="twitter:image" content="https://kodakyung.github.io/images/2018-08-17/01.png">
     
+    <link rel="canonical" href="https://kodakyung.github.io/2018/08/17/old-post-javascript-2018-08-17-코딩야학-javascript-5-6일차/">
 
     
         <link rel="alternate" href="/" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -196,7 +197,7 @@
 <li>String도 많다.</li>
 <li>Boolean은 단 두개로 이루어진 데이터 타입</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  document.write(1===1);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1===2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  document.write(1===2);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1&amp;lt;2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  document.write(1&lt;2);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1&amp;lt;1<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  document.write(1&lt;1);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.write(<span class="number">1</span>===<span class="number">1</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1===2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.write(<span class="number">1</span>===<span class="number">2</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1&amp;lt;2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.write(<span class="number">1</span>&lt;<span class="number">2</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>1&amp;lt;1<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.write(<span class="number">1</span>&lt;<span class="number">1</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>결과</li>
@@ -249,7 +250,7 @@
 
 
 
-    <a data-url="https://kodakyung.github.io/2018/08/17/old-post-Javascript-2018-08-17-코딩야학-JavaScript-5-6일차/" data-id="cjy7dp8eh005fxl6kv5tgp47w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/08/17/old-post-Javascript-2018-08-17-코딩야학-JavaScript-5-6일차/" data-id="cjzr4pyhy0059ek6k6n3hro83" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -335,7 +336,7 @@
 Boolean : True와 False를 묶어서 Boolean이라 함.
 
 데이터 타입의 종류 :Number, 문자"
-        "wordCount": 348
+        "wordCount": 364
     }
 </script>
 
