@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kodakyung.github.io/"/>
-  <updated>2019-08-25T16:36:45.559Z</updated>
+  <updated>2019-07-17T17:04:56.105Z</updated>
   <id>https://kodakyung.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>RSS Test</title>
-    <link href="https://kodakyung.github.io/2019/08/26/RSS-Test/"/>
-    <id>https://kodakyung.github.io/2019/08/26/RSS-Test/</id>
-    <published>2019-08-25T16:36:19.000Z</published>
-    <updated>2019-08-25T16:36:45.559Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="RSS-Test"><a href="#RSS-Test" class="headerlink" title="RSS Test"></a>RSS Test</h2><p>Hello</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;RSS-Test&quot;&gt;&lt;a href=&quot;#RSS-Test&quot; class=&quot;headerlink&quot; title=&quot;RSS Test&quot;&gt;&lt;/a&gt;RSS Test&lt;/h2&gt;&lt;p&gt;Hello&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>OS - 동기화(Synchronization)와 임계 영역(Critical Section)</title>
