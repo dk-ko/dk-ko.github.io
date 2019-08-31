@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://kodakyung.github.io/tags/Gradle/</loc>
+        <lastmod>2019-08-31T10:00:55.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
+        <lastmod>2019-08-31T10:00:55.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
+        <lastmod>2019-08-31T10:00:55.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/tags/Java/</loc>
         <lastmod>2019-08-25T18:00:18.037Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -94,21 +115,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
-        <lastmod>2019-08-25T17:52:46.302Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/tags/IntelliJ/</loc>
-        <lastmod>2019-08-25T17:52:26.392Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
         <lastmod>2019-08-25T17:52:26.392Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

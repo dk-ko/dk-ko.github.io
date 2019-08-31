@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/categories/Troubleshooting/</loc>
+        <lastmod>2019-08-31T10:00:55.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/categories/Programming/Java/</loc>
         <lastmod>2019-08-25T18:00:18.037Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,13 +31,6 @@
     <url>
         <loc>https://kodakyung.github.io/categories/Web/</loc>
         <lastmod>2019-08-25T17:56:57.956Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/Troubleshooting/</loc>
-        <lastmod>2019-08-25T17:55:13.889Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
