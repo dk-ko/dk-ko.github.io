@@ -179,16 +179,15 @@ ga('send', 'pageview');
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/">Netty Codec Framework</a>
+        <a href="/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/">Netty EmbeddedChannel 이용한 단위 테스트</a>
         </h1>
     
 
         <p class="article-excerpt">
-            코덱이란?
-모든 어플리케이션은 네트워크 상에 원시 바이트를 주고 받는다. 바이트 형태의 데이터를 대상 어플리케이션에 맞는 데이터 포맷으로 분석하고 변환하는 것이 필요하다. 이러한 데이터 변환은 인코더와 디코더로 구성된 코덱에 의해 처리된다.
+            단위 테스트란?
+다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.
 
-
-일반적으로 동영상 압축 알고리즘을 코덱이라고 부른다. 예를 들면 MPEG 알고리즘으로 압축된 동영상을 재생한다면,
+Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해
         </p>
     </div>
 </article>
@@ -210,15 +209,16 @@ ga('send', 'pageview');
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/">Netty EmbeddedChannel 이용한 단위 테스트</a>
+        <a href="/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/">Netty Codec Framework</a>
         </h1>
     
 
         <p class="article-excerpt">
-            단위 테스트란?
-다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.
+            코덱이란?
+모든 어플리케이션은 네트워크 상에 원시 바이트를 주고 받는다. 바이트 형태의 데이터를 대상 어플리케이션에 맞는 데이터 포맷으로 분석하고 변환하는 것이 필요하다. 이러한 데이터 변환은 인코더와 디코더로 구성된 코덱에 의해 처리된다.
 
-Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 EmbeddedChannel을 통해
+
+일반적으로 동영상 압축 알고리즘을 코덱이라고 부른다. 예를 들면 MPEG 알고리즘으로 압축된 동영상을 재생한다면,
         </p>
     </div>
 </article>
@@ -480,15 +480,6 @@ Maven은 아파치에서 개발된 소프트웨어 프로젝트 관리 도구이
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/09/27/temp-codingtest/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2019-09-27T14:42:19.557Z" itemprop="datePublished">2019-09-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Think/">Think</a></p>
                             <p class="item-title"><a href="/2019/09/26/Think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/" class="title">🐥병아리 개발자가 IT 정보를 얻는 방법들</a></p>
                             <p class="item-date"><time datetime="2019-09-26T13:30:38.000Z" itemprop="datePublished">2019-09-26</time></p>
@@ -513,6 +504,15 @@ Maven은 아파치에서 개발된 소프트웨어 프로젝트 관리 도구이
                         </div>
                     </li>
                 
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/" class="title">SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</a></p>
+                            <p class="item-date"><time datetime="2019-06-15T15:00:00.000Z" itemprop="datePublished">2019-06-16</time></p>
+                        </div>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -532,7 +532,7 @@ Maven은 아파치에서 개발된 소프트웨어 프로젝트 관리 도구이
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
         </div>
     </div>
 
