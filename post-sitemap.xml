@@ -9,7 +9,7 @@
 
     <url>
         <loc>https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-%ED%95%A8%EC%88%98%ED%98%95-%EC%82%AC%EA%B3%A0-ch2-%EC%A0%84%ED%99%98/</loc>
-        <lastmod>2019-10-16T12:59:22.849Z</lastmod>
+        <lastmod>2019-10-16T13:15:57.842Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -64,14 +64,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,7 +80,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
+        <loc>https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,14 +96,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -120,15 +104,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <loc>https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -144,6 +120,14 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -152,8 +136,16 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -169,14 +161,6 @@
 
     <url>
         <loc>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -200,7 +184,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -216,7 +200,23 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</loc>
+        <loc>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -280,7 +280,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</loc>
+        <loc>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
