@@ -9,7 +9,7 @@
 
     <url>
         <loc>https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-%ED%95%A8%EC%88%98%ED%98%95-%EC%82%AC%EA%B3%A0-ch1-%EC%99%9C/</loc>
-        <lastmod>2019-10-16T11:53:02.715Z</lastmod>
+        <lastmod>2019-10-16T12:38:40.838Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -64,31 +64,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +80,31 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
+        <loc>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
+        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -128,7 +128,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <loc>https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -136,7 +136,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</loc>
+        <loc>https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -168,14 +168,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -185,6 +177,14 @@
 
     <url>
         <loc>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +264,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</loc>
+        <loc>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</loc>
+        <loc>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
