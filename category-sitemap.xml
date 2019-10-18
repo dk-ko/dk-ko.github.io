@@ -8,22 +8,22 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/categories/Troubleshooting/</loc>
-        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/categories/CS/DataBase/</loc>
-        <lastmod>2019-10-16T18:20:42.495Z</lastmod>
+        <lastmod>2019-10-18T17:47:54.851Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://kodakyung.github.io/categories/CS/</loc>
-        <lastmod>2019-10-16T18:20:42.495Z</lastmod>
+        <lastmod>2019-10-18T17:47:54.851Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/categories/Troubleshooting/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

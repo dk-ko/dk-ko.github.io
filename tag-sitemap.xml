@@ -3,8 +3,8 @@
 
 
     <url>
-        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
-        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
+        <loc>https://kodakyung.github.io/tags/MySQL/</loc>
+        <lastmod>2019-10-18T17:47:54.851Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -24,15 +24,15 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
+        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
         <lastmod>2019-10-18T15:20:14.896Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/MySQL/</loc>
-        <lastmod>2019-10-16T18:20:42.495Z</lastmod>
+        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -171,14 +171,14 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/Test/</loc>
+        <loc>https://kodakyung.github.io/tags/JPA/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/JPA/</loc>
+        <loc>https://kodakyung.github.io/tags/Test/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

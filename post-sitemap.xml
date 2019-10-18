@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2019/10/17/CS-DataBase-20191017-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81-feat-%EC%9D%B8%EB%8D%B1%EC%8A%A4/</loc>
+        <lastmod>2019-10-18T17:47:54.851Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/</loc>
         <lastmod>2019-10-18T15:20:14.896Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -136,7 +144,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/</loc>
+        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -144,7 +152,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <loc>https://kodakyung.github.io/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -168,22 +176,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -200,7 +192,15 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
+        <loc>https://kodakyung.github.io/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -209,6 +209,14 @@
 
     <url>
         <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
