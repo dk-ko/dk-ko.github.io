@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Prefer interfaces to abstract classes | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 20 추상 클래스보다는 인터페이스를 우선하라    추상 클래스 vs 인터페이스 추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다. 자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다. 인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Prefer interfaces to abstract classes">
+<meta property="og:url" content="https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 20 추상 클래스보다는 인터페이스를 우선하라    추상 클래스 vs 인터페이스 추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다. 자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다. 인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Prefer interfaces to abstract classes">
+<meta name="twitter:description" content="Effective Java Item 20 추상 클래스보다는 인터페이스를 우선하라    추상 클래스 vs 인터페이스 추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다. 자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다. 인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/01/12/programming-java-effectivejava-2019-01-12-java-prefer-interfaces-to-abstract-classes/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,40 +153,91 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Prefer interfaces to abstract classes
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/" class="article-date">
+            <time datetime="2019-01-11T15:00:00.000Z" itemprop="datePublished">2019-01-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-20"><a href="#Effective-Java-Item-20" class="headerlink" title="Effective Java Item 20"></a>Effective Java Item 20</h2><blockquote>
+<p>추상 클래스보다는 인터페이스를 우선하라</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<br>
 
+<h3 id="추상-클래스-vs-인터페이스"><a href="#추상-클래스-vs-인터페이스" class="headerlink" title="추상 클래스 vs 인터페이스"></a>추상 클래스 vs 인터페이스</h3><ul>
+<li>추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다.</li>
+<li>자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다.</li>
+<li>인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할 수 있다.</li>
+<li>계층 구조가 없는 타입 프레임워크를 만들 수 있다. </li>
+<li>개념을 계층적으로 표현하기 어려운 경우 적합하다. </li>
+<li>Java 8부터 <code>default method</code>가 추가되어서 구현 방법이 명백한 경우 그것을 디폴트 메소드로 제공하는 것이 좋다. </li>
+<li>디폴트 메소드 제공시 <code>@implSpec</code> JavaDoc 태그를 붙여 문서화해주는 것이 좋다. </li>
+<li>디폴트 메소드는 Object 메소드를 제공해서는 안된다. (equals, hashcode 등)</li>
+</ul>
+<br>
+
+<h3 id="추상-골격-구현-클래스"><a href="#추상-골격-구현-클래스" class="headerlink" title="추상 골격 구현 클래스"></a>추상 골격 구현 클래스</h3><ul>
+<li>템플릿 메서드 패턴으로 인터페이스와 추상 클래스의 장점을 함께 사용하기도 한다.</li>
+<li>이때 추상 클래스를 추상 골격 구현(skeletal implementation)이라 한다.</li>
+<li>인터페이스의 이름 앞에 <code>Abstract</code>를 붙인다. (관례)</li>
+<li>인터페이스는 타입과 디폴트 메소드를 정의하고 추상 골격 구현 클래스가 구체적인 나머지 메소드를 구현한다.</li>
+<li>따라서 추상 골격 클래스를 <code>extends</code> 하는 것만으로 인터페이스를 구현하는 대다수의 일이 완료된다. </li>
+</ul>
+<br>
+
+<ul>
+<li>인터페이스 / 추상 골격 구현 클래스를 분리하는 구조는 <code>상황에 따라 선택</code>할 수 있어서 좋은 구조이다.</li>
+<li>기본적으로 추상 클래스를 extends 하는 것만으로 인터페이스에 대한 구현이 끝나지만 클래스를 상속받을 수 없는 경우라도 인터페이스를 직접 구현할 수 있고 디폴트 메소드는 그대로 implements 할 수 있다.</li>
+<li>또는 우회해서 인터페이스를 implements 한 클래스에서 골격 추상 클래스를 <code>private 내부 클래스</code>로 정의해 사용하는 방법이 있다. </li>
+</ul>
+<br>
+
+<h3 id="골격-구현-클래스-작성-순서"><a href="#골격-구현-클래스-작성-순서" class="headerlink" title="골격 구현 클래스 작성 순서"></a>골격 구현 클래스 작성 순서</h3><ol>
+<li>인터페이스에서 다른 메소드 들의 구현에 사용되는 기반 메소드 선정 </li>
+<li>1의 기반 메소드를 사용해 직접 구현할 수 있는 경우 인터페이스 디폴트 메소드로 제공<br>: Object 메소드는 제공해선 안된다.</li>
+<li>기반 or 디폴트 메소드 외에 메소드로 만들 메소드가 있다면 골격 구현 클래스에 남은 메소드를 작성한다.<br>: 모두 기반 or 디폴트 메소드라면 골격 구현 클래스를 만들 필요가 없다. </li>
+</ol>
+<br>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/" data-id="ck1woi0pc00c3a56kzr917b2i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +307,24 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Prefer interfaces to abstract classes",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-01-12",
+        "dateCreated": "2019-01-12",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/",
+        "description": "Effective Java Item 20
+추상 클래스보다는 인터페이스를 우선하라
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+
+
+추상 클래스 vs 인터페이스
+추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다.
+자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다.
+인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할"
+        "wordCount": 276
     }
 </script>
 
@@ -278,6 +335,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +375,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Favor composition over inheritance
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Design and document for inheritance or else prohibit it</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

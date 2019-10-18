@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - 싱글턴 패턴(Singleton Pattern) | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java,Design Pattern">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java 규칙 3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라  Singleton 이란 ? 객체를 하나만 만들 수 있는 클래스보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.  Singleton을 구현하는 방법 private 생성자의 이용 정적 팩터리 메소드 이용 // JDK 1.5 이전의 구현 방식 en">
+<meta name="keywords" content="Effective Java,Java,Design Pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - 싱글턴 패턴(Singleton Pattern)">
+<meta property="og:url" content="https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java 규칙 3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라  Singleton 이란 ? 객체를 하나만 만들 수 있는 클래스보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.  Singleton을 구현하는 방법 private 생성자의 이용 정적 팩터리 메소드 이용 // JDK 1.5 이전의 구현 방식 en">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T17:59:59.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - 싱글턴 패턴(Singleton Pattern)">
+<meta name="twitter:description" content="Effective Java 규칙 3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라  Singleton 이란 ? 객체를 하나만 만들 수 있는 클래스보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.  Singleton을 구현하는 방법 private 생성자의 이용 정적 팩터리 메소드 이용 // JDK 1.5 이전의 구현 방식 en">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/10/14/programming-java-effectivejava-2018-10-14-java-singleton-pattern/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +153,81 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - 싱글턴 패턴(Singleton Pattern)
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/" class="article-date">
+            <time datetime="2018-10-13T15:00:00.000Z" itemprop="datePublished">2018-10-14</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/design-pattern/">Design Pattern</a>, <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-규칙-3"><a href="#Effective-Java-규칙-3" class="headerlink" title="Effective Java 규칙 3"></a>Effective Java 규칙 3</h2><blockquote>
+<p>private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<h2 id="Singleton-이란"><a href="#Singleton-이란" class="headerlink" title="Singleton 이란 ?"></a>Singleton 이란 ?</h2><blockquote>
+<p>객체를 하나만 만들 수 있는 클래스<br>보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.</p>
+</blockquote>
+<h3 id="Singleton을-구현하는-방법"><a href="#Singleton을-구현하는-방법" class="headerlink" title="Singleton을 구현하는 방법"></a>Singleton을 구현하는 방법</h3><ol>
+<li>private 생성자의 이용</li>
+<li>정적 팩터리 메소드 이용 // <em>JDK 1.5 이전의 구현 방식</em></li>
+<li>enum 자료형의 사용 // <em>Effective Java의 추천 방식</em></li>
+<li>Initialization on demand holder idiom // <em>현재 많이 쓰이는 방식</em></li>
+</ol>
+<h3 id="1-private-생성자-이용"><a href="#1-private-생성자-이용" class="headerlink" title="1. private 생성자 이용"></a>1. private 생성자 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2) <code>private 생성자</code>는 (1)의 Elvis.INSTANCE를 초기화할 때 한번 호출 된다. 생성자가 private이므로 한번 생성된 후에는 다시 객체가 생성되지 않는다.</p>
+<h3 id="2-static-factory-method-이용"><a href="#2-static-factory-method-이용" class="headerlink" title="2. static factory method 이용"></a>2. static factory method 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Elvis <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> INSTACE; &#125; <span class="comment">// (3)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(1)에서 객체를 생성 한 뒤 (3)의 <code>getInstance</code>에서 항상 같은 참조를 반환한다. (2) 생성자가 <code>private</code>이므로 외부에서 <code>new</code> 연산자로 객체를 생성하지 못한다.</p>
+<p>1과 2 방식 모두 <code>Eagar Initialization</code>으로 객체가 사용되기 전에 미리 생성한다. 항상 싱글톤 객체가 필요하거나 객체 생성비용이 크지 않을 때 사용한다. 이 방식들은 <code>thread safe</code>하지 않다. 또한 Java의 <code>reflection</code> 기능을 통해 <code>private</code> 생성자를 호출하여 싱글톤 패턴을 깨드릴 수 있다.</p>
+<h3 id="Lazy-Initialization"><a href="#Lazy-Initialization" class="headerlink" title="Lazy Initialization"></a>Lazy Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> fianl LazyInitialization INSTANCE; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazyInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyInitialization <span class="title">getInstance</span> <span class="params">()</span></span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (INSTACE == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> LazyInitialization();</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>LazyInitialization 방식은 객체가 사용되는 시점에 (3) 객체를 만들어서 반환한다. 이 방식 또한 <code>thread safe</code>하지 않으며 <code>reflection</code> 으로 패턴을 깨뜨릴 수 있다.</p>
+<h3 id="Thread-Safe-Initialization"><a href="#Thread-Safe-Initialization" class="headerlink" title="Thread Safe Initialization"></a>Thread Safe Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadSafeInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadSafeInitialization instance; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">ThreadSafeInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> ThreadSafeInitialization <span class="title">getInstance</span> <span class="params">()</span> </span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> ThreadSafeInitialization();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>thread safe</code>하기 위해 (3)<code>synchronized</code>를 사용했다. <code>multi thread</code> 문제는 해소됐지만, 수많은 스레드들이 <code>getInstance</code>를 호출한다면 프로그램의 성능 저하가 일어날 수 있다.</p>
+<h3 id="3-enum-자료형의-사용"><a href="#3-enum-자료형의-사용" class="headerlink" title="3. enum 자료형의 사용"></a>3. enum 자료형의 사용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumInitialization &#123;</span><br><span class="line">  INSTACE;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EnumInitialization <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>enum 자료형을 사용하는 경우 직렬화(Serializable) 클래스를 만들어도 문제가 없으며, reflection 공격에도 안전하다. 또한 instance가 생성될 때 multi thread에도 안전하다.</p>
+<h3 id="4-Initialization-on-demand-holder-idiom"><a href="#4-Initialization-on-demand-holder-idiom" class="headerlink" title="4. Initialization on demand holder idiom"></a>4. Initialization on demand holder idiom</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitializationOnDemandHolderIdom</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">InitializationOnDemandHolderIdom</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">singletonHolder</span> </span>&#123; <span class="comment">// (2)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InitializationOnDemandHolderIdom instance = <span class="keyword">new</span> InitializationOnDemandHolderIdom(); <span class="comment">// (3)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InitializationOnDemandHolderIdom <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">// (4)</span></span><br><span class="line">    <span class="keyword">return</span> singletonHolder.instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>holder를 이용한 초기화 방식으로 클래스 내부에 (2) 내부 클래스에 instance를 생성한다. (4)의 <code>getInstance</code>가 호출될 때 내부 클래스가 참조되며 instance가 (3) static final로 선언되어 있어서 처음 클래스가 로드될 때 최초 한번 객체가 생성된다. 클래스가 생성되는 순간은 <code>thread safe</code>하기 때문에 multi thread 문제에도 안전하다. 현재 Java의 singleton은 이 방식을 많이 사용한다.</p>
+<h3 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h3><ul>
+<li><a href="https://blog.seotory.com/post/2016/03/java-singleton-pattern" target="_blank" rel="noopener">java singleton pattern</a></li>
+<li><a href="http://limkydev.tistory.com/67" target="_blank" rel="noopener">[Design_Pattern] Singleton(싱글톤)의 고도화</a></li>
+</ul>
+<br>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +235,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/" data-id="ck1woi0p700bva56kpfsm16iy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +305,25 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - 싱글턴 패턴(Singleton Pattern)",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java Design Pattern",
+        "genre": "Programming Java",
+        "datePublished": "2018-10-14",
+        "dateCreated": "2018-10-14",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/",
+        "description": "Effective Java 규칙 3
+private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+Singleton 이란 ?
+객체를 하나만 만들 수 있는 클래스보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.
+
+Singleton을 구현하는 방법
+private 생성자의 이용
+정적 팩터리 메소드 이용 // JDK 1.5 이전의 구현 방식
+en"
+        "wordCount": 772
     }
 </script>
 
@@ -278,6 +334,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +374,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Private 생성자
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/09/29/Troubleshooting-2018-09-29-STS-cannot-be-run-on-server/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">STS - The selection cannot be run on any server.</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

@@ -6,23 +6,19 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Archive: 2019 | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Jade&#39;s Blog">
+<meta property="og:url" content="https://kodakyung.github.io/archives/2019/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+<meta name="twitter:title" content="Jade&#39;s Blog">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <link rel="canonical" href="https://kodakyung.github.io/archives/2019/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,133 +146,372 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <i class="icon fa fa-archive"></i>Archive: 2019
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a>
+            </div>
+            <div class="date"><time datetime="2019-10-16T17:56:01.000Z" itemprop="datePublished">2019-10-17</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        <a href="/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/">데이터베이스의 성능 향상(feat. 인덱스)</a>
         </h1>
     
 
-            </header>
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
-</blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+        <p class="article-excerpt">
+            성능이란 ?
+기본적으로 “빠르기”를 기준으로 한 개념
 
-        </div>
-        <footer class="article-footer">
-            
+성능을 측정하는 2가지 지표
+처리시간(Processing Time) or 응답시간(Response Time)
+어떤 특정 처리의 시작부터 종료까지 걸린 시간
 
 
-
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+처리율(Throughput)
+특정 처리(트랜잭션)를 단위 시간에 몇 건 처리 가능한가
+ex) 트랜잭션을 초당 50건 처리하는 것이 가능하면, 5
+        </p>
     </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Dakyung Ko"
-        },
-        "headline": "About Me",
-        "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
-        "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
-
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
-    }
-</script>
-
 </article>
-<!-- 
-    <section id="comments">
     
-    </section>
- -->
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a>
+            </div>
+            <div class="date"><time datetime="2019-10-16T11:54:04.000Z" itemprop="datePublished">2019-10-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch2-전환/">함수형 사고 - ch2 전환</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            생각의 전환
+새로운 언어를 배우는 것은 쉽지만, 새로운 패러타임을 익히는 것은 어렵다.
+함수형 코드를 제대로 작성하기 위해서는 문제를 접근하는 방식의 전환이 필요하다.
+
+명령형에서 함수형으로의 전환명령형 처리
+명령형 프로그래밍이란 상태를 변경하는 명령으로 이루어진 프로그래밍 (일반적으로 for 루프)
+
+
+
+
+이러한 프로그래밍은 개발자가 루프 내에서 연산하기
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a>
+            </div>
+            <div class="date"><time datetime="2019-10-16T11:26:14.000Z" itemprop="datePublished">2019-10-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch1-왜/">함수형 사고 - ch1 왜?</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            함수형 프로그래밍을 하는 이유1. 패러다임의 전환
+문제에 대해 사람이 생각하는 것과 같은 방식으로 프로그래밍 할 수 있다.
+
+예를 들면, Java에서 1)텍스트 파일을 읽고 2)가장 많이 사용된 단어를 찾고 3)그 단어들과 빈도를 정렬된 목록으로 출력해야 한다면 일반적으로 성능을 위해 한 loop 안에서 3가지 연산을 섞어서 사용 할 것
+
+책에서는 이것을 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a>
+            </div>
+            <div class="date"><time datetime="2019-10-15T14:20:32.000Z" itemprop="datePublished">2019-10-15</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/10/15/CS-DataBase-20191015-MySQL-트랜잭션과-동시성-제어/">MySQL 트랜잭션과 동시성 제어</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            트랜잭션과 동시성제어트랜잭션이란?복수의 쿼리의 처리 단위
+
+데이터 갱신은 단일 쿼리보다 복수 쿼리를 연속적으로 수행하는 경우가 많다.
+동시성 제어를 위해 필요
+
+MyISAM vs InnoDB
+전자는 테이블 단위 잠금, 트랜잭션 사용 불가
+후자는 행 단위 잠금, 트랜잭션 사용 가능
+
+트랜잭션 특성 (ACID 특성)
+Atomicity(원자성)
+
+데이터 변경(u
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/think/">Think</a>
+            </div>
+            <div class="date"><time datetime="2019-09-26T13:30:38.000Z" itemprop="datePublished">2019-09-26</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/09/26/Think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/">🐥병아리 개발자가 IT 정보를 얻는 방법들</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            개발을 처음 시작하거나, 잘 모르는 경우 IT/개발 정보를 어디에서 얻어야하는지부터 잘 모르는 경우가 있다.본인 또한 IT 정보를 얻고 커뮤니케이션을 하는 방법을 잘 몰랐기 때문에,과거의 나처럼 잘 모르는 병아리 개발자들에게 정보를 공유하고 싶어서 글을 적게되었다.
+1. 페이스북개발자들이 가장 빠른 정보를 주고 받는 플랫폼은 페이스북인 것 같다.특히 세미나
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a>
+            </div>
+            <div class="date"><time datetime="2019-08-31T09:38:55.000Z" itemprop="datePublished">2019-08-31</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/08/31/Troubleshooting-20190831-Gradle로-빌드-시-현재-git-branch-사용하기/">Gradle로 빌드 시 현재 git branch 사용하기</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            현재 대외 IT 동아리인 YAPP에서 동아리 프로젝트 아카이빙 프로젝트를 진행하고 있다.기존에는 AWS를 이용해 프로젝트를 진행하고 배포까지 했으나 동아리에서 네이버 클라우드 플랫폼(Naver Cloud Platform, 이하 NCP)을 지원 받게 되어 서버 이전 작업을 진행중이다.AWS로 프로젝트를 진행할 때에는 Travis CI를 이용해 테스트와 CI를
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/os/">OS</a>
+            </div>
+            <div class="date"><time datetime="2019-07-17T14:46:37.000Z" itemprop="datePublished">2019-07-17</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/07/17/CS-OS-20190717-OS-동기화-Synchronization-와-임계-영역-Critical-Section/">OS - 동기화(Synchronization)와 임계 영역(Critical Section)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            병렬 프로그래밍에서 임계영역 까지의 흐름을 정리해보았다. 
+병렬 프로그래밍(Parallel Programming)
+멀티코어(Multi-Core)가 등장한 이후 여러 개의 코어를 효과적으로 사용하기 위해 등장.
+하나의 프로그램이 동시에 여러 일을 수행하게 만드는 방법을 통칭하는 용어이다.
+여기서는 동시 프로그래밍(Concurrent Programming) 의
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a>
+            </div>
+            <div class="date"><time datetime="2019-06-15T15:00:00.000Z" itemprop="datePublished">2019-06-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/">SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/spring/">Spring</a>
+            </div>
+            <div class="date"><time datetime="2019-06-10T15:00:00.000Z" itemprop="datePublished">2019-06-11</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/">IntelliJ에서 SpringBoot DevTools 사용하기</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            SpringBoot의 경우 정적 리소스(html,css,js 등)들을 resource 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 Tomcat을 재시작해야한다.
+DevTools 를 사용하면 자동으로 정적 리소스를 reload 할 수 있게 된다.
+하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.
+
+inte
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-04-17T15:00:00.000Z" itemprop="datePublished">2019-04-18</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/">Java - Use overloading judiciously</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 52
+다중정의(Overloading)는 신중히 사용하라
+
+Overriding VS Overloading
+Overriding한 메소드는 동적으로 선택되고, Overloading한 메소드는 정적으로 선택된다.
+따라서 Overloading의 경우 해당 객체의  타입이 어떤 메소드를 호출할지 기준이 된다.
+
+Overriding 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
+    <nav id="page-nav">
+        <span class="pages">Page 1 of 3</span>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/2/">&raquo;</a>
+    </nav>
 
 
                         </div>

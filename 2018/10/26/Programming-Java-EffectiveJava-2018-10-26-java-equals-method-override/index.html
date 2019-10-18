@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Java - equals method 재정의 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Effective Java,Java">
+    
+    <meta name="description" content="Effective Java 규칙 8 equals를 재정의할 때는 일반 규약을 따르라  모든 객체의 공통 메소드Object는 객체 생성이 가능한 클래스(concrete class)지만 기본적으로는 계승해서 사용하도록 설계된 클래스이다. Object에 정의된 비-final 메소드(equals, hashCode, toString, clone, finalize)에">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - equals method 재정의">
+<meta property="og:url" content="https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java 규칙 8 equals를 재정의할 때는 일반 규약을 따르라  모든 객체의 공통 메소드Object는 객체 생성이 가능한 클래스(concrete class)지만 기본적으로는 계승해서 사용하도록 설계된 클래스이다. Object에 정의된 비-final 메소드(equals, hashCode, toString, clone, finalize)에">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - equals method 재정의">
+<meta name="twitter:description" content="Effective Java 규칙 8 equals를 재정의할 때는 일반 규약을 따르라  모든 객체의 공통 메소드Object는 객체 생성이 가능한 클래스(concrete class)지만 기본적으로는 계승해서 사용하도록 설계된 클래스이다. Object에 정의된 비-final 메소드(equals, hashCode, toString, clone, finalize)에">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/10/26/programming-java-effectivejava-2018-10-26-java-equals-method-override/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java - equals method 재정의
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/" class="article-date">
+            <time datetime="2018-10-25T15:00:00.000Z" itemprop="datePublished">2018-10-26</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Effective-Java-규칙-8"><a href="#Effective-Java-규칙-8" class="headerlink" title="Effective Java 규칙 8"></a>Effective Java 규칙 8</h2><blockquote>
+<p>equals를 재정의할 때는 일반 규약을 따르라</p>
+</blockquote>
+<h2 id="모든-객체의-공통-메소드"><a href="#모든-객체의-공통-메소드" class="headerlink" title="모든 객체의 공통 메소드"></a>모든 객체의 공통 메소드</h2><p><code>Object</code>는 객체 생성이 가능한 클래스(<code>concrete class</code>)지만 기본적으로는 <code>계승</code>해서 사용하도록 설계된 클래스이다. Object에 정의된 <code>비-final 메소드</code>(equals, hashCode, toString, clone, finalize)에는 재정의(<code>override</code>)하도록 설계된 메소드이기 때문에, 명시적인 일반 규약(<code>general contract</code>)가 있다.  </p>
+<p>따라서 이 메소드들을 재정의하는 클래스는 그 규약을 따라주어야하며, 그렇지 않은 경우 <code>HashMap</code>, <code>HashSet</code>과 같이 해당 규약에 의존하는 클래스와 사용시 문제가 생긴다.</p>
+<br>
+
+<h3 id="equals-재정의가-필요-없는-경우"><a href="#equals-재정의가-필요-없는-경우" class="headerlink" title="equals 재정의가 필요 없는 경우"></a>equals 재정의가 필요 없는 경우</h3><ul>
+<li>각각의 객체가 고유한 경우<ul>
+<li>값(value) 대신 활성 객체(active entity)를 나타내는 Thread 같은 경우.</li>
+</ul>
+</li>
+<li>클래스에 논리적 동일성(logical equality) 검사 방법이 있든 없든 상관 없는 경우<ul>
+<li>java.util.Random 클래스는 난수를 발생 시키는데 일반적으로 두 난수가 같은지 비교할 필요가 없기 때문에.</li>
+</ul>
+</li>
+<li>상위 클래스에서 재정의한 equals가 하위 클래스에서 사용하기 적합한 경우<ul>
+<li>대부분의 Set 클래스는 AbstractSet의 equals 메소드를 그대로 사용한다. Map 또한 마찬가지.</li>
+</ul>
+</li>
+<li>클래스가 private 또는 package-private으로 선언되고, equals 메소드를 호출할 일이 없는 경우<ul>
+<li>이런 경우 필요는 없지만, 실수로 equals를 호출할 경우를 대비해 재정의해준다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Boolean <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(); <span class="comment">// 호출되면 안되는 메소드를 호출했다는 뜻.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="equals-재정의가-필요한-경우"><a href="#equals-재정의가-필요한-경우" class="headerlink" title="equals 재정의가 필요한 경우"></a>equals 재정의가 필요한 경우</h3><ul>
+<li>객체 동일성(object equality)가 아닌 논리적 동일성(logic equality)의 개념을 지원하는 클래스인 경우.</li>
+<li>상위 클래스의 equals가 하위 클래스의 필요를 충족하지 못할 때.<ul>
+<li>값 클래스(value class)가 대체로 해당됨</li>
+<li>예) Integer, Date ,,</li>
+</ul>
+</li>
+</ul>
+<h4 id="equals-메소드를-재정의할-필요가-없는-값-클래스"><a href="#equals-메소드를-재정의할-필요가-없는-값-클래스" class="headerlink" title="equals 메소드를 재정의할 필요가 없는 값 클래스"></a>equals 메소드를 재정의할 필요가 없는 값 클래스</h4><ul>
+<li>개체 통제 기능을 사용해 값마다 최대 하나의 객체만 존재하도록 제한한 클래스</li>
+<li>열거 자료형(enum)</li>
+<li>해당 클래스들은 객체의 동일성이 곧 논리적 동일성이다.</li>
+</ul>
+<br>
+
+<h3 id="equals-메소드를-정의할-때-준수해야할-일반-규약-JavaSE6-기준"><a href="#equals-메소드를-정의할-때-준수해야할-일반-규약-JavaSE6-기준" class="headerlink" title="equals 메소드를 정의할 때 준수해야할 일반 규약(JavaSE6 기준)"></a>equals 메소드를 정의할 때 준수해야할 일반 규약(JavaSE6 기준)</h3><ul>
+<li>반사성 : null 아닌 참조 x가 있을 때, x.equals(x)는 true를 반환.<ul>
+<li>모든 객체는 자기 자신과 같아야 한다.</li>
+</ul>
+</li>
+<li>대칭성 : null 아닌 참조 x와 y가 있을 때, x.equals(y)는 y.equals(x)가 true일 때만 true를 반환.<ul>
+<li>두 객체에게 서로 같은지 물으면 같은 답이 나와야 한다.</li>
+</ul>
+</li>
+<li>추이성 : null 아닌 참조 x,y,z가 있을 때, x.equals(y)가 true고, y.equals(z)가 true면 x.equals(z)도 true.</li>
+<li>일관성 : null 아닌 참조 x, y가 있을 때, equals를 통해 비교되는 정보에 아무 변화가 없다면, x.equals(y) 호출 결과는 호출 횟수에 상관없이 항상 같아야 한다.</li>
+<li>null 아닌 참조 x에 대해서, x.equals(null)은 항상 false이다.</li>
+</ul>
+<br>
+
+<h3 id="대칭성-위반한-사례"><a href="#대칭성-위반한-사례" class="headerlink" title="대칭성 위반한 사례"></a>대칭성 위반한 사례</h3><p>: 대칭성은 x.equals(y)가 true이면 y.equals(x)도 true인 것.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveString</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String s;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CaseInsensitiveString</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>)</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">this</span>.s = s;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 대칭성 위반</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o <span class="keyword">instanceof</span> CaseInsensitiveString) <span class="comment">// (1)</span></span><br><span class="line">      <span class="keyword">return</span> s.equalsIgnoreCase(</span><br><span class="line">        ((CaseInsensitiveString) o).s);</span><br><span class="line">    <span class="keyword">if</span>(o <span class="keyword">instanceof</span> String) <span class="comment">// (2) 이 방향으로만 정상 동작함.</span></span><br><span class="line">      <span class="keyword">return</span> s.equalsIgnoreCase((String) o);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CaseInsensitiveString cis = <span class="keyword">new</span> CaseInsensitiveString(<span class="string">"Polish"</span>);</span><br><span class="line">String s = <span class="string">"polish"</span>;</span><br><span class="line"></span><br><span class="line">cis.equals(s); <span class="comment">// (3) true</span></span><br><span class="line">s.equals(cis); <span class="comment">// (4) false</span></span><br></pre></td></tr></table></figure>
+
+<p>CaseInsensitiveString 객체의 equals 메소드는 CaseInsensitiveString 객체(1)와 String 객체(2) 둘다 비교 할 수 있다.<br>하지만 String의 equals는 String을 인자로만 받고 CaseInsensitiveString 클래스를 모르기 때문에 return값은 항상 false이다.(4)</p>
+<br>
+
+<h3 id="추이성-위반한-사례"><a href="#추이성-위반한-사례" class="headerlink" title="추이성 위반한 사례"></a>추이성 위반한 사례</h3><p>: x,y,z가 있을 때 x와 y가 같고, y와 z가 같으면 x와 z도 같아야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> x;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> y;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Point</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> Point)) <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// (1)</span></span><br><span class="line">    Point p = (Point) o;</span><br><span class="line">    <span class="keyword">return</span> p.x == x &amp;&amp; p.y == y; <span class="comment">// (2)</span></span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 클래스를 계승(상속)해 필드를 추가하는 경우, equals를 재정의해야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Color color;</span><br><span class="line"></span><br><span class="line">  <span class="function">pulbic <span class="title">ColorPoint</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, Color color)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(x, y);</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 대칭성 위반</span></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// (3)</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">super</span>.equals(o) &amp;&amp; ((ColorPoint) o).color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Point p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">ColorPoint cp = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>, <span class="number">2</span>, Color.RED);</span><br></pre></td></tr></table></figure>
+
+<p>p.equals(cp)는 ColorPoint가 Point의 instance가 될 수 있어서 (1)은 통과하지만, Point 객체로 형변환 후, Point에 있는 필드만 비교하기 때문에 (2) true가 나온다.<br>cp.equals(p)는 Point 객체가 ColorPoint의 instance가 될 수 없기 때문에(3) 항상 false가 반환된다.</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 추이성 위반</span></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> Point)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// o가 Point객체면 color는 비교하지 않음</span></span><br><span class="line">  <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> o.equals(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// o가 ColorPoint면 모든 정보를 비교</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">super</span>.equals(o) &amp;&amp; ((ColorPoint)o).color == color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 코드는 대칭성은 보존되지만 추이성이 깨진다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ColorPoint p1 = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>,<span class="number">2</span>,Color.RED);</span><br><span class="line">Point p2 = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">ColorPoint p3 = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>,<span class="number">2</span>,Color.BLUE);</span><br><span class="line"></span><br><span class="line">p1.equals(p2); <span class="comment">// (1) true</span></span><br><span class="line">p2.equals(p3); <span class="comment">// (2) true</span></span><br><span class="line">p1.equals(p3); <span class="comment">// (3) false</span></span><br></pre></td></tr></table></figure>
+
+<p>(1)과 (2)의 경우 color 필드를 무시해서 true가 되지만, (3)의 경우 color를 비교해서 false가 된다.</p>
+<ul>
+<li>상위 클래스에 없는 새로운 값 컴포넌트를 하위 클래스에 추가하는 상황이라면, equals에게 비교할 새로운 정보가 추가되어야 한다.</li>
+<li>이 때 <em>상위 클래스가 변경 불가능(Immutable Class)한 객체라면, 객체 지향 언어에서 동치 관계를 구현할 때 발생하는 본질적 문제로, equals 규약을 어기지 않을 방법이 없다.</em></li>
+<li>getClass를 사용하는 경우 리스코프 대체 원칙이 적용되지 않아서 무조건 false가 출력된다.<ul>
+<li>HashSet 같은 컬렉션은 객체 포함 여부를 판단할 때 equals를 사용하기 때문.</li>
+<li>CounterPoint 객체는 어떤 Point 객체와도 같은 수 없기 때문.</li>
+</ul>
+</li>
+</ul>
+<h4 id="equals-규약-위반하지-않으며-값-컴포넌트-추가"><a href="#equals-규약-위반하지-않으며-값-컴포넌트-추가" class="headerlink" title="equals 규약 위반하지 않으며 값 컴포넌트 추가"></a>equals 규약 위반하지 않으며 값 컴포넌트 추가</h4><ul>
+<li>계승(상속)하는 대신 구성하라.</li>
+<li>Point를 계승해 ColorPoint를 만드는 것이 아닌, ColorPoint안에 <code>private Point</code> 필드를 두고 <code>public view</code> 메소드를 하나 만드는 것.</li>
+<li>이 view 메소드는 ColorPoint가 가리키는 위치를 Point 객체로 반환한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Point point;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Color color;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// ColorPoint의 Point 뷰 반환</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Point <span class="title">asPoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> point;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    ColorPoint cp = (ColorPoint) o;</span><br><span class="line">    <span class="keyword">return</span> cp.point.equals(point) &amp;&amp; cp.color.equals(color);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java.sql.Timestamp는 java.util.Date를 계승해 nanoseconds 필드를 추가한 것.</li>
+<li>Timestamp 클래스의 equals는 대칭성을 위반해 Timestamp와 Date객체를 같은 컬렉션에 보관하거나 섞어쓰면 문제가될 수 있다.</li>
+</ul>
+<br>
+
+<h3 id="일관성"><a href="#일관성" class="headerlink" title="일관성"></a>일관성</h3><ul>
+<li>일단 같다고 판정된 객체들은 추후 변경되지 않는 한 계속 같아야 한다.</li>
+<li>변경 가능한 객체들 간의 동치 관계는 시간에 따라 달라질 수 있지만, 변경 불가능한 객체들 간의 동치 관계는 시간에 따라 달라질 수 없다.</li>
+<li>신뢰성이 보장되지 않는 자원들을 비교하는 equals 구현을 삼가라.<ul>
+<li>예를 들면 URL에 대한 equals</li>
+<li>equals 메소드는 메모리에 존재하는 객체들만 사용해서 결정적 계산을 수행하도록 구현되어야한다.</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="Null에-대한-비-동치성-Non-nullity"><a href="#Null에-대한-비-동치성-Non-nullity" class="headerlink" title="Null에 대한 비 동치성(Non-nullity)"></a>Null에 대한 비 동치성(Non-nullity)</h3><ul>
+<li>모든 객체는 null과 같아선 안된다.<ul>
+<li>예) o.equals(null) 의 결과가 true가 되면 안된다.</li>
+</ul>
+</li>
+<li>equals 내부에서 <code>null 조건</code>을 명시적으로 검사해서 <code>NullPointerException</code>이 발생하지 않도록 한다.</li>
+<li>인자와의 비교를 위해 equals 메소드는 인자를 먼저 형변환해야한다.</li>
+<li>형변환 이전에 instanceof 연산자를 사용해 인자의 자료형을 먼저 검사해야한다.</li>
+</ul>
+<br>
+
+<h2 id="좋은-equals-메소드를-구현하기-위해-따라야할-지침들"><a href="#좋은-equals-메소드를-구현하기-위해-따라야할-지침들" class="headerlink" title="좋은 equals 메소드를 구현하기 위해 따라야할 지침들"></a>좋은 equals 메소드를 구현하기 위해 따라야할 지침들</h2><ol>
+<li><code>== 연산자</code>를 사용해 equals 인자가 자기 자신인지 검사한다.<ul>
+<li>그렇다면 true를 반환한다. 성능 최적화가 이루어진다.</li>
+</ul>
+</li>
+<li><code>instanceof</code> 연산자를 사용해 인자의 자료형을 정확히 검사한다.<ul>
+<li>그렇지 않다면 false를 반환한다.</li>
+</ul>
+</li>
+<li><code>equals</code> 인자를 정확한 자료형으로 변환한다.<ul>
+<li>그 앞에 instanceof 연산자를 사용했으므로 형변환은 반드시 성공한다.</li>
+</ul>
+</li>
+<li>“중요” 필드 각각이 인자로 주어진 객체의 해당 필드와 일치하는지 검사한다.<ul>
+<li>필드가 모두 일치하는 경우에만 true를 반환</li>
+<li>인터페이스라면 인터페이스 메소드를 통해, 클래스라면 권한이 있다면 직접 접근도 가능</li>
+<li>float나 double이외의 기본 자료형은 ==로</li>
+<li>float는 Float.compare로 double은 Double.compare로</li>
+<li>Null이 허용되는 객체의 경우 내부적으로 null check를 따로 해주어야 한다.</li>
+</ul>
+</li>
+<li>equals 메소드 구현을 끝냈다면, 대칭성, 추이성, 일관성 세 속성이 만족되는지 검토하라.<ul>
+<li>단위 테스트(unit test)를 진행한다.</li>
+</ul>
+</li>
+</ol>
+<h4 id="null이-허용되는-객체의-경우"><a href="#null이-허용되는-객체의-경우" class="headerlink" title="null이 허용되는 객체의 경우"></a>null이 허용되는 객체의 경우</h4><p>equals 메소드는 내부에 NullPointerException이 발생하면 안되기 때문에, Null 여부를 검사를 따로 해주어야 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(field == <span class="keyword">null</span> ? o.field == <span class="keyword">null</span> : field.equals(o.field))</span><br></pre></td></tr></table></figure>
+
+<p>NullPointerException을 피하기 위해 null 여부를 확인하고 이 후에 값을 비교한다.</p>
+<br>
+
+<h2 id="equals-구현시-주의해야할-사항-몇-가지들"><a href="#equals-구현시-주의해야할-사항-몇-가지들" class="headerlink" title="equals 구현시 주의해야할 사항 몇 가지들"></a>equals 구현시 주의해야할 사항 몇 가지들</h2><ol>
+<li>equals를 구현할 때는 hashCode도 재정의하라.</li>
+<li>equals 메소드의 인자형을 Object에서 다른 것으로 바꾸지 마라.<ul>
+<li>Object equals의 인자는 Object이기 때문에 다른 타입의 인자를 쓰면 Override 하지 못한다.</li>
+<li>@Override 어노테이션을 사용하면 위와 같은 실수를 줄일 수 있다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li>instanceof  <ul>
+<li><a href="https://programmers.co.kr/learn/questions/505" target="_blank" rel="noopener">https://programmers.co.kr/learn/questions/505</a></li>
+</ul>
+</li>
+</ul>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/" data-id="ck1woi0pa00c0a56kopb1cpru" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Java - equals method 재정의",
+        "image": "https://kodakyung.github.io",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2018-10-26",
+        "dateCreated": "2018-10-26",
+        "dateModified": "2019-08-26",
+        "url": "https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/",
+        "description": "Effective Java 규칙 8
+equals를 재정의할 때는 일반 규약을 따르라
+
+모든 객체의 공통 메소드Object는 객체 생성이 가능한 클래스(concrete class)지만 기본적으로는 계승해서 사용하도록 설계된 클래스이다. Object에 정의된 비-final 메소드(equals, hashCode, toString, clone, finalize)에"
+        "wordCount": 1667
+    }
+</script>
+
+</article>
+<!-- 
+    <section id="comments">
+    
+    </section>
+ -->
+
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Comparable / Comparator
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - 종료자(finalizer)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a></p>
+                            <p class="item-title"><a href="/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/" class="title">데이터베이스의 성능 향상(feat. 인덱스)</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T17:56:01.000Z" itemprop="datePublished">2019-10-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch2-전환/" class="title">함수형 사고 - ch2 전환</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:54:04.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch1-왜/" class="title">함수형 사고 - ch1 왜?</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:26:14.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a></p>
+                            <p class="item-title"><a href="/2019/10/15/CS-DataBase-20191015-MySQL-트랜잭션과-동시성-제어/" class="title">MySQL 트랜잭션과 동시성 제어</a></p>
+                            <p class="item-date"><time datetime="2019-10-15T14:20:32.000Z" itemprop="datePublished">2019-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/think/">Think</a></p>
+                            <p class="item-title"><a href="/2019/09/26/Think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/" class="title">🐥병아리 개발자가 IT 정보를 얻는 방법들</a></p>
+                            <p class="item-date"><time datetime="2019-09-26T13:30:38.000Z" itemprop="datePublished">2019-09-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-thinking/" style="font-size: 11.11px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 10px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

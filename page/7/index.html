@@ -6,23 +6,19 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Jade&#39;s Blog">
+<meta property="og:url" content="https://kodakyung.github.io/page/7/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+<meta name="twitter:title" content="Jade&#39;s Blog">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <link rel="canonical" href="https://kodakyung.github.io/page/7/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,133 +146,303 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <em class="page-title-link" data-url="home">Home</em>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/netty/">Netty</a>
+            </div>
+            <div class="date"><time datetime="2018-05-22T15:00:00.000Z" itemprop="datePublished">2018-05-23</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        <a href="/2018/05/23/Server-Netty-2018-05-23-Netty의-데이터-컨테이너-ByteBuf/">Netty의 데이터 컨테이너(ByteBuf)</a>
         </h1>
     
 
-            </header>
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
-</blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
-
-        </div>
-        <footer class="article-footer">
-            
+        <p class="article-excerpt">
+            네트워크 데이터의 기본 단위는 항상 바이트다. Java의 ByteBuffer보다 사용하기 쉬운 Netty의 데이터 컨테이너 ByteBuf에 대해 알아보자.  
 
 
-
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+Java NIO ByteBuffer자바 NIO 바이트 버퍼는 바이트 데이터를 저장하고 읽는 저장소다. 배열을 멤버 변수로 가지고 배열에 대한 읽고 쓰기 메소드를 제공한다. xxxBuffer 형태의
+        </p>
     </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Dakyung Ko"
-        },
-        "headline": "About Me",
-        "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
-        "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
-
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
-    }
-</script>
-
 </article>
-<!-- 
-    <section id="comments">
     
-    </section>
- -->
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/netty/">Netty</a>
+            </div>
+            <div class="date"><time datetime="2018-05-21T15:00:00.000Z" itemprop="datePublished">2018-05-22</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/">Netty Network Transport API</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Netty가 기본 제공하는 Network Transport API 구현과 사용법에 대해 알아보자.
+실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 blocking 프로그래밍을 했다면 non-blocking으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/netty/">Netty</a>
+            </div>
+            <div class="date"><time datetime="2018-05-20T15:00:00.000Z" itemprop="datePublished">2018-05-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/21/Server-Netty-2018-05-21-Netty-컴포넌트-Component/">Netty 컴포넌트(Component)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Netty의 Component Channel, EventLoop, ChannelFuture, ChannelHandler, ChannelPipeline, Bootstrap에 대해 알아보자.  
+
+
+Q 컴포넌트(Component)란?
+독립적인 소프트웨어 모듈을 의미하며,  간단히 말하면 유저가 사용하는 시스템에 대한 조작 장치를 의미한다.
+
+
+
+Netty Ar
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a>
+            </div>
+            <div class="date"><time datetime="2018-05-19T15:00:00.000Z" itemprop="datePublished">2018-05-20</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/20/Troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/">Spring MVC - Neither BindingResult nor plain target object for bean name.. Error</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+Neither BindingResult nor plain target object for bean name ‘command’ available as request attribute …
+
+commandName을 지정한 객체와 연결이 안되서 나오는 에러. 객체와 연결이 되었는데 에러가 발생하는 경우 오타 여부를 확인 해보자.  
+
+
+
+Controller 부분
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a>
+            </div>
+            <div class="date"><time datetime="2018-05-18T15:00:00.000Z" itemprop="datePublished">2018-05-19</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/19/Troubleshooting-2018-05-19-Spring-MVC-Server-강제-종료-후-실행-오류-for-Mac/">Spring MVC - Server 강제 종료 후 실행 오류(for Mac)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+‘Starting Tomcat v9.0 Server at localhost’ has encountered a problem.Port 8080 required by Tomcat v9.0 Server at localhost is already in use. …
+
+
+
+
+Spring 서버가 비정상 종료 된 후 해당 에러가 발생하는 경우, was 재시작을 위한 p
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a>
+            </div>
+            <div class="date"><time datetime="2018-05-11T15:00:00.000Z" itemprop="datePublished">2018-05-12</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/">MySQL 터미널에서 SQL파일 import/export 하기(for Mac)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.
+
+
+SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다.
+12mysql&gt; create database &apos;db_name&apos;;mysql&gt; use &apos;db_name&apos;;
+
+
+
+
+
+
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/netty/">Netty</a>
+            </div>
+            <div class="date"><time datetime="2018-05-10T15:00:00.000Z" itemprop="datePublished">2018-05-11</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/11/Server-Netty-2018-05-11-Maven으로-Netty-프로젝트-시작하기/">Maven으로 Netty 프로젝트 시작하기</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Netty 프로젝트를 시작하려면 우선 Netty 라이브러리를 설치해야한다. 직접 .jar 파일을 다운받아 추가하는 방법이 있고 Maven을 이용해 라이브러리를 받을 수 있다. 여기서는 Maven을 통해 라이브러리를 설치해 프로젝트를 시작해본다.
+Maven
+Maven은 아파치에서 개발된 소프트웨어 프로젝트 관리 도구이다. 소스 코드 관리, 라이브러리 의존성,
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/netty/">Netty</a>
+            </div>
+            <div class="date"><time datetime="2018-05-08T15:00:00.000Z" itemprop="datePublished">2018-05-09</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/05/09/Server-Netty-2018-05-09-Netty-특징과-아키텍처/">Netty 특징과 아키텍처</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Netty
+네티는 유지 관리가 용이한 고성능 프로토콜 서버와 클라이언트를 신속하게 개발하기 위한 비동기식 이벤트 기반 네트워크 애플리케이션 프레임워크이다.
+
+
+
+자바의 네트워킹 최초의 자바 API(java.net)은 블로킹 함수(accept())만 지원했다. 따라서 다수의 클라이언트를 관리하려면 새로운 클라이언트 Socket마다 새로운 Thread를 할당해
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
+    <nav id="page-nav">
+        <span class="pages">Page 7 of 7</span>
+        <a class="extend prev" rel="prev" href="/page/6/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    </nav>
 
 
                         </div>

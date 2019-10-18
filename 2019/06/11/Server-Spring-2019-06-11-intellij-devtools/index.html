@@ -6,23 +6,28 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>IntelliJ에서 SpringBoot DevTools 사용하기 | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="SpringBoot,IntelliJ">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="SpringBoot의 경우 정적 리소스(html,css,js 등)들을 resource 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 Tomcat을 재시작해야한다. DevTools 를 사용하면 자동으로 정적 리소스를 reload 할 수 있게 된다. 하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.  inte">
+<meta name="keywords" content="SpringBoot,IntelliJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IntelliJ에서 SpringBoot DevTools 사용하기">
+<meta property="og:url" content="https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="SpringBoot의 경우 정적 리소스(html,css,js 등)들을 resource 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 Tomcat을 재시작해야한다. DevTools 를 사용하면 자동으로 정적 리소스를 reload 할 수 있게 된다. 하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.  inte">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://kodakyung.github.io/images/2019-06-11/intellij-devtools1.png">
+<meta property="og:updated_time" content="2019-08-25T17:52:26.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IntelliJ에서 SpringBoot DevTools 사용하기">
+<meta name="twitter:description" content="SpringBoot의 경우 정적 리소스(html,css,js 등)들을 resource 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 Tomcat을 재시작해야한다. DevTools 를 사용하면 자동으로 정적 리소스를 reload 할 수 있게 된다. 하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.  inte">
+<meta name="twitter:image" content="https://kodakyung.github.io/images/2019-06-11/intellij-devtools1.png">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/06/11/server-spring-2019-06-11-intellij-devtools/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +155,60 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/server/spring/">Spring</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Server-Spring-2019-06-11-intellij-devtools" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        IntelliJ에서 SpringBoot DevTools 사용하기
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/" class="article-date">
+            <time datetime="2019-06-10T15:00:00.000Z" itemprop="datePublished">2019-06-11</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/intellij/">IntelliJ</a>, <a class="tag-link" href="/tags/springboot/">SpringBoot</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <p>SpringBoot의 경우 정적 리소스(html,css,js 등)들을 <code>resource</code> 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 <code>Tomcat</code>을 재시작해야한다.</p>
+<p><code>DevTools</code> 를 사용하면 자동으로 정적 리소스를 <code>reload</code> 할 수 있게 된다.</p>
+<p>하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.</p>
+<blockquote>
+<p>intellij devtools not working</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<p>이 때 IntelliJ에서 추가적인 설정을 해주어야 한다.</p>
+<ul>
+<li>IntelliJ에서 DevTool 사용하기</li>
+</ul>
+<p><img src="/images/2019-06-11/intellij-devtools1.png" alt="devtools1"></p>
+<ul>
+<li><code>cmd + shift + a</code> : <code>registry</code> 검색</li>
+</ul>
+<p><img src="/images/2019-06-11/intellij-devtools2.png" alt="devtools2"></p>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +216,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/" data-id="ck1woi0m60046a56koy5wa1sx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +286,20 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
-        "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "headline": "IntelliJ에서 SpringBoot DevTools 사용하기",
+        "image": "https://kodakyung.github.io/images/2019-06-11/intellij-devtools1.png",
+        "keywords": "SpringBoot IntelliJ",
+        "genre": "Server Spring",
+        "datePublished": "2019-06-11",
+        "dateCreated": "2019-06-11",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/",
+        "description": "SpringBoot의 경우 정적 리소스(html,css,js 등)들을 resource 폴더 하위에서 관리하기 때문에 정적 리소스를 갱신하기 위해 Tomcat을 재시작해야한다.
+DevTools 를 사용하면 자동으로 정적 리소스를 reload 할 수 있게 된다.
+하지만 IntelliJ에서 사용시 DevTools을 추가해도 적용이 안되는 경우가 있다.
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+inte"
+        "wordCount": 56
     }
 </script>
 
@@ -278,6 +310,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +350,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Use overloading judiciously</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

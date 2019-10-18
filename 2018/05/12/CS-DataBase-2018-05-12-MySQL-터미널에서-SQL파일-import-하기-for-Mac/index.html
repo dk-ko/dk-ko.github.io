@@ -6,23 +6,28 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>MySQL 터미널에서 SQL파일 import/export 하기(for Mac) | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="MySQL">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 터미널에서 SQL파일 import&#x2F;export 하기(for Mac)">
+<meta property="og:url" content="https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://kodakyung.github.io/images/2018-05-12/01.png">
+<meta property="og:updated_time" content="2019-07-20T14:31:45.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 터미널에서 SQL파일 import&#x2F;export 하기(for Mac)">
+<meta name="twitter:description" content="MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.   SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다. 12mysql&amp;gt; create database &amp;apos;db_name&amp;apos;;mysql&amp;gt; use &amp;apos;db_name&amp;apos;;">
+<meta name="twitter:image" content="https://kodakyung.github.io/images/2018-05-12/01.png">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/05/12/cs-database-2018-05-12-mysql-터미널에서-sql파일-import-하기-for-mac/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +155,94 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/cs/database/">DataBase</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        MySQL 터미널에서 SQL파일 import/export 하기(for Mac)
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/" class="article-date">
+            <time datetime="2018-05-11T15:00:00.000Z" itemprop="datePublished">2018-05-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/mysql/">MySQL</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
-</blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+            <p>MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.</p>
+<br>
+
+<h2 id="SQL-파일-Import"><a href="#SQL-파일-Import" class="headerlink" title="SQL 파일 Import"></a>SQL 파일 Import</h2><p>  <strong>1. sql 파일을 추가할 데이터베이스를 만든다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database &apos;db_name&apos;;</span><br><span class="line">mysql&gt; use &apos;db_name&apos;;</span><br></pre></td></tr></table></figure>
+
+<img width="762" alt="Add Database" src="/images/2018-05-12/01.png">
+
+<br>
+
+<p>  <strong>2. sql 파일에 대해 source 명령을 실행한다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; source &apos;db_path.sql&apos;;</span><br></pre></td></tr></table></figure>
+
+<img width="762" alt="sql source" src="/images/2018-05-12/02.png">
+
+<p>Query OK가 출력되면 성공한 것.</p>
+<p><br><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use db_name;</span><br><span class="line">mysql&gt; show tables;</span><br></pre></td></tr></table></figure>
+
+<img width="762" alt="Database 확인" src="/images/2018-05-12/03.png">
+
+<p>명령어로 확인해보면 DB가 잘 추가된 것을 확인할 수 있다.</p>
+<p><br><br></p>
+<p>  <strong>3. 사용자(Account)에게 DB 사용권한을 부여한다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on dbname.table to userid@localhost identified by &apos;password&apos;;</span><br><span class="line">mysql&gt; grant select on dbname.* to userid@&apos;192.168.%&apos; identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>특정 권한(select, insert 등)만 부여하거나, 원격 접속을 허용할 수도 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>변경된 권한을 적용한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants for userid@host;</span><br></pre></td></tr></table></figure>
+
+<p>사용자에게 부여된 권한을 확인한다.</p>
+<br>
+
+<img width="762" alt="권한 부여/확인" src="/images/2018-05-12/04.png">
+
+<br>
+
+<p>  <strong>4. 사용자(Account)가 없다면 생성해준 뒤 3번을 진행한다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user userid@localhost identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>localhost 부분을 %로 한다면 외부 접근이 허용된다.</p>
+<h2 id="SQL-파일-export"><a href="#SQL-파일-export" class="headerlink" title="SQL 파일 export"></a>SQL 파일 export</h2><ul>
+<li>mysqldump 이용</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; mysqldump -u&#123;user&#125; -p&#123;password&#125; &#123;db_name&#125; &gt; &#123;db_name&#125;.sql</span><br></pre></td></tr></table></figure>
+
+<br>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +250,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/" data-id="ck1woi0mb004ia56kacacg39y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +320,26 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
-        "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
-        "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "headline": "MySQL 터미널에서 SQL파일 import/export 하기(for Mac)",
+        "image": "https://kodakyung.github.io/images/2018-05-12/01.png",
+        "keywords": "MySQL",
+        "genre": "CS DataBase",
+        "datePublished": "2018-05-12",
+        "dateCreated": "2018-05-12",
+        "dateModified": "2019-07-20",
+        "url": "https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/",
+        "description": "MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
+
+SQL 파일 Import  1. sql 파일을 추가할 데이터베이스를 만든다.
+12mysql&gt; create database &apos;db_name&apos;;mysql&gt; use &apos;db_name&apos;;
+
+
+
+
+
 "
-        "wordCount": 34
+        "wordCount": 206
     }
 </script>
 
@@ -278,6 +350,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +390,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/05/19/Troubleshooting-2018-05-19-Spring-MVC-Server-강제-종료-후-실행-오류-for-Mac/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Spring MVC - Server 강제 종료 후 실행 오류(for Mac)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/11/Server-Netty-2018-05-11-Maven으로-Netty-프로젝트-시작하기/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Maven으로 Netty 프로젝트 시작하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

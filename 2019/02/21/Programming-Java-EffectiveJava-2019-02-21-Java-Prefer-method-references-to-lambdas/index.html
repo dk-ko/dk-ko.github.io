@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Prefer method references to lambdas | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 43 람다보다는 메소드 참조를 사용하라    lambda VS method reference 함수 객체를 람다보다 간결하게 표현할 수 있는 것이 method reference(메소드 참조)이다. 이 중 람다의 코드가 의미 없이 길다면 또는 이미 구현된 라이브러리로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Prefer method references to lambdas">
+<meta property="og:url" content="https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 43 람다보다는 메소드 참조를 사용하라    lambda VS method reference 함수 객체를 람다보다 간결하게 표현할 수 있는 것이 method reference(메소드 참조)이다. 이 중 람다의 코드가 의미 없이 길다면 또는 이미 구현된 라이브러리로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Prefer method references to lambdas">
+<meta name="twitter:description" content="Effective Java Item 43 람다보다는 메소드 참조를 사용하라    lambda VS method reference 함수 객체를 람다보다 간결하게 표현할 수 있는 것이 method reference(메소드 참조)이다. 이 중 람다의 코드가 의미 없이 길다면 또는 이미 구현된 라이브러리로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/02/21/programming-java-effectivejava-2019-02-21-java-prefer-method-references-to-lambdas/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,40 +153,115 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Prefer method references to lambdas
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" class="article-date">
+            <time datetime="2019-02-20T15:00:00.000Z" itemprop="datePublished">2019-02-21</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-43"><a href="#Effective-Java-Item-43" class="headerlink" title="Effective Java Item 43"></a>Effective Java Item 43</h2><blockquote>
+<p>람다보다는 메소드 참조를 사용하라</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<br>
 
+<h3 id="lambda-VS-method-reference"><a href="#lambda-VS-method-reference" class="headerlink" title="lambda VS method reference"></a>lambda VS method reference</h3><ul>
+<li>함수 객체를 람다보다 <strong>간결</strong>하게 표현할 수 있는 것이 <code>method reference</code>(메소드 참조)이다.</li>
+<li>이 중 <em>람다의 코드가 의미 없이 길다</em>면 또는 <em>이미 구현된 라이브러리</em>로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이 낫다.</li>
+<li>그리고 메소드 참조를 사용하는 경우 매개변수를 제거하므로, 람다의 매개변수 이름이 있어야 코드의 의미가 명확해진다면 람다를 사용하는 것이 낫다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map.merge(key, <span class="number">1</span>, (count, incr) -&gt; count+incr); <span class="comment">// lambda</span></span><br><span class="line">map.merge(key, <span class="number">1</span>, Integer::sum); <span class="comment">// method reference</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>항상 메소드 참조가 람다보다 간결한 것은 아니다. </li>
+<li>메소드 참조의 경우 Class나 Obejct 이름을 항상 써야하기 때문에 <strong>같은 클래스에 있는 메소드</strong>를 사용한다면 람다 표현을 사용하는 것이 더 간결하다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service.execute(GoshThisClassNameIsHumongous::action); <span class="comment">// method reference</span></span><br><span class="line">service.execute(()-&gt;action()); <span class="comment">// lambda</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="method-reference의-사용"><a href="#method-reference의-사용" class="headerlink" title="method reference의 사용"></a>method reference의 사용</h2><ul>
+<li>메소드 참조를 사용하는 경우 (1) 기존에 구현된 라이브러리를 사용하거나(ex-위의 <code>Integer::sum</code>은 Integer 클래스의 static sum 메소드를 사용한 것)</li>
+<li>lambda 표현이 길어지는 경우(보통 3줄을 넘어가지 않는 것이 좋다) (2) 따로 메소드를 작성해 람다 대신 메소드 참조를 사용한다. </li>
+</ul>
+<h2 id="method-reference의-유형"><a href="#method-reference의-유형" class="headerlink" title="method reference의 유형"></a>method reference의 유형</h2><ol>
+<li>정적 메소드 참조</li>
+</ol>
+<ul>
+<li><code>Class::staticMethod</code> 형식으로 사용한다. </li>
+<li>ex) <code>Integer::parseInt</code>는 <code>str-&gt;Integer.parseInt(str)</code>과 같다</li>
+</ul>
+<ol start="2">
+<li>한정적 인스턴스 메소드 참조</li>
+</ol>
+<ul>
+<li><code>object::instanceMethod</code></li>
+<li>(1)의 정적 메소드 참조와 비슷하다. </li>
+<li>즉, 함수 객체가 받는 인수와 참조 되는 메소드가 받는 인수가 같다.</li>
+<li>ex) <code>Instant.now()::isAfter</code>은 <code>Instant then = Instant.now(); \n t-&gt;then.isAfter(t)</code>와 같다.</li>
+</ul>
+<ol start="3">
+<li>비한정적 인스턴스 메소드 참조</li>
+</ol>
+<ul>
+<li>수신 객체를 한정하지 않는 다는 의미해서 비한정적 메소드 참조이다.</li>
+<li>따라서 함수 객체가 받는 인수와 참조되는 메소드가 받는 인수가 다르다.</li>
+<li>그래서 함수 객체를 적용하는 시점에 수신 객체를 알려준다. </li>
+<li>ex) <code>String::toLowerCase</code>은 <code>str-&gt;str.toLowerCase()</code>와 같다.</li>
+</ul>
+<ol start="4">
+<li>클래스 생성자 메소드 참조</li>
+</ol>
+<ul>
+<li>생성자 레퍼런스와 메소드 레퍼런스는 거의 흡사하다. </li>
+<li>생성자 종류가 많을 경우 문맥으로 파악한다.</li>
+</ul>
+<ol start="5">
+<li>배열 생성자 메소드 참조</li>
+</ol>
+<br>
+
+<ul>
+<li>결과적으로 method reference를 사용하면 메소드의 모든 매개변수가 사라진다. 그러므로 lambda를 사용할 때와 같이 사용하려는 자바 라이브러리에 대한 정확한 이해가 필요하다. </li>
+</ul>
+<br>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" data-id="ck1woi0pz00d3a56kydy7f3s3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +331,23 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Prefer method references to lambdas",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-02-21",
+        "dateCreated": "2019-02-21",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/",
+        "description": "Effective Java Item 43
+람다보다는 메소드 참조를 사용하라
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+
+
+lambda VS method reference
+함수 객체를 람다보다 간결하게 표현할 수 있는 것이 method reference(메소드 참조)이다.
+이 중 람다의 코드가 의미 없이 길다면 또는 이미 구현된 라이브러리로 메소드 참조를 할 수 있다면, 메소드 참조를 사용하는 것이"
+        "wordCount": 292
     }
 </script>
 
@@ -278,6 +358,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +398,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Prefer side-effect-free functions in streams
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Use instance fields instead of ordinals</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

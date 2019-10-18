@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Minimize mutability | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 17 변경가능성을 최소화하라.  Immutable Class는 간단히 변경 불가능한 클래스를 의미한다.Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 String, BigInteger, BigDecimal 등) Five rules of immutable clas">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Minimize mutability">
+<meta property="og:url" content="https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 17 변경가능성을 최소화하라.  Immutable Class는 간단히 변경 불가능한 클래스를 의미한다.Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 String, BigInteger, BigDecimal 등) Five rules of immutable clas">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Minimize mutability">
+<meta name="twitter:description" content="Effective Java Item 17 변경가능성을 최소화하라.  Immutable Class는 간단히 변경 불가능한 클래스를 의미한다.Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 String, BigInteger, BigDecimal 등) Five rules of immutable clas">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/01/21/programming-java-effectivejava-2019-01-21-java-minimize-mutability/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,40 +153,121 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Minimize mutability
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/" class="article-date">
+            <time datetime="2019-01-20T15:00:00.000Z" itemprop="datePublished">2019-01-21</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-17"><a href="#Effective-Java-Item-17" class="headerlink" title="Effective Java Item 17"></a>Effective Java Item 17</h2><blockquote>
+<p>변경가능성을 최소화하라.</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
-
+<p><code>Immutable Class</code>는 간단히 변경 불가능한 클래스를 의미한다.<br>Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 <code>String</code>, <code>BigInteger</code>, <code>BigDecimal</code> 등)</p>
+<h3 id="Five-rules-of-immutable-class"><a href="#Five-rules-of-immutable-class" class="headerlink" title="Five rules of immutable class"></a>Five rules of immutable class</h3><ol>
+<li>Don’t provide method that modify the object’s state (known as mutators).<blockquote>
+<p>객체의 상체를 변경시키는 메소드(변경자)를 제공하지 않는다. </p>
+</blockquote>
+</li>
+<li>Ensure that the class can’t be extended.<blockquote>
+<p>클래스를 확장할 수 없게 한다. </p>
+</blockquote>
+</li>
+<li>Make all fields final. <blockquote>
+<p>모든 필드를 final로 한다. </p>
+</blockquote>
+</li>
+<li>Make all fields private.<blockquote>
+<p>모든 필드를 private로 한다.</p>
+</blockquote>
+</li>
+<li>Ensure exclusive access to any mutable components.<blockquote>
+<p>변경 가능한 모든 컴포넌트에 독점적으로 access하게 한다.<br>즉, Immutable Class 자신만 접근 가능하도로 해야한다. </p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>mutable object가 있다면 클라이언트에서 참조할 수 없도록 해야한다. </li>
+<li>접근자가 그 필드를 반환해서도 안된다. </li>
+<li>기존에 객체 참조를 넘기던 생성자, 접근자, <code>readObject</code>에서는 방어적 복사를 사용해야한다. </li>
+</ul>
+<h3 id="함수형-프로그래밍"><a href="#함수형-프로그래밍" class="headerlink" title="함수형 프로그래밍"></a>함수형 프로그래밍</h3><ul>
+<li>피연산자에 함수를 적용해 결과를 반환하지만, 피연산자 자체를 변경되지 않는 패턴</li>
+<li>해당 메소드가 상태를 변경시키지 않는점을 강조하기 위해 이름을 동사(add) 대신 전치사(plus)를 사용해야한다. </li>
+</ul>
+<h3 id="불변-객체의-장점"><a href="#불변-객체의-장점" class="headerlink" title="불변 객체의 장점"></a>불변 객체의 장점</h3><ul>
+<li>함수형 프로그래밍을 하면 코드 내 불변 비율이 높아진다.</li>
+<li>불변 객체가 더 단순하고 오류가 적고, 상태가 일정하다. </li>
+<li>불변 객체는 기본적으로 <code>thread-safe</code> 하고 따로 동기화하지 않아도 된다. </li>
+<li>따라서 안심하고 공유할 수 있다. </li>
+</ul>
+<h3 id="불변-객체의-단점"><a href="#불변-객체의-단점" class="headerlink" title="불변 객체의 단점"></a>불변 객체의 단점</h3><ul>
+<li>값이 다르면 항상 새로운 객체로 만들어야 한다. </li>
+</ul>
+<h3 id="불변-객체의-성능-문제"><a href="#불변-객체의-성능-문제" class="headerlink" title="불변 객체의 성능 문제"></a>불변 객체의 성능 문제</h3><ul>
+<li>원하는 객체가 완성하기까지 단계가 많고, 중간 단계가 버려진다면 <code>성능 문제</code>가 생길 수 있다. 이에 대처하기 위해서는</li>
+</ul>
+<ol>
+<li>불변 클래스에서 다단계 연산(<code>multistep operation</code>)을 예측해 기본 기능으로 제공하거나</li>
+<li>가변 동반 클래스(<code>companion class</code>)를 <code>package-private</code> or <code>public</code>으로 제공한다.</li>
+</ol>
+<ul>
+<li>2에 해당하는 것은 <code>String</code>과 <code>StringBuilder</code>가 있다. </li>
+</ul>
+<h3 id="더-유연한-방식의-불변-클래스"><a href="#더-유연한-방식의-불변-클래스" class="headerlink" title="더 유연한 방식의 불변 클래스"></a>더 유연한 방식의 불변 클래스</h3><ul>
+<li>가장 쉬운 방법은 <code>클래스</code>에 <code>final</code> 선언 </li>
+<li>다른 방법으로는 모든 <code>생성자</code>를 <code>private</code> or <code>package-private</code> 하고 <code>public 정적 팩토리 메소드</code>를 제공하는 방법. </li>
+</ul>
+<h3 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h3><ol>
+<li>클래스는 꼭 필요한 경우가 아니면 <code>불변</code>이어야 한다. </li>
+<li>불변으로 만들 수 없는 클래스라도 <code>변경할 수 있는 부분은 최소화</code>하는 것이 좋다. </li>
+<li>다른 이유가 있지 않다면 모든 필드는 <code>private final</code>이어야 한다. </li>
+<li>생성자는 불변식 설정이 모두 완료된, <code>초기화가 완전히 끝난 상태</code>의 객체를 생성해야 한다. <ul>
+<li>생성자와 정적 팩토리 메소드 외에 초기화 메소드를 public으로 제공하면 안됨.</li>
+<li>객체를 재활용할 목적의 메소드도 안됨.(setter 등)</li>
+</ul>
+</li>
+</ol>
+<br>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/" data-id="ck1woi0pi00cca56k7u54ixgn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +337,20 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Minimize mutability",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-01-21",
+        "dateCreated": "2019-01-21",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/",
+        "description": "Effective Java Item 17
+변경가능성을 최소화하라.
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+Immutable Class는 간단히 변경 불가능한 클래스를 의미한다.Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 String, BigInteger, BigDecimal 등)
+Five rules of immutable clas"
+        "wordCount": 344
     }
 </script>
 
@@ -278,6 +361,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +401,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Prefer class hierarchies to tagged classes
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Use interfaces only to define types</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

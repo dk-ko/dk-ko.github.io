@@ -6,23 +6,19 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Category: Programming | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Jade&#39;s Blog">
+<meta property="og:url" content="https://kodakyung.github.io/categories/programming/page/2/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+<meta name="twitter:title" content="Jade&#39;s Blog">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <link rel="canonical" href="https://kodakyung.github.io/categories/programming/page/2/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,133 +146,412 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <i class="icon fa fa-folder-open"></i>Category: <em class="page-title-link">Programming</em>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-26T15:00:00.000Z" itemprop="datePublished">2019-01-27</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        <a href="/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/">Java - Limit source files to a single top-level class</a>
         </h1>
     
 
-            </header>
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
-</blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
-
-        </div>
-        <footer class="article-footer">
-            
+        <p class="article-excerpt">
+            Effective Java Item 25
+톱 레벨 클래스는 한 파일에 하나만 담으라. 
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
 
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
+한 파일에 여러가지의 톱 레벨 클래스를 담아도 컴파일 에러가 발생하진 않는다.
+하지만, 컴파일러에 따라 동작이 달라질 수 있다.
 
-            if ($('#' + id).length) {
-                box = $('#' + id);
 
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
 
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+12345678910111213141516171819202122// Main.javapublic class Main &#123; 
+        </p>
     </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Dakyung Ko"
-        },
-        "headline": "About Me",
-        "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
-        "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
-
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
-    }
-</script>
-
 </article>
-<!-- 
-    <section id="comments">
     
-    </section>
- -->
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-23T15:00:00.000Z" itemprop="datePublished">2019-01-24</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/">Java - Prefer class hierarchies to tagged classes</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 23
+태그 달린 클래스보다는 클래스 계층구조를 활용하라 
+
+
+
+태그 달린 클래스란 ?
+이 책에서 말하는 태그 달린 클래스는 enum으로 타입을 결정하고, 타입별로 쓰이는 필드와 메소드가 다른데 한 클래스에 모든 코드가 있는 경우를 일컫는다. 
+즉, 한 클래스에서 태그(enum)에 따라 동작을 달리하는 코드를 의미한다. 
+
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-20T15:00:00.000Z" itemprop="datePublished">2019-01-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/">Java - Minimize mutability</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 17
+변경가능성을 최소화하라.
+
+Immutable Class는 간단히 변경 불가능한 클래스를 의미한다.Immutable Class의 모든 정보는 객체의 생명 주기 동안 값이 고정되어야 한다. (자바 라이브러리의 String, BigInteger, BigDecimal 등)
+Five rules of immutable clas
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-17T15:00:00.000Z" itemprop="datePublished">2019-01-18</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/">Java - Use interfaces only to define types</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 22
+인터페이스는 타입을 정의하는 용도로만 사용하라
+
+
+
+
+인터페이스를 implements 한다는 것은 해당 인터페이스의 기능을, 상속 받은 클래스에서 구현해 제공한다는 의미이다.
+인터페이스는 (default method를 제외하고) 구체적인 로직이 없다.
+따라서 인터페이스의 사용은 인터페이스에서 제공하는 기능을 사용할 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-16T15:00:00.000Z" itemprop="datePublished">2019-01-17</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/17/Programming-Java-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/">Java - Design interfaces for posterity</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 21
+인터페이스는 구현하는 쪽을 생각해 설계하라. 
+
+
+
+
+자바 8부터 default method가 추가되면서 기존 인터페이스에 기능을 추가하는 일이 가능해졌다.
+
+
+
+
+하지만 디폴트 메소드를 추가하는 경우 기존 인터페이스 구현체와 오류 없이 연동되는 것을 기대하기 어렵다. 
+만약, 어쩔 수 없이 추가해야한다면 가능한 모
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-12T15:00:00.000Z" itemprop="datePublished">2019-01-13</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/">Java - Favor composition over inheritance</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 18
+상속보다는 컴포지션을 사용하라 
+
+
+상속(extends)을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다. 
+특히 다른 패키지의 구체 클래스를 상속하는 것은 위험하다.
+
+
+
+상속의 문제점
+상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다.
+위의 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-11T15:00:00.000Z" itemprop="datePublished">2019-01-12</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/">Java - Prefer interfaces to abstract classes</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 20
+추상 클래스보다는 인터페이스를 우선하라
+
+
+
+추상 클래스 vs 인터페이스
+추상 클래스의 경우 추상 클래스가 정의한 타입을 구현하기 위해 해당 클래스의 하위 클래스가 되어야한다.
+자바는 단일 상속만 제공하기 때문에 추상 클래스는 제약이 있다.
+인터페이스를 사용하는 경우 기존 클래스에도 손쉽게 새로운 인터페이스를 추가할
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2019-01-10T15:00:00.000Z" itemprop="datePublished">2019-01-11</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/">Java - Design and document for inheritance or else prohibit it</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java Item 19
+상속을 고려해 설계하고 문서화하라. 그러지 않았다면 상속을 금지하라
+
+
+
+상속용 클래스
+상속용 클래스는 재정의할 수 있는 메소드들을 내부적으로 어떻게 이용하는지 문서로 남겨야한다. 
+public, protected 메소드 중 final이 아닌 모든 재정의 가능한 메소드는 재정의 가능 여부를 명시해 주어야 한다. 
+
+
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+        
+            </div></section>
+        
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2018-11-03T15:00:00.000Z" itemprop="datePublished">2018-11-04</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/">Java - Comparable / Comparator</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java 규칙 12
+Comparable 구현을 고려하라
+
+Comparable.compareTo
+Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다.
+Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.
+
+
+Arrays.sor
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a>
+            </div>
+            <div class="date"><time datetime="2018-10-25T15:00:00.000Z" itemprop="datePublished">2018-10-26</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/">Java - equals method 재정의</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Effective Java 규칙 8
+equals를 재정의할 때는 일반 규약을 따르라
+
+모든 객체의 공통 메소드Object는 객체 생성이 가능한 클래스(concrete class)지만 기본적으로는 계승해서 사용하도록 설계된 클래스이다. Object에 정의된 비-final 메소드(equals, hashCode, toString, clone, finalize)에
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
+    <nav id="page-nav">
+        <span class="pages">Page 2 of 4</span>
+        <a class="extend prev" rel="prev" href="/categories/programming/">&laquo;</a><a class="page-number" href="/categories/programming/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/programming/page/3/">3</a><a class="page-number" href="/categories/programming/page/4/">4</a><a class="extend next" rel="next" href="/categories/programming/page/3/">&raquo;</a>
+    </nav>
+
 
 
                         </div>

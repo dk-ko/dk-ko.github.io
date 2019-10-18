@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Git - .gitignore 설정 후 적용되지 않는 경우 | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Git">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="git에 업로드 되는 파일을 막는 .gitignore를 설정한 후에도 설정이 적용되지 않는 경우   123&amp;gt; git rm -r --cached .&amp;gt; git add .&amp;gt; git commit -m &quot;commit_message&quot;  위 코드 사용시 설정이 적용된다.">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git - .gitignore 설정 후 적용되지 않는 경우">
+<meta property="og:url" content="https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="git에 업로드 되는 파일을 막는 .gitignore를 설정한 후에도 설정이 적용되지 않는 경우   123&amp;gt; git rm -r --cached .&amp;gt; git add .&amp;gt; git commit -m &quot;commit_message&quot;  위 코드 사용시 설정이 적용된다.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T17:55:13.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git - .gitignore 설정 후 적용되지 않는 경우">
+<meta name="twitter:description" content="git에 업로드 되는 파일을 막는 .gitignore를 설정한 후에도 설정이 적용되지 않는 경우   123&amp;gt; git rm -r --cached .&amp;gt; git add .&amp;gt; git commit -m &quot;commit_message&quot;  위 코드 사용시 설정이 적용된다.">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/11/09/troubleshooting-2018-11-09-git-gitignore-setting/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +153,52 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/troubleshooting/">Troubleshooting</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Troubleshooting-2018-11-09-git-gitignore-setting" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Git - .gitignore 설정 후 적용되지 않는 경우
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/" class="article-date">
+            <time datetime="2018-11-08T15:00:00.000Z" itemprop="datePublished">2018-11-09</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/git/">Git</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
-</blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+            <p>git에 업로드 되는 파일을 막는 <code>.gitignore</code>를 설정한 후에도 설정이 적용되지 않는 경우</p>
+<br>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> git rm -r --cached .</span><br><span class="line"><span class="meta">&gt;</span> git add .</span><br><span class="line"><span class="meta">&gt;</span> git commit -m "commit_message"</span><br></pre></td></tr></table></figure>
+
+<p>위 코드 사용시 설정이 적용된다.</p>
+<br>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +206,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/" data-id="ck1woi0i6000ka56k83xx619v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +276,23 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Git - .gitignore 설정 후 적용되지 않는 경우",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Git",
+        "genre": "Troubleshooting",
+        "datePublished": "2018-11-09",
+        "dateCreated": "2018-11-09",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/",
+        "description": "git에 업로드 되는 파일을 막는 .gitignore를 설정한 후에도 설정이 적용되지 않는 경우
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
+
+123&gt; git rm -r --cached .&gt; git add .&gt; git commit -m "commit_message"
+
+위 코드 사용시 설정이 적용된다.
+
 "
-        "wordCount": 34
+        "wordCount": 41
     }
 </script>
 
@@ -278,6 +303,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +343,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/10/Server-Test-2018-11-10-jpa-junit-test/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            JPA 테스트의 특징
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Comparable / Comparator</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

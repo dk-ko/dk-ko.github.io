@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Use bounded wildcards to increase API flexibility | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Use bounded wildcards to increase API flexibility">
+<meta property="og:url" content="https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Use bounded wildcards to increase API flexibility">
+<meta name="twitter:description" content="Effective Java Item 31 한정적 와일드카드를 사용해 API 유연성을 높여라     한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&amp;lt;String&amp;gt;, List&amp;lt;Integer&amp;gt; 등)이 불공변이기 때문이다.  불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다. 따라서 책">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/01/31/programming-java-effectivejava-2019-01-31-java-use-bounded-wildcards-to-increase-api-flexibility/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,40 +153,110 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Use bounded wildcards to increase API flexibility
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/" class="article-date">
+            <time datetime="2019-01-30T15:00:00.000Z" itemprop="datePublished">2019-01-31</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-31"><a href="#Effective-Java-Item-31" class="headerlink" title="Effective Java Item 31"></a>Effective Java Item 31</h2><blockquote>
+<p>한정적 와일드카드를 사용해 API 유연성을 높여라</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<br>
 
+<ul>
+<li>한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(<code>List&lt;String&gt;</code>, <code>List&lt;Integer&gt;</code> 등)이 불공변이기 때문이다. </li>
+<li>불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다.</li>
+<li>따라서 책의 예시와 같이 <code>Stact&lt;E&gt;</code>에 <code>Stact&lt;Number&gt;</code>를 선언후 Integer 타입을 넣으면 <code>incompatible types</code>라는 에러가 발생한다. </li>
+<li>보다 제네릭을 유연하게 사용하기 위해 한정적 와일드카드가 필요하다.</li>
+</ul>
+<h3 id="lt-extends-T-gt"><a href="#lt-extends-T-gt" class="headerlink" title="&lt;? extends T&gt;"></a>&lt;? extends T&gt;</h3><ul>
+<li>T의 하위 타입을 허용한다는 의미이다. </li>
+<li>push 메소드와 같이 원소를 생산하는 메소드의 매개변수에 사용한다. </li>
+<li>ex) 위처럼 <code>Number</code>로 생성 후 <code>Integer</code>로 받는게 가능해진다.</li>
+</ul>
+<h3 id="lt-super-T-gt"><a href="#lt-super-T-gt" class="headerlink" title="&lt;? super T&gt;"></a>&lt;? super T&gt;</h3><ul>
+<li>T의 상위 타입을 허용한다는 의미이다. </li>
+<li>pop 메소드와 같이 원소를 소비하는 메소드의 매개변수에 사용한다. </li>
+<li>ex) <code>Stack&lt;Number&gt;</code> 원소를 <code>Collection&lt;Object&gt;</code>로 꺼내고 싶은 경우 </li>
+</ul>
+<h3 id="한정적-와일드카드-사용-규칙"><a href="#한정적-와일드카드-사용-규칙" class="headerlink" title="한정적 와일드카드 사용 규칙"></a>한정적 와일드카드 사용 규칙</h3><ul>
+<li>입력 매개변수가 생산자나 소비자의 역할만 한다면 입력 매개변수에 와일드카드 타입을 사용해 유연성을 높이는 것이 좋다. </li>
+<li>입력 매개변수가 생산자와 소비자 역할을 동시에 한다면 정확한 타입을 지정하는 것이 좋다. </li>
+<li>PECS : producer-extends, consumer-super</li>
+<li>생산자라면 <code>&lt;? extends T&gt;</code>, 소비자라면 <code>&lt;? super T&gt;</code>를 사용 </li>
+<li>메소드의 반환 타입은 한정적 와일드 카드 타입을 사용하면 안된다. 클라이언트 쪽에서도 와일드 카드 타입을 써야하기 때문.</li>
+<li>사용자가 와일드 카드 타입을 신경써야한다면 그 메소드는 잘못 짜여진 메소드이다. </li>
+<li>자바 7까지는 명시적 타입 인수를 사용해야한다. </li>
+</ul>
+<h3 id="Comparator를-직접-구현하지-않은-경우의-한정적-와일드-카드"><a href="#Comparator를-직접-구현하지-않은-경우의-한정적-와일드-카드" class="headerlink" title="Comparator를 직접 구현하지 않은 경우의 한정적 와일드 카드"></a>Comparator를 직접 구현하지 않은 경우의 한정적 와일드 카드</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;E&gt;&gt; <span class="function">E <span class="title">max</span><span class="params">(List&lt;E&gt; list)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>기존 코드를 PECS에 맞춰 변경해보면</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;? <span class="keyword">super</span> E&gt;&gt; <span class="function">E <span class="title">max</span><span class="params">(List&lt;? extends E&gt; list)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Comparable</code>은 E 인스턴스를 소비해 natural ordering에 해당하는 정수를 생산한다. </li>
+<li>따라서 <code>Comparable</code>은 소비자의 역할이므로 <code>&lt;? super E&gt;</code>로 인스턴스를 변경한다. </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ScheduledFuture&lt;?&gt;&gt; scheduledFutures = ... ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>이렇게 복잡한 선언을 하는 이유는 위의 리스트와 같이 <strong>Comparable(or Comparator)를 직접 구현하지 않고 직접 구현한 다른 타입을 extends 한 경우를 지원하기 때문이다.</strong></li>
+<li>ScheduledFuture는 직접 Comparator를 구현하지 않고 Comparator를 구현한 상위 타입을 extends 하고있다. </li>
+<li><code>Comparable&lt;? super E&gt;</code>로 명시하지 않으면 ScheduledFuture 뿐 아니라 그 상위 클래스의 인스턴스와도 비교할 수 있기 때문에 에러가 발생한다. </li>
+</ul>
+<h3 id="타입-매개변수와-와일드카드-lt-E-gt-vs-lt-gt"><a href="#타입-매개변수와-와일드카드-lt-E-gt-vs-lt-gt" class="headerlink" title="타입 매개변수와 와일드카드 &lt;E&gt; vs &lt;?&gt;"></a>타입 매개변수와 와일드카드 &lt;E&gt; vs &lt;?&gt;</h3><pre><code class="java"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(List&lt;E&gt; list, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>; <span class="comment">// (1)</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(List&lt;?&gt; list, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> <span class="comment">// (2)</span></span></code></pre>
+<ul>
+<li>이 메서드를 정의할 때 <code>&lt;E&gt;</code>와 <code>&lt;?&gt;</code>는 parameter에서 같은 역할을 한다. </li>
+<li>이 책의 필자는 public api인 경우 좀 더 깔끔한 선언을 위해 두번째 방식을 추천하고 있다.</li>
+<li>하지만 두번째 방식의 경우 원소를 꺼낸 뒤 다시 넣을 때 에러가 날 수 있다. - List&lt;?&gt;는 null 외에 아무 값도 넣을 수 없기 때문 (parameter에서 모든 인자를 받는 역할을 함)</li>
+<li>따라서 public api를 와일드카드(?)를 사용하고 내부적으로 값을 넣고 변경해야한다면, 와일드카드 타입의 실제 타입을 알려주는 도우미 메서드를 작성하는 것이 좋다. </li>
+<li>도우미 메서드는 (1)의 메소드 선언과 같다. </li>
+</ul>
+<br>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/" data-id="ck1woi0px00cxa56khy4l7t2w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +326,24 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Use bounded wildcards to increase API flexibility",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-01-31",
+        "dateCreated": "2019-01-31",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/",
+        "description": "Effective Java Item 31
+한정적 와일드카드를 사용해 API 유연성을 높여라
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+
+
+
+한정적 와일드 카드가 필요한 이유는 제네릭의 매개변수화 타입(List&lt;String&gt;, List&lt;Integer&gt; 등)이 불공변이기 때문이다. 
+불공변이라는 얘기는 서로 상위 타입도 하위 타입도 아닌 각자 다른 타입이라는 의미이다.
+따라서 책"
+        "wordCount": 469
     }
 </script>
 
@@ -278,6 +354,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +394,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Use instance fields instead of ordinals
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Don&#39;t use raw types</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>WEB - OAuth2.0 | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="OAuth2,생활코딩,Web,Authrization">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+<meta name="keywords" content="OAuth2,생활코딩,Web,Authrization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB - OAuth2.0">
+<meta property="og:url" content="https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T17:56:47.225Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB - OAuth2.0">
+<meta name="twitter:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +153,144 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/web/">Web</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Web-2018-09-20-WEB-OAuth2" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        WEB - OAuth2.0
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/20/Web-2018-09-20-WEB-OAuth2/" class="article-date">
+            <time datetime="2018-09-19T15:00:00.000Z" itemprop="datePublished">2018-09-20</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/authrization/">Authrization</a>, <a class="tag-link" href="/tags/oauth2/">OAuth2</a>, <a class="tag-link" href="/tags/web/">Web</a>, <a class="tag-link" href="/tags/생활코딩/">생활코딩</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <p>OAuth2.0 인증 시스템의 원리</p>
+<h2 id="OAuth2"><a href="#OAuth2" class="headerlink" title="OAuth2"></a>OAuth2</h2><p>OAuth에는 세 개의 참여자가 등장한다.</p>
+<ol>
+<li>mine : 내 서비스</li>
+<li>User : 1의 사용자</li>
+<li>Thier : 연동하려는 서비스</li>
+</ol>
+<p>(1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사용한다면 간단하지만 위험할 것이다.  </p>
+<p>따라서 OAuth를 이용해야한다. OAuth는 <code>accessToken</code>이라는 일종의 비밀번호를 발급해 사용하기 때문에 안전하게 내 서비스와 외부 서비스를 상호작용할 수 있다.</p>
+<ul>
+<li><p>장점  </p>
+<ol>
+<li>전달하는 것이 아이디와 비밀번호가 아니다.</li>
+<li>(3)의 서비스의 필요한 부분만 부분적으로 허가를 받아서 사용할 수 있음</li>
+<li>액세스 토큰을 통해 (3)에 접근해서 CRUD 작업을 할 수 있음</li>
+</ol>
+</li>
+</ul>
+<h2 id="accessToken을-얻어내는-핵심-원리에-대해"><a href="#accessToken을-얻어내는-핵심-원리에-대해" class="headerlink" title="accessToken을 얻어내는 핵심 원리에 대해"></a>accessToken을 얻어내는 핵심 원리에 대해</h2><h3 id="Role"><a href="#Role" class="headerlink" title="Role"></a>Role</h3><ol>
+<li>mine -&gt; <code>Client</code></li>
+<li>User -&gt; <code>Resource Owner</code></li>
+<li>Thier -&gt; <code>Resource Server</code> : 데이터를 가지고 있는 서버<br>+ <code>Authrization Server</code> : 인증 관련 서버</li>
+</ol>
+<p>Resource Server와 Authorization Server는 다르지만 우선 여기서는 Resource Server와 같이 설명한다.</p>
+<h3 id="등록하는-절차"><a href="#등록하는-절차" class="headerlink" title="등록하는 절차"></a>등록하는 절차</h3><p>Client가 RS를 이용하기 위해서는 RS서버의 승인을 사전에 받아놓아야 한다.<br>이를 등록(register)이라 한다.</p>
+<p>RS마다 각각 다르지만 일반적으로 아래 세개는 동일하다.</p>
+<ol>
+<li>Client ID<br>: (1)을 식별하는 식별자 아이디</li>
+<li>Client Secret<br>: (1)의 비밀번호, 외부에 노출되면 안된다.</li>
+<li>Authorized redirect URIs<br>: RS가 권한을 부여하는 과정에서 Authorized Code를 주는데 이 주소로 전달하게 된다. 해당 주소가 아닌 곳에서 요청이 들어오면 무시한다.</li>
+</ol>
+<h3 id="Resource-Owner의-승인"><a href="#Resource-Owner의-승인" class="headerlink" title="Resource Owner의 승인"></a>Resource Owner의 승인</h3><p>등록하게 되면 RS는 <code>Client Id</code>/ <code>Client Secret</code> / <code>redirect URL</code>을 알게 되고,<br>Client는 <code>Client Id</code>/ <code>Client Secret</code>을 알게 된다. 이때 Client는 redirect URL에 해당하는 페이지는 구현해놓고 있어야한다.</p>
+<p>RS의 기능이 4개라면, (A,B,C,D)<br>Client는 B와 C의 기능만 필요하다면, 최소한의 기능만 인증받는 것이 좋다.</p>
+<blockquote>
+<p>이하 Resource Server = RS<br>Resource Owner = RO<br>Client = C 또는 Client로 표기</p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<ul>
+<li>인증 과정</li>
+</ul>
+<ol>
+<li><p>RO는 C에 접속한다.</p>
+</li>
+<li><p>접속하는 과정에서 RS에 접속이 필요하다면</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(예)페이스북으로 로그인하기..</span><br><span class="line">or 페이스북의 어떤 기능이 필요하다는 화면</span><br></pre></td></tr></table></figure>
+
+<p>을 통해 사용자의 동의를 구한다.<br>이때 보이는 로그인 버튼은 단순히 <code>Resource Server</code>, <code>Client Id</code>, <code>사용하려는 기능(scope)</code>, <code>redirect id</code>값을 링크로 제공해주면 된다.</p>
+</li>
+<li><p>(2)를 통해 RO가 RS에 접속하면<br>로그인 되어있지 않은 경우 로그인 요청을 한다. 로그인이 되어 있다면 <code>client id</code>/<code>redirect id</code>를 확인해서, 같다면 scope에 해당하는 권한을 C에게 줄것인지 확인하는 메세지를 RO에게 보내게 된다.</p>
+</li>
+<li><p>RO가 확인 후 허용한다면 허용 정보를 RS에게 보낸다. 그러면 특정 유저가 어떤 기능을 허용하는데 동의한다는 정보를 RS에 저장하게된다. (DB 등)</p>
+</li>
+</ol>
+<h3 id="Resource-Server의-승인"><a href="#Resource-Server의-승인" class="headerlink" title="Resource Server의 승인"></a>Resource Server의 승인</h3><ol>
+<li><p>위의 과정 이후 accessToken을 발급하기 전에 임시 비밀번호인 <code>Authrization Code</code>를 RS가 RO에게 보낸다.</p>
+</li>
+<li><p>RO는 RS가 보낸 패킷의 Location 헤더 값에 의해서 C의 주소로 이동하게 된다(<code>redirect</code>). 이때 C에게 Authrization Code를 알려준다.  </p>
+</li>
+<li><p>이제 Client는 Authrization Code로 RS에 직접 접속하게 된다. 이때 <code>Authrization Code</code>, <code>redirect id</code>, <code>client secret</code> 정보를 RS에게 보낸다.</p>
+</li>
+<li><p>RS는 Authrization Code를 보고 Client를 식별한다.</p>
+</li>
+</ol>
+<h3 id="accessToken-발급"><a href="#accessToken-발급" class="headerlink" title="accessToken 발급"></a>accessToken 발급</h3><ol>
+<li>RS는 accessToken을 발급한다. 그리고 accessToken을 C에 응답한다.</li>
+<li>이 accessToken을 C는 내부적으로 저장한다.</li>
+</ol>
+<h3 id="API-호출"><a href="#API-호출" class="headerlink" title="API 호출"></a>API 호출</h3><p>= Resource Server 핸들링</p>
+<p>Client가 Resource Server url에 접속하면 데이터를 보여준다.<br>즉 URL이 API처럼 되는 것.<br><strong>-&gt; 이 URL은 accessToken이 있어야 제대로 출력된다.<br>따라서 accessToken은 절대 남에게 공개하면 안된다.</strong></p>
+<p>API 핸들링 방식은 RS마다 다르므로 공식 문서를 찾아봐야한다.</p>
+<ul>
+<li>구글 api 사용 방법을 검색</li>
+</ul>
+<blockquote>
+<p>google api accessToken oauth</p>
+</blockquote>
+<p>구글은 accessToken을 Query Parameter로 보내거나 헤더의 Authorization에 Bearer로 보내는 두가지 방식을 사용한다.</p>
+<p>두가지 방식 중 헤더 값으로 Bearer를 보내는 방식이 더 선호된다.</p>
+<p>이 때 curl을 통해 좀 더 손쉽게 보낼 수 있음.</p>
+<blockquote>
+<p>curl은 웹페이지를 다운로드 받는 프로그램</p>
+</blockquote>
+<h3 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h3><p>accessToken은 수명이 존재한다. 일반적으로 1~2시간, 길면 60~90일 등 수명이 끝나면 api가 정보를 주지 않는다.  </p>
+<p>수명이 끝나면 accessToken을 다시 발급 받아야 하는데 그때마다 사용자에게 인증을 받기 힘들다면 refresh token을 사용하면 된다.</p>
+<ul>
+<li>refresh token에 대해 검색</li>
+</ul>
+<blockquote>
+<p>oauth 2.0 rfc<br>rfc: 인터넷 관련된 표준안</p>
+</blockquote>
+<p>위의 문서에서 Oauth-&gt;refresh token 항목을 참고하자.</p>
+<p>보통 accessToken을 발급할 때 refresh token도 발급 받는 경우가 많다.<br>만료 됐을 때 refresh token을 보내면서 accessToken을 다시 발급 받는다. 이때 refresh token을 같이 다시 발급 받는 경우도 있다.</p>
+<p>리소스 서버마다 refreshing 방법이 다르기 때문에 메뉴얼을 참고해야한다.</p>
+<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>Federated Identity : Login with Google과 같은 기술. OAuth를 사용한다.</p>
+<br>
+
+<blockquote>
+<p>출처: <a href="https://opentutorials.org/course/3405" target="_blank" rel="noopener">생활코딩 - OAuth</a></p>
+</blockquote>
+<br>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +298,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/" data-id="ck1woi0ic000ta56kx4inpahh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +368,23 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "WEB - OAuth2.0",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "OAuth2 생활코딩 Web Authrization",
+        "genre": "Web",
+        "datePublished": "2018-09-20",
+        "dateCreated": "2018-09-20",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/",
+        "description": "OAuth2.0 인증 시스템의 원리
+OAuth2OAuth에는 세 개의 참여자가 등장한다.
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+mine : 내 서비스
+User : 1의 사용자
+Thier : 연동하려는 서비스
+
+(1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사"
+        "wordCount": 587
     }
 </script>
 
@@ -278,6 +395,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +435,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/21/Web-2018-09-21-WEB-HTTP/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            WEB - HTTP
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/09/11/Server-Spring-2018-09-11-CLI에서-git-pull-clone-후-STS에서-프로젝트-import-하기/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">STS - CLI 환경에서 git pull/clone 후 STS에서 프로젝트 import 하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Netty Network Transport API | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Network,Netty">
+    
+    <meta name="description" content="Netty가 기본 제공하는 Network Transport API 구현과 사용법에 대해 알아보자. 실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 blocking 프로그래밍을 했다면 non-blocking으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가">
+<meta name="keywords" content="Network,Netty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty Network Transport API">
+<meta property="og:url" content="https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Netty가 기본 제공하는 Network Transport API 구현과 사용법에 대해 알아보자. 실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 blocking 프로그래밍을 했다면 non-blocking으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://kodakyung.github.io/images/2018-05-22/01.png">
+<meta property="og:updated_time" content="2019-07-19T09:43:34.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Netty Network Transport API">
+<meta name="twitter:description" content="Netty가 기본 제공하는 Network Transport API 구현과 사용법에 대해 알아보자. 실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 blocking 프로그래밍을 했다면 non-blocking으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가">
+<meta name="twitter:image" content="https://kodakyung.github.io/images/2018-05-22/01.png">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/05/22/server-netty-2018-05-22-netty-network-transport-api/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/server/netty/">Netty</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Server-Netty-2018-05-22-Netty-Network-Transport-API" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Netty Network Transport API
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/" class="article-date">
+            <time datetime="2018-05-21T15:00:00.000Z" itemprop="datePublished">2018-05-22</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/netty/">Netty</a>, <a class="tag-link" href="/tags/network/">Network</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Netty가 기본 제공하는 <code>Network Transport API</code> 구현과 사용법에 대해 알아보자.</p>
+<p>실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 <code>blocking</code> 프로그래밍을 했다면 <code>non-blocking</code>으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가 있어서 변경이 쉽지 않았다. 반면에 네티는 공통 API를 사용하기 때문에 변환이 훨씬 간단하다.  </p>
+<br>
+
+<h2 id="Netty-OIO-블로킹-전송"><a href="#Netty-OIO-블로킹-전송" class="headerlink" title="Netty OIO 블로킹 전송"></a>Netty OIO 블로킹 전송</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OioServer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">server</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ByteBuf buf = Unpooled.unreleasableBuffer(</span><br><span class="line">      Unpooled.copiedBuffer(<span class="string">"Hi!\r\n"</span>,</span><br><span class="line">      Charset.forName(<span class="string">"UTF-8"</span>)));</span><br><span class="line">    EventLoopGroup group = <span class="keyword">new</span> OioEventLoopGroup();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      ServerBootstrap b = <span class="keyword">new</span> ServerBootstrap();</span><br><span class="line">      <span class="comment">// ServerBootstrap 생성</span></span><br><span class="line">      b.group(group).channel(OioServerSocketChannel.class)</span><br><span class="line">      <span class="comment">// OioEventLoopGroup을 이용해 블로킹 모드를 허용함(OIO)</span></span><br><span class="line">        .localAddress(<span class="keyword">new</span> InetSocketAddress(port))</span><br><span class="line">        .childHandler(<span class="keyword">new</span> ChannelInitializer&lt;SocketChannel&gt;() &#123;</span><br><span class="line">          <span class="comment">// 연결이 수락될 때마다 호출 ChannelIntializer를 지정</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            ch.pipeline().addLast(<span class="keyword">new</span> ChannelInboundHandlerAdapter() &#123;</span><br><span class="line">              <span class="comment">// 이벤트를 가로채고 처리할 ChannelInboundHandlerAdapter를 추가</span></span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelActive</span><span class="params">(ChannelHandlerContext ctx)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">              </span>&#123;</span><br><span class="line">                ctx.writeAndFlush(buf.duplicate())</span><br><span class="line">                  .addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">                <span class="comment">// 클라이언트로 메세지를 출력하고 ChannelFutureListener를 추가해</span></span><br><span class="line">                <span class="comment">// 메세지가 출력되면 연결을 닫음</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      ChannelFuture f = b.bind().sync();</span><br><span class="line">      <span class="comment">// 서버를 바인딩해 연결을 수락</span></span><br><span class="line">      f.channel().closeFuture().sync();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      group.shutdownGracefully().sync();</span><br><span class="line">        <span class="comment">// 모든 리소스를 해제</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://kodakyung.github.io/2018/05/11/old-post-Netty-2018-05-11-Maven%EC%9C%BC%EB%A1%9C-Netty-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">이전 게시글</a>의 <code>start()</code> 메소드 부분이다.</p>
+<br>
+
+<h2 id="Netty-NIO-비동기-전송"><a href="#Netty-NIO-비동기-전송" class="headerlink" title="Netty NIO 비동기 전송"></a>Netty NIO 비동기 전송</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NioServer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">server</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ByteBuf buf = Unpooled.copiedBuffer(<span class="string">"Hi!\r\n"</span>, Charset.forName(<span class="string">"UTF-8"</span>));</span><br><span class="line">    EventLoopGroup group = <span class="keyword">new</span> NioEventLoopGroup();</span><br><span class="line">    <span class="comment">// 논블로킹 모드를 위해 NioEventLoopGroup을 사용</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      ServerBootstrap b = <span class="keyword">new</span> ServerBootstrap();</span><br><span class="line">      <span class="comment">// ServerBootstrap 생성</span></span><br><span class="line">      b.group(group).channel(NioServerSocketChannel.class)</span><br><span class="line">        .localAddress(<span class="keyword">new</span> InetSocketAddress(port))</span><br><span class="line">        .childHandler(<span class="keyword">new</span> ChannelInitializer&lt;SocketChannel&gt;() &#123;</span><br><span class="line">          <span class="comment">// 연결이 수락될 때마다 호출 ChannelIntializer를 지정</span></span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            ch.pipeline().addLast(<span class="keyword">new</span> ChannelInboundHandlerAdapter() &#123;</span><br><span class="line">              <span class="comment">// 이벤트를 가로채고 처리할 ChannelInboundHandlerAdapter를 추가</span></span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelActive</span><span class="params">(ChannelHandlerContext ctx)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">              </span>&#123;</span><br><span class="line">                ctx.writeAndFlush(buf.duplicate())</span><br><span class="line">                  .addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">                <span class="comment">// 클라이언트로 메세지를 출력하고 ChannelFutureListener를 추가해</span></span><br><span class="line">                <span class="comment">// 메세지가 출력되면 연결을 닫음</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      ChannelFuture f = b.bind().sync();</span><br><span class="line">      <span class="comment">// 서버를 바인딩해 연결을 수락</span></span><br><span class="line">      f.channel().closeFuture().sync();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      group.shutdownGracefully().sync();</span><br><span class="line">        <span class="comment">// 모든 리소스를 해제</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EventLoopGroup group = <span class="keyword">new</span> NioEventLoopGroup();</span><br><span class="line">...</span><br><span class="line">b.group(group).channel(NioServerSocketChannel.class) ...</span><br></pre></td></tr></table></figure>
+
+<p>위 두줄을 제외하면 NioServer는 OioServer와 흡사하다. Netty는 어떤 방식을 선택해도 모든 Network Transport의 구현에 동일한 API를 사용하므로 전송 형식을 변경해도 코드는 거의 영향을 받지 않는다. <em>즉, 모든 구현이 <code>Channel</code>, <code>ChannelPipeline</code>, <code>ChannelHandler</code> 인터페이스 기준으로 정의된다.</em></p>
+<br>
+
+<h2 id="Network-Transport-API"><a href="#Network-Transport-API" class="headerlink" title="Network Transport API"></a>Network Transport API</h2><ul>
+<li><code>Channel</code> 인터페이스는 모든 입출력 작업에 이용되는 전송 API의 핵심이다.</li>
+<li>Channel은 <code>Network Socket</code> 또는 <code>read</code>, <code>write</code>, <code>connect</code>, <code>bind</code>와 같은 I/O 작업에 대한 연결고리이다.</li>
+</ul>
+<img width="619" alt="Interface Channel1" src="/images/2018-05-22/01.png">
+
+<p>Channel 인터페이스는 <code>AttributeMap</code>과 <code>java.lang.Comparable</code>을 SuperInterface로 둔다. 그리고 하위 인터페이스로 <code>ServerChannel</code>, <code>AbstractChannel</code> 등이 있다. 이는 Channel의 고유한 정렬 순서를 보장하기 위해서이며, AbstractChannel의 <code>compareTo()</code> 메소드로 두 Channel 인스턴스를 비교할 수 있다.</p>
+<img width="612" alt="Interface Channel2" src="/images/2018-05-22/02.png">
+
+<p>Channel 인터페이스는 채널의 현재 상태, 채널의 구성 파라미터(<code>ChannelConfig</code>), 채널이 지원하는 I/O작업, I/O 이벤트 및 요청을 처리하는 <code>ChannelPipeline</code>을 제공한다. (<em>자세한 내용은 <a href="http://netty.io/4.0/api/io/netty/channel/Channel.html" target="_blank" rel="noopener">이 곳</a> 참고</em>)</p>
+<p><code>ChannelPipeline</code>은 인바운드와 아웃바운드 데이터와 이벤트에 적용될 <code>ChannelHandler</code> 인스턴스를 포함한다. 이런 <code>ChannelHandler</code>는 애플리케이션의 상태 변경과 데이터 처리를 담당한다.</p>
+<ul>
+<li><strong>ChannelHandler의 일반적인 용도</strong><ul>
+<li>데이터를 다른 포맷으로 변환</li>
+<li>예외 알림 제공</li>
+<li>Channel의 활성화 또는 비활성화에 대한 알림 제공</li>
+<li>Channel을 EventLoop에 등록/해제할 때 알림 제공</li>
+<li>사용자 정의 이벤트에 대해 알림 제공</li>
+</ul>
+</li>
+</ul>
+<p><code>Pipeline</code>은 유닉스 파이프와 같이 <code>Intercepting Filter</code> 구조이며, 여러 명령이 체인으로 연결되고 한 명령의 출력이 다음 명령의 입력이 된다.</p>
+<br>
+
+<h2 id="Channel의-메소드"><a href="#Channel의-메소드" class="headerlink" title="Channel의 메소드"></a>Channel의 메소드</h2><table>
+<thead>
+<tr>
+<th>이름</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventLoop</td>
+<td>Channel에 할당된 EventLoop를 반환</td>
+</tr>
+<tr>
+<td>pipeline</td>
+<td>Channel에 할당된 ChannelPipeline을 반환</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td>Channel이 활성 상태일 때 true 반환. 활성의 의미는 기본 전송에 따라 달라진다. 예를 들어 Socket은 원격 피어로 연결되면 활성 상태지만, Datagram 전송은 열리면 활성 상태다.</td>
+</tr>
+<tr>
+<td>localAddress</td>
+<td>로컬 SocketAddress를 반환</td>
+</tr>
+<tr>
+<td>remoteAddress</td>
+<td>원격 SocketAddress를 반환</td>
+</tr>
+<tr>
+<td>write</td>
+<td>데이터를 원격 피어로 출력. 이 때 데이터는 ChannelPipeline으로 전달되고, flush 되기 전까지 큐에 저장된다.</td>
+</tr>
+<tr>
+<td>flush</td>
+<td>기반 전송으로 이전에 출력된 데이터를 flush 한다.</td>
+</tr>
+<tr>
+<td>writeAndFlush</td>
+<td>write()와 flush()를 모두 호출</td>
+</tr>
+</tbody></table>
+<p>Netty가 제공하는 기능들은 소수의 인터페이스를 통해 사용이 가능하기 때문에 코드를 전반적으로 리팩토링하지 않아도 애플리케이션 리팩토링을 쉽게 할 수 있다.</p>
+<br>
+
+<h2 id="네티가-제공하는-전송"><a href="#네티가-제공하는-전송" class="headerlink" title="네티가 제공하는 전송"></a>네티가 제공하는 전송</h2><p>Netty는 바로 사용할 수 있는 여러 전송을 기본적으로 제공하는데, 이런 전송이 모든 프로토콜을 지원하는 것은 아니다. 따라서 <strong>애플리케이션에서 이용하는 프로토콜과 호환되는 전송을 선택</strong>해야한다.</p>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>패키지</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NIO</td>
+<td>io.netty.channel.socket.io</td>
+<td>java.nio.channels 패키지를 기반으로 이용(셀렉터 기반 방식)</td>
+</tr>
+<tr>
+<td>Epoll</td>
+<td>io.netty.channel.epoll</td>
+<td>epoll()과 논블로킹 입출력을 위해 JNI를 이용함. 이 전송은 SO_REUSEPORT와 마찬가지로 리눅스에서만 이용 가능하며, NIO 전송보다 빠르고 완전한 논블로킹.</td>
+</tr>
+<tr>
+<td>OIO</td>
+<td>io.netty.channel.socket.oio</td>
+<td>java.net 패키지를 기반으로 이용(블로킹 스트림 이용)</td>
+</tr>
+<tr>
+<td>로컬(Local)</td>
+<td>io.netty.channel.local</td>
+<td>VM에서 파이프를 통해 통신하는데 이용되는 로컬 전송</td>
+</tr>
+<tr>
+<td>임베디드(Embedded)</td>
+<td>io.netty.channel.embedded</td>
+<td>실제 네트워크 전송 없이 ChannelHandler를 이용할 수 있게 해주는 임베디드 전송. ChannelHandler 구현을 테스트하는데 유용하다.</td>
+</tr>
+</tbody></table>
+<h3 id="NIO-논블로킹-입출력"><a href="#NIO-논블로킹-입출력" class="headerlink" title="NIO 논블로킹 입출력"></a>NIO 논블로킹 입출력</h3><p>NIO는 모든 입출력 작업에서 완전한 비동기 구현을 제공한다. Netty의 NIO는 JDK의 Selector 기반 API를 사용한다.</p>
+<p><code>Selector</code>는 아래와 같은 Channel의 상태가 변경되면 알림을 받을 수 있는 역할을 한다.</p>
+<ul>
+<li>새로운 Channel이 수락되고 준비됨</li>
+<li>Channel 연결이 완료됨</li>
+<li>Channel에 읽을 데이터가 있음</li>
+<li>Channel을 이용해 데이터를 기록할 수 있음</li>
+</ul>
+<p><code>java.nio.channels.SelectionKey</code> 클래스에 정의된 상수 패턴으로 애플리케이션의 상태 변경을 지정할 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OP_ACCEPT</td>
+<td>새로운 연결이 수락되고 Channel이 생성되면 알림</td>
+</tr>
+<tr>
+<td>OP_CONNECT</td>
+<td>연결되면 알림</td>
+</tr>
+<tr>
+<td>OP_READ</td>
+<td>Channel에서 데이터를 읽을 수 있으면 알림</td>
+</tr>
+<tr>
+<td>OP_WRITE</td>
+<td>Channel로 데이터를 기록할 수 있으면 알림. 소켓 버퍼가 완전히 차는 상황을 처리한다. 이런 상황은 원격 피어의 능력보다 데이터가 더 자주 전송될 때 흔히 발생함</td>
+</tr>
+</tbody></table>
+<p><strong>NIO의 내부 흐름은 아래와 같다.</strong></p>
+<ol>
+<li>새로운 채널을 셀렉터에 등록</li>
+<li>셀렉터가 상태 변경을 알림(등록)</li>
+<li>셀렉터에는 이전에 등록한 채널들이 존재함</li>
+<li>상태 변경이 수신되거나 제한 시간이 경과할 때까지 <code>Selector.select()</code>가 차단</li>
+<li>상태 변경이 있는지 검사</li>
+<li>상태 변경이 있으면 모든 상태 변경을 처리</li>
+<li>(5)에서 상태 변경이 없거나 (6)이 완료된 후<br>셀렉터가 실행되는 동일한 스레드에서 다른 작업을 실행</li>
+</ol>
+<p>이러한 과정은 Netty의 사용자 수준 API에 숨겨진다.</p>
+<h3 id="Epoll-리눅스용-네이티브-논블로킹-전송"><a href="#Epoll-리눅스용-네이티브-논블로킹-전송" class="headerlink" title="Epoll 리눅스용 네이티브 논블로킹 전송"></a>Epoll 리눅스용 네이티브 논블로킹 전송</h3><p>고성능 네트워킹 플랫폼으로써 성능 향상을 위해 리눅스 기반의 Epoll API가 발전하였다. 고부하 조건에서 JDK의 NIO구현보다 성능이 훨씬 우수하다. 사용법은 NIO 대신 epoll로 바꾸면 된다.</p>
+<ul>
+<li>제로 카피(Zero-copy)  </li>
+</ul>
+<blockquote>
+<p>제로 카피는 NIO와 Epoll 전송에서만 이용가능한 기능이다. 파일 시스템의 데이터를 커널 공간에서 사용자 공간으로 복사하는 과정을 생략해 빠르고 효과적으로 네트워크로 이동할 수 있게 해준다. 모든 운영체제에서 이 기능을 지원하는 것은 아니다.</p>
+</blockquote>
+<h3 id="OIO-기존-블로킹-입출력"><a href="#OIO-기존-블로킹-입출력" class="headerlink" title="OIO 기존 블로킹 입출력"></a>OIO 기존 블로킹 입출력</h3><p>Netty의 OIO는 <code>java.net</code>의 블로킹 구현에 기반을 두어서 비동기 방식은 아니지만 블로킹 방식의 레거시 코드를 이식해야하는 경우 쓰인다. 우선 Netty의 OIO 전송을 이용하고 다음에 NIO 전송으로 바꿀 수 있다.</p>
+<br>
+
+<h2 id="로컬-전송"><a href="#로컬-전송" class="headerlink" title="로컬 전송"></a>로컬 전송</h2><p>Netty는 동일한 JVM 내에서 실행되는 클라이언트와 서버간 비동기 통신을 위한 로컬 전송을 제공한다.<br>이 전송에서 <code>서버 Channel</code>과 연결되는 <code>SocketAddress</code>는 실제 네트워크 주소에 바인딩되지 않고 서버가 실행되는 동안 레지스트리에 저장되고, Channel이 닫히면 레지스트리에서 등록이 해제된다.</p>
+<br>
+
+<h2 id="임베디드-전송-ChannelHandler-테스트"><a href="#임베디드-전송-ChannelHandler-테스트" class="headerlink" title="임베디드 전송(ChannelHandler 테스트)"></a>임베디드 전송(ChannelHandler 테스트)</h2><p>Netty는 <code>ChannelHandler</code>를 다른 ChannelHandler 안에 도우미 클래스로 넣을 수 있는 임베디드 전송을 제공한다. 이 방식을 이용하면 내부 코드를 수정하지 않고 ChannelHandler의 기능을 확장할 수 있다. 이 기능을 통해 단위 테스트를 진행할 수 있다.</p>
+<br>
+
+<hr>
+<h3 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h3><ul>
+<li><a href="https://homoefficio.github.io/2016/08/06/Java-NIO는-생각만큼-non-blocking-하지-않다/" target="_blank" rel="noopener">Java NIO는 생각만큼 non-blocking 하지 않다</a></li>
+<li><a href="http://jakarta.tistory.com/91" target="_blank" rel="noopener">왜 Java NIO는 사용하기 힘든가?</a></li>
+</ul>
+<br>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/" data-id="ck1woi0oo00ala56kmzj6oe55" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Netty Network Transport API",
+        "image": "https://kodakyung.github.io/images/2018-05-22/01.png",
+        "keywords": "Network Netty",
+        "genre": "Server Netty",
+        "datePublished": "2018-05-22",
+        "dateCreated": "2018-05-22",
+        "dateModified": "2019-07-19",
+        "url": "https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/",
+        "description": "Netty가 기본 제공하는 Network Transport API 구현과 사용법에 대해 알아보자.
+실제 네트워크 프로그래밍을 하다보면 예상보다 많은 동시 접속을 지원해야하는데, 이때 blocking 프로그래밍을 했다면 non-blocking으로 바꿔야하는 상황이 생긴다. 기존 자바를 이용한 네트워크 프로그래밍은 블로킹 전송과 논블로킹 전송의 API 차이가 "
+        "wordCount": 1784
+    }
+</script>
+
+</article>
+<!-- 
+    <section id="comments">
+    
+    </section>
+ -->
+
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/05/23/Server-Netty-2018-05-23-Netty의-데이터-컨테이너-ByteBuf/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Netty의 데이터 컨테이너(ByteBuf)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/21/Server-Netty-2018-05-21-Netty-컴포넌트-Component/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Netty 컴포넌트(Component)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a></p>
+                            <p class="item-title"><a href="/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/" class="title">데이터베이스의 성능 향상(feat. 인덱스)</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T17:56:01.000Z" itemprop="datePublished">2019-10-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch2-전환/" class="title">함수형 사고 - ch2 전환</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:54:04.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch1-왜/" class="title">함수형 사고 - ch1 왜?</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:26:14.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a></p>
+                            <p class="item-title"><a href="/2019/10/15/CS-DataBase-20191015-MySQL-트랜잭션과-동시성-제어/" class="title">MySQL 트랜잭션과 동시성 제어</a></p>
+                            <p class="item-date"><time datetime="2019-10-15T14:20:32.000Z" itemprop="datePublished">2019-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/think/">Think</a></p>
+                            <p class="item-title"><a href="/2019/09/26/Think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/" class="title">🐥병아리 개발자가 IT 정보를 얻는 방법들</a></p>
+                            <p class="item-date"><time datetime="2019-09-26T13:30:38.000Z" itemprop="datePublished">2019-09-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-thinking/" style="font-size: 11.11px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 10px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

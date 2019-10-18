@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Favor composition over inheritance | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 18 상속보다는 컴포지션을 사용하라    상속(extends)을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다.  특히 다른 패키지의 구체 클래스를 상속하는 것은 위험하다.    상속의 문제점 상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다. 위의">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Favor composition over inheritance">
+<meta property="og:url" content="https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 18 상속보다는 컴포지션을 사용하라    상속(extends)을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다.  특히 다른 패키지의 구체 클래스를 상속하는 것은 위험하다.    상속의 문제점 상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다. 위의">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Favor composition over inheritance">
+<meta name="twitter:description" content="Effective Java Item 18 상속보다는 컴포지션을 사용하라    상속(extends)을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다.  특히 다른 패키지의 구체 클래스를 상속하는 것은 위험하다.    상속의 문제점 상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다. 위의">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/01/13/programming-java-effectivejava-2019-01-13-java-favor-composition-over-inheritance/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,40 +153,103 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Favor composition over inheritance
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/" class="article-date">
+            <time datetime="2019-01-12T15:00:00.000Z" itemprop="datePublished">2019-01-13</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-18"><a href="#Effective-Java-Item-18" class="headerlink" title="Effective Java Item 18"></a>Effective Java Item 18</h2><blockquote>
+<p>상속보다는 컴포지션을 사용하라 </p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<ul>
+<li><code>상속(extends)</code>을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다. </li>
+<li>특히 다른 패키지의 <code>구체 클래스를 상속</code>하는 것은 위험하다.</li>
+</ul>
+<br>
 
+<h3 id="상속의-문제점"><a href="#상속의-문제점" class="headerlink" title="상속의 문제점"></a>상속의 문제점</h3><ul>
+<li>상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다.</li>
+<li>위의 이유로 상위 클래스만 수정한 경우에 수정하지 않은 다른 클래스들의 오동작 할 수 있다. </li>
+<li><strong>따라서 상속을 고려한 설계와 문서화가 필요하다(아이템 19)</strong></li>
+</ul>
+<br>
+
+<ul>
+<li>클래스 내에서 자신의 다른 부분을 사용하는 <code>자기사용(self-use)</code>은 클래스의 내부 구현 방식이다.</li>
+<li>이런 방식은 다음에 코드가 그대로 유지될 지 알 수 없다.</li>
+<li>따라서 이 방식에 의존한 상속은 위험하다. </li>
+</ul>
+<br>
+
+<ul>
+<li>구현하지 않고 상속 후 새 메소드만 추가하더라도 추후에 상위 클래스에 추가된 메소드와 겹치는 경우 문제가 발생할 수 있다. </li>
+</ul>
+<br>
+
+<h3 id="상속-문제를-해결하기-위한-컴포지션-Composition"><a href="#상속-문제를-해결하기-위한-컴포지션-Composition" class="headerlink" title="상속 문제를 해결하기 위한 컴포지션(Composition)"></a>상속 문제를 해결하기 위한 컴포지션(Composition)</h3><ul>
+<li><code>컴포지션(Composition)</code>은 기존 클래스를 extends 하는 대신 새로운 클래스를 만들고 <code>새 클래스의 private 필드</code>로 기존 클래스의 인스턴스를 참조하게 하는 <code>구조</code>이다.</li>
+<li>즉 새로운 클래스가 기존 클래스의 구성요소로 쓰인다.</li>
+</ul>
+<h3 id="전달-Forwarding-클래스-메소드"><a href="#전달-Forwarding-클래스-메소드" class="headerlink" title="전달(Forwarding) 클래스/메소드"></a>전달(Forwarding) 클래스/메소드</h3><ul>
+<li>새 클래스에서 기존 클래스에 해당하는 메소드를 호출해 결과를 반환한다.</li>
+<li>위의 방식은 해당 클래스의 내부 구현 방식의 영향에서 벗어날 수 있다.</li>
+<li>이런 <code>방식</code>을 <code>전달(forwarding)</code>이라 하며 이런 메소드들을 <code>전달 메소드(forwarding method)</code>라 한다. </li>
+</ul>
+<h3 id="래퍼-클래스-Wrapper-Class"><a href="#래퍼-클래스-Wrapper-Class" class="headerlink" title="래퍼 클래스(Wrapper Class)"></a>래퍼 클래스(Wrapper Class)</h3><ul>
+<li>구현하려하는 클래스의 전달 클래스를 작성한 뒤 <code>extends</code>해서 새로운 기능을 덧씌울 수 있다.</li>
+<li>이때 이런 클래스를 다른 인스턴스를 감싸고 있다는 의미에서 래퍼 클래스라고 한다.</li>
+<li>또한 새로운 기능을 덧씌우기 때문에 <code>데코레이터 패턴(Decorator pattern)</code>이라고도 한다.</li>
+<li>컴포지션과 전달을 함께 쓰고, 래퍼 객체가 내부 객체에 자신의 참조를 넘기는 경우를 <code>위임(delegation)</code>이라고도 한다.</li>
+<li>래퍼 클래스는 콜백 프레임워크에서 주의해야한다. </li>
+</ul>
+<br>
+
+<ul>
+<li>A 클래스를 B 클래스가 상속하기 전에, B가 정말 A가 아니라면(is-a) 상속하면 안된다.</li>
+<li>즉 A 클래스는 B의 구성요소가 아니라 구현 방법 중 하나 인 것.</li>
+</ul>
+<br>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/" data-id="ck1woi0pm00cia56kzkl8ijih" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +319,27 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Favor composition over inheritance",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-01-13",
+        "dateCreated": "2019-01-13",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/",
+        "description": "Effective Java Item 18
+상속보다는 컴포지션을 사용하라 
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+
+상속(extends)을 목적으로 설계되고, 문서화가 잘 된 클래스가 아니라면 상속하지 않는 것이 좋다. 
+특히 다른 패키지의 구체 클래스를 상속하는 것은 위험하다.
+
+
+
+상속의 문제점
+상속은 상위 클래스의 구현에 따라 하위 클래스의 동작이 결정되기 때문에 캡슐화를 깨뜨린다.
+위의 "
+        "wordCount": 260
     }
 </script>
 
@@ -278,6 +350,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +390,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/01/17/Programming-Java-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Design interfaces for posterity
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Prefer interfaces to abstract classes</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         

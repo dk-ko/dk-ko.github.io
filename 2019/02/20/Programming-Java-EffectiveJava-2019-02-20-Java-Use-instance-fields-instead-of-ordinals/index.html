@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | Jade&#39;s Blog</title>
+    <title>Java - Use instance fields instead of ordinals | Jade&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://kodakyung.github.io/About/index.html">
-<meta property="og:site_name" content="Jade&#39;s Blog">
-<meta property="og:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T18:34:19.733Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.  More InformationPrevious Blog Contact mekdkyung57@gmail.com">
+        <meta name="keywords" content="Effective Java,Java">
     
-    <link rel="canonical" href="https://kodakyung.github.io/about/">
+    <meta name="description" content="Effective Java Item 35 ordinal 메서드 대신 인스턴스 필드를 사용하라     ordinal method enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다.  enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다.   ordinal 대신 인스턴스">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Use instance fields instead of ordinals">
+<meta property="og:url" content="https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java Item 35 ordinal 메서드 대신 인스턴스 필드를 사용하라     ordinal method enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다.  enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다.   ordinal 대신 인스턴스">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Use instance fields instead of ordinals">
+<meta name="twitter:description" content="Effective Java Item 35 ordinal 메서드 대신 인스턴스 필드를 사용하라     ordinal method enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다.  enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다.   ordinal 대신 인스턴스">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2019/02/20/programming-java-effectivejava-2019-02-20-java-use-instance-fields-instead-of-ordinals/">
 
     
         <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
@@ -150,32 +153,59 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/About/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Java - Use instance fields instead of ordinals
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/" class="article-date">
+            <time datetime="2019-02-19T15:00:00.000Z" itemprop="datePublished">2019-02-20</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>I’m a student majoring in Software Engineering.<br>This blog is the place to record daily discoveries.</p>
+            <h2 id="Effective-Java-Item-35"><a href="#Effective-Java-Item-35" class="headerlink" title="Effective Java Item 35"></a>Effective Java Item 35</h2><blockquote>
+<p>ordinal 메서드 대신 인스턴스 필드를 사용하라 </p>
 </blockquote>
-<h3 id="More-Information"><a href="#More-Information" class="headerlink" title="More Information"></a>More Information</h3><p><a href="https://cokk.tistory.com" target="_blank" rel="noopener">Previous Blog</a></p>
-<h3 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h3><p><a href="mailto:kdkyung57@gmail.com" target="_blank" rel="noopener">kdkyung57@gmail.com</a></p>
+<br>
+
+<h2 id="ordinal-method"><a href="#ordinal-method" class="headerlink" title="ordinal method"></a>ordinal method</h2><ul>
+<li>enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다. </li>
+<li>enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다. </li>
+</ul>
+<h2 id="ordinal-대신-인스턴스-필드에-저장"><a href="#ordinal-대신-인스턴스-필드에-저장" class="headerlink" title="ordinal 대신 인스턴스 필드에 저장"></a>ordinal 대신 인스턴스 필드에 저장</h2><ul>
+<li>따라서 ordinal 대신 열거 타입 상수에 연결된 값은 인스턴스 필드에 저장하는 것이 좋다. </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Ensemble &#123;</span><br><span class="line">    SOLO(<span class="number">1</span>), DUET(<span class="number">2</span>), TRIO(<span class="number">3</span>), QUARTET(<span class="number">4</span>), QUINTET(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> numberOfMusicians; </span><br><span class="line">    Ensemble(<span class="keyword">int</span> size) &#123; <span class="keyword">this</span>.numverOfMusicials = size; &#125;</span><br><span class="line">    <span class="comment">// 생성자에서 인스턴스 필드에 초기화 한다.</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfMusicians</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> numberOfMusicians;&#125;</span><br><span class="line">    <span class="comment">// 메소드에서 인스턴스 필드에 저장된 값은 반환한다. </span></span><br><span class="line">    <span class="comment">// ordinal 메소드를 사용하지 않는다. </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         <footer class="article-footer">
@@ -183,7 +213,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/About/index.html" data-id="ck1woi0gl0000a56kazhkaop9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/" data-id="ck1woi0py00d0a56kx3szty2b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -253,21 +283,25 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Dakyung Ko"
         },
-        "headline": "About Me",
+        "headline": "Java - Use instance fields instead of ordinals",
         "image": "https://kodakyung.github.io",
-        
-        
-        "datePublished": "2019-07-12",
-        "dateCreated": "2019-07-12",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2019-02-20",
+        "dateCreated": "2019-02-20",
         "dateModified": "2019-08-26",
-        "url": "https://kodakyung.github.io/About/index.html",
-        "description": "
-I’m a student majoring in Software Engineering.This blog is the place to record daily discoveries.
+        "url": "https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/",
+        "description": "Effective Java Item 35
+ordinal 메서드 대신 인스턴스 필드를 사용하라 
 
-More InformationPrevious Blog
-Contact mekdkyung57@gmail.com
-"
-        "wordCount": 34
+
+
+ordinal method
+enum 타입에 제공되는 메소드로 열거 타입에서 몇번째 위치인지를 반환한다. 
+enum 타입과 연결된 정수가 필요할 때 이 메소드를 사용한다면 코드도 직관적이지 않고 쓰이지 않는 값도 많아질 것이다. 
+
+ordinal 대신 인스턴스"
+        "wordCount": 188
     }
 </script>
 
@@ -278,6 +312,19 @@ Contact mekdkyung57@gmail.com
     </section>
  -->
 
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
 
                         </div>
                     </section>
@@ -305,6 +352,29 @@ Contact mekdkyung57@gmail.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - Prefer method references to lambdas
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - Use bounded wildcards to increase API flexibility</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
