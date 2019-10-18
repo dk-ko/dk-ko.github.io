@@ -8,29 +8,29 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/categories/Programming/Common/</loc>
-        <lastmod>2019-10-16T13:15:57.842Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/Programming/</loc>
-        <lastmod>2019-10-16T13:15:57.842Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/categories/CS/DataBase/</loc>
-        <lastmod>2019-10-15T15:06:43.284Z</lastmod>
+        <lastmod>2019-10-16T18:20:42.495Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://kodakyung.github.io/categories/CS/</loc>
-        <lastmod>2019-10-15T15:06:43.284Z</lastmod>
+        <lastmod>2019-10-16T18:20:42.495Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/categories/Programming/Common/</loc>
+        <lastmod>2019-10-16T13:35:22.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/categories/Programming/</loc>
+        <lastmod>2019-10-16T13:35:22.188Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
