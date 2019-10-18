@@ -10,10 +10,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="SpringBoot,Troubleshooting,ReactJS,OAuth2">
+        <meta name="keywords" content="SpringBoot,ReactJS,OAuth2,Troubleshooting">
     
     <meta name="description" content="SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발">
-<meta name="keywords" content="SpringBoot,Troubleshooting,ReactJS,OAuth2">
+<meta name="keywords" content="SpringBoot,ReactJS,OAuth2,Troubleshooting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제">
 <meta property="og:url" content="https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/index.html">
@@ -21,7 +21,7 @@
 <meta property="og:description" content="SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://kodakyung.github.io/images/2019-06-16/auth_code_flow.png">
-<meta property="og:updated_time" content="2019-07-20T13:49:59.730Z">
+<meta property="og:updated_time" content="2019-10-18T15:20:14.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제">
 <meta name="twitter:description" content="SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발">
@@ -246,9 +246,9 @@ ga('send', 'pageview');
 <p>이쯤 되니 혹시 배포 서버에 설정한 <code>Reverse Proxy Server</code>의 <code>Nginx</code> 설정이 문제일까 의심이 들어서 설정을 몇개 수정해보았지만 감이 잡히지 않았다. (<a href="http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/" target="_blank" rel="noopener">Avoid cors with nginx proxy pass 참고</a>) (Nginx 설정은 지정한 도메인으로 http나 https 요청이 들어오면 https를 가리키도록 하는 것이 다였다.)</p>
 <p>아무리 생각해도 코드 레벨에서 서버에서 할 수 있는 모든 설정을 다 한 것 같았다. 처음 <code>get</code>으로 login uri를 호출할 때는 Server 기준에서 호출하는데 이후 302 코드를 받고 자동으로 다시 리다이렉트 uri를 호출하는 과정에 Front 기준으로 호출해서 이런 에러가 발생한 것 같았다.</p>
 <p>이후 찾아본 <a href="https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error" target="_blank" rel="noopener">StackOverFlow 링크</a>에서 힌트를 얻었다.</p>
-<p>3xx의 상태코드를 받으면 브라우저가 자동으로 클라이언트를 대신해 반환된 위치로 <code>get</code> 요청을 보내는데 이를 Front에서 캐치해서 수동으로 redirection을 하라는 답변이었다.<br>여기에 힌트를 얻어서 Front에서 <code>window.locaion</code>으로 새창을 띄워 login api를 호출하니 자동으로 redirect되며 문제가 해결되었다. 새로 띄운 창에서는 Front 코드의 영향을 받지 않아서 Server의 설정대로 잘 동작을 한 것 같다.</p>
-<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>이번 프로젝트로 <code>CORS</code>의 동작방식과 <code>OPTIONS</code> 메소드와 <code>preflight</code>에 대해 많이 알게되었다. 지금 해결한 방식이 완벽한 해결방식은 아니고 우회한 방법에 가깝다고 생각하지만 현재로써는 이 이상 해결하긴 어려울 것 같다. 그리고 아예 MSA로 분리하면 분리했지 애매하게 붙여서 배포하는 것이 에러가 발생했을 때 더 확인하기 어렵다는 것을 알았다. Front와 Server를 분리해서 개발하면서 배포는 함께 하니까 이렇게 <em>배포했을 때 어느 부분에서 에러가 발생했는지 조차 모르는 경우 에러를 추적하기가 어려웠다.</em>   </p>
-<p>프로젝트를 하면서 느낀 것은 개발자가 본인의 API가 postman 등 테스트 도구를 이용해 API 동작이 정상적으로 되는 것을 확인하여도 <em>내가 개발한 API가 잘못되었을 수 있다는 생각을 갖는게 중요하다는 점이었다.</em> 만약 나 또는 상대 개발자가 서로 자신의 코드가 잘못되었을 수 있다는 가정을 하지 않았다면 이 문제를 해결하는데 더 오래걸렸을 것이다. 이전 프로젝트에서도 자신의 코드가 무조건 옳다고 주장한 경우가 있어서 상대방의 코드를 전부 뜯어보느라 해결하는데 오래 걸린 경우가 있었다.<br>알고있는 분야가 서로 다르므로 서로 열린 마음으로 자신이 아는 부분, 고민하는 부분을 함께 교류하고 소통해야한다고 생각한다. 그리고 그렇게해서 이 문제를 해결할 수 있었던 것 같다. 개발자로써 좀 더 상대방과 소통할 수 있는 개발자가 되어야겠다는 생각이 든다. </p>
+<p>3xx의 상태코드를 받으면 브라우저가 자동으로 클라이언트를 대신해 반환된 위치로 <code>get</code> 요청을 보내는데 이를 Front에서 캐치해서 수동으로 redirection을 하라는 답변이었다.<br>여기에 힌트를 얻어서 Front에서 <code>window.locaion</code>으로 새창을 띄워 login api를 호출하니 자동으로 redirect되며 문제가 해결되었다. 새로 띄운 창에서는 Front 코드의 영향을 받지 않아서 Server의 설정대로 잘 동작을 한 것 같다. </p>
+<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>이번 프로젝트로 <code>CORS</code>의 동작방식과 <code>OPTIONS</code> 메소드와 <code>preflight</code>에 대해 많이 알게되었다. <del>지금 해결한 방식이 완벽한 해결방식은 아니고 우회한 방법에 가깝다고 생각하지만 현재로써는 이 이상 해결하긴 어려울 것 같다.</del> (2019.9 - CORS로 시작했지만 결과적으로 <strong>인증</strong>의 문제였던 것 같다.) 그리고 아예 MSA로 분리하면 분리했지 애매하게 붙여서 배포하는 것이 에러가 발생했을 때 더 확인하기 어렵다는 것을 알았다. Front와 Server를 분리해서 개발하면서 배포는 함께 하니까 이렇게 <em>배포했을 때 어느 부분에서 에러가 발생했는지 조차 모르는 경우 에러를 추적하기가 어려웠다.</em>   </p>
+<p>팀원과 함께 오류를 찾으며 느낀 것은 <em>내가 개발한/맡은 부분이 잘못되었을 수 있다는 생각을 갖는게 중요하다는 점이었다.</em> 만약 나 또는 상대 개발자가 서로 자신의 코드가 잘못되었을 수 있다는 가정을 하지 않았다면 이 문제를 해결하는데 더 오래걸렸을 것 같다. 이전 프로젝트에서도 자신의 코드가 무조건 옳다고 주장해서 팀원의 코드를 전부 뜯어보느라 해결하는데 오래 걸린 경우가 있었다.<br>알고있는 분야가 서로 다르므로 서로 열린 마음으로 자신이 아는 부분, 고민하는 부분을 함께 교류하고 소통해야한다고 생각한다. 그리고 그렇게해서 이 문제를 해결할 수 있었던 것 같다. 개발자로써 좀 더 상대방과 소통할 수 있는 개발자가 되어야겠다는 생각이 든다. </p>
 <h3 id="참고한-링크들"><a href="#참고한-링크들" class="headerlink" title="참고한 링크들"></a>참고한 링크들</h3><ul>
 <li><a href="https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/" target="_blank" rel="noopener">https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/</a></li>
 <li><a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" target="_blank" rel="noopener">https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/</a></li>
@@ -265,7 +265,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/" data-id="ck1w8q69y000zvj6kxhjwm83w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/" data-id="ck1wa5xnm000njb6ksik38ku4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -337,14 +337,14 @@ ga('send', 'pageview');
         },
         "headline": "SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제",
         "image": "https://kodakyung.github.io/images/2019-06-16/auth_code_flow.png",
-        "keywords": "SpringBoot Troubleshooting ReactJS OAuth2",
+        "keywords": "SpringBoot ReactJS OAuth2 Troubleshooting",
         "genre": "Troubleshooting",
         "datePublished": "2019-06-16",
         "dateCreated": "2019-06-16",
-        "dateModified": "2019-07-20",
+        "dateModified": "2019-10-19",
         "url": "https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/",
         "description": "SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발"
-        "wordCount": 1039
+        "wordCount": 1036
     }
 </script>
 

@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/tags/OAuth2/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/tags/ReactJS/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
+        <lastmod>2019-10-18T15:20:14.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/tags/MySQL/</loc>
         <lastmod>2019-10-16T18:20:42.495Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,20 +53,6 @@
 
     <url>
         <loc>https://kodakyung.github.io/tags/Gradle/</loc>
-        <lastmod>2019-08-31T13:50:13.014Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/tags/Troubleshooting/</loc>
-        <lastmod>2019-08-31T13:50:13.014Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/tags/SpringBoot/</loc>
         <lastmod>2019-08-31T13:50:13.014Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -81,13 +95,6 @@
 
     <url>
         <loc>https://kodakyung.github.io/tags/Web/</loc>
-        <lastmod>2019-08-25T17:56:57.956Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/tags/OAuth2/</loc>
         <lastmod>2019-08-25T17:56:57.956Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -157,13 +164,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/ReactJS/</loc>
-        <lastmod>2019-07-20T13:49:59.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/tags/Junit/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -171,14 +171,14 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/JPA/</loc>
+        <loc>https://kodakyung.github.io/tags/Test/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/tags/Test/</loc>
+        <loc>https://kodakyung.github.io/tags/JPA/</loc>
         <lastmod>2019-07-19T09:56:23.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
