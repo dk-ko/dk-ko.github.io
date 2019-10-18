@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kodakyung.github.io/"/>
-  <updated>2019-10-18T17:47:54.851Z</updated>
+  <updated>2019-10-18T17:57:07.300Z</updated>
   <id>https://kodakyung.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kodakyung.github.io/2019/10/17/CS-DataBase-20191017-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81-feat-%EC%9D%B8%EB%8D%B1%EC%8A%A4/"/>
     <id>https://kodakyung.github.io/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/</id>
     <published>2019-10-16T17:56:01.000Z</published>
-    <updated>2019-10-18T17:47:54.851Z</updated>
+    <updated>2019-10-18T17:57:07.300Z</updated>
     
     <content type="html"><![CDATA[<h2 id="성능이란"><a href="#성능이란" class="headerlink" title="성능이란 ?"></a>성능이란 ?</h2><blockquote><p>기본적으로 “빠르기”를 기준으로 한 개념</p></blockquote><h3 id="성능을-측정하는-2가지-지표"><a href="#성능을-측정하는-2가지-지표" class="headerlink" title="성능을 측정하는 2가지 지표"></a>성능을 측정하는 2가지 지표</h3><ol><li><code>처리시간(Processing Time)</code> or <code>응답시간(Response Time)</code><ul><li>어떤 특정 처리의 시작부터 종료까지 걸린 시간</li></ul></li><li><code>처리율(Throughput)</code><ul><li>특정 처리(트랜잭션)를 단위 시간에 몇 건 처리 가능한가<ul><li>ex) 트랜잭션을 초당 50건 처리하는 것이 가능하면, 50 TPS(Transaction Per Second)</li></ul></li></ul></li></ol><h3 id="정점과-한계"><a href="#정점과-한계" class="headerlink" title="정점과 한계"></a>정점과 한계</h3><ul><li><p><code>처리율이 높은</code> 시스템일수록 (CPU나 하드웨어같은) <code>자원이 많이</code> 필요하다</p><ul><li>즉 동시에 실행되는 처리가 증가할 수록 필요한 물리 자원도 증가한다.</li></ul></li><li><p>이때 동시 실행 처리 수가 자원의 한계를 넘어서는 경우 응답시간이 상승하고 처리율이 떨어지며 성능이 나빠진다.</p></li><li><p>한 가지 자원이라도 한계에 이르면 성능이 나빠지기 시작하는데 이를 <code>버틀넥 포인트(Bottleneck Point)</code>, <code>병목</code>이라 한다.</p></li><li><p>시스템은 동시에 실행되는 처리가 가장 많아질 때를 기준으로 자원을 준비하지 않으면 <code>정점(Peek)</code>일 때 극단적인 지연을 일으킨다.</p></li><li><p>정점을 상정한 자원을 확보해두는 것을 <code>사이징(Sizing)</code>이나 <code>캐퍼시티 플랜(Capacity Planinig)</code>이라 한다.</p></li><li><p>정점일때와 아닐 때의 차이가 큰 경우 정점에 맞추는 경우 평상시에 낭비되는 자원이 크다.</p></li><li><p>그렇기에 클라우드를 통해 스케일업과 스케일아웃을 하며 동적인 자원관리를 하는 추세이다.</p><ul><li><code>스케일업(Scale-Up)</code> : 고성능 장비 도입</li><li><code>스케일아웃(Scale-Out)</code> : 장비 추가 도입</li></ul></li></ul><h2 id="데이터베이스의-성능"><a href="#데이터베이스의-성능" class="headerlink" title="데이터베이스의 성능"></a>데이터베이스의 성능</h2><h3 id="데이터베이스-병목"><a href="#데이터베이스-병목" class="headerlink" title="데이터베이스 병목"></a>데이터베이스 병목</h3><blockquote><p>데이터 베이스가 시스템에서 병목이 되기 쉬운 이유</p></blockquote><p><strong>1. 취급하는 데이터 양이 많다.</strong></p><ul><li>최근들어 저장되는 데이터가 폭발적으로 증가하는 추세라 데이터를 보존하는 저장소에서 병목이 일어나는 경우가 많다.</li></ul><p><strong>2. 자원 증가(스케일 아웃)를 통한 성능 향상이 어렵다.</strong></p><ul><li>데이터베이스의 병목 지점은 CPU나 메모리가 아니라 <code>주로 보조기억 장치</code>이므로 스케일 아웃이 어렵다.<ul><li>데이터베이스는 기본적으로 <code>Active-StandBy</code>나 <code>Active-Active</code> 구성을 취하기 때문</li><li>이런 이유로 주로 한정된 자원을 효율적으로 쓰기 위한 ‘<code>튜닝</code>‘이 발전함</li></ul></li><li>최근에는 저장소를 더 고속 매체인 <code>메모리</code>에 적재하는 등으로 <code>스케일업</code>에 의한 성능 개선도 이루어지고 있다. <ul><li>이런 발상으로 만들어진 데이터베이스가 인메모리 데이터베이스(In-memory)</li></ul></li></ul><h2 id="데이터베이스-성능을-결정하는-요인"><a href="#데이터베이스-성능을-결정하는-요인" class="headerlink" title="데이터베이스 성능을 결정하는 요인"></a>데이터베이스 성능을 결정하는 요인</h2><h3 id="데이터베이스의-실행-과정"><a href="#데이터베이스의-실행-과정" class="headerlink" title="데이터베이스의 실행 과정"></a>데이터베이스의 실행 과정</h3><p><strong>1. 파스 (Parse)</strong></p><ul><li>내부 프로그램인 Parsor가 구문 오류를 체크한다.</li></ul><p><strong>2. 실행계획 (Execution Plan OR Access Plan)</strong><br><strong>- 실행계획 작성 &gt; 실행계획 평가</strong></p><ul><li><p>내부 프로그램인 <code>Optimizer</code>가 SQL문에 어떤 경로로 접근할지 <code>계획</code>한다.</p><ul><li>프로그래머는 SQL을 선언만하고 과정은 옵티마이저가 하므로 일반적인 절차형 언어와 다르게 <code>선언형 언어</code>라 하기도 함.</li><li>옵티마이저가 보통 프로그래머보다 효율적인 실행계획을 세우므로 직접 실행계획을 세우는 것은 지양하는 것이 좋다.</li><li>옵티마이저가 최적의 속도로 동작할 수 있는 환경을 구성해주는 것이 중요</li></ul></li><li><p><code>통계 정보</code>를 참고해 <code>실행 계획</code>을 세운다.</p><ul><li><p>통계 정보란 ? 옵티마이저가 실행계획을 세울 때 참고하는 정보</p><ol><li>테이블의 행수,열수</li><li>각 열의 길이와 데이터형</li><li>테이블의 크기</li><li>열에 대한 기본키나 NOT NULL 제약의 정보</li><li>열값의 분산과 편향 등.</li></ol></li><li><p>통계 정보는 테이블에 보존되어 있다.</p><ul><li><p><code>show table status;</code><br><img src="01.png" alt="show table status"></p><ul><li>Rows : 행 수</li><li>Avg_row_length : 평균 레코드 크기</li></ul></li><li><p><code>show index from [TABLE_NAME];</code><br><img src="02.png" alt="show index from TABLE_NAME"></p><ul><li>Cardinality : 인덱스 대상의 분산도</li></ul></li></ul></li><li><p>통계 데이터는 대부분 <code>자동으로 수집</code>되어 구현된다.</p><ul><li>대체로 대량의 데이터가 변경되거나 특정 시간을 정할 수 있다.</li></ul></li></ul></li></ul><ol start="3"><li>데이터 액세스</li></ol><h3 id="데이터베이스가-실행계획을-세우는-기준"><a href="#데이터베이스가-실행계획을-세우는-기준" class="headerlink" title="데이터베이스가 실행계획을 세우는 기준"></a>데이터베이스가 실행계획을 세우는 기준</h3><blockquote><p>인덱스 </p></blockquote><ul><li><p>인덱스의 유무로 <code>풀 스캔(full scan)</code>과 <code>레인지 스캔(range scan)</code>이 나뉜다.</p><ul><li>풀 스캔: 테이블의 레코드를 전부 읽는 것</li><li>레인지 스캔: 테이블 일부 레코드만 읽는 것</li></ul></li><li><p>인덱스가 있는 경우<br><img src="03.png" alt="인덱스가 있는 경우 1"><br><img src="04.png" alt="인덱스가 있는 경우 2"></p><ul><li><code>TYPE</code>이 All이 아닌 <code>CONST</code>, <code>RANGE</code></li><li>스캔 종류의 이름은 조건에 따라 조금씩 달라진다.</li></ul></li><li><p>인덱스가 없는 경우<br><img src="05.png" alt="인덱스가 없는 경우"></p><ul><li>현재 예시 테이블은 <code>id</code>와 <code>fk</code>에만 인덱스가 존재한다.</li><li>인덱스가 없는 컬럼을 조회하므로 <code>ALL 풀 스캔</code>을 한다. </li><li><code>기본키</code>는 따로 설정하지 않아도 인덱스가 존재한다.</li></ul></li><li><p>인덱스 생성</p><ul><li><code>create index [INDEX_NAME] on [TABLE_NAME]([COLOMN_NAME])</code></li></ul></li></ul><h2 id="인덱스의-구조"><a href="#인덱스의-구조" class="headerlink" title="인덱스의 구조"></a>인덱스의 구조</h2><p><img src="btree.png" alt="B-Tree 구조"></p><ul><li>B-Tree 로 되어있다.</li><li>따라서 데이터들은 반드시 <code>정렬</code>된 데이터로 유지된다.</li><li>B-Tree는 균형 트리이기에 어떤 값에 대해서도 <code>속도가 일정</code>하다(최선, 최악의 경우가 비슷)<ul><li>일반적으로 B-Tree는 3~4층 정도로 조절된다.</li></ul></li><li>처음 생성시 <code>균형 트리</code>이지만 <code>INSERT/DELETE/UPDATE</code> 등이 일어나면 트리가 깨지며 성능이 나빠질 수 있다.</li><li>따라서 <code>갱신</code> 빈도가 높은 테이블은 정기적으로 인덱스 재구성이 필요하다.</li></ul><h2 id="인덱스의-성능"><a href="#인덱스의-성능" class="headerlink" title="인덱스의 성능"></a>인덱스의 성능</h2><p><strong>- 데이터에 비례해 효과가 좋아진다.</strong></p><ul><li>어느정도 큰 데이터에서 생성하는 것이 좋다.  </li></ul><p><strong>- 정렬을 건너뛰는 것이 가능하다.</strong></p><ul><li>예를 들면 groupby로 count하는 경우<ul><li>인덱스가 없다면 <code>풀 스캔</code> + <code>정렬을 위한 임시영역에 파일을 저장</code>한다.<ul><li>이런식으로 임시영역을 사용해 처리하면 매우 느려 성능 이슈를 일으킬 수 있다.</li></ul></li><li>인덱스가 있다면 이미 정렬되어 있으므로 고속 처리가 가능하다.</li></ul></li><li>SQL 내부에서 정렬하는 경우<ul><li>GROUP BY</li><li>COUNT/SUM/AVG 등의 집약 함수</li><li>UNION/INTERSECT/EXCEPT 등의 집합연산</li></ul></li></ul><h2 id="인덱스-주의사항"><a href="#인덱스-주의사항" class="headerlink" title="인덱스 주의사항"></a>인덱스 주의사항</h2><ul><li>인덱스는 <code>SELECT</code> 성능을 향상시키고 <code>INSERT/UPDATE/DELECT</code> 성능을 약화시킨다.<ul><li>인덱스 갱신의 오버헤드로 성능이 떨어진다.</li></ul></li><li>너무 많은 인덱스를 만드는 경우 의도한 것과 다르게 실행될 수 있다.<ul><li>인덱스를 생성만 할 뿐 실행은 옵티마이저가 자동으로 하기 때문에 의도와 다르게 동작해 더 느릴 수 있다.</li></ul></li><li>따라서 크기가 큰 테이블에만 만들고</li><li>기본키 제약이나 유일성 제약이 붙은 경우 자동으로 인덱스가 생성되므로 추가 생성하지 않는다.</li><li><code>Cardinality</code>가 높은 열에 만든다.</li></ul><h2 id="성능-안티-패턴"><a href="#성능-안티-패턴" class="headerlink" title="성능 안티 패턴"></a>성능 안티 패턴</h2><ul><li>통계 정보 갱신 설정이 off인 경우</li><li>정기 갱신을 설정하고 데이터양이 급격하게 바뀌는 경우<ul><li>정기 갱신 전 바뀐 데이터에 대해 인덱스가 적용되지 않은 상태라 성능 향상을 기대하기 어렵다.</li></ul></li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>데이터베이스 첫걸음 </li></ul>]]></content>
     
@@ -37,12 +37,12 @@
     
     </summary>
     
-      <category term="CS" scheme="https://kodakyung.github.io/categories/CS/"/>
+      <category term="CS" scheme="https://kodakyung.github.io/categories/cs/"/>
     
-      <category term="DataBase" scheme="https://kodakyung.github.io/categories/CS/DataBase/"/>
+      <category term="DataBase" scheme="https://kodakyung.github.io/categories/cs/database/"/>
     
     
-      <category term="MySQL" scheme="https://kodakyung.github.io/tags/MySQL/"/>
+      <category term="MySQL" scheme="https://kodakyung.github.io/tags/mysql/"/>
     
   </entry>
   
@@ -65,12 +65,12 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Common" scheme="https://kodakyung.github.io/categories/Programming/Common/"/>
+      <category term="Common" scheme="https://kodakyung.github.io/categories/programming/common/"/>
     
     
-      <category term="Functional Thinking" scheme="https://kodakyung.github.io/tags/Functional-Thinking/"/>
+      <category term="Functional Thinking" scheme="https://kodakyung.github.io/tags/functional-thinking/"/>
     
   </entry>
   
@@ -92,12 +92,12 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Common" scheme="https://kodakyung.github.io/categories/Programming/Common/"/>
+      <category term="Common" scheme="https://kodakyung.github.io/categories/programming/common/"/>
     
     
-      <category term="Functional Thinking" scheme="https://kodakyung.github.io/tags/Functional-Thinking/"/>
+      <category term="Functional Thinking" scheme="https://kodakyung.github.io/tags/functional-thinking/"/>
     
   </entry>
   
@@ -119,12 +119,12 @@
     
     </summary>
     
-      <category term="CS" scheme="https://kodakyung.github.io/categories/CS/"/>
+      <category term="CS" scheme="https://kodakyung.github.io/categories/cs/"/>
     
-      <category term="DataBase" scheme="https://kodakyung.github.io/categories/CS/DataBase/"/>
+      <category term="DataBase" scheme="https://kodakyung.github.io/categories/cs/database/"/>
     
     
-      <category term="MySQL" scheme="https://kodakyung.github.io/tags/MySQL/"/>
+      <category term="MySQL" scheme="https://kodakyung.github.io/tags/mysql/"/>
     
   </entry>
   
@@ -146,10 +146,10 @@
     
     </summary>
     
-      <category term="Think" scheme="https://kodakyung.github.io/categories/Think/"/>
+      <category term="Think" scheme="https://kodakyung.github.io/categories/think/"/>
     
     
-      <category term="Think" scheme="https://kodakyung.github.io/tags/Think/"/>
+      <category term="Think" scheme="https://kodakyung.github.io/tags/think/"/>
     
   </entry>
   
@@ -171,14 +171,14 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/springboot/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
-      <category term="Gradle" scheme="https://kodakyung.github.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://kodakyung.github.io/tags/gradle/"/>
     
   </entry>
   
@@ -201,12 +201,12 @@
     
     </summary>
     
-      <category term="CS" scheme="https://kodakyung.github.io/categories/CS/"/>
+      <category term="CS" scheme="https://kodakyung.github.io/categories/cs/"/>
     
-      <category term="OS" scheme="https://kodakyung.github.io/categories/CS/OS/"/>
+      <category term="OS" scheme="https://kodakyung.github.io/categories/cs/os/"/>
     
     
-      <category term="OS" scheme="https://kodakyung.github.io/tags/OS/"/>
+      <category term="OS" scheme="https://kodakyung.github.io/tags/os/"/>
     
   </entry>
   
@@ -228,16 +228,16 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/springboot/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
-      <category term="ReactJS" scheme="https://kodakyung.github.io/tags/ReactJS/"/>
+      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/oauth2/"/>
     
-      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/OAuth2/"/>
+      <category term="ReactJS" scheme="https://kodakyung.github.io/tags/reactjs/"/>
     
   </entry>
   
@@ -260,14 +260,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Spring" scheme="https://kodakyung.github.io/categories/Server/Spring/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/categories/server/spring/"/>
     
     
-      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="https://kodakyung.github.io/tags/springboot/"/>
     
-      <category term="IntelliJ" scheme="https://kodakyung.github.io/tags/IntelliJ/"/>
+      <category term="IntelliJ" scheme="https://kodakyung.github.io/tags/intellij/"/>
     
   </entry>
   
@@ -289,14 +289,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -318,14 +318,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -347,14 +347,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -376,14 +376,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -405,14 +405,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -434,14 +434,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -463,14 +463,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -492,14 +492,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -521,14 +521,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -550,14 +550,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -579,14 +579,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -608,14 +608,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -637,14 +637,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -666,14 +666,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -695,14 +695,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -724,14 +724,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -753,14 +753,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Test" scheme="https://kodakyung.github.io/categories/Server/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/categories/server/test/"/>
     
     
-      <category term="Test" scheme="https://kodakyung.github.io/tags/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/tags/test/"/>
     
-      <category term="Stub" scheme="https://kodakyung.github.io/tags/Stub/"/>
+      <category term="Stub" scheme="https://kodakyung.github.io/tags/stub/"/>
     
   </entry>
   
@@ -782,14 +782,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="ORM" scheme="https://kodakyung.github.io/categories/Server/ORM/"/>
+      <category term="ORM" scheme="https://kodakyung.github.io/categories/server/orm/"/>
     
     
-      <category term="Spring" scheme="https://kodakyung.github.io/tags/Spring/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/tags/spring/"/>
     
-      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/Hibernate/"/>
+      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/hibernate/"/>
     
   </entry>
   
@@ -812,12 +812,12 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="ORM" scheme="https://kodakyung.github.io/categories/Server/ORM/"/>
+      <category term="ORM" scheme="https://kodakyung.github.io/categories/server/orm/"/>
     
     
-      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/Hibernate/"/>
+      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/hibernate/"/>
     
   </entry>
   
@@ -841,12 +841,12 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="ORM" scheme="https://kodakyung.github.io/categories/Server/ORM/"/>
+      <category term="ORM" scheme="https://kodakyung.github.io/categories/server/orm/"/>
     
     
-      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/Hibernate/"/>
+      <category term="Hibernate" scheme="https://kodakyung.github.io/tags/hibernate/"/>
     
   </entry>
   
@@ -868,16 +868,16 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Test" scheme="https://kodakyung.github.io/categories/Server/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/categories/server/test/"/>
     
     
-      <category term="Test" scheme="https://kodakyung.github.io/tags/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/tags/test/"/>
     
-      <category term="JPA" scheme="https://kodakyung.github.io/tags/JPA/"/>
+      <category term="JPA" scheme="https://kodakyung.github.io/tags/jpa/"/>
     
-      <category term="Junit" scheme="https://kodakyung.github.io/tags/Junit/"/>
+      <category term="Junit" scheme="https://kodakyung.github.io/tags/junit/"/>
     
   </entry>
   
@@ -902,10 +902,10 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="Git" scheme="https://kodakyung.github.io/tags/Git/"/>
+      <category term="Git" scheme="https://kodakyung.github.io/tags/git/"/>
     
   </entry>
   
@@ -927,14 +927,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -956,14 +956,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -985,14 +985,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -1015,16 +1015,16 @@
     
     </summary>
     
-      <category term="Web" scheme="https://kodakyung.github.io/categories/Web/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/categories/web/"/>
     
     
-      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/OAuth2/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/tags/web/"/>
     
-      <category term="Web" scheme="https://kodakyung.github.io/tags/Web/"/>
+      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/oauth2/"/>
     
-      <category term="Authrization" scheme="https://kodakyung.github.io/tags/Authrization/"/>
+      <category term="Authrization" scheme="https://kodakyung.github.io/tags/authrization/"/>
     
-      <category term="Tacademy" scheme="https://kodakyung.github.io/tags/Tacademy/"/>
+      <category term="Tacademy" scheme="https://kodakyung.github.io/tags/tacademy/"/>
     
   </entry>
   
@@ -1047,14 +1047,14 @@
     
     </summary>
     
-      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
+      <category term="System" scheme="https://kodakyung.github.io/categories/system/"/>
     
-      <category term="Shell" scheme="https://kodakyung.github.io/categories/System/Shell/"/>
+      <category term="Shell" scheme="https://kodakyung.github.io/categories/system/shell/"/>
     
     
-      <category term="Fish Shell" scheme="https://kodakyung.github.io/tags/Fish-Shell/"/>
+      <category term="Fish Shell" scheme="https://kodakyung.github.io/tags/fish-shell/"/>
     
-      <category term="Shell" scheme="https://kodakyung.github.io/tags/Shell/"/>
+      <category term="Shell" scheme="https://kodakyung.github.io/tags/shell/"/>
     
   </entry>
   
@@ -1076,14 +1076,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -1105,16 +1105,16 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/Effective-Java/"/>
+      <category term="Effective Java" scheme="https://kodakyung.github.io/tags/effective-java/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
-      <category term="Design Pattern" scheme="https://kodakyung.github.io/tags/Design-Pattern/"/>
+      <category term="Design Pattern" scheme="https://kodakyung.github.io/tags/design-pattern/"/>
     
   </entry>
   
@@ -1137,14 +1137,14 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="STS" scheme="https://kodakyung.github.io/tags/STS/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/tags/spring/"/>
     
-      <category term="Spring" scheme="https://kodakyung.github.io/tags/Spring/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="STS" scheme="https://kodakyung.github.io/tags/sts/"/>
     
   </entry>
   
@@ -1166,16 +1166,16 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Test" scheme="https://kodakyung.github.io/categories/Server/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/categories/server/test/"/>
     
     
-      <category term="Test" scheme="https://kodakyung.github.io/tags/Test/"/>
+      <category term="Test" scheme="https://kodakyung.github.io/tags/test/"/>
     
-      <category term="TDD" scheme="https://kodakyung.github.io/tags/TDD/"/>
+      <category term="TDD" scheme="https://kodakyung.github.io/tags/tdd/"/>
     
-      <category term="Refactoring" scheme="https://kodakyung.github.io/tags/Refactoring/"/>
+      <category term="Refactoring" scheme="https://kodakyung.github.io/tags/refactoring/"/>
     
   </entry>
   
@@ -1198,14 +1198,14 @@
     
     </summary>
     
-      <category term="Web" scheme="https://kodakyung.github.io/categories/Web/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/categories/web/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Web" scheme="https://kodakyung.github.io/tags/Web/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/tags/web/"/>
     
-      <category term="HTTP" scheme="https://kodakyung.github.io/tags/HTTP/"/>
+      <category term="HTTP" scheme="https://kodakyung.github.io/tags/http/"/>
     
   </entry>
   
@@ -1228,16 +1228,16 @@
     
     </summary>
     
-      <category term="Web" scheme="https://kodakyung.github.io/categories/Web/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/categories/web/"/>
     
-    
-      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/OAuth2/"/>
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Web" scheme="https://kodakyung.github.io/tags/Web/"/>
+      <category term="Web" scheme="https://kodakyung.github.io/tags/web/"/>
     
-      <category term="Authrization" scheme="https://kodakyung.github.io/tags/Authrization/"/>
+      <category term="OAuth2" scheme="https://kodakyung.github.io/tags/oauth2/"/>
+    
+      <category term="Authrization" scheme="https://kodakyung.github.io/tags/authrization/"/>
     
   </entry>
   
@@ -1264,16 +1264,16 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Spring" scheme="https://kodakyung.github.io/categories/Server/Spring/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/categories/server/spring/"/>
     
     
-      <category term="STS" scheme="https://kodakyung.github.io/tags/STS/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/tags/spring/"/>
     
-      <category term="Spring" scheme="https://kodakyung.github.io/tags/Spring/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="STS" scheme="https://kodakyung.github.io/tags/sts/"/>
     
   </entry>
   
@@ -1300,12 +1300,12 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -1331,12 +1331,12 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Java" scheme="https://kodakyung.github.io/categories/Programming/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/categories/programming/java/"/>
     
     
-      <category term="Java" scheme="https://kodakyung.github.io/tags/Java/"/>
+      <category term="Java" scheme="https://kodakyung.github.io/tags/java/"/>
     
   </entry>
   
@@ -1358,14 +1358,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1387,14 +1387,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1416,14 +1416,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1445,14 +1445,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1474,14 +1474,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1503,14 +1503,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1532,14 +1532,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1561,14 +1561,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1590,14 +1590,14 @@
     
     </summary>
     
-      <category term="Programming" scheme="https://kodakyung.github.io/categories/Programming/"/>
+      <category term="Programming" scheme="https://kodakyung.github.io/categories/programming/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/categories/Programming/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/categories/programming/javascript/"/>
     
     
       <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
-      <category term="Javascript" scheme="https://kodakyung.github.io/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://kodakyung.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1620,14 +1620,14 @@
     
     </summary>
     
-      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
+      <category term="System" scheme="https://kodakyung.github.io/categories/system/"/>
     
-      <category term="Docker" scheme="https://kodakyung.github.io/categories/System/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/categories/system/docker/"/>
     
     
-      <category term="Docker" scheme="https://kodakyung.github.io/tags/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/tags/docker/"/>
     
-      <category term="Study" scheme="https://kodakyung.github.io/tags/Study/"/>
+      <category term="Study" scheme="https://kodakyung.github.io/tags/study/"/>
     
   </entry>
   
@@ -1650,14 +1650,14 @@
     
     </summary>
     
-      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
+      <category term="System" scheme="https://kodakyung.github.io/categories/system/"/>
     
-      <category term="Docker" scheme="https://kodakyung.github.io/categories/System/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/categories/system/docker/"/>
     
     
-      <category term="Docker" scheme="https://kodakyung.github.io/tags/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/tags/docker/"/>
     
-      <category term="Study" scheme="https://kodakyung.github.io/tags/Study/"/>
+      <category term="Study" scheme="https://kodakyung.github.io/tags/study/"/>
     
   </entry>
   
@@ -1680,14 +1680,14 @@
     
     </summary>
     
-      <category term="System" scheme="https://kodakyung.github.io/categories/System/"/>
+      <category term="System" scheme="https://kodakyung.github.io/categories/system/"/>
     
-      <category term="Docker" scheme="https://kodakyung.github.io/categories/System/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/categories/system/docker/"/>
     
     
-      <category term="Docker" scheme="https://kodakyung.github.io/tags/Docker/"/>
+      <category term="Docker" scheme="https://kodakyung.github.io/tags/docker/"/>
     
-      <category term="Study" scheme="https://kodakyung.github.io/tags/Study/"/>
+      <category term="Study" scheme="https://kodakyung.github.io/tags/study/"/>
     
   </entry>
   
@@ -1710,14 +1710,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1740,14 +1740,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1769,14 +1769,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1801,14 +1801,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1831,14 +1831,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1860,14 +1860,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
@@ -1892,12 +1892,12 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="Spring" scheme="https://kodakyung.github.io/tags/Spring/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/tags/spring/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
   </entry>
   
@@ -1920,12 +1920,12 @@
     
     </summary>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
     
     
-      <category term="Spring" scheme="https://kodakyung.github.io/tags/Spring/"/>
+      <category term="Spring" scheme="https://kodakyung.github.io/tags/spring/"/>
     
-      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/Troubleshooting/"/>
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
     
   </entry>
   
@@ -1950,12 +1950,12 @@
     
     </summary>
     
-      <category term="CS" scheme="https://kodakyung.github.io/categories/CS/"/>
+      <category term="CS" scheme="https://kodakyung.github.io/categories/cs/"/>
     
-      <category term="DataBase" scheme="https://kodakyung.github.io/categories/CS/DataBase/"/>
+      <category term="DataBase" scheme="https://kodakyung.github.io/categories/cs/database/"/>
     
     
-      <category term="MySQL" scheme="https://kodakyung.github.io/tags/MySQL/"/>
+      <category term="MySQL" scheme="https://kodakyung.github.io/tags/mysql/"/>
     
   </entry>
   
@@ -1977,16 +1977,16 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
-      <category term="Maven" scheme="https://kodakyung.github.io/tags/Maven/"/>
+      <category term="Maven" scheme="https://kodakyung.github.io/tags/maven/"/>
     
   </entry>
   
@@ -2009,14 +2009,14 @@
     
     </summary>
     
-      <category term="Server" scheme="https://kodakyung.github.io/categories/Server/"/>
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/Server/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
     
     
-      <category term="Network" scheme="https://kodakyung.github.io/tags/Network/"/>
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
     
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/Netty/"/>
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
     
   </entry>
   
