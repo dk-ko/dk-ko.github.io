@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Java - Comparable / Comparator | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Effective Java,Java">
+    
+    <meta name="description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
+<meta name="keywords" content="Effective Java,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - Comparable &#x2F; Comparator">
+<meta property="og:url" content="https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T18:00:05.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java - Comparable &#x2F; Comparator">
+<meta name="twitter:description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/11/04/programming-java-effectivejava-2018-11-04-java-comparable-comparator/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/java/">Java</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java - Comparable / Comparator
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/" class="article-date">
+            <time datetime="2018-11-03T15:00:00.000Z" itemprop="datePublished">2018-11-04</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effective-java/">Effective Java</a>, <a class="tag-link" href="/tags/java/">Java</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Effective-Java-규칙-12"><a href="#Effective-Java-규칙-12" class="headerlink" title="Effective Java 규칙 12"></a>Effective Java 규칙 12</h2><blockquote>
+<p>Comparable 구현을 고려하라</p>
+</blockquote>
+<h2 id="Comparable-compareTo"><a href="#Comparable-compareTo" class="headerlink" title="Comparable.compareTo"></a>Comparable.compareTo</h2><ul>
+<li>Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다.</li>
+<li>Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.</li>
+</ul>
+<blockquote>
+<p>Arrays.sort(a);</p>
+</blockquote>
+<ul>
+<li><p>Comparable을 구현한 객체들은 정렬, 최대/최소 계산 등을 하기 쉽다.</p>
+</li>
+<li><p>Comparable을 구현한 클래스는 Comparable 인터페이스를 이용하도록 작성된 컬렉션 구현체와 전부 연동이 가능하다. 이들은 자바 플랫폼 라이브러리에 포함된 <code>거의 모든 값 클래스(value class)</code>에 해당된다.  </p>
+</li>
+<li><p>알파벳 순서, 값의 크기, 시간적 선후관계 등 명확한 <code>자연적 순서</code>를 따르는 값 클래스를 구현할 때는 Comparable 인터페이스 구현을 반드시 고려야해야한다.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="compareTo의-일반-규약"><a href="#compareTo의-일반-규약" class="headerlink" title="compareTo의 일반 규약"></a>compareTo의 일반 규약</h3><ul>
+<li>compareTo의 일반 규약은 <a href="https://kodakyung.github.io/2018/10/26/old-post-EffectiveJava-2018-10-26-java-equals-method-override/">equals</a>와 비슷하다.</li>
+<li>이 메소드는 this 객체와 주어진 객체를 비교한다.<ul>
+<li>Comparable.compareTo는 비교할 클래스에 implements한 뒤 override한다.</li>
+</ul>
+</li>
+<li>this 객체의 값이 인자로 주어진 객체보다 작으면 음수, 크면 양수, 같으면 0을 반환.</li>
+<li>인자로 전달된 객체의 자료형이 this 객체와 비교 불가능한 자료형인 경우에는 <code>ClassCastException</code> 예외를 던진다.</li>
+<li>equals와 마찬가지로 compareTo 규약을 만족하면서 클래스를 계승하여 새로운 값 컴포넌트를 추가할 방법은 없다.</li>
+<li>우회 방법은 equals와 같이, 원래 클래스를 계승하는 것이 아닌 원래 클래스 객체를 필드로 포함하는 새로운 클래스를 만들고, 원래 클래스 객체를 반환하는 view 메소드를 추가한다.</li>
+<li>보통 객체 사이에 자연적 순서가 존재하기만 하면 이 규약을 만족한다.</li>
+</ul>
+<br>
+
+<ol>
+<li><p>compareTo를 구현시 모든 x와 y에 대해 sgn(x.compareTo(y)) == -sgn(y.compareTo(x))가 만족되도록 해야한다.</p>
+<blockquote>
+<ul>
+<li>반사성</li>
+<li>객체 참조를 비교하는 방향을 뒤집어도 객체 간 대소 관계는 같아야한다.  </li>
+<li>ex) 첫 번째 객체가 두 번째 객체보다 작다면 두 번째 객체는 첫 번째 객체보다 큰 객체여야함.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>(x.compareTo(y) &gt; 0 &amp;&amp; y.compareTo(z) &gt; 0) 이면, x.compareTo(z) &gt; 0를 성립한다.</p>
+<blockquote>
+<ul>
+<li>대칭성</li>
+<li>first 객체가 second 객체보다 크고, second 객체가 third 객체보다 클 경우, first 객체는 반드시 third 객체보다 커야한다.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>(x.compareTo(y) == 0) 이면 sgn(x.compareTo(z)) == sgn(y.compareTo(z))의 관계가 모든 z에 대해 성립하도록 해야한다.</p>
+<blockquote>
+<ul>
+<li>추이성</li>
+<li>비교 결과 같다고 판정된 모든 객체 각각을 다른 어떤 객체와 비교할 경우, 그 비교 결과는 전부 동일해야 한다.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>필수는 아니지만 (x.compareTo(y) == 0) == (x.equals(y))를 만족하도록 구현해야하며, 그렇지 않은 클래스는 반드시 그 사실을 명시해주어야한다.</p>
+<blockquote>
+<ul>
+<li>동치성  </li>
+<li>컬렉션 인터페이스(Collection, Set, Map)와 같은 인터페이스들은 일반 규약이 equals 기반으로 작성되었지만, 실제 동치성은 equals 대신 compareTo를 통해 검사하기 때문에 (4) 항목을 만족하지 않는 경우 오동작할 수 있다.</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h4 id="서로-다른-객체의-비교"><a href="#서로-다른-객체의-비교" class="headerlink" title="서로 다른 객체의 비교"></a>서로 다른 객체의 비교</h4><ul>
+<li>equals와 달리 서로 다른 클래스에 적용될 필요가 없다.</li>
+<li>비교 대상인 객체가 서로 다른 클래스인 경우 <code>ClassCastException</code>을 던지는 것이 허용된다는 의미이다.</li>
+<li>compareTo가 속한 클래스가 제네릭인 경우에도, 적절한 형인자가 선언되었다면 제대로 동작할 것이다.</li>
+<li>compareTo 규약에서 서로 다른 클래스의 비교를 금지하지는 않지만 버전 1.6 이상의 플랫폼 라이브러리에 속한 모든 클래스가 비교를 허용하지 않는다.</li>
+</ul>
+<h4 id="Side-Effect"><a href="#Side-Effect" class="headerlink" title="Side Effect"></a>Side Effect</h4><p>hashCode 규약을 따르지 않는 클래스는 해시를 써서 구현한 클래스를 오동작 시킬 수 있는 것처럼, compareTo 규약을 준수하지 않는 클래스는 <code>비교 연산에 기반한 클래스들</code>을 오동작시킬 수 있다.</p>
+<ul>
+<li><code>TreeSet</code>, <code>TreeMap</code>와 같은 <code>sorted collection</code></li>
+<li><code>Arrays</code>, <code>Collections</code> 같은 <code>유틸리티 클래스</code>들이 해당.</li>
+<li>탐색과 정렬 알고리즘을 포함하는 클래스  </li>
+</ul>
+<h3 id="compareTo-vs-equals"><a href="#compareTo-vs-equals" class="headerlink" title="compareTo vs equals"></a>compareTo vs equals</h3><ul>
+<li>Comparable 인터페이스는 자료형을 인자로 받는 제네릭 인터페이스므로, compareTo 메소드의 인자 자료형은 컴파일 시간에 정적으로 결정된다.</li>
+<li>따라서 인자로 받은 객체의 자료형을 검사하거나 형 변환할 필요가 없다.</li>
+<li>잘못된 자료형 객체를 인자로 넘기면 아예 컴파일이 되지 않는다.</li>
+<li>null이 인자로 전달되는 경우에도 <code>NullPointerException</code> 예외를 발생시켜야하며, 실제로 자동으로 예외가 발생한다.</li>
+</ul>
+<h3 id="compareTo의-비교방식"><a href="#compareTo의-비교방식" class="headerlink" title="compareTo의 비교방식"></a>compareTo의 비교방식</h3><ul>
+<li>compareTo는 동치성 검사가 아닌 순서 비교.</li>
+<li>객체 참조 필드는 compareTo 메소드를 재귀적으로 호출해 비교한다.</li>
+<li>비교할 필드가 Comparable을 구현하지 않거나 특이한 순서 관계를 사용해야하는 경우 Comparator를 명시적으로 사용할 수 있다.</li>
+<li>Comparator를 직접 작성할 수도 있고, 작성된 Comparator를 사용할 수도 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveString</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">CaseInsensitiveString</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(CaseInsensitiveString cis)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.CASE_INSENSITIVE_ORDER.compare(s, cis.s);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CaseInsensitiveString 클래스는 Comparable<caseinsensitivestring>을 구현하고 있다. 따라서 CaseInsensitiveString 객체 참조만 비교할 수 있다.</caseinsensitivestring></li>
+<li>compareTo의 인자는 Object가 아닌 CaseInsensitiveString이다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String.class</span></span><br><span class="line"><span class="comment">// public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class가 Comparable을 implements한 후 compareTo를 Override한 것</span></span><br><span class="line"><span class="comment">// 일반적인 순서를 비교하고 있다.</span></span><br><span class="line"><span class="comment">// ex) s.compareTo("string"); // s는 String 객체</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(String anotherString)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len1 = value.length;</span><br><span class="line">    <span class="keyword">int</span> len2 = anotherString.value.length;</span><br><span class="line">    <span class="keyword">int</span> lim = Math.min(len1, len2);</span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; lim) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = v1[k];</span><br><span class="line">        <span class="keyword">char</span> c2 = v2[k];</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            <span class="keyword">return</span> c1 - c2;</span><br><span class="line">        &#125;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len1 - len2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class 내부에 static으로 선언된 Comparator</span></span><br><span class="line"><span class="comment">// 인자가 String이라면 String.class의 Comparator.compare을 이용해 비교할 수 있다.</span></span><br><span class="line"><span class="comment">// 특이한 순서 관계를 따로 구현한 것</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Comparator&lt;String&gt; CASE_INSENSITIVE_ORDER</span><br><span class="line">                                         = <span class="keyword">new</span> CaseInsensitiveComparator();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveComparator</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    ..</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> n1 = s1.length();</span><br><span class="line">      <span class="keyword">int</span> n2 = s2.length();</span><br><span class="line">      <span class="keyword">int</span> min = Math.min(n1, n2);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = s1.charAt(i);</span><br><span class="line">        <span class="keyword">char</span> c2 = s2.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">          c1 = Character.toUpperCase(c1);</span><br><span class="line">          c2 = Character.toUpperCase(c2);</span><br><span class="line">          <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            c1 = Character.toLowerCase(c1);</span><br><span class="line">            c2 = Character.toLowerCase(c2);</span><br><span class="line">            <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">              <span class="comment">// No overflow because of numeric promotion</span></span><br><span class="line">              <span class="keyword">return</span> c1 - c2;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> n1 - n2;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer.class</span></span><br><span class="line"><span class="comment">// public final class Integer extends Number implements Comparable&lt;Integer&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Comparable.compareTo</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer anotherInteger)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> compare(<span class="keyword">this</span>.value, anotherInteger.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이름이 compare인 것.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (x &lt; y) ? -<span class="number">1</span> : ((x == y) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>정수형의 기본자료형 필드는 관계연산자 &lt;,&gt;를 이용해 비교한다.</li>
+<li>부동소수점 필드는 Double.compare나 Float.compare를 사용한다.</li>
+<li>배열 필드는 원소마다 적용해야한다.</li>
+<li>클래스에 선언된 중요 필드가 여러 개인 경우, 가장 중요한 필드부터 차례로 비교하고, 비교결과가 0이 아닌 경우 비교를 중단하고 결과를 반환한다. 모든 필드가 같을 때 0을 반환한다.</li>
+</ul>
+<h3 id="Comparable-vs-Comparator"><a href="#Comparable-vs-Comparator" class="headerlink" title="Comparable vs Comparator"></a>Comparable vs Comparator</h3><ul>
+<li>일반적으로 Comparable의 compareTo는 비교 기준이 하나일 경우 비교할 대상인 클래스에 Comparable을 상속 받아 compareTo를 구현한다.</li>
+<li>compareTo 메소드는 같은 객체 타입 하나의 인자를 받아 비교한다. 따라서 여러 비교 기준을 적용할 수 없다.</li>
+<li>Comparator의 compare는 비교 기준이 여러개일 경우 적용할 수 있다. Comparator용 클래스를 생성한 뒤 Comparator를 implements 후 내부에 compare을 구현한다.</li>
+<li>이때 compare 내부에 여러 비교 조건을 적용할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Fruit o1, Fruit o2)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">return</span> o1.price - o2.price; <span class="comment">// ASC Price</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">return</span> o2.price - o1.price; <span class="comment">// DESC Price</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">return</span> o1.getName().compareTo(o2.getName()); <span class="comment">// ASC Name</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">return</span> o2.getName().compareTo(o1.getName()); <span class="comment">// DESC Name</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Comparator 객체를 생성할 때 받는 n값(1,2,3,4)을 통해 조건을 선택한다.</p>
+</li>
+<li><p>이때 enum 객체를 이용하면 코드를 좀 더 명확하게 작성할 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Compare &#123;BY_NAME_ASC, BY_NAME_DESC, BY_PRICE_ASC, BY_PRICE_DESC&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Compare cp;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Fruit o1, Fruit o2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">switch</span>(cp)&#123;</span><br><span class="line">		<span class="keyword">case</span> BY_PRICE_ASC: <span class="keyword">return</span> o1.price - o2.price; <span class="comment">// ASC Price</span></span><br><span class="line">		<span class="keyword">case</span> BY_PRICE_DESC: <span class="keyword">return</span> o2.price - o1.price; <span class="comment">// DESC Price</span></span><br><span class="line">		<span class="keyword">case</span> BY_NAME_ASC: <span class="keyword">return</span> o1.getName().compareTo(o2.getName()); <span class="comment">// ASC Name</span></span><br><span class="line">		<span class="keyword">case</span> BY_NAME_DESC: <span class="keyword">return</span> o2.getName().compareTo(o1.getName()); <span class="comment">// DESC Name</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TestComparator cp = <span class="keyword">new</span> TestComparator(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 코드가 명확하지 않음</span></span><br><span class="line">TestComparator cp2 = <span class="keyword">new</span> TestComparator(Compare.BY_NAME_DESC);</span><br><span class="line"><span class="comment">// 어떤 비교 기준인지 명시적으로 확인할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(비교할_객체); <span class="comment">// 비교할 객체의 natural ordering의 따라 sort함</span></span><br><span class="line">Arrays.sort(비교할_객체, Comparator_객체); <span class="comment">// 특정 기준으로 비교할 수 있음</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Comparable.compareTo든 Comparator.compare든 모든 필드에 대한 조건을 넣어주는 것이 좋다.</li>
+<li>한 가지 필드에 대한 조건만 구현하는 경우 나머지 조건에 대해 의도하지 않은 결과가 나올 수 있기 때문이다.</li>
+</ul>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/" data-id="ck1yhggae00crcf6kmrvhrcc4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "Java - Comparable / Comparator",
+        "image": "https://kodakyung.github.io",
+        "keywords": "Effective Java Java",
+        "genre": "Programming Java",
+        "datePublished": "2018-11-04",
+        "dateCreated": "2018-11-04",
+        "dateModified": "2019-08-26",
+        "url": "https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/",
+        "description": "Effective Java 규칙 12
+Comparable 구현을 고려하라
+
+Comparable.compareTo
+Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다.
+Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.
+
+
+Arrays.sor"
+        "wordCount": 1780
+    }
+</script>
+
+</article>
+<!-- 
+    <section id="comments">
+    
+    </section>
+ -->
+
+
+
+<!-- Comment -->
+<!-- utteranc comment -->
+
+<script src="https://utteranc.es/client.js"
+    repo="kodakyung/blog-comments"
+    issue-term="title"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+</script>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Git - .gitignore 설정 후 적용되지 않는 경우
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java - equals method 재정의</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/10/20/Programming-Java-20191020-java-stream/" class="title">Java - Stream 기초</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:54:07.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/20/Programming-Common-20191020-함수형-사고-ch7-실용적-사고/" class="title">함수형 사고 - ch7 실용적 사고</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:47:20.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cs/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/cs/database/">DataBase</a></p>
+                            <p class="item-title"><a href="/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/" class="title">데이터베이스의 성능 향상(feat. 인덱스)</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T17:56:01.000Z" itemprop="datePublished">2019-10-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch2-전환/" class="title">함수형 사고 - ch2 전환</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:54:04.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/16/Programming-Common-20191016-함수형-사고-ch1-왜/" class="title">함수형 사고 - ch1 왜?</a></p>
+                            <p class="item-date"><time datetime="2019-10-16T11:26:14.000Z" itemprop="datePublished">2019-10-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 10px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
