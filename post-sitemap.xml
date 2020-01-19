@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2020/01/19/Programming-Common-20200119-%EC%95%94%ED%98%B8%ED%99%94-vs-%ED%95%B4%EC%8B%9C/</loc>
+        <lastmod>2020-01-19T12:12:59.757Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2019/10/20/Programming-Java-20191020-java-stream/</loc>
         <lastmod>2019-10-20T00:36:18.988Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -96,7 +104,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
+        <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +112,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
+        <loc>https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
         <lastmod>2019-08-25T18:00:05.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,14 +216,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -224,7 +224,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <loc>https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -249,6 +249,14 @@
 
     <url>
         <loc>https://kodakyung.github.io/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
+        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
         <lastmod>2019-08-25T18:00:05.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
