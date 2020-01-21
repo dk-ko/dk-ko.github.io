@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/categories/think/</loc>
+        <lastmod>2020-01-20T14:56:15.536Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/categories/programming/common/</loc>
         <lastmod>2020-01-20T13:47:28.962Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -45,13 +52,6 @@
     <url>
         <loc>https://kodakyung.github.io/categories/troubleshooting/</loc>
         <lastmod>2019-10-18T15:20:14.896Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/think/</loc>
-        <lastmod>2019-10-15T15:03:55.526Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
