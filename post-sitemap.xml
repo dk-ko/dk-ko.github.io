@@ -9,7 +9,239 @@
 
     <url>
         <loc>https://kodakyung.github.io/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/</loc>
-        <lastmod>2020-02-01T15:15:29.491Z</lastmod>
+        <lastmod>2020-02-01T15:17:05.522Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/17/programming-java-effective-java-2019-04-17-Java-Design-method-signatures-carefully/</loc>
+        <lastmod>2020-02-01T15:17:05.521Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/18/programming-java-effective-java-2019-04-18-Java-Use-overloading-judiciously/</loc>
+        <lastmod>2020-02-01T15:17:05.521Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/04/10/programming-java-effective-java-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
+        <lastmod>2020-02-01T15:17:05.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/03/23/programming-java-effective-java-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
+        <lastmod>2020-02-01T15:17:05.519Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/02/21/programming-java-effective-java-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
+        <lastmod>2020-02-01T15:17:05.518Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/02/20/programming-java-effective-java-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
+        <lastmod>2020-02-01T15:17:05.517Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/31/programming-java-effective-java-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
+        <lastmod>2020-02-01T15:17:05.516Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/28/programming-java-effective-java-2019-01-28-Java-Don-t-use-raw-types/</loc>
+        <lastmod>2020-02-01T15:17:05.515Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/27/programming-java-effective-java-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
+        <lastmod>2020-02-01T15:17:05.514Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/21/programming-java-effective-java-2019-01-21-Java-Minimize-mutability/</loc>
+        <lastmod>2020-02-01T15:17:05.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/24/programming-java-effective-java-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
+        <lastmod>2020-02-01T15:17:05.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/17/programming-java-effective-java-2019-01-17-Java-Design-interfaces-for-posterity/</loc>
+        <lastmod>2020-02-01T15:17:05.512Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/18/programming-java-effective-java-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
+        <lastmod>2020-02-01T15:17:05.512Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/12/programming-java-effective-java-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
+        <lastmod>2020-02-01T15:17:05.511Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/13/programming-java-effective-java-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
+        <lastmod>2020-02-01T15:17:05.511Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/01/11/programming-java-effective-java-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
+        <lastmod>2020-02-01T15:17:05.510Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/11/04/programming-java-effective-java-2018-11-04-java-comparable-comparator/</loc>
+        <lastmod>2020-02-01T15:17:05.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/26/programming-java-effective-java-2018-10-26-java-equals-method-override/</loc>
+        <lastmod>2020-02-01T15:17:05.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/25/programming-java-effective-java-2018-10-25-java-finalizer/</loc>
+        <lastmod>2020-02-01T15:17:05.504Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/15/programming-java-effective-java-2018-10-15-java-private-constructor/</loc>
+        <lastmod>2020-02-01T15:17:05.502Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2020/01/19/programming-common-20200119-encryption-vs-hash/</loc>
+        <lastmod>2020-02-01T15:17:05.499Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/10/14/programming-java-effective-java-2018-10-14-java-singleton-pattern/</loc>
+        <lastmod>2020-02-01T15:17:05.499Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/10/20/programming-common-20191020-functional-thinking-ch7/</loc>
+        <lastmod>2020-02-01T15:17:05.498Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/</loc>
+        <lastmod>2020-02-01T15:17:05.497Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/</loc>
+        <lastmod>2020-02-01T15:17:05.497Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/07/17/cs-os-20190717-os-synchronization-and-critical-section/</loc>
+        <lastmod>2020-02-01T15:17:05.496Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
+        <lastmod>2020-02-01T15:17:05.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
+        <lastmod>2020-02-01T15:17:05.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2019/10/17/cs-database-20191017-database-index/</loc>
+        <lastmod>2020-02-01T15:17:05.469Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,86 +250,6 @@
     <url>
         <loc>https://kodakyung.github.io/2018/11/09/troubleshooting-2018-11-09-git-gitignore-setting/</loc>
         <lastmod>2020-02-01T15:15:22.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/15/programming-java-effective-java-2018-10-15-java-private-constructor/</loc>
-        <lastmod>2020-01-31T15:38:20.424Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/14/programming-java-effective-java-2018-10-14-java-singleton-pattern/</loc>
-        <lastmod>2020-01-31T15:38:09.796Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2020/01/19/programming-common-20200119-encryption-vs-hash/</loc>
-        <lastmod>2020-01-24T15:36:32.173Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/10/20/programming-common-20191020-functional-thinking-ch7/</loc>
-        <lastmod>2020-01-24T15:36:06.715Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/</loc>
-        <lastmod>2020-01-24T15:35:53.133Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/</loc>
-        <lastmod>2020-01-24T15:35:35.597Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/07/17/cs-os-20190717-os-synchronization-and-critical-section/</loc>
-        <lastmod>2020-01-24T15:35:10.388Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/10/17/cs-database-20191017-database-index/</loc>
-        <lastmod>2020-01-24T15:34:24.766Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
-        <lastmod>2020-01-24T15:33:33.802Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
-        <lastmod>2020-01-24T15:32:56.011Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -160,158 +312,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/01/21/programming-java-effective-java-2019-01-21-Java-Minimize-mutability/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/24/programming-java-effective-java-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/28/programming-java-effective-java-2019-01-28-Java-Don-t-use-raw-types/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/27/programming-java-effective-java-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/31/programming-java-effective-java-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/02/20/programming-java-effective-java-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/02/21/programming-java-effective-java-2019-02-21-Java-Prefer-method-references-to-lambdas/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/03/23/programming-java-effective-java-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/10/programming-java-effective-java-2019-04-10-Java-Make-defensive-copies-when-needed/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/17/programming-java-effective-java-2019-04-17-Java-Design-method-signatures-carefully/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/04/18/programming-java-effective-java-2019-04-18-Java-Use-overloading-judiciously/</loc>
-        <lastmod>2019-08-25T18:00:05.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/25/programming-java-effective-java-2018-10-25-java-finalizer/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/10/26/programming-java-effective-java-2018-10-26-java-equals-method-override/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/11/04/programming-java-effective-java-2018-11-04-java-comparable-comparator/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/11/programming-java-effective-java-2019-01-11-Java-Design-and-document-for-inheritance/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/12/programming-java-effective-java-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/13/programming-java-effective-java-2019-01-13-Java-Favor-composition-over-inheritance/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/17/programming-java-effective-java-2019-01-17-Java-Design-interfaces-for-posterity/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2019/01/18/programming-java-effective-java-2019-01-18-Java-Use-interfaces-only-to-define-types/</loc>
-        <lastmod>2019-08-25T18:00:05.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2018/10/24/web-2018-10-24-%E1%84%90%E1%85%A9%E1%84%8F%E1%85%B3ON%E1%84%89%E1%85%A6%E1%84%86%E1%85%B5%E1%84%82%E1%85%A1-oauth2/</loc>
         <lastmod>2019-08-25T17:56:57.956Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -344,7 +344,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/</loc>
+        <loc>https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -352,7 +352,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/</loc>
+        <loc>https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
