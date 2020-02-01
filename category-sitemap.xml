@@ -8,8 +8,29 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/categories/web/</loc>
+        <lastmod>2020-02-01T16:03:19.429Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/categories/think/</loc>
-        <lastmod>2020-02-01T15:36:17.178Z</lastmod>
+        <lastmod>2020-02-01T16:03:19.410Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/categories/programming/java/</loc>
+        <lastmod>2020-02-01T15:43:07.923Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/categories/programming/</loc>
+        <lastmod>2020-02-01T15:43:07.923Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -17,20 +38,6 @@
     <url>
         <loc>https://kodakyung.github.io/categories/troubleshooting/</loc>
         <lastmod>2020-02-01T15:17:05.522Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/programming/java/</loc>
-        <lastmod>2020-02-01T15:17:05.521Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/programming/</loc>
-        <lastmod>2020-02-01T15:17:05.521Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -59,13 +66,6 @@
     <url>
         <loc>https://kodakyung.github.io/categories/cs/database/</loc>
         <lastmod>2020-02-01T15:17:05.469Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/categories/web/</loc>
-        <lastmod>2019-08-25T17:56:57.956Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
