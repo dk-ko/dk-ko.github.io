@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://kodakyung.github.io/"/>
-  <updated>2020-01-20T14:56:15.536Z</updated>
+  <updated>2020-02-01T15:15:29.491Z</updated>
   <id>https://kodakyung.github.io/</id>
   
   <author>
@@ -17,9 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>git 커밋 중간에 잘못된 merge 되돌리기</title>
+    <link href="https://kodakyung.github.io/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/"/>
+    <id>https://kodakyung.github.io/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/</id>
+    <published>2020-02-01T14:41:26.000Z</published>
+    <updated>2020-02-01T15:15:29.491Z</updated>
+    
+    <content type="html"><![CDATA[<p>어느날 오랜만에 커밋을 보니까,<br><code>master</code> 브런치가 뭔가 잘못되어 있었다.</p><p><img src="01.png" alt="어.. 얘네가 여기 있으면 안되는데..?"></p><blockquote><p>deploy 브런치에 있는 배포용 커밋이 master 브런치에 있는 상황</p></blockquote><p>커밋 로그를 추적해보다가 <code>rebase conflict</code>를 해결하다 병합에 문제가 생긴걸 알았다.<br>(merge를 잘못해서 생긴것 일것으로 추측, 실수로 deploy 브런치에서 작업 후 merge를 시도했다던지..)</p><blockquote><p>rebase는 커밋 이력이 남지 않아서, merge 실수를 일일히 찾아야한다.</p></blockquote><p><img src="02.png" alt="commit log"></p><p>과거의 내가 <code>fix: rebase conflict</code>라고 남겨놓아서 그나마 쉽게 찾을 수 있었다.</p><blockquote><p>오늘의 교훈 : 커밋 메세지를 잘남기자..</p></blockquote><p>아무튼 이걸 해결하려면 중간에 <code>잘못 머지한 이력</code>을 지우고 원래대로 <code>개발 완료한 커밋 내역</code>으로 돌려야한다.</p><p>검색해보니 <code>merge</code>를 되돌리기 위해서는 <code>reset</code>과 <code>revert</code>를 사용한다.<br><code>revert --mainline</code> 옵션으로 시도했지만 <code>revert</code>는 기존 커밋 내역을 보존하고 추가 커밋을 덧붙이는거라 지금 내 상황에 맞지 않았다.</p><p>만약 팀 프로젝트와 같이 <code>commit id</code>가 중요하면 <code>reset</code>과 같이 <strong>commit id가 변경</strong>되는 명령어를 쉽게 쓸 수 없었겠지만 상황상 <code>reset</code>으로 되돌리기를 시도했다.</p><p><img src="03.png" alt="git reset --merge [COMMIT_ID]"></p><p><code>git reset --merge [COMMIT_ID]</code> 적용 후 deploy 관련 커밋이 깔끔하게 삭제 되어 git graph가 깨끗해졌다. (기본 mixed 옵션으로 적용)</p><p><img src="04.png" alt="-111 커밋이 삭제된 master 브런치"></p><p>이제 문제는 원래 개발했던 내용을 되돌려놓는 것</p><p>문제가 생겼던 프로젝트는 기존에 <code>git flow</code> 방식을 차용해서 커밋했기에 <code>develop branch</code>에<br>동작이 보증된 개발 완료된 코드들이 남아있었다.<br><code>master branch</code>는 <code>mixed option</code>으로 <code>reset</code> 했기에 stage가 깨끗해서 <code>develop</code>을 바로 master로 <code>merge</code>할 수 있다.</p><blockquote><p>만약 soft 옵션으로 reset 했다면 남아있는 파일을 모두 지우고 시도한다.</p></blockquote><blockquote><p>만약 branch 관리를 하지 않아 branch가 꼬여있었다면 이 방법으로 해결하지 못했을지도..</p></blockquote><p><img src="05.png" alt="develop 브런치에 잘못 merge한 이후의 개발 이력이 남아있다."></p><p><img src="06.png" alt="master 브런치에 develop을 merge한 뒤 3개 커밋이 추가되어 -108로 변경되었다."></p><p><img src="07.png" alt="최종적으로 정리된, develop merge 후 master 브런치 log"></p><p><img src="08.png" alt="이전의, 중간 잘못된 merge commit 삭제 전 꼬여있는 master 브런치 log"></p><p>이후 확인해보면 이력이 깨끗하게 정리된 것을 확인할 수 있다.</p><p>최종적으로 <code>master</code>에 푸시한다.<br><code>reset</code>으로 커밋 내역을 변경했기 때문에 당연히 <code>-f</code> 로 강제 push를 한다<br>강제 <code>push</code>는 브런치에 protected가 걸려있으면 할 수 없다.<br>따라서 해당 방법은 아무래도 실무에서 여러가지 제약이 있으면 적용하기는 어려울 것 같고<br>실무에서는 잘못 merge시 revert를 통해 우회하는 방식을 사용해야할 것 같다.</p><p>git reset 후 변경 내역에 대해 새로 커밋을 하는 경우는 commit id가 변경되지만<br>기존에 있는 브런치에서 병합했기 때문에 커밋 아이디는 변경되지 않았다.</p><h3 id="오늘-알게된-것"><a href="#오늘-알게된-것" class="headerlink" title="오늘 알게된 것."></a>오늘 알게된 것.</h3><ul><li>커밋을 잘 남기자.<ul><li>섣불리 rebase하지 말고 merge로 merge 이력을 남기자.</li></ul></li><li>브런치를 잘 나눠서 사용하자</li></ul><h3 id="참고한-링크"><a href="#참고한-링크" class="headerlink" title="참고한 링크"></a>참고한 링크</h3><ul><li><a href="https://www.tuwlab.com/ece/22223" target="_blank" rel="noopener">https://www.tuwlab.com/ece/22223</a></li><li><a href="https://victorydntmd.tistory.com/79" target="_blank" rel="noopener">https://victorydntmd.tistory.com/79</a></li><li><a href="https://nesoy.github.io/articles/2018-07/Git-Revert" target="_blank" rel="noopener">https://nesoy.github.io/articles/2018-07/Git-Revert</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;어느날 오랜만에 커밋을 보니까,&lt;br&gt;&lt;code&gt;master&lt;/code&gt; 브런치가 뭔가 잘못되어 있었다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;01.png&quot; alt=&quot;어.. 얘네가 여기 있으면 안되는데..?&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dep
+      
+    
+    </summary>
+    
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/categories/troubleshooting/"/>
+    
+    
+      <category term="Troubleshooting" scheme="https://kodakyung.github.io/tags/troubleshooting/"/>
+    
+      <category term="Git" scheme="https://kodakyung.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Talk with Sonia from Microsoft - Inspiring Tech Women</title>
-    <link href="https://kodakyung.github.io/2020/01/20/Think-20200120-talk-with-sonia-from-ms/"/>
-    <id>https://kodakyung.github.io/2020/01/20/Think-20200120-talk-with-sonia-from-ms/</id>
+    <link href="https://kodakyung.github.io/2020/01/20/think-20200120-talk-with-sonia-from-ms/"/>
+    <id>https://kodakyung.github.io/2020/01/20/think-20200120-talk-with-sonia-from-ms/</id>
     <published>2020-01-20T13:54:30.000Z</published>
     <updated>2020-01-20T14:56:15.536Z</updated>
     
@@ -46,10 +76,10 @@
   
   <entry>
     <title>암호화 vs 해시</title>
-    <link href="https://kodakyung.github.io/2020/01/19/Programming-Common-20200119-%EC%95%94%ED%98%B8%ED%99%94-vs-%ED%95%B4%EC%8B%9C/"/>
-    <id>https://kodakyung.github.io/2020/01/19/Programming-Common-20200119-암호화-vs-해시/</id>
+    <link href="https://kodakyung.github.io/2020/01/19/programming-common-20200119-encryption-vs-hash/"/>
+    <id>https://kodakyung.github.io/2020/01/19/programming-common-20200119-encryption-vs-hash/</id>
     <published>2020-01-19T12:03:04.000Z</published>
-    <updated>2020-01-20T13:47:28.962Z</updated>
+    <updated>2020-01-24T15:36:32.173Z</updated>
     
     <content type="html"><![CDATA[<h2 id="암호화"><a href="#암호화" class="headerlink" title="암호화"></a>암호화</h2><p>: 복호화할 수 있다 = 원래대로 되돌릴 수 있다</p><ul><li>원래대로 되돌리는 것 = 가역</li><li>공통키 암호 방식 vs 공개키 암호방식<ul><li>공통키 : 패스워드를 거는 것</li><li>공개키 : 암호화, 복호화에 각각 다른 암호화 키를 준비해 암호화하는 쪽의 키를 공개하는 방법</li><li>ex) DES, 3DES, AES 등</li></ul></li></ul><h2 id="해시"><a href="#해시" class="headerlink" title="해시"></a>해시</h2><p>: 복호화할 수 없다 = 원래대로 되돌릴 수 없다.</p><ul><li>원래대로 되돌릴 수 없는 것 = 불가역</li><li>해시화하기 전의 상태를 유추할 수 없다.</li><li>but 원래 데이터가 같으면 해시값도 동일한 값이 된다.</li><li>해시 방식에 따라 충돌이 일어나면 값이 다르지만 동일한 해시값이 될 수 있다.<ul><li>ex) MD5, SHA1, SHA256, SH512</li></ul></li></ul><h3 id="암호화를-푸는-방식"><a href="#암호화를-푸는-방식" class="headerlink" title="암호화를 푸는 방식"></a>암호화를 푸는 방식</h3><ol><li>알고리즘이 해독되어 있는 경우</li><li>추측되는 암호를 대입해 푸는 경우</li></ol><blockquote><p>따라서 알고리즘이 해독되어 있지 않고, RandomSeed가 불규칙해서 대입하는 방식으로 현실적으로 해독할 수 없는 경우를 채택해야함.</p></blockquote><h3 id="해시를-푸는-방식"><a href="#해시를-푸는-방식" class="headerlink" title="해시를 푸는 방식"></a>해시를 푸는 방식</h3><ul><li>암호화에 비해 복호화될 걱정은 거의 없는 편</li><li>하지만 문자열의 변환이기 때문에 패스워드같이 짧은 문자열은 해시화 방식이 알려지면 해시화된 목록을 갖고 있는 경우 해독될 가능성 있음</li><li>ex) A~Z, 0~9에 대해 md5한 목록을 이미 작성해 갖고 있으면 대입으로 유추 가능</li></ul><blockquote><p>이를 피하기 위해 특정 변환(길게 하기 = Salt 넣기)을 진행한 뒤 해시화하는 방법이 있다.</p></blockquote><ul><li>Salt란 ? 변환시 추가하는 임의의 데이터</li></ul><h2 id="외부로-유출되면-안되는-정보는"><a href="#외부로-유출되면-안되는-정보는" class="headerlink" title="외부로 유출되면 안되는 정보는.."></a>외부로 유출되면 안되는 정보는..</h2><ul><li>패스워드는 암호화가 아니라 <code>해시</code>로 보호</li><li>해시화의 방식과 관계없이, 해시화를 하는 경우 <code>길이가 긴 Salt</code>를 사용</li><li>해시화의 방식과 관계없이, 해시화의 원래 문자열(패스워드)에서 사용하는 <code>문자의 종류</code>를 늘린다.</li></ul>]]></content>
     
@@ -78,8 +108,8 @@
   
   <entry>
     <title>Java - Stream 기초</title>
-    <link href="https://kodakyung.github.io/2019/10/20/Programming-Java-20191020-java-stream/"/>
-    <id>https://kodakyung.github.io/2019/10/20/Programming-Java-20191020-java-stream/</id>
+    <link href="https://kodakyung.github.io/2019/10/20/programming-java-20191020-java-stream/"/>
+    <id>https://kodakyung.github.io/2019/10/20/programming-java-20191020-java-stream/</id>
     <published>2019-10-19T21:54:07.000Z</published>
     <updated>2020-01-19T12:19:51.530Z</updated>
     
@@ -109,10 +139,10 @@
   
   <entry>
     <title>함수형 사고 - ch7 실용적 사고</title>
-    <link href="https://kodakyung.github.io/2019/10/20/Programming-Common-20191020-%ED%95%A8%EC%88%98%ED%98%95-%EC%82%AC%EA%B3%A0-ch7-%EC%8B%A4%EC%9A%A9%EC%A0%81-%EC%82%AC%EA%B3%A0/"/>
-    <id>https://kodakyung.github.io/2019/10/20/Programming-Common-20191020-함수형-사고-ch7-실용적-사고/</id>
+    <link href="https://kodakyung.github.io/2019/10/20/programming-common-20191020-functional-thinking-ch7/"/>
+    <id>https://kodakyung.github.io/2019/10/20/programming-common-20191020-functional-thinking-ch7/</id>
     <published>2019-10-19T21:47:20.000Z</published>
-    <updated>2020-01-19T12:19:31.449Z</updated>
+    <updated>2020-01-24T15:36:06.715Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Java-8"><a href="#Java-8" class="headerlink" title="Java 8"></a>Java 8</h2><ul><li>Java가 기존에 가지고 있는 Class와 Collection에 <code>map()</code>과 <code>reduce()</code>와 같은 함수형 구조를 더했다.</li><li><code>함수형 구조</code>를 통해 Java의 컬렉션들을 효과적으로 처리할 수 있다.</li><li><code>reduce</code>의 경우 불변객체를 이용한 조작 연산이지만, Java 컬렉션의 대부분은 가변형이므로 가변 리듀스 작업을 하는 <code>collect</code>가 추가되었다.<ul><li>Java8에서 reduce는 불변 객체를, collect는 가변 객체를 조작할 때 사용한다.</li></ul></li></ul><h3 id="함수형-인터페이스-Functional-Interface"><a href="#함수형-인터페이스-Functional-Interface" class="headerlink" title="함수형 인터페이스(Functional Interface)"></a>함수형 인터페이스(Functional Interface)</h3><ul><li>Java의 <code>일급 객체</code>는 <code>Function</code>이 아니다.<ul><li>일급 객체(first-class object)란 ? <ul><li>다른 객체들에 일반적으로 <code>적용 가능한 연산</code>을 <code>모두 지원</code>하는 객체</li><li>보통 함수에 매개변수로 넘기기, 수정하기, 변수에 대입하기와 같은 연산을 지원할 때 일급 객체라 함.</li></ul></li></ul></li><li>따라서 함수 자체를 주고 받을 수 없으므로 인터페이스를 이용하며, 이를 <code>함수형 인터페이스</code>라한다.</li><li>Java의 함수형 인터페이스는 <code>단일 추상 메소드(Single Abstract Method, SAM) 인터페이스</code>이다.<ul><li>인터페이스에 추상 메소드가 1개인 것을 의미</li><li>default, static method는 상관 없다. </li><li>즉, 함수가 아닌 <code>인터페이스</code>를 주고 받는다. 그리고 구체적인 함수는 인터페이스 내부의 유일한 추상메소드를 <code>@Override</code>해 사용한다.</li><li>기존의 자바라면 익명 클래스를 사용하지만 <code>Lambda</code> 표현을 통해 간략하게 사용할 수 있다.</li></ul></li><li><code>@FunctionalInterface</code>로 함수형 인터페이스를 컴파일 레벨에서 check 할 수 있다.</li><li>Java8부터는 interface에 default method가 추가되었다.<ul><li>이 같은 개념을 mixin(믹신)이라 한다.</li><li>다른 클래스에서 사용될 메서드를 정의하지만 그 클래스의 상속 체계에 포함되지 않은 클래스</li><li>언어마다 다르지만 공통적으로 코드의 재사용이 좋아지고 다중상속의 모호함을 해결해준다.</li></ul></li></ul><h4 id="Java의-함수형-인터페이스"><a href="#Java의-함수형-인터페이스" class="headerlink" title="Java의 함수형 인터페이스"></a>Java의 함수형 인터페이스</h4><table><thead><tr><th>인터페이스</th><th>추상 메소드</th><th>설명</th></tr></thead><tbody><tr><td>Consumer<t></t></td><td>void accept(T t)</td><td>객체 T를 받아 소비함</td></tr><tr><td>Supplier<t></t></td><td>T get()</td><td>T 객체를 리턴함</td></tr><tr><td>Functioin&lt;T, R&gt;</td><td>R apply(T t)</td><td>객체 T를 객체 R로 매핑</td></tr><tr><td>Predicate<t></t></td><td>Boolean test(T t)</td><td>객체 T를 조사한 뒤 결과 반환</td></tr></tbody></table><ul><li>함수형 인터페이스 내의 메소드 명은 중요하지 않다.</li></ul><h3 id="Optional-옵셔널"><a href="#Optional-옵셔널" class="headerlink" title="Optional(옵셔널)"></a>Optional(옵셔널)</h3><ul><li>Stream이 종료된 후 Java의 내장 메소드는 <code>Optional</code>을 리턴한다.</li><li>Optional로 한번 감싸므로 <code>NPE</code>을 방지한다.</li></ul><h3 id="Java8-Stream"><a href="#Java8-Stream" class="headerlink" title="Java8 Stream"></a>Java8 Stream</h3><ul><li>대부분 함수형 언어들은 <code>Stream(스트림)</code>이라는 추상화가 포함되어 있다.<h4 id="스트림의-특징"><a href="#스트림의-특징" class="headerlink" title="스트림의 특징"></a>스트림의 특징</h4><ul><li>스트림은 <strong>값을 저장하지 않고</strong>, 종결 작업을 통해 <strong>입력에서 종착점까지 흐르는 파이프라인</strong>처럼 사용한다.</li><li><strong>상태를 유지하지 않는다.</strong><ul><li>ex) filter() 작업은 밑에 깔린 컬렉션을 바꾸지 않고 필터된 스트림을 받는 것</li></ul></li><li><strong>스트림은 Lazy Evaluation이다.</strong></li><li><strong>무한 스트림이 가능하다.</strong><ul><li><code>limit()</code>, <code>findFirst()</code> 같은 제한 메소드로 부분집합을 구할 수 있다.</li></ul></li></ul></li><li>스트림은 <code>중간 작업(Intermediate Operation)</code> 또는 <code>종결 작업(Terminal Operation)</code>이다.<ul><li>중간 작업은 항상 새 스트림을 리턴한다.</li><li>스트림은 게으르기(Lazy) 때문에 종결 작업까지 선언되어야 스트림에 해당하는 값을 구할 수 있다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"java"</span>);</span><br><span class="line">counter = <span class="number">0</span>;</span><br><span class="line">Stream&lt;String&gt; stream = list.stream()</span><br><span class="line">  .filter(el -&gt; &#123;</span><br><span class="line">    counter++;</span><br><span class="line">    <span class="keyword">return</span> el.contains(<span class="string">"a"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">System.out.println(counter); <span class="comment">// "0"</span></span><br><span class="line"><span class="comment">// 종결 작업이 선언되지 않았기 때문에 </span></span><br><span class="line"><span class="comment">// 스트림 연산이 이루어지지 않아 값이 나오지 않는다.</span></span><br></pre></td></tr></table></figure></li></ul></li></ul><h3 id="Immutable-Objects"><a href="#Immutable-Objects" class="headerlink" title="Immutable Objects"></a>Immutable Objects</h3><ul><li>함수형 프로그래밍은 <code>불변성</code>이 기본이다.</li><li>불변형 객체는 <code>변이</code>가 없으므로 테스트가 간편해지고, 기본적으로 thread-safe해 동기화 문제가 없으며, 상태를 알 수 없거나 잘못된 상태를 가질일이 없다.</li><li>불변 객체는 <code>생성될 때 초기화</code>가 일어나므로 생성 시 모든 문제를 알 수 있다.(컴파일 레벨에서 확인)<ul><li>이를 <code>실패의 원자성(Failure Atomicity)</code>이라 한다.</li></ul></li></ul><h4 id="Immutable-Objects-of-Java"><a href="#Immutable-Objects-of-Java" class="headerlink" title="Immutable Objects of Java"></a>Immutable Objects of Java</h4><ol><li>모든 필드를 final 선언</li><li>클래스를 final 선언해 Override 방지</li><li>인수가 없는 생성자를 제공하지 않는다.<ul><li>불변형은 생성시 초기화 되므로 인수 없는 생성자가 필요하지 않다.</li></ul></li><li>적어도 하나의 생성자를 제공한다.</li><li>생성자 외에 변이 메소드(setter)를 제공하지 않는다.<ul><li>setter 외에도 가변 객체 참조를 전달하지 않게 주의해야한다.</li></ul></li></ol><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>함수형 사고</li><li><a href="https://stackoverflow.com/questions/22577197/java-8-streams-collect-vs-reduce" target="_blank" rel="noopener">java 8 streams collect vs reduce</a></li><li><a href="https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4" target="_blank" rel="noopener">일급 객체</a></li><li><a href="https://futurecreator.github.io/2018/08/26/java-8-streams-advanced/" target="_blank" rel="noopener">java 8 stream advanced</a></li><li><a href="https://palpit.tistory.com/673" target="_blank" rel="noopener">람다식 - 표준 API의 함수적 인터페이스1</a></li></ul>]]></content>
     
@@ -139,10 +169,10 @@
   
   <entry>
     <title>데이터베이스의 성능 향상(feat. 인덱스)</title>
-    <link href="https://kodakyung.github.io/2019/10/17/CS-DataBase-20191017-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81-feat-%EC%9D%B8%EB%8D%B1%EC%8A%A4/"/>
-    <id>https://kodakyung.github.io/2019/10/17/CS-DataBase-20191017-데이터베이스의-성능-향상-feat-인덱스/</id>
+    <link href="https://kodakyung.github.io/2019/10/17/cs-database-20191017-database-index/"/>
+    <id>https://kodakyung.github.io/2019/10/17/cs-database-20191017-database-index/</id>
     <published>2019-10-16T17:56:01.000Z</published>
-    <updated>2019-10-18T17:57:07.300Z</updated>
+    <updated>2020-01-24T15:34:24.766Z</updated>
     
     <content type="html"><![CDATA[<h2 id="성능이란"><a href="#성능이란" class="headerlink" title="성능이란 ?"></a>성능이란 ?</h2><blockquote><p>기본적으로 “빠르기”를 기준으로 한 개념</p></blockquote><h3 id="성능을-측정하는-2가지-지표"><a href="#성능을-측정하는-2가지-지표" class="headerlink" title="성능을 측정하는 2가지 지표"></a>성능을 측정하는 2가지 지표</h3><ol><li><code>처리시간(Processing Time)</code> or <code>응답시간(Response Time)</code><ul><li>어떤 특정 처리의 시작부터 종료까지 걸린 시간</li></ul></li><li><code>처리율(Throughput)</code><ul><li>특정 처리(트랜잭션)를 단위 시간에 몇 건 처리 가능한가<ul><li>ex) 트랜잭션을 초당 50건 처리하는 것이 가능하면, 50 TPS(Transaction Per Second)</li></ul></li></ul></li></ol><h3 id="정점과-한계"><a href="#정점과-한계" class="headerlink" title="정점과 한계"></a>정점과 한계</h3><ul><li><p><code>처리율이 높은</code> 시스템일수록 (CPU나 하드웨어같은) <code>자원이 많이</code> 필요하다</p><ul><li>즉 동시에 실행되는 처리가 증가할 수록 필요한 물리 자원도 증가한다.</li></ul></li><li><p>이때 동시 실행 처리 수가 자원의 한계를 넘어서는 경우 응답시간이 상승하고 처리율이 떨어지며 성능이 나빠진다.</p></li><li><p>한 가지 자원이라도 한계에 이르면 성능이 나빠지기 시작하는데 이를 <code>버틀넥 포인트(Bottleneck Point)</code>, <code>병목</code>이라 한다.</p></li><li><p>시스템은 동시에 실행되는 처리가 가장 많아질 때를 기준으로 자원을 준비하지 않으면 <code>정점(Peek)</code>일 때 극단적인 지연을 일으킨다.</p></li><li><p>정점을 상정한 자원을 확보해두는 것을 <code>사이징(Sizing)</code>이나 <code>캐퍼시티 플랜(Capacity Planinig)</code>이라 한다.</p></li><li><p>정점일때와 아닐 때의 차이가 큰 경우 정점에 맞추는 경우 평상시에 낭비되는 자원이 크다.</p></li><li><p>그렇기에 클라우드를 통해 스케일업과 스케일아웃을 하며 동적인 자원관리를 하는 추세이다.</p><ul><li><code>스케일업(Scale-Up)</code> : 고성능 장비 도입</li><li><code>스케일아웃(Scale-Out)</code> : 장비 추가 도입</li></ul></li></ul><h2 id="데이터베이스의-성능"><a href="#데이터베이스의-성능" class="headerlink" title="데이터베이스의 성능"></a>데이터베이스의 성능</h2><h3 id="데이터베이스-병목"><a href="#데이터베이스-병목" class="headerlink" title="데이터베이스 병목"></a>데이터베이스 병목</h3><blockquote><p>데이터 베이스가 시스템에서 병목이 되기 쉬운 이유</p></blockquote><p><strong>1. 취급하는 데이터 양이 많다.</strong></p><ul><li>최근들어 저장되는 데이터가 폭발적으로 증가하는 추세라 데이터를 보존하는 저장소에서 병목이 일어나는 경우가 많다.</li></ul><p><strong>2. 자원 증가(스케일 아웃)를 통한 성능 향상이 어렵다.</strong></p><ul><li>데이터베이스의 병목 지점은 CPU나 메모리가 아니라 <code>주로 보조기억 장치</code>이므로 스케일 아웃이 어렵다.<ul><li>데이터베이스는 기본적으로 <code>Active-StandBy</code>나 <code>Active-Active</code> 구성을 취하기 때문</li><li>이런 이유로 주로 한정된 자원을 효율적으로 쓰기 위한 ‘<code>튜닝</code>‘이 발전함</li></ul></li><li>최근에는 저장소를 더 고속 매체인 <code>메모리</code>에 적재하는 등으로 <code>스케일업</code>에 의한 성능 개선도 이루어지고 있다. <ul><li>이런 발상으로 만들어진 데이터베이스가 인메모리 데이터베이스(In-memory)</li></ul></li></ul><h2 id="데이터베이스-성능을-결정하는-요인"><a href="#데이터베이스-성능을-결정하는-요인" class="headerlink" title="데이터베이스 성능을 결정하는 요인"></a>데이터베이스 성능을 결정하는 요인</h2><h3 id="데이터베이스의-실행-과정"><a href="#데이터베이스의-실행-과정" class="headerlink" title="데이터베이스의 실행 과정"></a>데이터베이스의 실행 과정</h3><p><strong>1. 파스 (Parse)</strong></p><ul><li>내부 프로그램인 Parsor가 구문 오류를 체크한다.</li></ul><p><strong>2. 실행계획 (Execution Plan OR Access Plan)</strong><br><strong>- 실행계획 작성 &gt; 실행계획 평가</strong></p><ul><li><p>내부 프로그램인 <code>Optimizer</code>가 SQL문에 어떤 경로로 접근할지 <code>계획</code>한다.</p><ul><li>프로그래머는 SQL을 선언만하고 과정은 옵티마이저가 하므로 일반적인 절차형 언어와 다르게 <code>선언형 언어</code>라 하기도 함.</li><li>옵티마이저가 보통 프로그래머보다 효율적인 실행계획을 세우므로 직접 실행계획을 세우는 것은 지양하는 것이 좋다.</li><li>옵티마이저가 최적의 속도로 동작할 수 있는 환경을 구성해주는 것이 중요</li></ul></li><li><p><code>통계 정보</code>를 참고해 <code>실행 계획</code>을 세운다.</p><ul><li><p>통계 정보란 ? 옵티마이저가 실행계획을 세울 때 참고하는 정보</p><ol><li>테이블의 행수,열수</li><li>각 열의 길이와 데이터형</li><li>테이블의 크기</li><li>열에 대한 기본키나 NOT NULL 제약의 정보</li><li>열값의 분산과 편향 등.</li></ol></li><li><p>통계 정보는 테이블에 보존되어 있다.</p><ul><li><p><code>show table status;</code><br><img src="01.png" alt="show table status"></p><ul><li>Rows : 행 수</li><li>Avg_row_length : 평균 레코드 크기</li></ul></li><li><p><code>show index from [TABLE_NAME];</code><br><img src="02.png" alt="show index from TABLE_NAME"></p><ul><li>Cardinality : 인덱스 대상의 분산도</li></ul></li></ul></li><li><p>통계 데이터는 대부분 <code>자동으로 수집</code>되어 구현된다.</p><ul><li>대체로 대량의 데이터가 변경되거나 특정 시간을 정할 수 있다.</li></ul></li></ul></li></ul><ol start="3"><li>데이터 액세스</li></ol><h3 id="데이터베이스가-실행계획을-세우는-기준"><a href="#데이터베이스가-실행계획을-세우는-기준" class="headerlink" title="데이터베이스가 실행계획을 세우는 기준"></a>데이터베이스가 실행계획을 세우는 기준</h3><blockquote><p>인덱스 </p></blockquote><ul><li><p>인덱스의 유무로 <code>풀 스캔(full scan)</code>과 <code>레인지 스캔(range scan)</code>이 나뉜다.</p><ul><li>풀 스캔: 테이블의 레코드를 전부 읽는 것</li><li>레인지 스캔: 테이블 일부 레코드만 읽는 것</li></ul></li><li><p>인덱스가 있는 경우<br><img src="03.png" alt="인덱스가 있는 경우 1"><br><img src="04.png" alt="인덱스가 있는 경우 2"></p><ul><li><code>TYPE</code>이 All이 아닌 <code>CONST</code>, <code>RANGE</code></li><li>스캔 종류의 이름은 조건에 따라 조금씩 달라진다.</li></ul></li><li><p>인덱스가 없는 경우<br><img src="05.png" alt="인덱스가 없는 경우"></p><ul><li>현재 예시 테이블은 <code>id</code>와 <code>fk</code>에만 인덱스가 존재한다.</li><li>인덱스가 없는 컬럼을 조회하므로 <code>ALL 풀 스캔</code>을 한다. </li><li><code>기본키</code>는 따로 설정하지 않아도 인덱스가 존재한다.</li></ul></li><li><p>인덱스 생성</p><ul><li><code>create index [INDEX_NAME] on [TABLE_NAME]([COLOMN_NAME])</code></li></ul></li></ul><h2 id="인덱스의-구조"><a href="#인덱스의-구조" class="headerlink" title="인덱스의 구조"></a>인덱스의 구조</h2><p><img src="btree.png" alt="B-Tree 구조"></p><ul><li>B-Tree 로 되어있다.</li><li>따라서 데이터들은 반드시 <code>정렬</code>된 데이터로 유지된다.</li><li>B-Tree는 균형 트리이기에 어떤 값에 대해서도 <code>속도가 일정</code>하다(최선, 최악의 경우가 비슷)<ul><li>일반적으로 B-Tree는 3~4층 정도로 조절된다.</li></ul></li><li>처음 생성시 <code>균형 트리</code>이지만 <code>INSERT/DELETE/UPDATE</code> 등이 일어나면 트리가 깨지며 성능이 나빠질 수 있다.</li><li>따라서 <code>갱신</code> 빈도가 높은 테이블은 정기적으로 인덱스 재구성이 필요하다.</li></ul><h2 id="인덱스의-성능"><a href="#인덱스의-성능" class="headerlink" title="인덱스의 성능"></a>인덱스의 성능</h2><p><strong>- 데이터에 비례해 효과가 좋아진다.</strong></p><ul><li>어느정도 큰 데이터에서 생성하는 것이 좋다.  </li></ul><p><strong>- 정렬을 건너뛰는 것이 가능하다.</strong></p><ul><li>예를 들면 groupby로 count하는 경우<ul><li>인덱스가 없다면 <code>풀 스캔</code> + <code>정렬을 위한 임시영역에 파일을 저장</code>한다.<ul><li>이런식으로 임시영역을 사용해 처리하면 매우 느려 성능 이슈를 일으킬 수 있다.</li></ul></li><li>인덱스가 있다면 이미 정렬되어 있으므로 고속 처리가 가능하다.</li></ul></li><li>SQL 내부에서 정렬하는 경우<ul><li>GROUP BY</li><li>COUNT/SUM/AVG 등의 집약 함수</li><li>UNION/INTERSECT/EXCEPT 등의 집합연산</li></ul></li></ul><h2 id="인덱스-주의사항"><a href="#인덱스-주의사항" class="headerlink" title="인덱스 주의사항"></a>인덱스 주의사항</h2><ul><li>인덱스는 <code>SELECT</code> 성능을 향상시키고 <code>INSERT/UPDATE/DELECT</code> 성능을 약화시킨다.<ul><li>인덱스 갱신의 오버헤드로 성능이 떨어진다.</li></ul></li><li>너무 많은 인덱스를 만드는 경우 의도한 것과 다르게 실행될 수 있다.<ul><li>인덱스를 생성만 할 뿐 실행은 옵티마이저가 자동으로 하기 때문에 의도와 다르게 동작해 더 느릴 수 있다.</li></ul></li><li>따라서 크기가 큰 테이블에만 만들고</li><li>기본키 제약이나 유일성 제약이 붙은 경우 자동으로 인덱스가 생성되므로 추가 생성하지 않는다.</li><li><code>Cardinality</code>가 높은 열에 만든다.</li></ul><h2 id="성능-안티-패턴"><a href="#성능-안티-패턴" class="headerlink" title="성능 안티 패턴"></a>성능 안티 패턴</h2><ul><li>통계 정보 갱신 설정이 off인 경우</li><li>정기 갱신을 설정하고 데이터양이 급격하게 바뀌는 경우<ul><li>정기 갱신 전 바뀐 데이터에 대해 인덱스가 적용되지 않은 상태라 성능 향상을 기대하기 어렵다.</li></ul></li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>데이터베이스 첫걸음 </li></ul>]]></content>
     
@@ -169,10 +199,10 @@
   
   <entry>
     <title>함수형 사고 - ch2 전환</title>
-    <link href="https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-%ED%95%A8%EC%88%98%ED%98%95-%EC%82%AC%EA%B3%A0-ch2-%EC%A0%84%ED%99%98/"/>
-    <id>https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-함수형-사고-ch2-전환/</id>
+    <link href="https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/"/>
+    <id>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/</id>
     <published>2019-10-16T11:54:04.000Z</published>
-    <updated>2019-10-16T13:35:22.188Z</updated>
+    <updated>2020-01-24T15:35:53.133Z</updated>
     
     <content type="html"><![CDATA[<h2 id="생각의-전환"><a href="#생각의-전환" class="headerlink" title="생각의 전환"></a>생각의 전환</h2><ul><li>새로운 언어를 배우는 것은 쉽지만, <code>새로운 패러타임</code>을 익히는 것은 어렵다.</li><li>함수형 코드를 제대로 작성하기 위해서는 <code>문제를 접근하는 방식의 전환</code>이 필요하다.</li></ul><h2 id="명령형에서-함수형으로의-전환"><a href="#명령형에서-함수형으로의-전환" class="headerlink" title="명령형에서 함수형으로의 전환"></a>명령형에서 함수형으로의 전환</h2><h3 id="명령형-처리"><a href="#명령형-처리" class="headerlink" title="명령형 처리"></a>명령형 처리</h3><ul><li>명령형 프로그래밍이란 <code>상태</code>를 <code>변경하는 명령</code>으로 이루어진 프로그래밍 (일반적으로 for 루프)</li></ul><script src="https://gist.github.com/kodakyung/02948b60d265572d4fd90464fe8e04e5.js"></script><ul><li>이러한 프로그래밍은 개발자가 <code>루프 내에서 연산</code>하기를 권장한다.</li><li>한 글자 이름 필터, 목록에 남아 있는 이름 대문자 변형, 목록을 하나의 문자열로 변환하는 일련의 과정을 모두 <code>저 수준의 매커니즘</code>에서 사용한다. </li></ul><h3 id="함수형-처리"><a href="#함수형-처리" class="headerlink" title="함수형 처리"></a>함수형 처리</h3><ul><li><code>필터, 변형, 변환</code> 등 논리적 분류로 구현한다.</li><li><code>고계함수</code>에 <code>매개변수로 주어지는 함수</code>를 이용해 저수준의 작업을 커스텀한다.<ul><li>고계함수란 ? 함수를 다루는 함수, 함수를 인자로 받을 수 있고 함수를 반환하기도 함. 함수가 정수와 동등하게 다루어짐</li></ul></li></ul><script src="https://gist.github.com/kodakyung/f891d3978441e6991f3c3e7deb2fb5a3.js"></script><ul><li>한 글자 이름을 필터하고, 이 연산의 결과를 map 함수에 넘긴뒤 reduce를 통해 결합한다.</li><li>모든 함수형 언어에서 비슷한 기능을 제공해준다.</li></ul><blockquote><p>이와 같이 함수형 사고로의 전환은 “세부적인 구현을 하지 않고 고수준 추상 개념을 적용하는 법”을 배우는 것이다. </p></blockquote><h3 id="고수준의-추상적-사고로-얻는-이점들"><a href="#고수준의-추상적-사고로-얻는-이점들" class="headerlink" title="고수준의 추상적 사고로 얻는 이점들"></a>고수준의 추상적 사고로 얻는 이점들</h3><ol><li><p>문제의 공통점을 고려해 <code>다른 방식으로 분류</code>하는 것을 권장함</p></li><li><p><code>런타임</code>이 <code>최적화</code>를 잘할 수 있도록 한다.</p><ul><li>더 적은 아이템을 처리하는 경우</li><li>ex) Java8 Supplier를 이용한 Lazy Evaluation 등</li></ul></li><li><p>개발자가 <code>엔진의 세부사항</code>을 깊게 고려하지 않고 프로그래밍 할 수 있다. </p><ul><li><p>책에서는 <del>“개발자가 엔진 세부사항에 깊이 파묻힐 경우 불가능한 해답을 가능하게 한다.”</del> 고 나와 있지만 위의 뜻인 것 같다. </p></li><li><p>예를 들면 위의 명령형 처리 로직에 스레드 처리가 추가된다면 스레드 관련 코드가 로직 코드에 섞여 들어간다. 하지만 함수형으로 프로그래밍한다면 병렬 처리를 의미하는 코드 한줄만 추가하면 된다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">cleanNamesP</span><span class="params">(List&lt;String&gt; names)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (names == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">return</span> names</span><br><span class="line">          .parallelStream() <span class="comment">// 이 한줄이 추가되었다. </span></span><br><span class="line">          .filter(n -&gt; n.length() &gt; <span class="number">1</span>) </span><br><span class="line">          .map(e -&gt; capitalize(e))</span><br><span class="line">          .collect(Collectors.joining(<span class="string">","</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>이후 저수준의 세부적인 최적화는 런타임이 담당한다. </p></li></ul></li></ol><h3 id="명령형에서-함수형으로의-전환-과정"><a href="#명령형에서-함수형으로의-전환-과정" class="headerlink" title="명령형에서 함수형으로의 전환 과정"></a>명령형에서 함수형으로의 전환 과정</h3><ul><li><code>OOP</code> 언어는 캡슐화가 이점이므로 <code>내부 상태</code> 사용이 보편적이고 권장된다.</li><li><code>FP</code>은 내부 변수를 사용하지 않고 필요한 값을 <code>매개변수</code>로 넘긴다.<ul><li>부수 효과가 없는 <code>순수 함수</code>를 사용한다.<ul><li>입력만 결과에 영향을 주는 함수</li></ul></li><li>따라서 캐싱하지 않고 항상 계산 하기때문에 성능이 떨어지며, 이를 막기 위해 <code>메모이제이션</code>을 사용한다.</li></ul></li><li>완전한 <code>FP</code>은 <code>Stream</code>을 이용한다.<ul><li>연산의 중간과정을 스트림에 저장한 뒤 완전히 연산히 끝났을 때 스트림을 종료하고 값을 생성한다.</li><li>이를 <code>게으른 평가(Lazy Evaluation)</code>이라 한다.</li></ul></li></ul><h2 id="함수형-언어들의-공통된-빌딩-블록"><a href="#함수형-언어들의-공통된-빌딩-블록" class="headerlink" title="함수형 언어들의 공통된 빌딩 블록"></a>함수형 언어들의 공통된 빌딩 블록</h2><ul><li><code>필터 / 변형 / 변환</code>에 관한 내용은 함수형 언어 및 프레임 워크에 <code>공통적</code>으로 존재한다.</li></ul><h3 id="1-필터"><a href="#1-필터" class="headerlink" title="1. 필터"></a>1. 필터</h3><ul><li><code>사용자가 정한 조건</code>으로 목록에 있는 요소를 <code>필터</code>해서 더 작은 목록으로 만든다.</li><li>ex) java8 - filter()</li></ul><h3 id="2-맵"><a href="#2-맵" class="headerlink" title="2. 맵"></a>2. 맵</h3><ul><li>각 요소에 <code>같은 함수</code>를 적용해 <code>새로운 컬렉션</code>을 만든다.</li><li>ex) java8 - map()</li></ul><h3 id="3-폴드-리듀스"><a href="#3-폴드-리듀스" class="headerlink" title="3. 폴드 / 리듀스"></a>3. 폴드 / 리듀스</h3><ul><li>언어마다 이름도 다양하고 약간의 의미도 다르지만, 기본적으로 캐터모피즘(catamorphism)이라는 <code>목록 조작 개념의 변형</code>을 의미한다. <ul><li>목록을 접어서 다른 형태로 만드는 연산</li></ul></li><li>ex) java8의 filter로 값을 추출 후 reduce를 통해 추가 연산 후 결과를 반환</li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>함수형 사고(Functional Thinking), 한빛미디어</li><li><a href="https://github.com/oreillymedia/functional_thinking" target="_blank" rel="noopener">Functional Thinking Code</a></li></ul>]]></content>
     
@@ -197,10 +227,10 @@
   
   <entry>
     <title>함수형 사고 - ch1 왜?</title>
-    <link href="https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-%ED%95%A8%EC%88%98%ED%98%95-%EC%82%AC%EA%B3%A0-ch1-%EC%99%9C/"/>
-    <id>https://kodakyung.github.io/2019/10/16/Programming-Common-20191016-함수형-사고-ch1-왜/</id>
+    <link href="https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/"/>
+    <id>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/</id>
     <published>2019-10-16T11:26:14.000Z</published>
-    <updated>2019-10-16T13:34:59.523Z</updated>
+    <updated>2020-01-24T15:35:35.597Z</updated>
     
     <content type="html"><![CDATA[<h2 id="함수형-프로그래밍을-하는-이유"><a href="#함수형-프로그래밍을-하는-이유" class="headerlink" title="함수형 프로그래밍을 하는 이유"></a>함수형 프로그래밍을 하는 이유</h2><h3 id="1-패러다임의-전환"><a href="#1-패러다임의-전환" class="headerlink" title="1. 패러다임의 전환"></a>1. 패러다임의 전환</h3><ul><li><p>문제에 대해 사람이 생각하는 것과 같은 방식으로 프로그래밍 할 수 있다.</p><ul><li><p>예를 들면, Java에서 <code>1)텍스트 파일을 읽고 2)가장 많이 사용된 단어를 찾고 3)그 단어들과 빈도를 정렬된 목록으로 출력해야 한다</code>면 일반적으로 성능을 위해 한 loop 안에서 3가지 연산을 섞어서 사용 할 것</p><blockquote><p>책에서는 이것을 “성능을 명료함과 맞바꾸었다”고 표현함.</p></blockquote></li><li><p>반면에 함수형 프로그래밍을 한다면 <code>map</code>과 <code>filter</code>와 같은 고계함수를 이용해 사람이 생각하는 것과 같은 흐름(위의 <code>1)</code>~<code>3)</code>)으로 프로그래밍 할 수 있게 한다.</p></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map <span class="title">wordFreq</span><span class="params">(String words)</span> </span>&#123;</span><br><span class="line">  TreeMap&lt;String, Integer&gt; wordMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">  regexToList(words, <span class="string">"\\w+"</span>).stream() <span class="comment">// 정규표현식을 검색한 뒤 스트림으로 변경</span></span><br><span class="line">    .map(w -&gt; w.toLowerCase()) <span class="comment">// 소문자로 바꾼다.</span></span><br><span class="line">    .filter(w -&gt; !NON_WORDS.contains(w))<span class="comment">// 비단어를 골라내고</span></span><br><span class="line">    .forEach(w -&gt; wordMap.put(w, wordMap.getOrDefault(w, <span class="number">0</span>) + <span class="number">1</span>)); <span class="comment">// 단어 빈도수를 센다.</span></span><br><span class="line">  <span class="keyword">return</span> wordMap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="2-최근-언어-트렌드"><a href="#2-최근-언어-트렌드" class="headerlink" title="2. 최근 언어 트렌드"></a>2. 최근 언어 트렌드</h3><ul><li>주요 언어들이 함수형 기능을 더하고 있다. </li><li>즉 함수형 패러다임을 이해한다면 다른 최신 함수형 언어들을 쉽게 익히고 사용할 수 있게된다.</li></ul><h3 id="3-언어-런타임에-제어를-양도함"><a href="#3-언어-런타임에-제어를-양도함" class="headerlink" title="3. 언어/런타임에 제어를 양도함"></a>3. 언어/런타임에 제어를 양도함</h3><ul><li>c++에서 Java로 GC를 사용하는 것처럼, 까다로운 <code>저수준의 문제</code>를 언어나 런타임에 최대한 맡길수록 <code>더 중요한 문제</code>에 집중 할 수 있게 된다.</li></ul><h3 id="4-간결함"><a href="#4-간결함" class="headerlink" title="4. 간결함"></a>4. 간결함</h3><blockquote><p>객체지향 프로그래밍은 움직이는 부분을 캡슐화하여 코드 이해를 돕고, 함수형 프로그래밍은 움직이는 부분을 최소화하여 코드 이해를 돕는다. </p></blockquote><ul><li>캡슐화, 스코핑, 가시성 등의 <code>상태 변화</code>에 대해 필요한 세밀한 제어들을 직접 제어 하기 보다는 이 부분을 <code>제거</code>하는데 주력한다.</li><li>객체지향 개발자는 항상 새로운 자료구조(Object)와 거기에 메소드를 만드므로 메서드 수준의 재사용보다<code>큰 프레임워크 스타일의 재사용</code>을 하게된다.</li><li>함수 수준의 캡슐화는 모든 문제에 새로운 클래스를 생성하기보다는 <code>더 세부적인 수준에서 재사용</code>을 가능하게 한다.</li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>함수형 사고(Functional Thinking), 한빛미디어</li><li><a href="https://github.com/oreillymedia/functional_thinking" target="_blank" rel="noopener">Functional Thinking Code</a></li></ul>]]></content>
     
@@ -224,10 +254,10 @@
   
   <entry>
     <title>MySQL 트랜잭션과 동시성 제어</title>
-    <link href="https://kodakyung.github.io/2019/10/15/CS-DataBase-20191015-MySQL-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EA%B3%BC-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%A0%9C%EC%96%B4/"/>
-    <id>https://kodakyung.github.io/2019/10/15/CS-DataBase-20191015-MySQL-트랜잭션과-동시성-제어/</id>
+    <link href="https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/"/>
+    <id>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</id>
     <published>2019-10-15T14:20:32.000Z</published>
-    <updated>2019-10-16T18:20:42.495Z</updated>
+    <updated>2020-01-24T15:33:33.802Z</updated>
     
     <content type="html"><![CDATA[<h1 id="트랜잭션과-동시성제어"><a href="#트랜잭션과-동시성제어" class="headerlink" title="트랜잭션과 동시성제어"></a>트랜잭션과 동시성제어</h1><h2 id="트랜잭션이란"><a href="#트랜잭션이란" class="headerlink" title="트랜잭션이란?"></a>트랜잭션이란?</h2><p><strong>복수의 쿼리의 처리 단위</strong></p><ul><li>데이터 갱신은 단일 쿼리보다 <code>복수 쿼리를 연속적</code>으로 수행하는 경우가 많다.</li><li><code>동시성 제어</code>를 위해 필요</li></ul><h3 id="MyISAM-vs-InnoDB"><a href="#MyISAM-vs-InnoDB" class="headerlink" title="MyISAM vs InnoDB"></a>MyISAM vs InnoDB</h3><ul><li>전자는 테이블 단위 잠금, <code>트랜잭션 사용 불가</code></li><li>후자는 행 단위 잠금, <code>트랜잭션 사용 가능</code></li></ul><h2 id="트랜잭션-특성-ACID-특성"><a href="#트랜잭션-특성-ACID-특성" class="headerlink" title="트랜잭션 특성 (ACID 특성)"></a>트랜잭션 특성 (ACID 특성)</h2><ol><li><p>Atomicity(원자성)</p><ul><li>데이터 변경(<code>update, delete, insert</code>)시 데이터 조작이 전부 성공 or 전부 실패하도록 보증</li></ul></li><li><p>Consistency(일관성)</p><ul><li>데이터 조작 전후로 상태를 유지하는 것을 보증함…?</li><li>ex) 일관성을 유지하기 위해 사용자 등록 시 사용자 구분하기 위한 일련 번호에 unique 제약 조건을 검</li></ul></li><li><p>Isolation(고립성, 격리성)</p><ul><li><p><code>복수의 사용자</code>가 <code>데이터 조작</code>을 해도 각각 처리가 <code>모순 없이</code> 동작함</p></li><li><p>모순 없이 동작한다는 것은 동시에 말고 순서대로 실행 시켰을 때와 같은 동작을 한다는 것을 의미</p><ul><li><p>병렬로 실행되지 않은 상태를 의미(<code>직렬</code>)</p></li><li><p>ex) 호텔방 예약 시 1. 빈 방 확인 2. 빈방에서 -1 후 결과를 빈방 수로 되돌려준다는 로직을 수행하는 경우 사용자 a와 사용자 b가 동시에 수행하면 8개가 아닌 9개가 남았다고 될 수 있음</p></li></ul></li><li><p>Isolation을 유지하기 위해 <code>lock</code> 을 사용</p><ul><li>잠금 단위는 테이블 전체, 블록, 행 등</li></ul></li><li><p>MySQL은 주로 트랜잭션 처리 시 <code>행 단위</code> 잠금 이용 (<code>select ~ for update</code>)</p><ul><li>후속 처리는 해당 잠금이 해제될 때 (<code>commit</code> or <code>rollback</code> )까지 대기한 후 처리한다.</li></ul></li><li><p>InnoDB형 테이블은 <code>MVCC</code> 구조로 동작하기 때문에 단순 값 참조 시 <code>select ~ for update</code> 구준은 불필요. 읽기가 블록되지 않음.</p><ul><li>이 때 테이블 갱신하는 사용자가 소수고 참조하는 사용자가 많은 경우 사용자의 동시성, 병렬성이 높아짐.</li></ul></li><li><p>모순 없는 동작(직렬)을 위해 DBMS에서  <code>Serializable</code> (직렬화 가능) 이라는 <code>격리 수준</code>을 제공함</p></li><li><p>이때 항상 <code>동시에 동작하는 트랜잭션</code>이 <code>1개</code>여야 하므로 성능에서 실용적이지 않음</p></li><li><p>따라서 격리 수준을 완화해 <code>단계별</code>로 제공한다.</p></li></ul><br><h3 id="Trasaction-Isolation-Level-트랜잭션-격리-수준"><a href="#Trasaction-Isolation-Level-트랜잭션-격리-수준" class="headerlink" title="Trasaction Isolation Level(트랜잭션 격리 수준)"></a>Trasaction Isolation Level(트랜잭션 격리 수준)</h3><ol><li>커밋되지 않은 읽기(<code>Read Uncommied</code>) - 가장 완화</li><li>커밋된 읽기(<code>Read Committed</code>)</li><li>반복 읽기(<code>Repeatable Read</code>) - MySQL의 기본 설정</li><li>직렬화 가능(<code>Serializable</code>) - 가장 엄격</li></ol><br><h3 id="격리-수준-완화에-따라-일어나는-현상"><a href="#격리-수준-완화에-따라-일어나는-현상" class="headerlink" title="격리 수준 완화에 따라 일어나는 현상"></a>격리 수준 완화에 따라 일어나는 현상</h3><ol><li>더티 읽기(<code>Dirty Read</code>) (1 이하)<ul><li>어떤 트랜잭션이 커밋되기 전에 다른 트랜잭션에서 데이터를 읽는 현상</li></ul></li><li>애매한 읽기(<code>Fuzzy/Non-Repetable Read</code>) (2 이하)<ul><li>어떤 트랜잭션이 이전에 읽어들인 데이터에를 다시 읽을 때 2회 이후의 결과가 1회 때와 다른 것</li></ul></li><li>팬텀 읽기(<code>Phantom Read</code>) (3 이하)<ul><li>어떤 트랜잭션을 읽을 때 데이터가 나타나거나 사라지는 현상.</li></ul></li></ol><table><thead><tr><th>격리수준</th><th>더티 읽기</th><th>애매한 읽기</th><th>팬텀 읽기</th></tr></thead><tbody><tr><td>커밋되지 않은 읽기</td><td>O</td><td>O</td><td>O</td></tr><tr><td>커밋된 읽기</td><td>X</td><td>O</td><td>O</td></tr><tr><td>반복 읽기</td><td>X</td><td>X</td><td>O</td></tr><tr><td>직렬화 가능</td><td>X</td><td>X</td><td>X</td></tr></tbody></table></li><li><p>Durability(지속성)</p><ul><li>commit 후 (데이터 조작 완료 후) 완료 통지를 사용자가 받는 시점에서 그 조작이 <code>영구적</code>이고 결과를 잃지 않는 경우를 의미</li><li>시스템이 비정상일 때도 성립해야함(os 이상종료 등의 시스템 장애에도 해당)</li><li>MySQL과 같은 데이터베이스는 트랜잭션 조작을 하드 디스크에 <code>로그</code> 로 기록, 시스템 이상 발생 시 그 로그를 사용해 발생 전 상태로 복원함.</li></ul></li></ol><h2 id="다른-커넥션에서-테이블을-보는-경우"><a href="#다른-커넥션에서-테이블을-보는-경우" class="headerlink" title="다른 커넥션에서 테이블을 보는 경우"></a>다른 커넥션에서 테이블을 보는 경우</h2><ul><li>DDL에 의한 테이블 작성과 , DML에 의한 데이터 저장은 <code>트랜잭션 커밋 전까지 다른 커넥션에서 보이지 않지만</code> 이와 별개로 보이는 경우가 있다.</li></ul><ol><li><p>DDL에 의한 암묵적인 커밋</p><ul><li>MySQL이나 Oracle에서 create  table같은 <code>DDL 실행시 암묵적인 커밋</code> 발생.</li><li>따라서 한개의 커넥션에서 실행된 create table 성공시 다른 커넥션에서도 참조 가능</li></ul></li><li><p>오토커밋 설정</p><ul><li>트랜잭션의 개시(begin transaction, start transaction 등)가 명시적으로 지정되지 않았을 때 2가지 모드로 구분함</li></ul><ol><li><code>하나의 SQL</code>문을 하나의 트랜잭션으로</li><li>사용자가 <code>commit 또는 rollback을 실행할 때 까지</code>가 하나의 트랜잭션</li></ol><ul><li>일반적인 dbms에서는 선택 가능.</li><li>mysql, postgreSQL, SQL Server는 기본 설정이 2.오토커밋</li></ul></li></ol><ul><li>이와 별개로 갱신을 수행하는 트랜잭션 자신은 트랜잭션 격리 수준, commit, rollback과 상관없이 자신이 수행한 갱신을 즉시 볼 수 있다.</li></ul><h2 id="MVCC에-따른-MySQL-InnoDB-의-특성"><a href="#MVCC에-따른-MySQL-InnoDB-의-특성" class="headerlink" title="MVCC에 따른 MySQL(InnoDB)의 특성"></a>MVCC에 따른 MySQL(InnoDB)의 특성</h2><h3 id="MVCC-Multi-Versioning-Concurrency-Control"><a href="#MVCC-Multi-Versioning-Concurrency-Control" class="headerlink" title="MVCC(Multi Versioning Concurrency Control)"></a>MVCC(Multi Versioning Concurrency Control)</h3><p>: 다중 버전 동시성 제어</p><ul><li><p>RDBMS는 <code>공유 데이터</code>를 사용하기 때문에 <code>동시성 제어가 필요</code>함</p></li><li><p>이를 <code>Rock</code>을 통해 <code>상호배제</code>를 해 컨트롤 했지만 이는 <code>대기 현상</code>이 발생하기 때문에 <code>성능</code>이 떨어짐</p></li><li><p>어떤 데이터에 여러 차례 수정이 가해진 경우 <code>수정이 가해진 시점</code>에 대해 <code>버전 별</code>로 <code>데이터</code>를 저장하고 읽기와 쓰기간 경합을 최소화해 <code>동시성 제어</code> 성능을 높임.</p></li></ul><ol><li><strong><code>읽기</code>를 수행할 경우 갱신 중이라도 <code>블록되지 않는다</code>(읽기←&gt;읽기는 서로 블록되지 않음)</strong></li><li>읽기 내용은 <code>격리 수준에 따라</code> 내용이 바뀌는 경우가 있다.<ul><li>반복 읽기의 경우 최초 쿼리 실행한 시점에 커밋된 데이터를 읽음. 따라서 같은 쿼리 복수 회 실행 시 사이에 다른 트랜잭션이 커밋해도 그 내용은 반영되지 않음</li><li>커밋된 읽기는 쿼리를 실행한 시점에서 커밋된 데이터를 읽는다. 같은 쿼리 복수 회 실행시 그 사이에 다른 트랜잭션에서 커밋시 최신 쿼리 실행 개시 시점의 커밋된 데이터를 읽음</li></ul></li><li><code>갱신(데이터 쓰기)</code> 시 <code>배타적 잠금</code>을 얻는다. 잠금은 기본적으로 행 단위이며 트랜잭션이 종료될 때까지 유지한다. 격리 수준이나 InnoDB 설정에 따라 실제로 잠금하는 행의 범위가 다를 수 있음.</li><li><strong>갱신과 갱신은 나중에 온 트랜잭션이 잠금을 획득하려할 때 <code>블록</code>된다. 일정 시간을 기다리고, 그 안에 잠금을 얻을 수 없을 시 <code>잠금 타임아웃(lock timeout)</code>된다.</strong></li><li>갱신하는 경우 갱신 전 데이터를 <code>undo 로그</code>로 ‘롤백 세그먼트’영역에 유지한다. <ul><li>undo 로그 용도 2가지</li></ul><ol><li>갱신하는 트랜잭션 <code>롤백</code> 시 <code>갱신 전</code>으로 되돌리는 것</li><li>복수의 트랜잭션에서 격리 수준에 따라 대응하는 <code>갱신 데이터를 참조</code>하는데 이용함.<ul><li>같은 행 갱신할 때마다 undo로그가 작성되고 같은 행에 대한 복수 버전이 존재한다.</li><li>이에 의해 1,2가 실현된다.</li></ul></li></ol></li></ol><h3 id="MVCC에서의-잠금-같은-행인-경우"><a href="#MVCC에서의-잠금-같은-행인-경우" class="headerlink" title="MVCC에서의 잠금(같은 행인 경우)"></a>MVCC에서의 잠금(같은 행인 경우)</h3><ul><li>트랜잭션 A, B 둘다 읽기 &gt; O</li><li>A 읽기, B 쓰기 &gt; O</li><li>A 쓰기, B 쓰기 &gt; X<ul><li>A가 lock을 얻고 수행하는 동안 B는 block된다</li><li>지정된 시간안에 lock을 얻을 수 없는 경우 lock timeout 된다.</li></ul></li></ul><h3 id="MVCC에서의-커밋되지-않은-읽기"><a href="#MVCC에서의-커밋되지-않은-읽기" class="headerlink" title="MVCC에서의 커밋되지 않은 읽기"></a>MVCC에서의 커밋되지 않은 읽기</h3><ul><li>커밋되지 않은 읽기 격리 수준은 커밋되지 않은 경우, 읽기도 블록되는 경우 이를 허용하는 것.</li><li>MVCC는 <code>읽기가 블록되는 경우가 없어서</code> 이 레벨이 필요하지 않다.</li></ul><h2 id="잠금-타임아웃과-교착-상태"><a href="#잠금-타임아웃과-교착-상태" class="headerlink" title="잠금 타임아웃과 교착 상태"></a>잠금 타임아웃과 교착 상태</h2><h3 id="잠금-타임아웃"><a href="#잠금-타임아웃" class="headerlink" title="잠금 타임아웃"></a>잠금 타임아웃</h3><ul><li>갱신과 갱신이 부딪칠 때 <code>나중에 온 갱신</code>이 <code>잠금 대기 상태</code>가 됨.</li><li>잠금을 건 쪽이 언제 잠금을 풀지 알 수 없어서 잠금 해제를 기다리는 쪽에서<ol><li>기다리거나</li><li>기다리지 않거나</li><li>어느정도 기다릴지 를 설정할 수 있다.<ul><li><code>innodb_lock_wait_timeout</code> 시스템 변수에 설정</li><li>MySQL에서는 잠금 대기로 타임아웃 발생 시 롤백되는 단위는 기본으로 오류가 발생한 쿼리임.</li></ul></li></ol></li></ul><h3 id="교착-상태"><a href="#교착-상태" class="headerlink" title="교착 상태"></a>교착 상태</h3><ul><li>트랜잭션 A가 테이블 A의 lock을, 트랜잭션 B가 테이블 B의 lock을 가진 상태에서 서로 잠금한 테이블의 자원이 필요한 경우 <strong>아무리 기다려도 상황이 바뀌지 않음</strong>. 이를 교착상태(데드락)이라 함.</li></ul><h3 id="교착상태의-빈도를-낮추는-대책"><a href="#교착상태의-빈도를-낮추는-대책" class="headerlink" title="교착상태의 빈도를 낮추는 대책"></a>교착상태의 빈도를 낮추는 대책</h3><ul><li><p>잠금 타임 아웃과 달리 교착 상태를 기다려도 상황이 개선되지 않는다.</p></li><li><p>따라서 일반적으로 DBMS에서는 <code>교착상태</code>를 검출해 <code>보고</code>한다.</p><ul><li>MySQL의 경우 교착 상태가 일어나면 시스템 영향이 작은 쪽 트랜잭션을 트랜잭션 개시 시점까지 롤백한다.</li></ul></li><li><p>교착 상태를 모두 없애는 것은 불가.</p></li><li><p>따라서 항상 트랜잭션이 교착 상태를 일으켜 롤백되는 경우 트랜잭션을 재실행할 수 있는 구조로 만들어야함.</p></li><li><p>DBMS의 전반적인 대책</p></li></ul><ol><li>트랜잭션을 자주 커밋, 트랜잭션이 <code>더 작은 단위</code>가 되어 교착상태 가능성을 낮춤</li><li><code>정해진 순서</code>로 테이블(과 행)에 액세스 하게 한다.<ul><li>ex) 트랜잭션 A가 테이블 a&gt;테이블b로 엑세스 하고 트랜잭션 B가 테이블 b&gt; 테이블 a로 액세스해 교착상태가 발생한 것이므로 어떤 트랜잭션도 테이블 a&gt;b순으로 엑세스 하도록함.</li></ul></li><li>필요 없는 경우 <code>읽기 잠금 획득(select ~ for update)</code> 사용을 피한다</li><li>쿼리에 의한 <code>잠금 범위</code>를 좁히거나(테이블 &gt; 행 등), <code>잠금 정도</code>를 더 작은 것으로 (격리 레벨 완화) 한다.<ul><li>테이블 잠금보다 행 잠금을 사용</li><li>MySQL은 기본 설정인 반복 읽기가 아닌 커밋된 읽기로 설정</li></ul></li><li>동시에 많은 연결에서 갱신 때문에 교착 상태가 자주 발생하는 경우 테이블 단위 잠금을 획득해 갱신을 <code>직렬화</code> 하면 동시성은 떨어져도 교착상태는 회피할 수 있어 전체 처리로 보면 좋을 수도 있다.</li><li>(MySQL(InnoDB)의 대책) 테이블에 적절한 인덱스를 추가해 인덱스가 이를 이용하게 한다. 인덱스가 사용되지 않는 경우에는 필요한 행의 잠금이 아닌 스캔한 행 전체에 대해 잠금이 걸리게된다. …? 이해안됨</li></ol><h2 id="해서는-안-되는-트랜잭션-처리"><a href="#해서는-안-되는-트랜잭션-처리" class="headerlink" title="해서는 안 되는 트랜잭션 처리"></a>해서는 안 되는 트랜잭션 처리</h2><ol><li>오토커밋<ul><li>MySQL의 새로운 연결은 모두 기본값으로 오토 커밋</li><li>오토 커밋은 <code>쿼리 단위</code>로 <code>커밋</code>하는 것.</li><li>테스트용으로는 좋지만 애플리케이션에 사용하기엔 <code>부하</code>가 너무 높음</li></ul></li><li>긴 트랜잭션<ul><li>긴 트랜잭션은 데이터베이스 트랜잭션의 <code>동시성</code>이나 <code>자원의 효율성</code>을 저하함.</li><li>갱신을 포함한 트랜잭션은 같은 데이터를 갱신하려는 다른 테이블을 <code>블록</code>하고 이에 <code>타임아웃</code>될 수 있음.</li><li>이 잠금과 블록 사이에 교차가 발생하면 <code>교착상태</code>도 발생, 이에 긴 트랜잭션 중 하나가 롤백됨</li><li>이를 위해 <code>교착상태의 빈도를 낮추는 대책</code> 에 나온 방법을 시행하는 것이 좋음.</li></ul></li></ol><ul><li>그밖의 피해야할 것.<ol><li><code>대량 처리</code>를 한 개의 트랜잭션이 실행<ul><li>대량의 갱신 처리를 한개의 트랜잭션으로 실행하면 트랜잭션으로 이 처리를 롤백하기 위해 <code>대량의 undo 로그</code>를 트랜잭션 종료 시까지 유지해야 한다.</li><li>Undo 로그가 불필요해진 시점에 해당 영역은 해제되어 재사용되지만 os파일 시스템에서의 크기는 줄어들지 않는다 .</li><li>이 때문에 겉보기에 불필요하게 undo 로그가 큰 경우가 있음.</li><li>이를 막기 위해 대량 처리를 <code>적당한 크기</code>의 트랜잭션으로 나누어 처리하는 것이 좋다.</li><li>예를 들면 신규테이블에 데이터를 로드할 때 1만건당 커밋</li></ul></li><li>아무것도 하지 않는 트랜잭션 유의<ul><li>테이블을 <code>select</code>한 후 아무것도 하지 않고 트랜잭션을 <code>열린 채로 두면</code> 같은 테이블에 갱신을 실행할 때 이 테이블의 반복 읽기를 유지하기 위해 <code>undo 로그</code>가 계속 유지된다 .따라서 피하는 것이 좋다.</li></ul></li><li>트랜잭션 중 <code>대화 처리</code>를 넣는 경우<ul><li>dbms의 트랜잭션은 빡빡한 처리를 동시에 실행하는 구조</li><li>따라서 언제 끝날지 알 수 없는 <code>불명확한 처리</code>를 포함해선 안된다.</li></ul></li><li>처리 능력 이상의 트랜잭션 수<ul><li>트랜잭션에서 어떤 잠금이 있는 처리를 수행할 때 이 잠금이 다른 트랜잭션의 처리를 막지 않는 것이 좋지만, 트랜잭션 실행이 다른 트랜잭션 잠금 때문에 막힌다면 잠금 타임아웃이나 교착 상태 확률이 증가하고 성능 저하로 이어짐.</li><li>커넥션이 잘 작동하는 수나 동시 실행할 수 있는 수의 상한을 어느정도로 설정할 지는 시스템 요건(갱신이 많은지 검색이 많은지)나 하드웨어 성능에도 좌우되므로 <code>최적의 트랜잭션 수</code>는 <code>부하 실행</code>을 수행해 측정할 수 밖에 없다.</li><li>MySQL은 데이터베이스 서버의 커넥션 수 상한을 설정하는 <code>max_connections</code> 라는 시스템 변수가 있어 이것으로 조절할 수 있다.</li></ul></li></ol></li></ul><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li>데이터베이스 첫걸음</li></ul>]]></content>
     
@@ -251,8 +281,8 @@
   
   <entry>
     <title>🐥병아리 개발자가 IT 정보를 얻는 방법들</title>
-    <link href="https://kodakyung.github.io/2019/09/26/Think-20190926-%EB%B3%91%EC%95%84%EB%A6%AC-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-IT-%EC%A0%95%EB%B3%B4%EB%A5%BC-%EC%96%BB%EB%8A%94-%EB%B0%A9%EB%B2%95%EB%93%A4/"/>
-    <id>https://kodakyung.github.io/2019/09/26/Think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/</id>
+    <link href="https://kodakyung.github.io/2019/09/26/think-20190926-%E1%84%87%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%A1%E1%84%85%E1%85%B5-%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%E1%84%8C%E1%85%A1%E1%84%80%E1%85%A1-IT-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A9%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%8B%E1%85%A5%E1%86%AE%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8%E1%84%83%E1%85%B3%E1%86%AF/"/>
+    <id>https://kodakyung.github.io/2019/09/26/think-20190926-병아리-개발자가-IT-정보를-얻는-방법들/</id>
     <published>2019-09-26T13:30:38.000Z</published>
     <updated>2019-10-15T15:03:55.526Z</updated>
     
@@ -276,8 +306,8 @@
   
   <entry>
     <title>Gradle로 빌드 시 현재 git branch 사용하기</title>
-    <link href="https://kodakyung.github.io/2019/08/31/Troubleshooting-20190831-Gradle%EB%A1%9C-%EB%B9%8C%EB%93%9C-%EC%8B%9C-%ED%98%84%EC%9E%AC-git-branch-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"/>
-    <id>https://kodakyung.github.io/2019/08/31/Troubleshooting-20190831-Gradle로-빌드-시-현재-git-branch-사용하기/</id>
+    <link href="https://kodakyung.github.io/2019/08/31/troubleshooting-20190831-Gradle%E1%84%85%E1%85%A9-%E1%84%87%E1%85%B5%E1%86%AF%E1%84%83%E1%85%B3-%E1%84%89%E1%85%B5-%E1%84%92%E1%85%A7%E1%86%AB%E1%84%8C%E1%85%A2-git-branch-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/"/>
+    <id>https://kodakyung.github.io/2019/08/31/troubleshooting-20190831-Gradle로-빌드-시-현재-git-branch-사용하기/</id>
     <published>2019-08-31T09:38:55.000Z</published>
     <updated>2019-08-31T13:50:13.014Z</updated>
     
@@ -305,10 +335,10 @@
   
   <entry>
     <title>OS - 동기화(Synchronization)와 임계 영역(Critical Section)</title>
-    <link href="https://kodakyung.github.io/2019/07/17/CS-OS-20190717-OS-%EB%8F%99%EA%B8%B0%ED%99%94-Synchronization-%EC%99%80-%EC%9E%84%EA%B3%84-%EC%98%81%EC%97%AD-Critical-Section/"/>
-    <id>https://kodakyung.github.io/2019/07/17/CS-OS-20190717-OS-동기화-Synchronization-와-임계-영역-Critical-Section/</id>
+    <link href="https://kodakyung.github.io/2019/07/17/cs-os-20190717-os-synchronization-and-critical-section/"/>
+    <id>https://kodakyung.github.io/2019/07/17/cs-os-20190717-os-synchronization-and-critical-section/</id>
     <published>2019-07-17T14:46:37.000Z</published>
-    <updated>2019-08-25T17:47:30.252Z</updated>
+    <updated>2020-01-24T15:35:10.388Z</updated>
     
     <content type="html"><![CDATA[<p>병렬 프로그래밍에서 임계영역 까지의 흐름을 정리해보았다. </p><h2 id="병렬-프로그래밍-Parallel-Programming"><a href="#병렬-프로그래밍-Parallel-Programming" class="headerlink" title="병렬 프로그래밍(Parallel Programming)"></a>병렬 프로그래밍(Parallel Programming)</h2><ul><li>멀티코어(<code>Multi-Core</code>)가 등장한 이후 여러 개의 코어를 효과적으로 사용하기 위해 등장.</li><li>하나의 프로그램이 <code>동시에 여러 일</code>을 수행하게 만드는 방법을 통칭하는 용어이다.</li><li>여기서는 동시 프로그래밍(<code>Concurrent Programming</code>) 의미의 병렬프로그램이다.<ul><li>다른 의미로 고성능 컴퓨팅(High Performance Computing)의 한 분야를 지칭하기도 한다. </li></ul></li><li>규모가변성(<code>Scalability</code>)이 뛰어난 프로그램이라면 코어의 수를 늘렸을 때 프로그램의 성능이 향상된다.</li><li>규모가변성이 보장되면서 스레드 세이프(<code>Thread-Safe</code>)한 코드를 작성하는 것은 매우 어려운 편이다.</li></ul><h3 id="고전적인-병렬-프로그램-예시들"><a href="#고전적인-병렬-프로그램-예시들" class="headerlink" title="고전적인 병렬 프로그램 예시들"></a>고전적인 병렬 프로그램 예시들</h3><ul><li>공통된 자원을 공유하고 락(Lock)과 컨디션 변수(Condition Variable)를 통해 공유 자원의 접근을 통제하는 멀티 스레드 프로그래밍(Multi-Thread Programming).</li><li>OS 프로세스 여러개에 프로세스 간 통신(Inter-Process Communication)을 통해 데이터를 처리하는 경우. </li><li>등등…</li></ul><h2 id="멀티-스레드-프로그래밍"><a href="#멀티-스레드-프로그래밍" class="headerlink" title="멀티 스레드 프로그래밍"></a>멀티 스레드 프로그래밍</h2><ul><li>공유 자원(or 메모리)를 여러 개의 스레드가 동시에 프로그래밍을 수행하며 같은 자원에 데이터를 읽고 쓰며 통신하는 것.</li><li>일반적으로 운영체제나 시스템 SW에 사용됐지만 <code>Java</code>의 <code>Monitor</code> 개념에 도입되면서 일반 개발자들도 많이 사용한다.</li><li>멀티스레드 프로그래밍은 오류 없이 설계하기 어렵고 비결정적이며 테스트가 어렵고 버그도 재현이 어려워 디버깅이 거의 불가능하다.</li><li>즉 <code>안정성</code>과 <code>규모가변성</code>이 상충되기 때문에 적절한 프로그래밍을 하는 것이 어렵다.</li></ul><blockquote><p>참고  </p><ul><li>아래부터 언급하는 Process는 해당 개념이 사용되는 영역이 어떤 것이냐에 따라 Thread로 해석할 수 있다.</li><li>ex) OS(ex Linux)에서는 Process 기준, Java에서는 Thread 기준이다.</li></ul></blockquote><h2 id="동기화-Synchronization"><a href="#동기화-Synchronization" class="headerlink" title="동기화(Synchronization)"></a>동기화(Synchronization)</h2><ul><li><code>레이스 컨디션</code> 상황을 막기 위해 프로세스/스레드들에 하나의 자원에 대한 처리 <code>권한</code>을 주거나 <code>순서</code>를 조정해주는 기법이다. </li><li><code>다중 스레드</code> 환경에 공유되는 자원이 있다면 필수적으로 고려해야한다. </li><li>프로세스의 경우 OS 레벨에서 공유 자원 문제를 처리해주지만 한 프로세스 내에서 실행되는 여러 개의 스레드들은 공유 자원에 대해 동기화 문제를 고려해야한다. </li></ul><h3 id="경쟁-상황-레이스-컨디션-Race-Condition"><a href="#경쟁-상황-레이스-컨디션-Race-Condition" class="headerlink" title="경쟁 상황(레이스 컨디션, Race Condition)"></a>경쟁 상황(레이스 컨디션, Race Condition)</h3><ul><li><code>공유 자원</code>에 여러 프로세스/스레드가 동시에 접근하기 위해 <code>경쟁</code>하는 상태를 뜻한다.<ul><li>ex) OS에서 CPU 점유율 등 </li></ul></li><li><code>동기화 처리</code>를 제대로 하지 않으면 의도하지 않은 잘못된 결과가 나올 수 있다. </li></ul><h2 id="임계-영역-Critical-Section"><a href="#임계-영역-Critical-Section" class="headerlink" title="임계 영역(Critical Section)"></a>임계 영역(Critical Section)</h2><ul><li><code>공유 자원</code>에 <code>접근</code>하는 프로세스 내부의 코드 영역.</li><li>한 프로세스의 임계 영역이 수행 중일 때 다른 프로세스가 같은 공유 자원을 사용하는 임계 영역을 수행한다면 문제가 발생할 수 있다.</li><li>따라서 한 번에 한 프로세스만 접근해 사용한다.</li><li>임계 영역을 들어오는 진입 영역(entry section), 나가는 부분인 퇴출 영역(exit section), 나머지 영역(remainder section)으로 구분된다. </li></ul><h2 id="임계-영역의-조건"><a href="#임계-영역의-조건" class="headerlink" title="임계 영역의 조건"></a>임계 영역의 조건</h2><h3 id="상호-배제-Mutual-Exclusion-Mutex"><a href="#상호-배제-Mutual-Exclusion-Mutex" class="headerlink" title="상호 배제(Mutual Exclusion( == Mutex))"></a>상호 배제(Mutual Exclusion( == Mutex))</h3><ul><li>한 프로세스가 자신의 임계 영역 내에서 실행되는 동안, 다른 프로세스가 같은 공유 자원을 사용하는 자신의 임계 영역에서 실행될 수 없는 것.</li></ul><h3 id="진행-Progress"><a href="#진행-Progress" class="headerlink" title="진행 (Progress)"></a>진행 (Progress)</h3><ul><li>임계 영역을 실행 중인 프로세스가 없고 자신의 임계 영역으로 진입하려는 프로세스가 있다면, 나머지 영역에서 실행 중이지 않은 프로세스들만 임계 영역으로 진입하기 위해 요청할 수 있다.</li><li>이는 무기한 연기될 수 없다.</li></ul><h3 id="한정된-대기-Bounded-waiting"><a href="#한정된-대기-Bounded-waiting" class="headerlink" title="한정된 대기 (Bounded waiting)"></a>한정된 대기 (Bounded waiting)</h3><ul><li>프로세스가 자신의 임계 영역에 진입하기 위해 요청을 한 뒤, 그 요청이 허가될 때까지 다른 프로세스들이 자신의 임계 영역에 진입하도록 허용하는 횟수의 제한이 있어야한다. </li></ul><h2 id="임계-영역-해결-방안-동기화"><a href="#임계-영역-해결-방안-동기화" class="headerlink" title="임계 영역 해결 방안(동기화)"></a>임계 영역 해결 방안(동기화)</h2><ul><li>하드웨어 기반 동기화와 소프트웨어 기반 동기화로 나뉜다.</li><li>대표적인 소프트웨어 기반 동기화 기법으로 상호 배제(<code>Mutex</code>), 세마포어(<code>Semaphore</code>), 모니터(<code>Monitor</code>) 등이 있다.</li></ul><h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul><li><a href="https://skyul.tistory.com/327" target="_blank" rel="noopener">소프트웨어 트랜잭션 메모리와 하스켈</a></li><li><a href="https://tiredsleeper.tistory.com/32?category=779575" target="_blank" rel="noopener">프로세스 동기화의 필요성, 임계 영역</a></li><li><a href="https://12bme.tistory.com/68" target="_blank" rel="noopener">멀티 스레드와 동기화</a></li></ul>]]></content>
     
@@ -333,8 +363,8 @@
   
   <entry>
     <title>SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</title>
-    <link href="https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/"/>
-    <id>https://kodakyung.github.io/2019/06/16/Troubleshooting-2019-06-16-springboot-react-cors/</id>
+    <link href="https://kodakyung.github.io/2019/06/16/troubleshooting-2019-06-16-springboot-react-cors/"/>
+    <id>https://kodakyung.github.io/2019/06/16/troubleshooting-2019-06-16-springboot-react-cors/</id>
     <published>2019-06-15T15:00:00.000Z</published>
     <updated>2019-10-18T15:20:14.896Z</updated>
     
@@ -364,8 +394,8 @@
   
   <entry>
     <title>IntelliJ에서 SpringBoot DevTools 사용하기</title>
-    <link href="https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/"/>
-    <id>https://kodakyung.github.io/2019/06/11/Server-Spring-2019-06-11-intellij-devtools/</id>
+    <link href="https://kodakyung.github.io/2019/06/11/server-spring-2019-06-11-intellij-devtools/"/>
+    <id>https://kodakyung.github.io/2019/06/11/server-spring-2019-06-11-intellij-devtools/</id>
     <published>2019-06-10T15:00:00.000Z</published>
     <updated>2019-08-25T17:52:26.392Z</updated>
     
@@ -394,8 +424,8 @@
   
   <entry>
     <title>Java - Use overloading judiciously</title>
-    <link href="https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/"/>
-    <id>https://kodakyung.github.io/2019/04/18/Programming-Java-EffectiveJava-2019-04-18-Java-Use-overloading-judiciously/</id>
+    <link href="https://kodakyung.github.io/2019/04/18/programming-java-effective-java-2019-04-18-Java-Use-overloading-judiciously/"/>
+    <id>https://kodakyung.github.io/2019/04/18/programming-java-effective-java-2019-04-18-Java-Use-overloading-judiciously/</id>
     <published>2019-04-17T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -423,8 +453,8 @@
   
   <entry>
     <title>Java - Design method signatures carefully</title>
-    <link href="https://kodakyung.github.io/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/"/>
-    <id>https://kodakyung.github.io/2019/04/17/Programming-Java-EffectiveJava-2019-04-17-Java-Design-method-signatures-carefully/</id>
+    <link href="https://kodakyung.github.io/2019/04/17/programming-java-effective-java-2019-04-17-Java-Design-method-signatures-carefully/"/>
+    <id>https://kodakyung.github.io/2019/04/17/programming-java-effective-java-2019-04-17-Java-Design-method-signatures-carefully/</id>
     <published>2019-04-16T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -452,8 +482,8 @@
   
   <entry>
     <title>Java - Make defensive copies when needed</title>
-    <link href="https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/"/>
-    <id>https://kodakyung.github.io/2019/04/10/Programming-Java-EffectiveJava-2019-04-10-Java-Make-defensive-copies-when-needed/</id>
+    <link href="https://kodakyung.github.io/2019/04/10/programming-java-effective-java-2019-04-10-Java-Make-defensive-copies-when-needed/"/>
+    <id>https://kodakyung.github.io/2019/04/10/programming-java-effective-java-2019-04-10-Java-Make-defensive-copies-when-needed/</id>
     <published>2019-04-09T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -481,8 +511,8 @@
   
   <entry>
     <title>Java - Prefer side-effect-free functions in streams</title>
-    <link href="https://kodakyung.github.io/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/"/>
-    <id>https://kodakyung.github.io/2019/03/23/Programming-Java-EffectiveJava-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</id>
+    <link href="https://kodakyung.github.io/2019/03/23/programming-java-effective-java-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/"/>
+    <id>https://kodakyung.github.io/2019/03/23/programming-java-effective-java-2019-03-23-Java-Prefer-side-effect-free-functions-in-streams/</id>
     <published>2019-03-22T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -510,8 +540,8 @@
   
   <entry>
     <title>Java - Prefer method references to lambdas</title>
-    <link href="https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/"/>
-    <id>https://kodakyung.github.io/2019/02/21/Programming-Java-EffectiveJava-2019-02-21-Java-Prefer-method-references-to-lambdas/</id>
+    <link href="https://kodakyung.github.io/2019/02/21/programming-java-effective-java-2019-02-21-Java-Prefer-method-references-to-lambdas/"/>
+    <id>https://kodakyung.github.io/2019/02/21/programming-java-effective-java-2019-02-21-Java-Prefer-method-references-to-lambdas/</id>
     <published>2019-02-20T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -539,8 +569,8 @@
   
   <entry>
     <title>Java - Use instance fields instead of ordinals</title>
-    <link href="https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/"/>
-    <id>https://kodakyung.github.io/2019/02/20/Programming-Java-EffectiveJava-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</id>
+    <link href="https://kodakyung.github.io/2019/02/20/programming-java-effective-java-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/"/>
+    <id>https://kodakyung.github.io/2019/02/20/programming-java-effective-java-2019-02-20-Java-Use-instance-fields-instead-of-ordinals/</id>
     <published>2019-02-19T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -568,8 +598,8 @@
   
   <entry>
     <title>Java - Use bounded wildcards to increase API flexibility</title>
-    <link href="https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/"/>
-    <id>https://kodakyung.github.io/2019/01/31/Programming-Java-EffectiveJava-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</id>
+    <link href="https://kodakyung.github.io/2019/01/31/programming-java-effective-java-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/"/>
+    <id>https://kodakyung.github.io/2019/01/31/programming-java-effective-java-2019-01-31-Java-Use-bounded-wildcards-to-increase-API-flexibility/</id>
     <published>2019-01-30T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -597,8 +627,8 @@
   
   <entry>
     <title>Java - Don&#39;t use raw types</title>
-    <link href="https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/"/>
-    <id>https://kodakyung.github.io/2019/01/28/Programming-Java-EffectiveJava-2019-01-28-Java-Don-t-use-raw-types/</id>
+    <link href="https://kodakyung.github.io/2019/01/28/programming-java-effective-java-2019-01-28-Java-Don-t-use-raw-types/"/>
+    <id>https://kodakyung.github.io/2019/01/28/programming-java-effective-java-2019-01-28-Java-Don-t-use-raw-types/</id>
     <published>2019-01-27T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -626,8 +656,8 @@
   
   <entry>
     <title>Java - Limit source files to a single top-level class</title>
-    <link href="https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/"/>
-    <id>https://kodakyung.github.io/2019/01/27/Programming-Java-EffectiveJava-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</id>
+    <link href="https://kodakyung.github.io/2019/01/27/programming-java-effective-java-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/"/>
+    <id>https://kodakyung.github.io/2019/01/27/programming-java-effective-java-2019-01-27-Java-Limit-source-files-to-a-single-top-level-class/</id>
     <published>2019-01-26T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -655,8 +685,8 @@
   
   <entry>
     <title>Java - Prefer class hierarchies to tagged classes</title>
-    <link href="https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/"/>
-    <id>https://kodakyung.github.io/2019/01/24/Programming-Java-EffectiveJava-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</id>
+    <link href="https://kodakyung.github.io/2019/01/24/programming-java-effective-java-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/"/>
+    <id>https://kodakyung.github.io/2019/01/24/programming-java-effective-java-2019-01-24-Java-Prefer-class-hierarchies-to-tagged-classes/</id>
     <published>2019-01-23T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -684,8 +714,8 @@
   
   <entry>
     <title>Java - Minimize mutability</title>
-    <link href="https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/"/>
-    <id>https://kodakyung.github.io/2019/01/21/Programming-Java-EffectiveJava-2019-01-21-Java-Minimize-mutability/</id>
+    <link href="https://kodakyung.github.io/2019/01/21/programming-java-effective-java-2019-01-21-Java-Minimize-mutability/"/>
+    <id>https://kodakyung.github.io/2019/01/21/programming-java-effective-java-2019-01-21-Java-Minimize-mutability/</id>
     <published>2019-01-20T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.450Z</updated>
     
@@ -713,8 +743,8 @@
   
   <entry>
     <title>Java - Use interfaces only to define types</title>
-    <link href="https://kodakyung.github.io/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/"/>
-    <id>https://kodakyung.github.io/2019/01/18/Programming-Java-EffectiveJava-2019-01-18-Java-Use-interfaces-only-to-define-types/</id>
+    <link href="https://kodakyung.github.io/2019/01/18/programming-java-effective-java-2019-01-18-Java-Use-interfaces-only-to-define-types/"/>
+    <id>https://kodakyung.github.io/2019/01/18/programming-java-effective-java-2019-01-18-Java-Use-interfaces-only-to-define-types/</id>
     <published>2019-01-17T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -742,8 +772,8 @@
   
   <entry>
     <title>Java - Design interfaces for posterity</title>
-    <link href="https://kodakyung.github.io/2019/01/17/Programming-Java-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/"/>
-    <id>https://kodakyung.github.io/2019/01/17/Programming-Java-EffectiveJava-2019-01-17-Java-Design-interfaces-for-posterity/</id>
+    <link href="https://kodakyung.github.io/2019/01/17/programming-java-effective-java-2019-01-17-Java-Design-interfaces-for-posterity/"/>
+    <id>https://kodakyung.github.io/2019/01/17/programming-java-effective-java-2019-01-17-Java-Design-interfaces-for-posterity/</id>
     <published>2019-01-16T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -771,8 +801,8 @@
   
   <entry>
     <title>Java - Favor composition over inheritance</title>
-    <link href="https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/"/>
-    <id>https://kodakyung.github.io/2019/01/13/Programming-Java-EffectiveJava-2019-01-13-Java-Favor-composition-over-inheritance/</id>
+    <link href="https://kodakyung.github.io/2019/01/13/programming-java-effective-java-2019-01-13-Java-Favor-composition-over-inheritance/"/>
+    <id>https://kodakyung.github.io/2019/01/13/programming-java-effective-java-2019-01-13-Java-Favor-composition-over-inheritance/</id>
     <published>2019-01-12T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -800,8 +830,8 @@
   
   <entry>
     <title>Java - Prefer interfaces to abstract classes</title>
-    <link href="https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/"/>
-    <id>https://kodakyung.github.io/2019/01/12/Programming-Java-EffectiveJava-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</id>
+    <link href="https://kodakyung.github.io/2019/01/12/programming-java-effective-java-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/"/>
+    <id>https://kodakyung.github.io/2019/01/12/programming-java-effective-java-2019-01-12-Java-Prefer-interfaces-to-abstract-classes/</id>
     <published>2019-01-11T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -829,8 +859,8 @@
   
   <entry>
     <title>Java - Design and document for inheritance or else prohibit it</title>
-    <link href="https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/"/>
-    <id>https://kodakyung.github.io/2019/01/11/Programming-Java-EffectiveJava-2019-01-11-Java-Design-and-document-for-inheritance/</id>
+    <link href="https://kodakyung.github.io/2019/01/11/programming-java-effective-java-2019-01-11-Java-Design-and-document-for-inheritance/"/>
+    <id>https://kodakyung.github.io/2019/01/11/programming-java-effective-java-2019-01-11-Java-Design-and-document-for-inheritance/</id>
     <published>2019-01-10T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -858,8 +888,8 @@
   
   <entry>
     <title>Test - Stub</title>
-    <link href="https://kodakyung.github.io/2018/12/05/Server-Test-2018-12-05-test-stub/"/>
-    <id>https://kodakyung.github.io/2018/12/05/Server-Test-2018-12-05-test-stub/</id>
+    <link href="https://kodakyung.github.io/2018/12/05/server-test-2018-12-05-test-stub/"/>
+    <id>https://kodakyung.github.io/2018/12/05/server-test-2018-12-05-test-stub/</id>
     <published>2018-12-04T15:00:00.000Z</published>
     <updated>2019-07-15T06:12:54.158Z</updated>
     
@@ -887,8 +917,8 @@
   
   <entry>
     <title>Spring Data JPA - Query Method</title>
-    <link href="https://kodakyung.github.io/2018/11/25/Server-ORM-2018-11-25-spring-data-jpa-query/"/>
-    <id>https://kodakyung.github.io/2018/11/25/Server-ORM-2018-11-25-spring-data-jpa-query/</id>
+    <link href="https://kodakyung.github.io/2018/11/25/server-orm-2018-11-25-spring-data-jpa-query/"/>
+    <id>https://kodakyung.github.io/2018/11/25/server-orm-2018-11-25-spring-data-jpa-query/</id>
     <published>2018-11-24T15:00:00.000Z</published>
     <updated>2019-08-25T17:53:34.577Z</updated>
     
@@ -916,8 +946,8 @@
   
   <entry>
     <title>JPA - Cascade</title>
-    <link href="https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/"/>
-    <id>https://kodakyung.github.io/2018/11/16/Server-ORM-2018-11-16-jpa-cascade/</id>
+    <link href="https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/"/>
+    <id>https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/</id>
     <published>2018-11-15T15:00:00.000Z</published>
     <updated>2019-08-25T17:53:34.576Z</updated>
     
@@ -944,8 +974,8 @@
   
   <entry>
     <title>JPA - Proxy / Eager &amp; Lazy Loading</title>
-    <link href="https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/"/>
-    <id>https://kodakyung.github.io/2018/11/15/Server-ORM-2018-11-15-jpa-proxy/</id>
+    <link href="https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/"/>
+    <id>https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/</id>
     <published>2018-11-14T15:00:00.000Z</published>
     <updated>2019-08-25T17:53:34.576Z</updated>
     
@@ -973,8 +1003,8 @@
   
   <entry>
     <title>JPA 테스트의 특징</title>
-    <link href="https://kodakyung.github.io/2018/11/10/Server-Test-2018-11-10-jpa-junit-test/"/>
-    <id>https://kodakyung.github.io/2018/11/10/Server-Test-2018-11-10-jpa-junit-test/</id>
+    <link href="https://kodakyung.github.io/2018/11/10/server-test-2018-11-10-jpa-junit-test/"/>
+    <id>https://kodakyung.github.io/2018/11/10/server-test-2018-11-10-jpa-junit-test/</id>
     <published>2018-11-09T15:00:00.000Z</published>
     <updated>2019-07-19T09:56:23.621Z</updated>
     
@@ -1004,12 +1034,12 @@
   
   <entry>
     <title>Git - .gitignore 설정 후 적용되지 않는 경우</title>
-    <link href="https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/"/>
-    <id>https://kodakyung.github.io/2018/11/09/Troubleshooting-2018-11-09-git-gitignore-setting/</id>
+    <link href="https://kodakyung.github.io/2018/11/09/troubleshooting-2018-11-09-git-gitignore-setting/"/>
+    <id>https://kodakyung.github.io/2018/11/09/troubleshooting-2018-11-09-git-gitignore-setting/</id>
     <published>2018-11-08T15:00:00.000Z</published>
-    <updated>2019-08-25T17:55:13.889Z</updated>
+    <updated>2020-02-01T15:15:22.856Z</updated>
     
-    <content type="html"><![CDATA[<p>git에 업로드 되는 파일을 막는 <code>.gitignore</code>를 설정한 후에도 설정이 적용되지 않는 경우</p><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> git rm -r --cached .</span><br><span class="line"><span class="meta">&gt;</span> git add .</span><br><span class="line"><span class="meta">&gt;</span> git commit -m "commit_message"</span><br></pre></td></tr></table></figure><p>위 코드 사용시 설정이 적용된다.</p><br>]]></content>
+    <content type="html"><![CDATA[<p>git에 업로드 되는 파일을 막는 <code>.gitignore</code>를 설정한 후에도 설정이 적용되지 않는 경우</p><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git rm -r --cached .</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git commit -m <span class="string">"commit_message"</span></span></span><br></pre></td></tr></table></figure><p>위 코드 사용시 설정이 적용된다.</p><br>]]></content>
     
     <summary type="html">
     
@@ -1032,8 +1062,8 @@
   
   <entry>
     <title>Java - Comparable / Comparator</title>
-    <link href="https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/"/>
-    <id>https://kodakyung.github.io/2018/11/04/Programming-Java-EffectiveJava-2018-11-04-java-comparable-comparator/</id>
+    <link href="https://kodakyung.github.io/2018/11/04/programming-java-effective-java-2018-11-04-java-comparable-comparator/"/>
+    <id>https://kodakyung.github.io/2018/11/04/programming-java-effective-java-2018-11-04-java-comparable-comparator/</id>
     <published>2018-11-03T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -1061,8 +1091,8 @@
   
   <entry>
     <title>Java - equals method 재정의</title>
-    <link href="https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/"/>
-    <id>https://kodakyung.github.io/2018/10/26/Programming-Java-EffectiveJava-2018-10-26-java-equals-method-override/</id>
+    <link href="https://kodakyung.github.io/2018/10/26/programming-java-effective-java-2018-10-26-java-equals-method-override/"/>
+    <id>https://kodakyung.github.io/2018/10/26/programming-java-effective-java-2018-10-26-java-equals-method-override/</id>
     <published>2018-10-25T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -1090,8 +1120,8 @@
   
   <entry>
     <title>Java - 종료자(finalizer)</title>
-    <link href="https://kodakyung.github.io/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/"/>
-    <id>https://kodakyung.github.io/2018/10/25/Programming-Java-EffectiveJava-2018-10-25-java-finalizer/</id>
+    <link href="https://kodakyung.github.io/2018/10/25/programming-java-effective-java-2018-10-25-java-finalizer/"/>
+    <id>https://kodakyung.github.io/2018/10/25/programming-java-effective-java-2018-10-25-java-finalizer/</id>
     <published>2018-10-24T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:05.449Z</updated>
     
@@ -1119,8 +1149,8 @@
   
   <entry>
     <title>토크ON세미나 - OAuth2.0</title>
-    <link href="https://kodakyung.github.io/2018/10/24/Web-2018-10-24-%ED%86%A0%ED%81%ACON%EC%84%B8%EB%AF%B8%EB%82%98-oauth2/"/>
-    <id>https://kodakyung.github.io/2018/10/24/Web-2018-10-24-토크ON세미나-oauth2/</id>
+    <link href="https://kodakyung.github.io/2018/10/24/web-2018-10-24-%E1%84%90%E1%85%A9%E1%84%8F%E1%85%B3ON%E1%84%89%E1%85%A6%E1%84%86%E1%85%B5%E1%84%82%E1%85%A1-oauth2/"/>
+    <id>https://kodakyung.github.io/2018/10/24/web-2018-10-24-토크ON세미나-oauth2/</id>
     <published>2018-10-23T15:00:00.000Z</published>
     <updated>2019-08-25T17:56:57.956Z</updated>
     
@@ -1151,8 +1181,8 @@
   
   <entry>
     <title>Fish Shell - Alias 설정</title>
-    <link href="https://kodakyung.github.io/2018/10/24/System-Shell-2018-11-08-fish-shell-alias/"/>
-    <id>https://kodakyung.github.io/2018/10/24/System-Shell-2018-11-08-fish-shell-alias/</id>
+    <link href="https://kodakyung.github.io/2018/10/24/system-shell-2018-11-08-fish-shell-alias/"/>
+    <id>https://kodakyung.github.io/2018/10/24/system-shell-2018-11-08-fish-shell-alias/</id>
     <published>2018-10-23T15:00:00.000Z</published>
     <updated>2019-07-19T09:54:50.135Z</updated>
     
@@ -1181,10 +1211,10 @@
   
   <entry>
     <title>Java - Private 생성자</title>
-    <link href="https://kodakyung.github.io/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/"/>
-    <id>https://kodakyung.github.io/2018/10/15/Programming-Java-EffectiveJava-2018-10-15-Java-private-constructor/</id>
+    <link href="https://kodakyung.github.io/2018/10/15/programming-java-effective-java-2018-10-15-java-private-constructor/"/>
+    <id>https://kodakyung.github.io/2018/10/15/programming-java-effective-java-2018-10-15-java-private-constructor/</id>
     <published>2018-10-14T15:00:00.000Z</published>
-    <updated>2019-08-25T18:00:05.449Z</updated>
+    <updated>2020-01-31T15:38:20.424Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Effective-Java-규칙-4"><a href="#Effective-Java-규칙-4" class="headerlink" title="Effective Java 규칙 4"></a>Effective Java 규칙 4</h2><blockquote><p>객체 생성을 막을 때는 private 생성자를 사용하라.</p></blockquote><h3 id="유틸리티-클래스-Utility-Class"><a href="#유틸리티-클래스-Utility-Class" class="headerlink" title="유틸리티 클래스 (Utility Class)"></a>유틸리티 클래스 (Utility Class)</h3><ul><li><p>정적 메서드나 필드만 모은 클래스로 객체를 생성할 필요가 없는 구조로 이루어진 클래스.</p></li><li><p>객체 지향적이지 않다는 비판이 있지만 필요한 특정 경우가 존재한다.</p></li></ul><h3 id="유틸리티-클래스를-만드는-경우"><a href="#유틸리티-클래스를-만드는-경우" class="headerlink" title="유틸리티 클래스를 만드는 경우"></a>유틸리티 클래스를 만드는 경우</h3><ul><li>자바의 기본 자료형 값에 적용되는 메소드를 모아둘 때 (예 - <code>java.lang.Math</code>)</li><li>배열에 적용되는 메소드를 모아둘 때 (예 - <code>java.util.Arrays</code>)</li><li>특정 인터페이스를 구현하는 객체를 만드는 팩토리 메소드 (예 - <code>java.util.Collections</code>)</li><li><code>final</code> 클래스에 적용할 메소드를 모아놓을 때 (final 클래스는 계승할 수 없다. )</li></ul><h3 id="private-생성자의-사용"><a href="#private-생성자의-사용" class="headerlink" title="private 생성자의 사용"></a>private 생성자의 사용</h3><p>이런 유틸리티 클래스는 객체를 만들지 않고 사용하지만, 생성자를 생략하면 컴파일러가 자동으로 public 기본 생성자(<code>default constructor</code>)를 만든다.</p><p>이런 상황을 막기 위해 클래스를 <code>abstract</code>로 선언한다면, 하위 클래스를 정의하는 순간 객체 생성이 가능해진다.</p><p>따라서 기본 생성자의 생성을 막고 객체 생성을 막기 위해서는 <code>private 생성자</code>를 사용한다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UtilityClass</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 기본 생성자가 자동 생성되지 못하게하여 객체 생성을 방지</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">UtilityClass</span> <span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError();</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>private</code>이므로 클래스 외부에서 객체를 생성하지 못한다. <code>AssertionError</code>는 필수는 아니지만 클래스 내에서 실수로 생성자를 호출하는 것을 알 수 있기 위해 삽입한다.</p><p>코드 내에서 명시적으로 확인할 수 없으니 주석으로 표시해주는 것이 바람직하다.</p><br>]]></content>
     
@@ -1210,10 +1240,10 @@
   
   <entry>
     <title>Java - 싱글턴 패턴(Singleton Pattern)</title>
-    <link href="https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/"/>
-    <id>https://kodakyung.github.io/2018/10/14/Programming-Java-EffectiveJava-2018-10-14-Java-singleton-pattern/</id>
+    <link href="https://kodakyung.github.io/2018/10/14/programming-java-effective-java-2018-10-14-java-singleton-pattern/"/>
+    <id>https://kodakyung.github.io/2018/10/14/programming-java-effective-java-2018-10-14-java-singleton-pattern/</id>
     <published>2018-10-13T15:00:00.000Z</published>
-    <updated>2019-08-25T17:59:59.594Z</updated>
+    <updated>2020-01-31T15:38:09.796Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Effective-Java-규칙-3"><a href="#Effective-Java-규칙-3" class="headerlink" title="Effective Java 규칙 3"></a>Effective Java 규칙 3</h2><blockquote><p>private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</p></blockquote><h2 id="Singleton-이란"><a href="#Singleton-이란" class="headerlink" title="Singleton 이란 ?"></a>Singleton 이란 ?</h2><blockquote><p>객체를 하나만 만들 수 있는 클래스<br>보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.</p></blockquote><h3 id="Singleton을-구현하는-방법"><a href="#Singleton을-구현하는-방법" class="headerlink" title="Singleton을 구현하는 방법"></a>Singleton을 구현하는 방법</h3><ol><li>private 생성자의 이용</li><li>정적 팩터리 메소드 이용 // <em>JDK 1.5 이전의 구현 방식</em></li><li>enum 자료형의 사용 // <em>Effective Java의 추천 방식</em></li><li>Initialization on demand holder idiom // <em>현재 많이 쓰이는 방식</em></li></ol><h3 id="1-private-생성자-이용"><a href="#1-private-생성자-이용" class="headerlink" title="1. private 생성자 이용"></a>1. private 생성자 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>(2) <code>private 생성자</code>는 (1)의 Elvis.INSTANCE를 초기화할 때 한번 호출 된다. 생성자가 private이므로 한번 생성된 후에는 다시 객체가 생성되지 않는다.</p><h3 id="2-static-factory-method-이용"><a href="#2-static-factory-method-이용" class="headerlink" title="2. static factory method 이용"></a>2. static factory method 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Elvis <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> INSTACE; &#125; <span class="comment">// (3)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>(1)에서 객체를 생성 한 뒤 (3)의 <code>getInstance</code>에서 항상 같은 참조를 반환한다. (2) 생성자가 <code>private</code>이므로 외부에서 <code>new</code> 연산자로 객체를 생성하지 못한다.</p><p>1과 2 방식 모두 <code>Eagar Initialization</code>으로 객체가 사용되기 전에 미리 생성한다. 항상 싱글톤 객체가 필요하거나 객체 생성비용이 크지 않을 때 사용한다. 이 방식들은 <code>thread safe</code>하지 않다. 또한 Java의 <code>reflection</code> 기능을 통해 <code>private</code> 생성자를 호출하여 싱글톤 패턴을 깨드릴 수 있다.</p><h3 id="Lazy-Initialization"><a href="#Lazy-Initialization" class="headerlink" title="Lazy Initialization"></a>Lazy Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> fianl LazyInitialization INSTANCE; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazyInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyInitialization <span class="title">getInstance</span> <span class="params">()</span></span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (INSTACE == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> LazyInitialization();</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>LazyInitialization 방식은 객체가 사용되는 시점에 (3) 객체를 만들어서 반환한다. 이 방식 또한 <code>thread safe</code>하지 않으며 <code>reflection</code> 으로 패턴을 깨뜨릴 수 있다.</p><h3 id="Thread-Safe-Initialization"><a href="#Thread-Safe-Initialization" class="headerlink" title="Thread Safe Initialization"></a>Thread Safe Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadSafeInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadSafeInitialization instance; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">ThreadSafeInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> ThreadSafeInitialization <span class="title">getInstance</span> <span class="params">()</span> </span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> ThreadSafeInitialization();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>thread safe</code>하기 위해 (3)<code>synchronized</code>를 사용했다. <code>multi thread</code> 문제는 해소됐지만, 수많은 스레드들이 <code>getInstance</code>를 호출한다면 프로그램의 성능 저하가 일어날 수 있다.</p><h3 id="3-enum-자료형의-사용"><a href="#3-enum-자료형의-사용" class="headerlink" title="3. enum 자료형의 사용"></a>3. enum 자료형의 사용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumInitialization &#123;</span><br><span class="line">  INSTACE;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EnumInitialization <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>enum 자료형을 사용하는 경우 직렬화(Serializable) 클래스를 만들어도 문제가 없으며, reflection 공격에도 안전하다. 또한 instance가 생성될 때 multi thread에도 안전하다.</p><h3 id="4-Initialization-on-demand-holder-idiom"><a href="#4-Initialization-on-demand-holder-idiom" class="headerlink" title="4. Initialization on demand holder idiom"></a>4. Initialization on demand holder idiom</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitializationOnDemandHolderIdom</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">InitializationOnDemandHolderIdom</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">singletonHolder</span> </span>&#123; <span class="comment">// (2)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InitializationOnDemandHolderIdom instance = <span class="keyword">new</span> InitializationOnDemandHolderIdom(); <span class="comment">// (3)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InitializationOnDemandHolderIdom <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">// (4)</span></span><br><span class="line">    <span class="keyword">return</span> singletonHolder.instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>holder를 이용한 초기화 방식으로 클래스 내부에 (2) 내부 클래스에 instance를 생성한다. (4)의 <code>getInstance</code>가 호출될 때 내부 클래스가 참조되며 instance가 (3) static final로 선언되어 있어서 처음 클래스가 로드될 때 최초 한번 객체가 생성된다. 클래스가 생성되는 순간은 <code>thread safe</code>하기 때문에 multi thread 문제에도 안전하다. 현재 Java의 singleton은 이 방식을 많이 사용한다.</p><h3 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h3><ul><li><a href="https://blog.seotory.com/post/2016/03/java-singleton-pattern" target="_blank" rel="noopener">java singleton pattern</a></li><li><a href="http://limkydev.tistory.com/67" target="_blank" rel="noopener">[Design_Pattern] Singleton(싱글톤)의 고도화</a></li></ul><br>]]></content>
     
@@ -1241,8 +1271,8 @@
   
   <entry>
     <title>STS - The selection cannot be run on any server.</title>
-    <link href="https://kodakyung.github.io/2018/09/29/Troubleshooting-2018-09-29-STS-cannot-be-run-on-server/"/>
-    <id>https://kodakyung.github.io/2018/09/29/Troubleshooting-2018-09-29-STS-cannot-be-run-on-server/</id>
+    <link href="https://kodakyung.github.io/2018/09/29/troubleshooting-2018-09-29-STS-cannot-be-run-on-server/"/>
+    <id>https://kodakyung.github.io/2018/09/29/troubleshooting-2018-09-29-STS-cannot-be-run-on-server/</id>
     <published>2018-09-28T15:00:00.000Z</published>
     <updated>2019-07-15T06:34:15.913Z</updated>
     
@@ -1271,8 +1301,8 @@
   
   <entry>
     <title>Refactoring과 Test/TDD</title>
-    <link href="https://kodakyung.github.io/2018/09/24/Server-Test-2018-09-24-Refactoring-and-tdd/"/>
-    <id>https://kodakyung.github.io/2018/09/24/Server-Test-2018-09-24-Refactoring-and-tdd/</id>
+    <link href="https://kodakyung.github.io/2018/09/24/server-test-2018-09-24-Refactoring-and-tdd/"/>
+    <id>https://kodakyung.github.io/2018/09/24/server-test-2018-09-24-Refactoring-and-tdd/</id>
     <published>2018-09-23T15:00:00.000Z</published>
     <updated>2019-07-15T06:14:08.725Z</updated>
     
@@ -1302,8 +1332,8 @@
   
   <entry>
     <title>WEB - HTTP</title>
-    <link href="https://kodakyung.github.io/2018/09/21/Web-2018-09-21-WEB-HTTP/"/>
-    <id>https://kodakyung.github.io/2018/09/21/Web-2018-09-21-WEB-HTTP/</id>
+    <link href="https://kodakyung.github.io/2018/09/21/web-2018-09-21-WEB-HTTP/"/>
+    <id>https://kodakyung.github.io/2018/09/21/web-2018-09-21-WEB-HTTP/</id>
     <published>2018-09-20T15:00:00.000Z</published>
     <updated>2019-08-25T17:56:54.363Z</updated>
     
@@ -1322,9 +1352,9 @@
       <category term="Web" scheme="https://kodakyung.github.io/categories/web/"/>
     
     
-      <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
-    
       <category term="Web" scheme="https://kodakyung.github.io/tags/web/"/>
+    
+      <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
     
       <category term="HTTP" scheme="https://kodakyung.github.io/tags/http/"/>
     
@@ -1332,8 +1362,8 @@
   
   <entry>
     <title>WEB - OAuth2.0</title>
-    <link href="https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/"/>
-    <id>https://kodakyung.github.io/2018/09/20/Web-2018-09-20-WEB-OAuth2/</id>
+    <link href="https://kodakyung.github.io/2018/09/20/web-2018-09-20-WEB-OAuth2/"/>
+    <id>https://kodakyung.github.io/2018/09/20/web-2018-09-20-WEB-OAuth2/</id>
     <published>2018-09-19T15:00:00.000Z</published>
     <updated>2019-08-25T17:56:47.225Z</updated>
     
@@ -1352,20 +1382,20 @@
       <category term="Web" scheme="https://kodakyung.github.io/categories/web/"/>
     
     
-      <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
-    
       <category term="Web" scheme="https://kodakyung.github.io/tags/web/"/>
     
       <category term="OAuth2" scheme="https://kodakyung.github.io/tags/oauth2/"/>
     
       <category term="Authrization" scheme="https://kodakyung.github.io/tags/authrization/"/>
     
+      <category term="생활코딩" scheme="https://kodakyung.github.io/tags/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/"/>
+    
   </entry>
   
   <entry>
     <title>STS - CLI 환경에서 git pull/clone 후 STS에서 프로젝트 import 하기</title>
-    <link href="https://kodakyung.github.io/2018/09/11/Server-Spring-2018-09-11-CLI%EC%97%90%EC%84%9C-git-pull-clone-%ED%9B%84-STS%EC%97%90%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-import-%ED%95%98%EA%B8%B0/"/>
-    <id>https://kodakyung.github.io/2018/09/11/Server-Spring-2018-09-11-CLI에서-git-pull-clone-후-STS에서-프로젝트-import-하기/</id>
+    <link href="https://kodakyung.github.io/2018/09/11/server-spring-2018-09-11-CLI%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-git-pull-clone-%E1%84%92%E1%85%AE-STS%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3-import-%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/"/>
+    <id>https://kodakyung.github.io/2018/09/11/server-spring-2018-09-11-CLI에서-git-pull-clone-후-STS에서-프로젝트-import-하기/</id>
     <published>2018-09-10T15:00:00.000Z</published>
     <updated>2019-08-25T17:52:46.302Z</updated>
     
@@ -1400,8 +1430,8 @@
   
   <entry>
     <title>Java equals method, instanceof, @Override</title>
-    <link href="https://kodakyung.github.io/2018/08/28/Programming-Java-2018-08-28-Java-equals-method-instanceof-Override/"/>
-    <id>https://kodakyung.github.io/2018/08/28/Programming-Java-2018-08-28-Java-equals-method-instanceof-Override/</id>
+    <link href="https://kodakyung.github.io/2018/08/28/programming-java-2018-08-28-Java-equals-method-instanceof-Override/"/>
+    <id>https://kodakyung.github.io/2018/08/28/programming-java-2018-08-28-Java-equals-method-instanceof-Override/</id>
     <published>2018-08-27T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:18.037Z</updated>
     
@@ -1432,8 +1462,8 @@
   
   <entry>
     <title>Java 기본 자료형과 참조형 / String Class</title>
-    <link href="https://kodakyung.github.io/2018/08/27/Programming-Java-2018-08-27-Java-%EA%B8%B0%EB%B3%B8%EC%9E%90%EB%A3%8C%ED%98%95%EA%B3%BC-%EC%B0%B8%EC%A1%B0%ED%98%95/"/>
-    <id>https://kodakyung.github.io/2018/08/27/Programming-Java-2018-08-27-Java-기본자료형과-참조형/</id>
+    <link href="https://kodakyung.github.io/2018/08/27/programming-java-2018-08-27-Java-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%92%E1%85%A7%E1%86%BC%E1%84%80%E1%85%AA-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%92%E1%85%A7%E1%86%BC/"/>
+    <id>https://kodakyung.github.io/2018/08/27/programming-java-2018-08-27-Java-기본자료형과-참조형/</id>
     <published>2018-08-26T15:00:00.000Z</published>
     <updated>2019-08-25T18:00:12.282Z</updated>
     
@@ -1463,8 +1493,8 @@
   
   <entry>
     <title>코딩야학 Javascript 12일차</title>
-    <link href="https://kodakyung.github.io/2018/08/25/Programming-Javascript-2018-08-25-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-12%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/25/Programming-Javascript-2018-08-25-코딩야학-JavaScript-12일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/25/programming-javascript-2018-08-25-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-12%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/25/programming-javascript-2018-08-25-코딩야학-JavaScript-12일차/</id>
     <published>2018-08-24T15:00:00.000Z</published>
     <updated>2019-07-14T17:10:11.835Z</updated>
     
@@ -1492,8 +1522,8 @@
   
   <entry>
     <title>코딩야학 Javascript 11일차</title>
-    <link href="https://kodakyung.github.io/2018/08/24/Programming-Javascript-2018-08-24-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-11%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/24/Programming-Javascript-2018-08-24-코딩야학-JavaScript-11일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/24/programming-javascript-2018-08-24-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-11%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/24/programming-javascript-2018-08-24-코딩야학-JavaScript-11일차/</id>
     <published>2018-08-23T15:00:00.000Z</published>
     <updated>2019-07-14T17:09:58.132Z</updated>
     
@@ -1521,8 +1551,8 @@
   
   <entry>
     <title>코딩야학 Javascript 10일차</title>
-    <link href="https://kodakyung.github.io/2018/08/23/Programming-Javascript-2018-08-23-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-10%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/23/Programming-Javascript-2018-08-23-코딩야학-JavaScript-10일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/23/programming-javascript-2018-08-23-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-10%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/23/programming-javascript-2018-08-23-코딩야학-JavaScript-10일차/</id>
     <published>2018-08-22T15:00:00.000Z</published>
     <updated>2019-07-14T17:09:25.609Z</updated>
     
@@ -1550,8 +1580,8 @@
   
   <entry>
     <title>코딩야학 Javascript 9일차</title>
-    <link href="https://kodakyung.github.io/2018/08/22/Programming-Javascript-2018-08-22-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-9%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/22/Programming-Javascript-2018-08-22-코딩야학-JavaScript-9일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/22/programming-javascript-2018-08-22-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-9%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/22/programming-javascript-2018-08-22-코딩야학-JavaScript-9일차/</id>
     <published>2018-08-21T15:00:00.000Z</published>
     <updated>2019-07-20T14:12:04.977Z</updated>
     
@@ -1579,8 +1609,8 @@
   
   <entry>
     <title>코딩야학 Javascript 5,6일차</title>
-    <link href="https://kodakyung.github.io/2018/08/17/Programming-Javascript-2018-08-17-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-5-6%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/17/Programming-Javascript-2018-08-17-코딩야학-JavaScript-5-6일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/17/programming-javascript-2018-08-17-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-5-6%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/17/programming-javascript-2018-08-17-코딩야학-JavaScript-5-6일차/</id>
     <published>2018-08-16T15:00:00.000Z</published>
     <updated>2019-07-20T14:11:36.716Z</updated>
     
@@ -1608,8 +1638,8 @@
   
   <entry>
     <title>코딩야학 Javascript 4일차</title>
-    <link href="https://kodakyung.github.io/2018/08/16/Programming-Javascript-2018-08-16-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-4%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/16/Programming-Javascript-2018-08-16-코딩야학-JavaScript-4일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-4%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-코딩야학-JavaScript-4일차/</id>
     <published>2018-08-15T15:00:00.000Z</published>
     <updated>2019-07-20T14:08:22.947Z</updated>
     
@@ -1637,8 +1667,8 @@
   
   <entry>
     <title>코딩야학 Javascript 3일차</title>
-    <link href="https://kodakyung.github.io/2018/08/15/Programming-Javascript-2018-08-15-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-3%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/15/Programming-Javascript-2018-08-15-코딩야학-JavaScript-3일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/15/programming-javascript-2018-08-15-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-3%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/15/programming-javascript-2018-08-15-코딩야학-JavaScript-3일차/</id>
     <published>2018-08-14T15:00:00.000Z</published>
     <updated>2019-07-14T16:55:10.705Z</updated>
     
@@ -1666,8 +1696,8 @@
   
   <entry>
     <title>코딩야학 Javascript 2일차</title>
-    <link href="https://kodakyung.github.io/2018/08/14/Programming-Javascript-2018-08-14-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-2%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/14/Programming-Javascript-2018-08-14-코딩야학-JavaScript-2일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/14/programming-javascript-2018-08-14-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-2%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/14/programming-javascript-2018-08-14-코딩야학-JavaScript-2일차/</id>
     <published>2018-08-13T15:00:00.000Z</published>
     <updated>2019-07-20T14:06:30.446Z</updated>
     
@@ -1695,8 +1725,8 @@
   
   <entry>
     <title>코딩야학 Javascript 1일차</title>
-    <link href="https://kodakyung.github.io/2018/08/13/Programming-Javascript-2018-08-13-%EC%BD%94%EB%94%A9%EC%95%BC%ED%95%99-JavaScript-1%EC%9D%BC%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/08/13/Programming-Javascript-2018-08-13-코딩야학-JavaScript-1일차/</id>
+    <link href="https://kodakyung.github.io/2018/08/13/programming-javascript-2018-08-13-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%E1%84%8B%E1%85%A3%E1%84%92%E1%85%A1%E1%86%A8-JavaScript-1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/08/13/programming-javascript-2018-08-13-코딩야학-JavaScript-1일차/</id>
     <published>2018-08-12T15:00:00.000Z</published>
     <updated>2019-07-20T14:04:07.751Z</updated>
     
@@ -1724,8 +1754,8 @@
   
   <entry>
     <title>Docker 스터디 3차</title>
-    <link href="https://kodakyung.github.io/2018/07/17/System-Docker-2018-07-17-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/07/17/System-Docker-2018-07-17-Docker-스터디-3차/</id>
+    <link href="https://kodakyung.github.io/2018/07/17/system-docker-2018-07-17-Docker-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5-3%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/07/17/system-docker-2018-07-17-Docker-스터디-3차/</id>
     <published>2018-07-16T15:00:00.000Z</published>
     <updated>2019-07-15T07:22:16.202Z</updated>
     
@@ -1754,8 +1784,8 @@
   
   <entry>
     <title>Docker 스터디 2차</title>
-    <link href="https://kodakyung.github.io/2018/07/10/System-Docker-2018-07-10-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/07/10/System-Docker-2018-07-10-Docker-스터디-2차/</id>
+    <link href="https://kodakyung.github.io/2018/07/10/system-docker-2018-07-10-Docker-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5-2%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/07/10/system-docker-2018-07-10-Docker-스터디-2차/</id>
     <published>2018-07-09T15:00:00.000Z</published>
     <updated>2019-07-15T07:22:17.474Z</updated>
     
@@ -1784,8 +1814,8 @@
   
   <entry>
     <title>Docker 스터디 개요, 1차</title>
-    <link href="https://kodakyung.github.io/2018/07/09/System-Docker-2018-07-09-Docker-%EC%8A%A4%ED%84%B0%EB%94%94-%EA%B0%9C%EC%9A%94-1%EC%B0%A8/"/>
-    <id>https://kodakyung.github.io/2018/07/09/System-Docker-2018-07-09-Docker-스터디-개요-1차/</id>
+    <link href="https://kodakyung.github.io/2018/07/09/system-docker-2018-07-09-Docker-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5-%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD-1%E1%84%8E%E1%85%A1/"/>
+    <id>https://kodakyung.github.io/2018/07/09/system-docker-2018-07-09-Docker-스터디-개요-1차/</id>
     <published>2018-07-08T15:00:00.000Z</published>
     <updated>2019-07-15T07:22:18.143Z</updated>
     
@@ -1813,39 +1843,9 @@
   </entry>
   
   <entry>
-    <title>Netty EmbeddedChannel 이용한 단위 테스트</title>
-    <link href="https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8/"/>
-    <id>https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/</id>
-    <published>2018-05-31T15:00:00.000Z</published>
-    <updated>2019-07-19T09:44:49.725Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="단위-테스트란"><a href="#단위-테스트란" class="headerlink" title="단위 테스트란?"></a>단위 테스트란?</h3><blockquote><p>다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.</p></blockquote><p>Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 <code>EmbeddedChannel</code>을 통해 ChannelHandler의 단위 테스트를 제공한다.</p><p>테스트하는 코드 모듈이나 단위를 보통 런타임 환경 밖에서 실행되므로 이를 실행하기 위한 프레임 워크나 도구가 필요하다. 여기서는 JUnit을 통해 테스트 해본다.</p><br><h2 id="EmbeddedChannel"><a href="#EmbeddedChannel" class="headerlink" title="EmbeddedChannel"></a>EmbeddedChannel</h2><p><code>EmbeddedChannel</code>은 인바운드 또는 아웃바운드 데이터를 EmbeddedChannel에 기록하고 <code>ChannelPipeline</code> 끝에 도달하는 항목이 있는지 확인한다. 이를 통해 메세지가 인코딩 또는 디코딩 됐는지 확인할 수 있고 트리거 된 <code>ChannelHandler</code> 작업이 있는지 여부도 알 수 있다.</p><ul><li>EmbeddedChannel 주요 메소드</li></ul><table><thead><tr><th>이름</th><th>역할</th></tr></thead><tbody><tr><td>writeInbound(Object… msgs)</td><td>EmbeddedChannel에 인바운드 메세지를 기록한다. EmbeddedChannel에서 readInbound()를 통해 데이터를 읽을 수 있는 경우 true 반환</td></tr><tr><td>readInbound()</td><td>EmbeddedChannel에서 인바운드 메세지 읽는다. 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 데이터가 없으면 null 반환</td></tr><tr><td>writeOutbound(Object… msgs)</td><td>EmbeddedChannel에 아웃바운드 메세지를 기록한다. EmbeddedChannel에서 readOutbound()를 통해 데이터를 읽을 수 있는 경우 true를 반환</td></tr><tr><td>writeInbound()</td><td>EmbeddedChannel에서 아웃바운드 메세지를 읽음 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 항목이 없으면 null 반환</td></tr><tr><td>finish</td><td>EmbeddedChannel을 완료로 표시하고 전체 인바운드 또는 아웃바운드 데이터를 읽을 수 있는 경우 true를 반환한다. 이 메소드는  EmbeddedChannel의 close()를 호출함</td></tr></tbody></table><ul><li>EmbeddedChannel 데이터 흐름</li></ul><img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg"><p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p><p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p><p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p><br><h2 id="EmbeddedChannel을-이용한-ChannelHandler-테스트"><a href="#EmbeddedChannel을-이용한-ChannelHandler-테스트" class="headerlink" title="EmbeddedChannel을 이용한 ChannelHandler 테스트"></a>EmbeddedChannel을 이용한 ChannelHandler 테스트</h2><p>JUnit과 EmbeddedChannel을 이용해 ChannelHandler를 테스트 해보자  </p><h3 id="Junit-Assert"><a href="#Junit-Assert" class="headerlink" title="Junit Assert"></a>Junit Assert</h3><blockquote><p><code>org.junit.Assert</code> 클래스에는 테스트에 이용되는 여러 정적 메소드가 들어있다. 어설션이 실패하면 예외가 발생하고 현재 실행중인 테스트가 종료된다. 다음 import 문으로 사용할 수 있다. <code>import static org.junit.Assert.*;</code> 그리고 다음부터는 직접 Assert 메소드를 호출할 수 있다. <code>assertEquals(buf.readSlice(3), read);</code></p></blockquote><br><h3 id="인바운드-메세지-테스트"><a href="#인바운드-메세지-테스트" class="headerlink" title="인바운드 메세지 테스트"></a>인바운드 메세지 테스트</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 처리하고 이를 메세지로 디코딩하기 위해서</span></span><br><span class="line">  <span class="comment">// ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> frameLength;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FixedLengthFrameDecoder</span><span class="params">(<span class="keyword">int</span> frameLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성할 프레임의 길이 지정</span></span><br><span class="line">    <span class="keyword">if</span>(frameLength &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">        <span class="string">"frameLength must be a positive integer:"</span>+frameLength);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.frameLength = frameLength;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="comment">// 다음 프레임을 처리하는 데 충분하게 바이트를 읽을 수 있는지 확인</span></span><br><span class="line">      <span class="keyword">while</span> (in.readableBytes() &gt;= frameLength) &#123;</span><br><span class="line">        ByteBuf buf = in.readBytes(frameLength);</span><br><span class="line">        <span class="comment">// ByteBuf에서 새로운 프레임을 읽음</span></span><br><span class="line">        out.add(buf);</span><br><span class="line">        <span class="comment">// 디코딩 된 메세지의 List에 프레임을 추가함</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>ByteToMessageDecoder</code>는 고정된 3바이트의 프레임을 생성한다. 이 코드는 데이터가 충분히 있는 경우 고정 크기의 프레임을 생성한다. 반면에 읽을 데이터가 충분하지 않으면 다음 데이터를 기다린다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoderTest</span></span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="comment">//JUnit이 메소드를 실행하도록 @Test 어노테이션을 지정해줌</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트 저장</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FixedLengthFrameDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 3바이트 길이의 프레임으로 테스트할</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가함</span></span><br><span class="line">    assertTrue(channel.writeInbound(input.retain()));</span><br><span class="line">    <span class="comment">// EmbeddedChannel에 바이트를 기록</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처리된 메세지를 읽고 각각 3바이트 프레임이 3개인지 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>),read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    assertNull(channel.readInbound());</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>testFrameDecoded()</code> 메소드는 읽을 수 있는 9바이트를 포함하는 ByteBuf 1개가 3바이트를 포함하는 ByteBuf 3개로 디코딩되는지 확인한다. 그리고 <code>writeInbound()</code>를 한번 호출해 ByteBuf는 읽기 가능한 9바이트로 채운다. 그 다음에 finish()를 실행해 EmbeddedChannel을 완료로 표시하고 마지막으로 <code>readInbound()</code>를 호출해 EmbeddedChannel에서 프레임 3개와 null 1개를 읽었다.</p><br><h3 id="아웃바운드-메세지-테스트"><a href="#아웃바운드-메세지-테스트" class="headerlink" title="아웃바운드 메세지 테스트"></a>아웃바운드 메세지 테스트</h3><p>아웃바운드 메세지 테스트도 인바운드와 비슷하다. <code>ChannelOutboundHandler</code>는 메세지를 다른 포맷으로 변환하는 컴포넌트인 인코더 역할을 한다. 아래의 코드로 테스트 해보자.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoder</span> <span class="keyword">extends</span> <span class="title">MessageToMessageEncoder</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// MessageToMessageEncoder를 상속받아 메세지를 다른 포맷으로 인코딩 함</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(ChannelHandlerContext channelHandlerContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    ByteBuf in, List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(in.readableBytes() &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">// 인코딩할 바이트가 충분한지 확인</span></span><br><span class="line">        <span class="keyword">int</span> value = Math.abs(in.readint());</span><br><span class="line">        <span class="comment">// ByteBuf에서 다음 int를 읽고 절대값을 계산</span></span><br><span class="line">        out.add(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEncoded</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 음의 정수 9개 기록</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      buf.writeInd(i * -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> AbsIntegerEncoder());</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 테스트할 AbsIntegerEncoder를 추가</span></span><br><span class="line">    assertTrue(channel.writeOutbound(buf));</span><br><span class="line">    <span class="comment">// ByteBuf를 기록하고 readOutbound()가 데이터를 생성하는지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 값을 읽고 절댓 값을 포함하는지 확인</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      assertEquals(i, channel.readOutbound());</span><br><span class="line">    &#125;</span><br><span class="line">    assertNull(channel.readOutbound());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol><li><code>ByteBuf</code>에 4바이트 음의 정수를 기록한다.</li><li><code>EmbeddedChannel</code>을 생성하고 여기에 <code>AbsIntegerEncoder</code>를 할당한다.</li><li><code>EmbeddedChannel</code>의 <code>writeOutbound()</code>를 호출해 ByteBuf를 기록한다.</li><li><code>Channel</code>을 완료로 표시한다.</li><li><code>EmbeddedChannel</code>의 아웃바운드 쪽에서 모든 정수를 읽고 절대값만 생성됐는지 확인한다.</li></ol><br><h2 id="예외-처리-테스트"><a href="#예외-처리-테스트" class="headerlink" title="예외 처리 테스트"></a>예외 처리 테스트</h2><p>데이터 변환외에도 입력이 잘못되거나 데이터가 너무 많은 경우 적절하게 처리해야할 필요가 있다 이런 경우 예외 처리를 따로 해줄 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 메세지로 디코딩하기 위해 ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> maxFrameSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FrameChunkDecoder</span><span class="params">(<span class="keyword">int</span> maxFrameSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxFrameSize = maxFrameSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> readableBytes = in.readableBytes();</span><br><span class="line">      <span class="comment">// 생성할 프레임의 최대 허용 길이를 지정</span></span><br><span class="line">      <span class="keyword">if</span> (readableBytes &gt; maxFrameSize) &#123;</span><br><span class="line">        <span class="comment">// 프레임이 너무 큰 경우 폐기하고 TooLongFrameException을 생성함</span></span><br><span class="line">        in.clear();</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TooLongFrameException();</span><br><span class="line">      &#125;</span><br><span class="line">      ByteBuf buf = in.readBytes(readableBytes);</span><br><span class="line">      <span class="comment">// 그렇지 않은 경우 ByteBuf로부터 새 프레임을 읽음</span></span><br><span class="line">      out.add(buf);</span><br><span class="line">      <span class="comment">// 디코딩된 메세지의 List에 프레임을 추가</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>생성할 프레임의 최대 허용 길이를 설정하고 프레임의 크기가 이것을 넘어갈 경우 초과하는 바이트가 폐기되고 <code>TooLongFrameException</code>이 발생한다. 이 예외는 파이프라인의 <code>다른 ChannelHandler</code>에서 <code>exceptionCaught()</code>를 이용해 처리하거나 무시할 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트를 기록</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FrameChunkDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 프레임 크기가 3인</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가</span></span><br><span class="line"></span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">2</span>)));</span><br><span class="line">    <span class="comment">// 2바이트를 기록한 후 새로운 프레임이 생성되는지 확인</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      channel.writeInbound(input.readBytes(<span class="number">4</span>));</span><br><span class="line">      <span class="comment">// 4바이트 프레임을 기록하고 예상되는 TooLongFrameException을 포착</span></span><br><span class="line">      Assert.fail();</span><br><span class="line">      <span class="comment">// 예외가 발생하지 않은 경우 이 메소드가 적용되고 테스트가 실패함</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (TooLongFrameException e)&#123;</span><br><span class="line">      <span class="comment">// 예상된 예외</span></span><br><span class="line">    &#125;</span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">3</span>)));</span><br><span class="line">    <span class="comment">// 남은 2바이트를 기록하고 프레임이 올바른지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 메세지를 읽고 값을 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">2</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.skipBytes(<span class="number">4</span>).readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위 코드의 <code>try/catch</code> 블록은 EmbeddedChannel에서 특수하게 작용한다. <code>wrtie*</code> 메소드 중 하나에서 확인된 Exception이 발생하는 경우 이 <code>Exception</code>이 <code>RuntimeException</code>에 래핑된다. 이 방법을 데이터를 처리하는 동안 Exception이 처리됐는지 여부를 쉽게 테스트 할 수 있다. 그리고 이 테스트 방법은 <code>Exception</code>을 생성하는 모든 <code>ChannelHandler</code> 구현에 이용할 수 있다.</p><hr><ul><li>참고 서적<ul><li>네티 인 액션</li></ul></li></ul><br>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;단위-테스트란&quot;&gt;&lt;a href=&quot;#단위-테스트란&quot; class=&quot;headerlink&quot; title=&quot;단위 테스트란?&quot;&gt;&lt;/a&gt;단위 테스트란?&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터
-      
-    
-    </summary>
-    
-      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
-    
-      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
-    
-    
-      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
-    
-      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Netty Codec Framework</title>
-    <link href="https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/"/>
-    <id>https://kodakyung.github.io/2018/06/01/Server-Netty-2018-06-02-Netty-Codec-Framework/</id>
+    <link href="https://kodakyung.github.io/2018/06/01/server-netty-2018-06-02-Netty-Codec-Framework/"/>
+    <id>https://kodakyung.github.io/2018/06/01/server-netty-2018-06-02-Netty-Codec-Framework/</id>
     <published>2018-05-31T15:00:00.000Z</published>
     <updated>2019-07-19T09:47:46.101Z</updated>
     
@@ -1873,9 +1873,39 @@
   </entry>
   
   <entry>
+    <title>Netty EmbeddedChannel 이용한 단위 테스트</title>
+    <link href="https://kodakyung.github.io/2018/06/01/server-netty-2018-06-01-Netty-EmbeddedChannel-%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B1-%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"/>
+    <id>https://kodakyung.github.io/2018/06/01/server-netty-2018-06-01-Netty-EmbeddedChannel-이용한-단위-테스트/</id>
+    <published>2018-05-31T15:00:00.000Z</published>
+    <updated>2019-07-19T09:44:49.725Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="단위-테스트란"><a href="#단위-테스트란" class="headerlink" title="단위 테스트란?"></a>단위 테스트란?</h3><blockquote><p>다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.</p></blockquote><p>Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 <code>EmbeddedChannel</code>을 통해 ChannelHandler의 단위 테스트를 제공한다.</p><p>테스트하는 코드 모듈이나 단위를 보통 런타임 환경 밖에서 실행되므로 이를 실행하기 위한 프레임 워크나 도구가 필요하다. 여기서는 JUnit을 통해 테스트 해본다.</p><br><h2 id="EmbeddedChannel"><a href="#EmbeddedChannel" class="headerlink" title="EmbeddedChannel"></a>EmbeddedChannel</h2><p><code>EmbeddedChannel</code>은 인바운드 또는 아웃바운드 데이터를 EmbeddedChannel에 기록하고 <code>ChannelPipeline</code> 끝에 도달하는 항목이 있는지 확인한다. 이를 통해 메세지가 인코딩 또는 디코딩 됐는지 확인할 수 있고 트리거 된 <code>ChannelHandler</code> 작업이 있는지 여부도 알 수 있다.</p><ul><li>EmbeddedChannel 주요 메소드</li></ul><table><thead><tr><th>이름</th><th>역할</th></tr></thead><tbody><tr><td>writeInbound(Object… msgs)</td><td>EmbeddedChannel에 인바운드 메세지를 기록한다. EmbeddedChannel에서 readInbound()를 통해 데이터를 읽을 수 있는 경우 true 반환</td></tr><tr><td>readInbound()</td><td>EmbeddedChannel에서 인바운드 메세지 읽는다. 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 데이터가 없으면 null 반환</td></tr><tr><td>writeOutbound(Object… msgs)</td><td>EmbeddedChannel에 아웃바운드 메세지를 기록한다. EmbeddedChannel에서 readOutbound()를 통해 데이터를 읽을 수 있는 경우 true를 반환</td></tr><tr><td>writeInbound()</td><td>EmbeddedChannel에서 아웃바운드 메세지를 읽음 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 항목이 없으면 null 반환</td></tr><tr><td>finish</td><td>EmbeddedChannel을 완료로 표시하고 전체 인바운드 또는 아웃바운드 데이터를 읽을 수 있는 경우 true를 반환한다. 이 메소드는  EmbeddedChannel의 close()를 호출함</td></tr></tbody></table><ul><li>EmbeddedChannel 데이터 흐름</li></ul><img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg"><p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p><p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p><p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p><br><h2 id="EmbeddedChannel을-이용한-ChannelHandler-테스트"><a href="#EmbeddedChannel을-이용한-ChannelHandler-테스트" class="headerlink" title="EmbeddedChannel을 이용한 ChannelHandler 테스트"></a>EmbeddedChannel을 이용한 ChannelHandler 테스트</h2><p>JUnit과 EmbeddedChannel을 이용해 ChannelHandler를 테스트 해보자  </p><h3 id="Junit-Assert"><a href="#Junit-Assert" class="headerlink" title="Junit Assert"></a>Junit Assert</h3><blockquote><p><code>org.junit.Assert</code> 클래스에는 테스트에 이용되는 여러 정적 메소드가 들어있다. 어설션이 실패하면 예외가 발생하고 현재 실행중인 테스트가 종료된다. 다음 import 문으로 사용할 수 있다. <code>import static org.junit.Assert.*;</code> 그리고 다음부터는 직접 Assert 메소드를 호출할 수 있다. <code>assertEquals(buf.readSlice(3), read);</code></p></blockquote><br><h3 id="인바운드-메세지-테스트"><a href="#인바운드-메세지-테스트" class="headerlink" title="인바운드 메세지 테스트"></a>인바운드 메세지 테스트</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 처리하고 이를 메세지로 디코딩하기 위해서</span></span><br><span class="line">  <span class="comment">// ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> frameLength;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FixedLengthFrameDecoder</span><span class="params">(<span class="keyword">int</span> frameLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성할 프레임의 길이 지정</span></span><br><span class="line">    <span class="keyword">if</span>(frameLength &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">        <span class="string">"frameLength must be a positive integer:"</span>+frameLength);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.frameLength = frameLength;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="comment">// 다음 프레임을 처리하는 데 충분하게 바이트를 읽을 수 있는지 확인</span></span><br><span class="line">      <span class="keyword">while</span> (in.readableBytes() &gt;= frameLength) &#123;</span><br><span class="line">        ByteBuf buf = in.readBytes(frameLength);</span><br><span class="line">        <span class="comment">// ByteBuf에서 새로운 프레임을 읽음</span></span><br><span class="line">        out.add(buf);</span><br><span class="line">        <span class="comment">// 디코딩 된 메세지의 List에 프레임을 추가함</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>ByteToMessageDecoder</code>는 고정된 3바이트의 프레임을 생성한다. 이 코드는 데이터가 충분히 있는 경우 고정 크기의 프레임을 생성한다. 반면에 읽을 데이터가 충분하지 않으면 다음 데이터를 기다린다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoderTest</span></span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="comment">//JUnit이 메소드를 실행하도록 @Test 어노테이션을 지정해줌</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트 저장</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FixedLengthFrameDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 3바이트 길이의 프레임으로 테스트할</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가함</span></span><br><span class="line">    assertTrue(channel.writeInbound(input.retain()));</span><br><span class="line">    <span class="comment">// EmbeddedChannel에 바이트를 기록</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처리된 메세지를 읽고 각각 3바이트 프레임이 3개인지 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>),read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    assertNull(channel.readInbound());</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>testFrameDecoded()</code> 메소드는 읽을 수 있는 9바이트를 포함하는 ByteBuf 1개가 3바이트를 포함하는 ByteBuf 3개로 디코딩되는지 확인한다. 그리고 <code>writeInbound()</code>를 한번 호출해 ByteBuf는 읽기 가능한 9바이트로 채운다. 그 다음에 finish()를 실행해 EmbeddedChannel을 완료로 표시하고 마지막으로 <code>readInbound()</code>를 호출해 EmbeddedChannel에서 프레임 3개와 null 1개를 읽었다.</p><br><h3 id="아웃바운드-메세지-테스트"><a href="#아웃바운드-메세지-테스트" class="headerlink" title="아웃바운드 메세지 테스트"></a>아웃바운드 메세지 테스트</h3><p>아웃바운드 메세지 테스트도 인바운드와 비슷하다. <code>ChannelOutboundHandler</code>는 메세지를 다른 포맷으로 변환하는 컴포넌트인 인코더 역할을 한다. 아래의 코드로 테스트 해보자.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoder</span> <span class="keyword">extends</span> <span class="title">MessageToMessageEncoder</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// MessageToMessageEncoder를 상속받아 메세지를 다른 포맷으로 인코딩 함</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(ChannelHandlerContext channelHandlerContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    ByteBuf in, List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(in.readableBytes() &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">// 인코딩할 바이트가 충분한지 확인</span></span><br><span class="line">        <span class="keyword">int</span> value = Math.abs(in.readint());</span><br><span class="line">        <span class="comment">// ByteBuf에서 다음 int를 읽고 절대값을 계산</span></span><br><span class="line">        out.add(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEncoded</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 음의 정수 9개 기록</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      buf.writeInd(i * -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> AbsIntegerEncoder());</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 테스트할 AbsIntegerEncoder를 추가</span></span><br><span class="line">    assertTrue(channel.writeOutbound(buf));</span><br><span class="line">    <span class="comment">// ByteBuf를 기록하고 readOutbound()가 데이터를 생성하는지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 값을 읽고 절댓 값을 포함하는지 확인</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      assertEquals(i, channel.readOutbound());</span><br><span class="line">    &#125;</span><br><span class="line">    assertNull(channel.readOutbound());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol><li><code>ByteBuf</code>에 4바이트 음의 정수를 기록한다.</li><li><code>EmbeddedChannel</code>을 생성하고 여기에 <code>AbsIntegerEncoder</code>를 할당한다.</li><li><code>EmbeddedChannel</code>의 <code>writeOutbound()</code>를 호출해 ByteBuf를 기록한다.</li><li><code>Channel</code>을 완료로 표시한다.</li><li><code>EmbeddedChannel</code>의 아웃바운드 쪽에서 모든 정수를 읽고 절대값만 생성됐는지 확인한다.</li></ol><br><h2 id="예외-처리-테스트"><a href="#예외-처리-테스트" class="headerlink" title="예외 처리 테스트"></a>예외 처리 테스트</h2><p>데이터 변환외에도 입력이 잘못되거나 데이터가 너무 많은 경우 적절하게 처리해야할 필요가 있다 이런 경우 예외 처리를 따로 해줄 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 메세지로 디코딩하기 위해 ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> maxFrameSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FrameChunkDecoder</span><span class="params">(<span class="keyword">int</span> maxFrameSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxFrameSize = maxFrameSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> readableBytes = in.readableBytes();</span><br><span class="line">      <span class="comment">// 생성할 프레임의 최대 허용 길이를 지정</span></span><br><span class="line">      <span class="keyword">if</span> (readableBytes &gt; maxFrameSize) &#123;</span><br><span class="line">        <span class="comment">// 프레임이 너무 큰 경우 폐기하고 TooLongFrameException을 생성함</span></span><br><span class="line">        in.clear();</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TooLongFrameException();</span><br><span class="line">      &#125;</span><br><span class="line">      ByteBuf buf = in.readBytes(readableBytes);</span><br><span class="line">      <span class="comment">// 그렇지 않은 경우 ByteBuf로부터 새 프레임을 읽음</span></span><br><span class="line">      out.add(buf);</span><br><span class="line">      <span class="comment">// 디코딩된 메세지의 List에 프레임을 추가</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>생성할 프레임의 최대 허용 길이를 설정하고 프레임의 크기가 이것을 넘어갈 경우 초과하는 바이트가 폐기되고 <code>TooLongFrameException</code>이 발생한다. 이 예외는 파이프라인의 <code>다른 ChannelHandler</code>에서 <code>exceptionCaught()</code>를 이용해 처리하거나 무시할 수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트를 기록</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FrameChunkDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 프레임 크기가 3인</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가</span></span><br><span class="line"></span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">2</span>)));</span><br><span class="line">    <span class="comment">// 2바이트를 기록한 후 새로운 프레임이 생성되는지 확인</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      channel.writeInbound(input.readBytes(<span class="number">4</span>));</span><br><span class="line">      <span class="comment">// 4바이트 프레임을 기록하고 예상되는 TooLongFrameException을 포착</span></span><br><span class="line">      Assert.fail();</span><br><span class="line">      <span class="comment">// 예외가 발생하지 않은 경우 이 메소드가 적용되고 테스트가 실패함</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (TooLongFrameException e)&#123;</span><br><span class="line">      <span class="comment">// 예상된 예외</span></span><br><span class="line">    &#125;</span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">3</span>)));</span><br><span class="line">    <span class="comment">// 남은 2바이트를 기록하고 프레임이 올바른지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 메세지를 읽고 값을 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">2</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.skipBytes(<span class="number">4</span>).readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위 코드의 <code>try/catch</code> 블록은 EmbeddedChannel에서 특수하게 작용한다. <code>wrtie*</code> 메소드 중 하나에서 확인된 Exception이 발생하는 경우 이 <code>Exception</code>이 <code>RuntimeException</code>에 래핑된다. 이 방법을 데이터를 처리하는 동안 Exception이 처리됐는지 여부를 쉽게 테스트 할 수 있다. 그리고 이 테스트 방법은 <code>Exception</code>을 생성하는 모든 <code>ChannelHandler</code> 구현에 이용할 수 있다.</p><hr><ul><li>참고 서적<ul><li>네티 인 액션</li></ul></li></ul><br>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;단위-테스트란&quot;&gt;&lt;a href=&quot;#단위-테스트란&quot; class=&quot;headerlink&quot; title=&quot;단위 테스트란?&quot;&gt;&lt;/a&gt;단위 테스트란?&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터
+      
+    
+    </summary>
+    
+      <category term="Server" scheme="https://kodakyung.github.io/categories/server/"/>
+    
+      <category term="Netty" scheme="https://kodakyung.github.io/categories/server/netty/"/>
+    
+    
+      <category term="Network" scheme="https://kodakyung.github.io/tags/network/"/>
+    
+      <category term="Netty" scheme="https://kodakyung.github.io/tags/netty/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Netty 채널 이벤트와 이벤트핸들러, 그리고 파이프라인</title>
-    <link href="https://kodakyung.github.io/2018/05/25/Server-Netty-2018-05-25-Netty-%EC%B1%84%EB%84%90-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%99%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8%ED%95%B8%EB%93%A4%EB%9F%AC-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/"/>
-    <id>https://kodakyung.github.io/2018/05/25/Server-Netty-2018-05-25-Netty-채널-이벤트와-이벤트핸들러-그리고-파이프라인/</id>
+    <link href="https://kodakyung.github.io/2018/05/25/server-netty-2018-05-25-Netty-%E1%84%8E%E1%85%A2%E1%84%82%E1%85%A5%E1%86%AF-%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AA-%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%92%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A5-%E1%84%80%E1%85%B3%E1%84%85%E1%85%B5%E1%84%80%E1%85%A9-%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%91%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AB/"/>
+    <id>https://kodakyung.github.io/2018/05/25/server-netty-2018-05-25-Netty-채널-이벤트와-이벤트핸들러-그리고-파이프라인/</id>
     <published>2018-05-24T15:00:00.000Z</published>
     <updated>2019-07-19T09:42:19.313Z</updated>
     
@@ -1903,8 +1933,8 @@
   
   <entry>
     <title>Netty의 데이터 컨테이너(ByteBuf)</title>
-    <link href="https://kodakyung.github.io/2018/05/23/Server-Netty-2018-05-23-Netty%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-ByteBuf/"/>
-    <id>https://kodakyung.github.io/2018/05/23/Server-Netty-2018-05-23-Netty의-데이터-컨테이너-ByteBuf/</id>
+    <link href="https://kodakyung.github.io/2018/05/23/server-netty-2018-05-23-Netty%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5-%E1%84%8F%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%82%E1%85%A5-ByteBuf/"/>
+    <id>https://kodakyung.github.io/2018/05/23/server-netty-2018-05-23-Netty의-데이터-컨테이너-ByteBuf/</id>
     <published>2018-05-22T15:00:00.000Z</published>
     <updated>2019-07-19T09:36:18.482Z</updated>
     
@@ -1935,8 +1965,8 @@
   
   <entry>
     <title>Netty Network Transport API</title>
-    <link href="https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/"/>
-    <id>https://kodakyung.github.io/2018/05/22/Server-Netty-2018-05-22-Netty-Network-Transport-API/</id>
+    <link href="https://kodakyung.github.io/2018/05/22/server-netty-2018-05-22-Netty-Network-Transport-API/"/>
+    <id>https://kodakyung.github.io/2018/05/22/server-netty-2018-05-22-Netty-Network-Transport-API/</id>
     <published>2018-05-21T15:00:00.000Z</published>
     <updated>2019-07-19T09:43:34.757Z</updated>
     
@@ -1965,8 +1995,8 @@
   
   <entry>
     <title>Netty 컴포넌트(Component)</title>
-    <link href="https://kodakyung.github.io/2018/05/21/Server-Netty-2018-05-21-Netty-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-Component/"/>
-    <id>https://kodakyung.github.io/2018/05/21/Server-Netty-2018-05-21-Netty-컴포넌트-Component/</id>
+    <link href="https://kodakyung.github.io/2018/05/21/server-netty-2018-05-21-Netty-%E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3-Component/"/>
+    <id>https://kodakyung.github.io/2018/05/21/server-netty-2018-05-21-Netty-컴포넌트-Component/</id>
     <published>2018-05-20T15:00:00.000Z</published>
     <updated>2019-07-19T09:30:08.742Z</updated>
     
@@ -1994,8 +2024,8 @@
   
   <entry>
     <title>Spring MVC - Neither BindingResult nor plain target object for bean name.. Error</title>
-    <link href="https://kodakyung.github.io/2018/05/20/Troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/"/>
-    <id>https://kodakyung.github.io/2018/05/20/Troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/</id>
+    <link href="https://kodakyung.github.io/2018/05/20/troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/"/>
+    <id>https://kodakyung.github.io/2018/05/20/troubleshooting-2018-05-20-Spring-MVC-Neither-BindingResult-nor-plain-target-object-for-bean-name-Error/</id>
     <published>2018-05-19T15:00:00.000Z</published>
     <updated>2019-07-15T06:23:40.290Z</updated>
     
@@ -2024,8 +2054,8 @@
   
   <entry>
     <title>Spring MVC - Server 강제 종료 후 실행 오류(for Mac)</title>
-    <link href="https://kodakyung.github.io/2018/05/19/Troubleshooting-2018-05-19-Spring-MVC-Server-%EA%B0%95%EC%A0%9C-%EC%A2%85%EB%A3%8C-%ED%9B%84-%EC%8B%A4%ED%96%89-%EC%98%A4%EB%A5%98-for-Mac/"/>
-    <id>https://kodakyung.github.io/2018/05/19/Troubleshooting-2018-05-19-Spring-MVC-Server-강제-종료-후-실행-오류-for-Mac/</id>
+    <link href="https://kodakyung.github.io/2018/05/19/troubleshooting-2018-05-19-Spring-MVC-Server-%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A6-%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%85%E1%85%AD-%E1%84%92%E1%85%AE-%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC-%E1%84%8B%E1%85%A9%E1%84%85%E1%85%B2-for-Mac/"/>
+    <id>https://kodakyung.github.io/2018/05/19/troubleshooting-2018-05-19-Spring-MVC-Server-강제-종료-후-실행-오류-for-Mac/</id>
     <published>2018-05-18T15:00:00.000Z</published>
     <updated>2019-07-19T09:59:48.575Z</updated>
     
@@ -2052,10 +2082,10 @@
   
   <entry>
     <title>MySQL 터미널에서 SQL파일 import/export 하기(for Mac)</title>
-    <link href="https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%90%EC%84%9C-SQL%ED%8C%8C%EC%9D%BC-import-%ED%95%98%EA%B8%B0-for-Mac/"/>
-    <id>https://kodakyung.github.io/2018/05/12/CS-DataBase-2018-05-12-MySQL-터미널에서-SQL파일-import-하기-for-Mac/</id>
+    <link href="https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/"/>
+    <id>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</id>
     <published>2018-05-11T15:00:00.000Z</published>
-    <updated>2019-07-20T14:31:45.775Z</updated>
+    <updated>2020-01-24T15:32:56.011Z</updated>
     
     <content type="html"><![CDATA[<p>MySQL Workbench를 사용하지 않고 터미널을 통해 데이터베이스에 SQL 파일을 import/export해보자.</p><br><h2 id="SQL-파일-Import"><a href="#SQL-파일-Import" class="headerlink" title="SQL 파일 Import"></a>SQL 파일 Import</h2><p>  <strong>1. sql 파일을 추가할 데이터베이스를 만든다.</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database &apos;db_name&apos;;</span><br><span class="line">mysql&gt; use &apos;db_name&apos;;</span><br></pre></td></tr></table></figure><img width="762" alt="Add Database" src="/images/2018-05-12/01.png"><br><p>  <strong>2. sql 파일에 대해 source 명령을 실행한다.</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; source &apos;db_path.sql&apos;;</span><br></pre></td></tr></table></figure><img width="762" alt="sql source" src="/images/2018-05-12/02.png"><p>Query OK가 출력되면 성공한 것.</p><p><br><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use db_name;</span><br><span class="line">mysql&gt; show tables;</span><br></pre></td></tr></table></figure><img width="762" alt="Database 확인" src="/images/2018-05-12/03.png"><p>명령어로 확인해보면 DB가 잘 추가된 것을 확인할 수 있다.</p><p><br><br></p><p>  <strong>3. 사용자(Account)에게 DB 사용권한을 부여한다.</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on dbname.table to userid@localhost identified by &apos;password&apos;;</span><br><span class="line">mysql&gt; grant select on dbname.* to userid@&apos;192.168.%&apos; identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure><p>특정 권한(select, insert 등)만 부여하거나, 원격 접속을 허용할 수도 있다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure><p>변경된 권한을 적용한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants for userid@host;</span><br></pre></td></tr></table></figure><p>사용자에게 부여된 권한을 확인한다.</p><br><img width="762" alt="권한 부여/확인" src="/images/2018-05-12/04.png"><br><p>  <strong>4. 사용자(Account)가 없다면 생성해준 뒤 3번을 진행한다.</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user userid@localhost identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure><p>localhost 부분을 %로 한다면 외부 접근이 허용된다.</p><h2 id="SQL-파일-export"><a href="#SQL-파일-export" class="headerlink" title="SQL 파일 export"></a>SQL 파일 export</h2><ul><li>mysqldump 이용</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; mysqldump -u&#123;user&#125; -p&#123;password&#125; &#123;db_name&#125; &gt; &#123;db_name&#125;.sql</span><br></pre></td></tr></table></figure><br>]]></content>
     
@@ -2082,8 +2112,8 @@
   
   <entry>
     <title>Maven으로 Netty 프로젝트 시작하기</title>
-    <link href="https://kodakyung.github.io/2018/05/11/Server-Netty-2018-05-11-Maven%EC%9C%BC%EB%A1%9C-Netty-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/"/>
-    <id>https://kodakyung.github.io/2018/05/11/Server-Netty-2018-05-11-Maven으로-Netty-프로젝트-시작하기/</id>
+    <link href="https://kodakyung.github.io/2018/05/11/server-netty-2018-05-11-Maven%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9-Netty-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3-%E1%84%89%E1%85%B5%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/"/>
+    <id>https://kodakyung.github.io/2018/05/11/server-netty-2018-05-11-Maven으로-Netty-프로젝트-시작하기/</id>
     <published>2018-05-10T15:00:00.000Z</published>
     <updated>2019-07-15T07:20:24.320Z</updated>
     
@@ -2113,8 +2143,8 @@
   
   <entry>
     <title>Netty 특징과 아키텍처</title>
-    <link href="https://kodakyung.github.io/2018/05/09/Server-Netty-2018-05-09-Netty-%ED%8A%B9%EC%A7%95%EA%B3%BC-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/"/>
-    <id>https://kodakyung.github.io/2018/05/09/Server-Netty-2018-05-09-Netty-특징과-아키텍처/</id>
+    <link href="https://kodakyung.github.io/2018/05/09/server-netty-2018-05-09-Netty-%E1%84%90%E1%85%B3%E1%86%A8%E1%84%8C%E1%85%B5%E1%86%BC%E1%84%80%E1%85%AA-%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5/"/>
+    <id>https://kodakyung.github.io/2018/05/09/server-netty-2018-05-09-Netty-특징과-아키텍처/</id>
     <published>2018-05-08T15:00:00.000Z</published>
     <updated>2019-07-15T07:14:47.270Z</updated>
     
