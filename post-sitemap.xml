@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/</loc>
+        <lastmod>2020-02-06T13:35:39.926Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/</loc>
+        <lastmod>2020-02-01T16:12:18.214Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2018/09/21/web-2018-09-21-web-http/</loc>
         <lastmod>2020-02-01T16:03:19.429Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +34,6 @@
     <url>
         <loc>https://kodakyung.github.io/2018/10/24/web-2018-10-24-talkonseminar-oauth2/</loc>
         <lastmod>2020-02-01T16:03:19.429Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/</loc>
-        <lastmod>2020-02-01T16:03:19.428Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -58,14 +66,6 @@
     <url>
         <loc>https://kodakyung.github.io/2019/01/11/programming-java-effective-java-2019-01-11-java-design-and-document-for-inheritance/</loc>
         <lastmod>2020-02-01T15:42:57.196Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://kodakyung.github.io/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/</loc>
-        <lastmod>2020-02-01T15:17:05.522Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -264,7 +264,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
+        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
         <lastmod>2020-02-01T15:17:05.469Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
+        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
         <lastmod>2020-02-01T15:17:05.469Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -344,7 +344,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/</loc>
+        <loc>https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -352,7 +352,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/11/16/server-orm-2018-11-16-jpa-cascade/</loc>
+        <loc>https://kodakyung.github.io/2018/11/15/server-orm-2018-11-15-jpa-proxy/</loc>
         <lastmod>2019-08-25T17:53:34.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
