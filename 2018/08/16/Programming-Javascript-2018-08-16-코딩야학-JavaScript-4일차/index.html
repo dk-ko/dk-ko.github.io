@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
 
-    
+<meta name="generator" content="Hexo 3.9.0" />
 
-    
-    <title>코딩야학 Javascript 4일차 | Jade&#39;s Blog</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-        <meta name="keywords" content="생활코딩,Javascript">
-    
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>코딩야학 Javascript 4일차 - Jade&#39;s Blog</title>
+
+
     <meta name="description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머  제어할 태그 선택하기night 버튼을 누르면 검정색 배경, day 버튼을 누르면 흰색 배경으로 돌아오도록 코드를 작성해보자. 12&amp;lt;input type =&quot;button&quot; value=&quot;night&quot; onclick=&quot;&quot;&amp;gt;&amp;lt;input type =&quot;butto">
 <meta name="keywords" content="생활코딩,Javascript">
 <meta property="og:type" content="article">
@@ -20,181 +18,149 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머  제어할 태그 선택하기night 버튼을 누르면 검정색 배경, day 버튼을 누르면 흰색 배경으로 돌아오도록 코드를 작성해보자. 12&amp;lt;input type =&quot;button&quot; value=&quot;night&quot; onclick=&quot;&quot;&amp;gt;&amp;lt;input type =&quot;butto">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://kodakyung.github.io/images/2018-08-16/01.png">
-<meta property="og:updated_time" content="2019-07-20T14:08:22.947Z">
+<meta property="og:image" content="https://kodakyung.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-20T14:08:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="코딩야학 Javascript 4일차">
 <meta name="twitter:description" content="스터디에서 다룬 내용생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머  제어할 태그 선택하기night 버튼을 누르면 검정색 배경, day 버튼을 누르면 흰색 배경으로 돌아오도록 코드를 작성해보자. 12&amp;lt;input type =&quot;button&quot; value=&quot;night&quot; onclick=&quot;&quot;&amp;gt;&amp;lt;input type =&quot;butto">
-<meta name="twitter:image" content="https://kodakyung.github.io/images/2018-08-16/01.png">
-    
-    <link rel="canonical" href="https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-코딩야학-javascript-4일차/">
-
-    
-        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
-    
-
-    
-        <link rel="icon" href="/images/favicions/floppy_disk.ico">
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-        <script type="text/javascript">
-(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-146445480-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-
-    
-    
+<meta name="twitter:image" content="https://kodakyung.github.io/images/og_image.png">
 
 
 
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
 </head>
-</html>
-<body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">An archive for daily discovery</p>
-                        </h2>
-                    
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Home</a>
-                                </li>
-                            
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
-                                    
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="코딩야학 Javascript 4일차" height="28">
+            
+            </a>
         </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-                        </nav>
-                    </div>
-                </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
-</header>
+</nav>
+    
+    <section class="section">
         <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
-    <a class="page-title-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/programming/javascript/">Javascript</a>
-    </h1>
-</div>
-
-                        <div class="main-body-content">
-                            <article id="post-programming-javascript-2018-08-16-코딩야학-JavaScript-4일차" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="card-content article ">
         
-            <header class="article-header">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-15T15:00:00.000Z">2018-08-16</time>
                 
-    
-        <h1 class="article-title" itemprop="name">
-        코딩야학 Javascript 4일차
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/programming/javascript/">Javascript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 831 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                코딩야학 Javascript 4일차
+            
         </h1>
-    
-
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <a href="/2018/08/16/programming-javascript-2018-08-16-코딩야학-JavaScript-4일차/" class="article-date">
-            <time datetime="2018-08-15T15:00:00.000Z" itemprop="datePublished">2018-08-16</time>
-        </a>
-    </div>
-
-		
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript/">Javascript</a>, <a class="tag-link" href="/tags/생활코딩/">생활코딩</a>
-    </div>
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <h3 id="스터디에서-다룬-내용"><a href="#스터디에서-다룬-내용" class="headerlink" title="스터디에서 다룬 내용"></a>스터디에서 다룬 내용</h3><p><a href="https://opentutorials.org/course/3085/18876" target="_blank" rel="noopener">생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머 </a></p>
+        <div class="content">
+            <h3 id="스터디에서-다룬-내용"><a href="#스터디에서-다룬-내용" class="headerlink" title="스터디에서 다룬 내용"></a>스터디에서 다룬 내용</h3><p><a href="https://opentutorials.org/course/3085/18876">생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머 </a></p>
 <h2 id="제어할-태그-선택하기"><a href="#제어할-태그-선택하기" class="headerlink" title="제어할 태그 선택하기"></a>제어할 태그 선택하기</h2><p>night 버튼을 누르면 검정색 배경, day 버튼을 누르면 흰색 배경으로 돌아오도록 코드를 작성해보자.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> =<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"night"</span> <span class="attr">onclick</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> =<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"day"</span> <span class="attr">onclick</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -242,325 +208,1865 @@ ga('send', 'pageview');
 <p>html은 웹페이지를 묘사하는 목적으로 사용되고, <em>시간의 순서에 따라 실행되지 않는다.</em><br>js는 사용자와 상호작용하기 위해 고안된 컴퓨터 언어이고,<br><em>따라서 시간의 순서에 따라 웹 브라우저의 여러 기능이 실행되어야 하기 때문에 프로그래밍 언어이다.</em></p>
 <p>지금까지는 단순히 시간을 나열하는 것으로 만족했지만, 조건에 따라 다른 기능이 실행되도록,<br>또는 반복해서 어떤 기능이 실행되도록,<br>코드가 복잡해짐에 따라서 복잡해진 순서를 단순하게 정리정돈하는 방법도 필요해졌다.</p>
 <p>JS뿐만 아니라 컴퓨터 프로그래밍 언어들의 핵심적인 기능들에 해당하는 조건문 반복문 등을 이제 배워보자.</p>
-<br>
+<br/>
 
         </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-코딩야학-JavaScript-4일차/" data-id="ck6asasqx005swc6k8uq6ln8a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Dakyung Ko"
-        },
-        "headline": "코딩야학 Javascript 4일차",
-        "image": "https://kodakyung.github.io/images/2018-08-16/01.png",
-        "keywords": "생활코딩 Javascript",
-        "genre": "Programming Javascript",
-        "datePublished": "2018-08-16",
-        "dateCreated": "2018-08-16",
-        "dateModified": "2019-07-20",
-        "url": "https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-코딩야학-JavaScript-4일차/",
-        "description": "스터디에서 다룬 내용생활코딩 WEB2 Javascript ~프로그램, 프로그래밍, 프로그래머 
-제어할 태그 선택하기night 버튼을 누르면 검정색 배경, day 버튼을 누르면 흰색 배경으로 돌아오도록 코드를 작성해보자.
-12&lt;input type ="button" value="night" onclick=""&gt;&lt;input type ="butto"
-        "wordCount": 489
-    }
-</script>
-
-</article>
-
-    <section id="comments">
-    
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-    
-    </section>
-
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>follow:</p>
-        <ul class="social-links">
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
-                        <i class="icon fa fa-rss"></i>
-                    </a>
-                </li>
-                
-            
-        </ul>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2018/08/17/programming-javascript-2018-08-17-코딩야학-JavaScript-5-6일차/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            코딩야학 Javascript 5,6일차
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2018/08/15/programming-javascript-2018-08-15-코딩야학-JavaScript-3일차/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">코딩야학 Javascript 3일차</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
-    
-    <div class="widgets-container">
-        
-            
-                
-
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">recents</h3>
-        <div class="widget">
-            <ul id="recent-post" class="no-thumbnail">
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a></p>
-                            <p class="item-title"><a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="title">git 커밋 중간에 잘못된 merge 되돌리기</a></p>
-                            <p class="item-date"><time datetime="2020-02-01T14:41:26.000Z" itemprop="datePublished">2020-02-01</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/think/">Think</a></p>
-                            <p class="item-title"><a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="title">Talk with Sonia from Microsoft - Inspiring Tech Women</a></p>
-                            <p class="item-date"><time datetime="2020-01-20T13:54:30.000Z" itemprop="datePublished">2020-01-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
-                            <p class="item-title"><a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="title">암호화 vs 해시</a></p>
-                            <p class="item-date"><time datetime="2020-01-19T12:03:04.000Z" itemprop="datePublished">2020-01-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a></p>
-                            <p class="item-title"><a href="/2019/10/20/programming-java-20191020-java-stream/" class="title">Java - Stream 기초</a></p>
-                            <p class="item-date"><time datetime="2019-10-19T21:54:07.000Z" itemprop="datePublished">2019-10-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
-                            <p class="item-title"><a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="title">함수형 사고 - ch7 실용적 사고</a></p>
-                            <p class="item-date"><time datetime="2019-10-19T21:47:20.000Z" itemprop="datePublished">2019-10-20</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">37</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-float">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
-        </div>
-    </div>
-
-
-            
-        
-    </div>
-</aside>
-
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javascript/">Javascript</a>, <a class="has-link-grey -link" href="/tags/생활코딩/">생활코딩</a>
                 </div>
             </div>
         </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2020 Dakyung Ko</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-            </div>
-            <div class="footer-plugins">
-              
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/17/programming-javascript-2018-08-17-코딩야학-JavaScript-5-6일차/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">코딩야학 Javascript 5,6일차</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/15/programming-javascript-2018-08-15-코딩야학-JavaScript-3일차/">
+                <span class="level-item">코딩야학 Javascript 3일차</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Your name">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Your name
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Your location</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            73
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            18
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            41
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/cs/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/cs/database/">
+            <span class="level-start">
+                <span class="level-item">DataBase</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/cs/os/">
+            <span class="level-start">
+                <span class="level-item">OS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">37</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/programming/common/">
+            <span class="level-start">
+                <span class="level-item">Common</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/programming/java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">24</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/programming/javascript/">
+            <span class="level-start">
+                <span class="level-item">Javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/server/">
+            <span class="level-start">
+                <span class="level-item">Server</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/server/netty/">
+            <span class="level-start">
+                <span class="level-item">Netty</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/server/orm/">
+            <span class="level-start">
+                <span class="level-item">ORM</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/server/spring/">
+            <span class="level-start">
+                <span class="level-item">Spring</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/server/test/">
+            <span class="level-start">
+                <span class="level-item">Test</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/system/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/system/docker/">
+            <span class="level-start">
+                <span class="level-item">Docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/system/shell/">
+            <span class="level-start">
+                <span class="level-item">Shell</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/think/">
+            <span class="level-start">
+                <span class="level-item">Think</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/troubleshooting/">
+            <span class="level-start">
+                <span class="level-item">Troubleshooting</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web/">
+            <span class="level-start">
+                <span class="level-item">Web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="git 커밋 중간에 잘못된 merge 되돌리기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T14:41:26.000Z">2020-02-01</time></div>
+                    <a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="title has-link-black-ter is-size-6 has-text-weight-normal">git 커밋 중간에 잘못된 merge 되돌리기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/troubleshooting/">Troubleshooting</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Talk with Sonia from Microsoft - Inspiring Tech Women">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:54:30.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Talk with Sonia from Microsoft - Inspiring Tech Women</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/think/">Think</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="암호화 vs 해시">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T12:03:04.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">암호화 vs 해시</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/20/programming-java-20191020-java-stream/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java - Stream 기초">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:54:07.000Z">2019-10-20</time></div>
+                    <a href="/2019/10/20/programming-java-20191020-java-stream/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java - Stream 기초</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="함수형 사고 - ch7 실용적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:47:20.000Z">2019-10-20</time></div>
+                    <a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수형 사고 - ch7 실용적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/authrization/">
+                        <span class="tag">Authrization</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/design-pattern/">
+                        <span class="tag">Design Pattern</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/effective-java/">
+                        <span class="tag">Effective Java</span>
+                        <span class="tag is-grey">21</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/encryption/">
+                        <span class="tag">Encryption</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/fish-shell/">
+                        <span class="tag">Fish Shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/functional-programming/">
+                        <span class="tag">Functional Programming</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/functional-thinking/">
+                        <span class="tag">Functional Thinking</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gradle/">
+                        <span class="tag">Gradle</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/http/">
+                        <span class="tag">HTTP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hash/">
+                        <span class="tag">Hash</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hibernate/">
+                        <span class="tag">Hibernate</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/intellij/">
+                        <span class="tag">IntelliJ</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jpa/">
+                        <span class="tag">JPA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">25</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/junit/">
+                        <span class="tag">Junit</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/maven/">
+                        <span class="tag">Maven</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meetup/">
+                        <span class="tag">Meetup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mysql/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/netty/">
+                        <span class="tag">Netty</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/network/">
+                        <span class="tag">Network</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/oauth2/">
+                        <span class="tag">OAuth2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/os/">
+                        <span class="tag">OS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/reactjs/">
+                        <span class="tag">ReactJS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/refactoring/">
+                        <span class="tag">Refactoring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sts/">
+                        <span class="tag">STS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">Shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springboot/">
+                        <span class="tag">SpringBoot</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/stub/">
+                        <span class="tag">Stub</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/study/">
+                        <span class="tag">Study</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tdd/">
+                        <span class="tag">TDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tacademy/">
+                        <span class="tag">Tacademy</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/test/">
+                        <span class="tag">Test</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/think/">
+                        <span class="tag">Think</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/troubleshooting/">
+                        <span class="tag">Troubleshooting</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/women-who-code/">
+                        <span class="tag">Women Who Code</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/생활코딩/">
+                        <span class="tag">생활코딩</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
 
 
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="git 커밋 중간에 잘못된 merge 되돌리기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T14:41:26.000Z">2020-02-01</time></div>
+                    <a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="title has-link-black-ter is-size-6 has-text-weight-normal">git 커밋 중간에 잘못된 merge 되돌리기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/troubleshooting/">Troubleshooting</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Talk with Sonia from Microsoft - Inspiring Tech Women">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:54:30.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Talk with Sonia from Microsoft - Inspiring Tech Women</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/think/">Think</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="암호화 vs 해시">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T12:03:04.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">암호화 vs 해시</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/20/programming-java-20191020-java-stream/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java - Stream 기초">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:54:07.000Z">2019-10-20</time></div>
+                    <a href="/2019/10/20/programming-java-20191020-java-stream/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java - Stream 기초</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="함수형 사고 - ch7 실용적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:47:20.000Z">2019-10-20</time></div>
+                    <a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수형 사고 - ch7 실용적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/authrization/">
+                        <span class="tag">Authrization</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/design-pattern/">
+                        <span class="tag">Design Pattern</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/effective-java/">
+                        <span class="tag">Effective Java</span>
+                        <span class="tag is-grey">21</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/encryption/">
+                        <span class="tag">Encryption</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/fish-shell/">
+                        <span class="tag">Fish Shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/functional-programming/">
+                        <span class="tag">Functional Programming</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/functional-thinking/">
+                        <span class="tag">Functional Thinking</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">Git</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gradle/">
+                        <span class="tag">Gradle</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/http/">
+                        <span class="tag">HTTP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hash/">
+                        <span class="tag">Hash</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hibernate/">
+                        <span class="tag">Hibernate</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/intellij/">
+                        <span class="tag">IntelliJ</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jpa/">
+                        <span class="tag">JPA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">25</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/junit/">
+                        <span class="tag">Junit</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/maven/">
+                        <span class="tag">Maven</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meetup/">
+                        <span class="tag">Meetup</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mysql/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/netty/">
+                        <span class="tag">Netty</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/network/">
+                        <span class="tag">Network</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/oauth2/">
+                        <span class="tag">OAuth2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/os/">
+                        <span class="tag">OS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/reactjs/">
+                        <span class="tag">ReactJS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/refactoring/">
+                        <span class="tag">Refactoring</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sts/">
+                        <span class="tag">STS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">Shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spring/">
+                        <span class="tag">Spring</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springboot/">
+                        <span class="tag">SpringBoot</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/stub/">
+                        <span class="tag">Stub</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/study/">
+                        <span class="tag">Study</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tdd/">
+                        <span class="tag">TDD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tacademy/">
+                        <span class="tag">Tacademy</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/test/">
+                        <span class="tag">Test</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/think/">
+                        <span class="tag">Think</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/troubleshooting/">
+                        <span class="tag">Troubleshooting</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/web/">
+                        <span class="tag">Web</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/women-who-code/">
+                        <span class="tag">Women Who Code</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/생활코딩/">
+                        <span class="tag">생활코딩</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="코딩야학 Javascript 4일차" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Dakyung Ko&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
             </div>
         </div>
     </div>
 </footer>
-
-        
-    
-    <script>
-    var disqus_shortname = 'kodakyung';
-    
-    
-    var disqus_url = 'https://kodakyung.github.io/2018/08/16/programming-javascript-2018-08-16-코딩야학-JavaScript-4일차/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
 
 
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://kodakyung.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
