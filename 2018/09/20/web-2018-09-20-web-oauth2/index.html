@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>WEB - OAuth2.0 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="OAuth2,생활코딩,Web,Authrization">
+    
+    <meta name="description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+<meta name="keywords" content="OAuth2,생활코딩,Web,Authrization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB - OAuth2.0">
+<meta property="og:url" content="https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-19T01:37:36.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB - OAuth2.0">
+<meta name="twitter:description" content="OAuth2.0 인증 시스템의 원리 OAuth2OAuth에는 세 개의 참여자가 등장한다.  mine : 내 서비스 User : 1의 사용자 Thier : 연동하려는 서비스  (1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/web/">Web</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-web-2018-09-20-web-oauth2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        WEB - OAuth2.0
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/20/web-2018-09-20-web-oauth2/" class="article-date">
+            <time datetime="2018-09-19T15:00:00.000Z" itemprop="datePublished">2018-09-20</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/authrization/">Authrization</a>, <a class="tag-link" href="/tags/oauth2/">OAuth2</a>, <a class="tag-link" href="/tags/web/">Web</a>, <a class="tag-link" href="/tags/생활코딩/">생활코딩</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>OAuth2.0 인증 시스템의 원리</p>
+<h2 id="OAuth2"><a href="#OAuth2" class="headerlink" title="OAuth2"></a>OAuth2</h2><p>OAuth에는 세 개의 참여자가 등장한다.</p>
+<ol>
+<li>mine : 내 서비스</li>
+<li>User : 1의 사용자</li>
+<li>Thier : 연동하려는 서비스</li>
+</ol>
+<p>(1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사용한다면 간단하지만 위험할 것이다.  </p>
+<p>따라서 OAuth를 이용해야한다. OAuth는 <code>accessToken</code>이라는 일종의 비밀번호를 발급해 사용하기 때문에 안전하게 내 서비스와 외부 서비스를 상호작용할 수 있다.</p>
+<ul>
+<li><p>장점  </p>
+<ol>
+<li>전달하는 것이 아이디와 비밀번호가 아니다.</li>
+<li>(3)의 서비스의 필요한 부분만 부분적으로 허가를 받아서 사용할 수 있음</li>
+<li>액세스 토큰을 통해 (3)에 접근해서 CRUD 작업을 할 수 있음</li>
+</ol>
+</li>
+</ul>
+<h2 id="accessToken을-얻어내는-핵심-원리에-대해"><a href="#accessToken을-얻어내는-핵심-원리에-대해" class="headerlink" title="accessToken을 얻어내는 핵심 원리에 대해"></a>accessToken을 얻어내는 핵심 원리에 대해</h2><h3 id="Role"><a href="#Role" class="headerlink" title="Role"></a>Role</h3><ol>
+<li>mine -&gt; <code>Client</code></li>
+<li>User -&gt; <code>Resource Owner</code></li>
+<li>Thier -&gt; <code>Resource Server</code> : 데이터를 가지고 있는 서버<br>+ <code>Authrization Server</code> : 인증 관련 서버</li>
+</ol>
+<p>Resource Server와 Authorization Server는 다르지만 우선 여기서는 Resource Server와 같이 설명한다.</p>
+<h3 id="등록하는-절차"><a href="#등록하는-절차" class="headerlink" title="등록하는 절차"></a>등록하는 절차</h3><p>Client가 RS를 이용하기 위해서는 RS서버의 승인을 사전에 받아놓아야 한다.<br>이를 등록(register)이라 한다.</p>
+<p>RS마다 각각 다르지만 일반적으로 아래 세개는 동일하다.</p>
+<ol>
+<li>Client ID<br>: (1)을 식별하는 식별자 아이디</li>
+<li>Client Secret<br>: (1)의 비밀번호, 외부에 노출되면 안된다.</li>
+<li>Authorized redirect URIs<br>: RS가 권한을 부여하는 과정에서 Authorized Code를 주는데 이 주소로 전달하게 된다. 해당 주소가 아닌 곳에서 요청이 들어오면 무시한다.</li>
+</ol>
+<h3 id="Resource-Owner의-승인"><a href="#Resource-Owner의-승인" class="headerlink" title="Resource Owner의 승인"></a>Resource Owner의 승인</h3><p>등록하게 되면 RS는 <code>Client Id</code>/ <code>Client Secret</code> / <code>redirect URL</code>을 알게 되고,<br>Client는 <code>Client Id</code>/ <code>Client Secret</code>을 알게 된다. 이때 Client는 redirect URL에 해당하는 페이지는 구현해놓고 있어야한다.</p>
+<p>RS의 기능이 4개라면, (A,B,C,D)<br>Client는 B와 C의 기능만 필요하다면, 최소한의 기능만 인증받는 것이 좋다.</p>
+<blockquote>
+<p>이하 Resource Server = RS<br>Resource Owner = RO<br>Client = C 또는 Client로 표기</p>
+</blockquote>
+<ul>
+<li>인증 과정</li>
+</ul>
+<ol>
+<li><p>RO는 C에 접속한다.</p>
+</li>
+<li><p>접속하는 과정에서 RS에 접속이 필요하다면</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(예)페이스북으로 로그인하기..</span><br><span class="line">or 페이스북의 어떤 기능이 필요하다는 화면</span><br></pre></td></tr></table></figure>
+
+<p>을 통해 사용자의 동의를 구한다.<br>이때 보이는 로그인 버튼은 단순히 <code>Resource Server</code>, <code>Client Id</code>, <code>사용하려는 기능(scope)</code>, <code>redirect id</code>값을 링크로 제공해주면 된다.</p>
+</li>
+<li><p>(2)를 통해 RO가 RS에 접속하면<br>로그인 되어있지 않은 경우 로그인 요청을 한다. 로그인이 되어 있다면 <code>client id</code>/<code>redirect id</code>를 확인해서, 같다면 scope에 해당하는 권한을 C에게 줄것인지 확인하는 메세지를 RO에게 보내게 된다.</p>
+</li>
+<li><p>RO가 확인 후 허용한다면 허용 정보를 RS에게 보낸다. 그러면 특정 유저가 어떤 기능을 허용하는데 동의한다는 정보를 RS에 저장하게된다. (DB 등)</p>
+</li>
+</ol>
+<h3 id="Resource-Server의-승인"><a href="#Resource-Server의-승인" class="headerlink" title="Resource Server의 승인"></a>Resource Server의 승인</h3><ol>
+<li><p>위의 과정 이후 accessToken을 발급하기 전에 임시 비밀번호인 <code>Authrization Code</code>를 RS가 RO에게 보낸다.</p>
+</li>
+<li><p>RO는 RS가 보낸 패킷의 Location 헤더 값에 의해서 C의 주소로 이동하게 된다(<code>redirect</code>). 이때 C에게 Authrization Code를 알려준다.  </p>
+</li>
+<li><p>이제 Client는 Authrization Code로 RS에 직접 접속하게 된다. 이때 <code>Authrization Code</code>, <code>redirect id</code>, <code>client secret</code> 정보를 RS에게 보낸다.</p>
+</li>
+<li><p>RS는 Authrization Code를 보고 Client를 식별한다.</p>
+</li>
+</ol>
+<h3 id="accessToken-발급"><a href="#accessToken-발급" class="headerlink" title="accessToken 발급"></a>accessToken 발급</h3><ol>
+<li>RS는 accessToken을 발급한다. 그리고 accessToken을 C에 응답한다.</li>
+<li>이 accessToken을 C는 내부적으로 저장한다.</li>
+</ol>
+<h3 id="API-호출"><a href="#API-호출" class="headerlink" title="API 호출"></a>API 호출</h3><p>= Resource Server 핸들링</p>
+<p>Client가 Resource Server url에 접속하면 데이터를 보여준다.<br>즉 URL이 API처럼 되는 것.<br><strong>-&gt; 이 URL은 accessToken이 있어야 제대로 출력된다.<br>따라서 accessToken은 절대 남에게 공개하면 안된다.</strong></p>
+<p>API 핸들링 방식은 RS마다 다르므로 공식 문서를 찾아봐야한다.</p>
+<ul>
+<li>구글 api 사용 방법을 검색</li>
+</ul>
+<blockquote>
+<p>google api accessToken oauth</p>
+</blockquote>
+<p>구글은 accessToken을 Query Parameter로 보내거나 헤더의 Authorization에 Bearer로 보내는 두가지 방식을 사용한다.</p>
+<p>두가지 방식 중 헤더 값으로 Bearer를 보내는 방식이 더 선호된다.</p>
+<p>이 때 curl을 통해 좀 더 손쉽게 보낼 수 있음.</p>
+<blockquote>
+<p>curl은 웹페이지를 다운로드 받는 프로그램</p>
+</blockquote>
+<h3 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h3><p>accessToken은 수명이 존재한다. 일반적으로 1~2시간, 길면 60~90일 등 수명이 끝나면 api가 정보를 주지 않는다.  </p>
+<p>수명이 끝나면 accessToken을 다시 발급 받아야 하는데 그때마다 사용자에게 인증을 받기 힘들다면 refresh token을 사용하면 된다.</p>
+<ul>
+<li>refresh token에 대해 검색</li>
+</ul>
+<blockquote>
+<p>oauth 2.0 rfc<br>rfc: 인터넷 관련된 표준안</p>
+</blockquote>
+<p>위의 문서에서 Oauth-&gt;refresh token 항목을 참고하자.</p>
+<p>보통 accessToken을 발급할 때 refresh token도 발급 받는 경우가 많다.<br>만료 됐을 때 refresh token을 보내면서 accessToken을 다시 발급 받는다. 이때 refresh token을 같이 다시 발급 받는 경우도 있다.</p>
+<p>리소스 서버마다 refreshing 방법이 다르기 때문에 메뉴얼을 참고해야한다.</p>
+<h2 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h2><p>Federated Identity : Login with Google과 같은 기술. OAuth를 사용한다.</p>
+<br>
+
+<blockquote>
+<p>출처: <a href="https://opentutorials.org/course/3405" target="_blank" rel="noopener">생활코딩 - OAuth</a></p>
+</blockquote>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/" data-id="ck7y3i6m0000xaw89n7ts14aw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "WEB - OAuth2.0",
+        "image": "https://kodakyung.github.io",
+        "keywords": "OAuth2 생활코딩 Web Authrization",
+        "genre": "Web",
+        "datePublished": "2018-09-20",
+        "dateCreated": "2018-09-20",
+        "dateModified": "2020-03-19",
+        "url": "https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/",
+        "description": "OAuth2.0 인증 시스템의 원리
+OAuth2OAuth에는 세 개의 참여자가 등장한다.
+
+mine : 내 서비스
+User : 1의 사용자
+Thier : 연동하려는 서비스
+
+(1)이 (2)를 통해 (3) 서비스를 사용한다면, (3)의 서비스에 접근할 수 있도록 허가를 받아야한다. (2)에게 ID, PW를 전달 받아서 저장해서 (1)에서 (3) 접속할 때 사"
+        "wordCount": 587
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/21/web-2018-09-21-web-http/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            WEB - HTTP
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/09/11/server-spring-2018-09-11-import-project-from-sts-after-git-pull-clone-in-cli/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">STS - CLI 환경에서 git pull/clone 후 STS에서 프로젝트 import 하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2020/02/01/troubleshooting-20200201-reverting-invalid-git-merge/" class="title">git 커밋 중간에 잘못된 merge 되돌리기</a></p>
+                            <p class="item-date"><time datetime="2020-02-01T14:41:26.000Z" itemprop="datePublished">2020-02-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/think/">Think</a></p>
+                            <p class="item-title"><a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="title">Talk with Sonia from Microsoft - Inspiring Tech Women</a></p>
+                            <p class="item-date"><time datetime="2020-01-20T13:54:30.000Z" itemprop="datePublished">2020-01-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2020/01/19/programming-common-20200119-encryption-vs-hash/" class="title">암호화 vs 해시</a></p>
+                            <p class="item-date"><time datetime="2020-01-19T12:03:04.000Z" itemprop="datePublished">2020-01-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/10/20/programming-java-20191020-java-stream/" class="title">Java - Stream 기초</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:54:07.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/20/programming-common-20191020-functional-thinking-ch7/" class="title">함수형 사고 - ch7 실용적 사고</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:47:20.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">37</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kodakyung';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
