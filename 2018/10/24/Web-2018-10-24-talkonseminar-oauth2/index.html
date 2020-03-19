@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>토크ON세미나 - OAuth2.0 | Jade&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="OAuth2,Web,Authrization,Tacademy">
+    
+    <meta name="description" content="Date 2018.10.24 Wed / Time PM 1:00~6:00 / Place SK플래닛 T아카데미 페이스북. 구글 로그인 하기로 배우는 OAuthOAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고, 웹사이트 상의 자신들의 정보에 대한 접근권한을 특정 웹사이트나 애플리케이션에 제한적으로 부여할 수 있는 개방형 표준 인증기술. 이번 세미나는 OAu">
+<meta name="keywords" content="OAuth2,Web,Authrization,Tacademy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="토크ON세미나 - OAuth2.0">
+<meta property="og:url" content="https://kodakyung.github.io/2018/10/24/Web-2018-10-24-talkonseminar-oauth2/index.html">
+<meta property="og:site_name" content="Jade&#39;s Blog">
+<meta property="og:description" content="Date 2018.10.24 Wed / Time PM 1:00~6:00 / Place SK플래닛 T아카데미 페이스북. 구글 로그인 하기로 배우는 OAuthOAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고, 웹사이트 상의 자신들의 정보에 대한 접근권한을 특정 웹사이트나 애플리케이션에 제한적으로 부여할 수 있는 개방형 표준 인증기술. 이번 세미나는 OAu">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://kodakyung.github.io/images/2018-10-24/2018-10-24-01.png">
+<meta property="og:updated_time" content="2020-03-19T00:43:22.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="토크ON세미나 - OAuth2.0">
+<meta name="twitter:description" content="Date 2018.10.24 Wed / Time PM 1:00~6:00 / Place SK플래닛 T아카데미 페이스북. 구글 로그인 하기로 배우는 OAuthOAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고, 웹사이트 상의 자신들의 정보에 대한 접근권한을 특정 웹사이트나 애플리케이션에 제한적으로 부여할 수 있는 개방형 표준 인증기술. 이번 세미나는 OAu">
+<meta name="twitter:image" content="https://kodakyung.github.io/images/2018-10-24/2018-10-24-01.png">
+    
+    <link rel="canonical" href="https://kodakyung.github.io/2018/10/24/web-2018-10-24-talkonseminar-oauth2/">
+
+    
+        <link rel="alternate" href="https://kodakyung.github.io/feed.xml" title="Jade&#39;s Blog" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/images/favicions/floppy_disk.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146445480-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">An archive for daily discovery</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/web/">Web</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Web-2018-10-24-talkonseminar-oauth2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        토크ON세미나 - OAuth2.0
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/10/24/Web-2018-10-24-talkonseminar-oauth2/" class="article-date">
+            <time datetime="2018-10-23T15:00:00.000Z" itemprop="datePublished">2018-10-24</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/authrization/">Authrization</a>, <a class="tag-link" href="/tags/oauth2/">OAuth2</a>, <a class="tag-link" href="/tags/tacademy/">Tacademy</a>, <a class="tag-link" href="/tags/web/">Web</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Date 2018.10.24 Wed / Time PM 1:00~6:00 / Place SK플래닛 T아카데미</p>
+<h1 id="페이스북-구글-로그인-하기로-배우는-OAuth"><a href="#페이스북-구글-로그인-하기로-배우는-OAuth" class="headerlink" title="페이스북. 구글 로그인 하기로 배우는 OAuth"></a>페이스북. 구글 로그인 하기로 배우는 OAuth</h1><p>OAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고, 웹사이트 상의 자신들의 정보에 대한 접근권한을 특정 웹사이트나 애플리케이션에 제한적으로 부여할 수 있는 개방형 표준 인증기술.</p>
+<p>이번 세미나는 OAuth의 동작순서 및 원리에 대해 알아보고, 서버쪽 기술 없이 자바스크립트만을 가지고 페이스북, 구글로 로그인하기 기능 구현, 이렇게 수집된 인증을 바탕으로 API 호출 등 OAuth 활용 방법에 대해 살펴 본다.</p>
+<blockquote>
+<p>자세한 내용 <a href="https://tacademy.skplanet.com/front/tacademy/courseinfo/campus.action?classIndex=1576" target="_blank" rel="noopener">링크</a> 참고</p>
+</blockquote>
+<h2 id="세미나-목표"><a href="#세미나-목표" class="headerlink" title="세미나 목표"></a>세미나 목표</h2><ul>
+<li>OAuth의 본질적인 원리를 이해 후 이를 바탕으로 Low Level로 구현.</li>
+<li>Facebook과 Google의 SDK를 이용해 실 서비스를 구현해본다.</li>
+</ul>
+<br>
+
+<h2 id="OAuth의-구조"><a href="#OAuth의-구조" class="headerlink" title="OAuth의 구조"></a>OAuth의 구조</h2><p>: User / My / Their 3자가 필요하다.</p>
+<ul>
+<li>My : 내가 구현하고자 하는 서비스</li>
+<li>User : 내 서비스를 사용하는 사용자 <em>// 기본적으로 My-User의 양자 관계</em></li>
+<li>Their : facebook, google 같은 기존 서비스</li>
+</ul>
+<h2 id="OAuth를-사용하는-목적"><a href="#OAuth를-사용하는-목적" class="headerlink" title="OAuth를 사용하는 목적"></a>OAuth를 사용하는 목적</h2><p>가장 큰 문제는 <code>보안(인증)</code>의 문제  </p>
+<ul>
+<li>가장 쉬운 방법은 Their의 ID/PW를 아는 것.</li>
+<li>My에 Their의 정보를 제공한다. <em>// 좋지 않은 방법</em><ol>
+<li>모든 서비스에 권한 부여</li>
+<li>무기한 사용 가능</li>
+</ol>
+</li>
+<li>ID/PW가 아닌 <code>임시 비밀번호</code>를 발급 받아서 진행<ol>
+<li>임시 비밀번호를 Their가 랜덤하게 복잡하게 만들 수 있다.</li>
+<li>Their의 기능이 A,B,C.. 여러개일 때, 일부 기능에 대해서만 사용할 수 있도록 제어가 가능하다.</li>
+<li>기간을 부여해 일시적으로 사용하도록 제어할 수 있다.</li>
+</ol>
+</li>
+<li>이 임시 비밀번호를 <code>access token</code>이라 한다.<ul>
+<li><strong>이걸 얻어내면 OAuth를 할 줄 아는 것 !!</strong></li>
+<li>My가 <code>access token</code>을 제출함으로써 Their의 일부 기능을 일정 기간동안 권한을 받아 사용할 수 있는 것.</li>
+</ul>
+</li>
+</ul>
+<h2 id="OAuth의-용어"><a href="#OAuth의-용어" class="headerlink" title="OAuth의 용어"></a>OAuth의 용어</h2><ul>
+<li>My : Client</li>
+<li>User : Resource Owner (정보의 소유자)</li>
+<li>Their : Resource Server (정보의 제공자)</li>
+<li>원래 하나가 더 있지만 우선 세 개로 설명할 예정.</li>
+</ul>
+<h2 id="OAuth를-얻기-위한-절차"><a href="#OAuth를-얻기-위한-절차" class="headerlink" title="OAuth를 얻기 위한 절차"></a>OAuth를 얻기 위한 절차</h2><ul>
+<li>My Service를 Their Service에 등록(<code>register</code>)하는 절차가 필요</li>
+<li>양자가 교환하는 정보가 있다.</li>
+</ul>
+<p><img src="/images/2018-10-24/2018-10-24-01.png" alt="OAuth 과정"></p>
+<blockquote>
+<p>출처 : 생활코딩 이고잉님</p>
+</blockquote>
+<p>(1) <code>Resource Server</code>는 <code>Client id</code>를 생성 <em>// 공개되어도 괜찮다.</em><br>(2) <code>Resource Server</code>는 <code>Client secret</code>를 생성 <em>// 공개되면 안된다.</em><br>(3) <code>Client</code>에게 <code>Resource Server</code>가 <code>Client id/secret</code>을 알려준다<br>(4)-1 <code>Client</code>는 <code>access token</code>을 <strong>어디</strong>로 배달해줄 것인가? 배송지를 알려준다.<br>      (<code>redirect uri</code> : 배송지 정보)<br>      (My가 redirect uri를 구현해 Server에게 알려주어야함)<br>(4)-2 <code>Resource Server</code>에 <code>redirect uri</code>를 등록해준다.<br>(5) <code>Resource Owner</code>가 <code>client</code>에 접속했을 때 <code>Resource Owner</code>에게 로그인 요청을 준다.<br>      (권한 승인 요청) <em>// 사용자에게 링크를 제공</em><br>(6) <code>Resource Owner</code>가 승인하면, <code>Resource Server</code>에게 <code>client_id</code>를 전송하고 승인 여부를 물어본다.<br>(7) <code>Resource Server</code>는 <code>user_id</code>에 <code>Resource Owner</code> 정보를 등록하고 <code>Resource Owner</code>에 <code>access_token</code>을 발급해준다.<br>(8) <code>client</code>는 발급받은 <code>access_token</code>을 이용해 Resource Server의 API를 이용한다.  </p>
+<blockquote>
+<p>My = Client = C<br>User = Resource Owner = RO<br>Their = Resource Server = RS</p>
+</blockquote>
+<br>
+
+<h2 id="Facebook으로-로그인"><a href="#Facebook으로-로그인" class="headerlink" title="Facebook으로 로그인"></a>Facebook으로 로그인</h2><h3 id="Facebook-OAuth-기본-설정"><a href="#Facebook-OAuth-기본-설정" class="headerlink" title="Facebook OAuth 기본 설정"></a>Facebook OAuth 기본 설정</h3><ul>
+<li>facebook developer 사이트 접속</li>
+<li>내 앱 생성 &gt; 로그인하기 &gt; 웹 선택</li>
+<li>대시보드 &gt; 기본설정에서 App id와 secret이 발급된 것을 확인할 수 있다.</li>
+</ul>
+<p><img src="/images/2018-10-24/2018-10-24-02.png" alt="Facebook OAuth 기본 설정"></p>
+<br>
+
+<p>오늘 세미나는 server-side가 아닌 javascript를 이용해 <code>client-side</code>에서 제어하는 것을 중점으로 실습할 것.<br>따라서 secret code는 현재 실습에서는 사용하지 않는다.<br>server-side를 이용한 서비스를 구축할 때 사용할 것.  </p>
+<blockquote>
+<p>Q. User가 access token을 발급 받나요?<br>A. User가 클릭만 하면 발급을 받지만, User가 알게 되는 것은 아니다.</p>
+</blockquote>
+<br>
+
+<h3 id="개발-환경"><a href="#개발-환경" class="headerlink" title="개발 환경"></a>개발 환경</h3><ul>
+<li>Node.js</li>
+<li>npm</li>
+<li>local-web-server : 경량화된 웹 서버, 손쉽게 https 개발 환경을 구축할 수 있음.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">npm install -g local-web-server // 전역으로 npm 설치</span><br><span class="line">ws --https // https로 웹 서버 실행, facebook이 개발환경에서도 https를 강제하기 때문</span><br><span class="line">// https://localhost:8000 접속 가능</span><br><span class="line">// 이것을 facebook에 redirect uri 값으로 등록한다.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2018-10-24/2018-10-24-03.png" alt="Facebook OAuth redirect uri 등록"></p>
+<br>
+
+<h3 id="Facebook-Login-요청-구현"><a href="#Facebook-Login-요청-구현" class="headerlink" title="Facebook Login 요청 구현"></a>Facebook Login 요청 구현</h3><blockquote>
+<p>keyword : facebook developer login</p>
+</blockquote>
+<p>: Login 요청을 구현한다는 것은, User(Resource Owner)에게 승인 받는 버튼, 링크를 만든다는 것이다.</p>
+<ul>
+<li>구현 방법 3가지<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 위젯을 이용한다. (간단한 방식)</span><br><span class="line">2. SDK(Software Development Kit)</span><br><span class="line">3. 직접 구현 &gt; 로그인 flow 직접 빌드</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>우리는 원리를 이해하기 위해 3번으로 진행하지만 보안상의 이슈가 발생할 수 있기 때문에 실 서버환경에서는 SDK를 이용해 개발해야한다.</li>
+</ul>
+<br>
+
+<h3 id="Facebook-Login-Flow-직접-빌드"><a href="#Facebook-Login-Flow-직접-빌드" class="headerlink" title="Facebook Login Flow 직접 빌드"></a>Facebook Login Flow 직접 빌드</h3><blockquote>
+<p>참고 링크 : <a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow" target="_blank" rel="noopener">facebook for developer - 로그인 플로 직접 빌드</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">https://www.facebook.com/v3.2/dialog/oauth?</span><br><span class="line">  client_id=&#123;app-id&#125;</span><br><span class="line">  &amp;redirect_uri=&#123;redirect-uri&#125;</span><br><span class="line">  &amp;state=&#123;state-param&#125;</span><br><span class="line">  &amp;response_type=token</span><br><span class="line">  // 바로 access_token으로 받기위한 설정</span><br><span class="line">  // 설정하지 않는 경우 code로 받게 된다.</span><br></pre></td></tr></table></figure>
+
+<p>redirect-uri를 직접 등록하면 문제가 생길 수 있다. <code>uri encode</code> 도구를 이용해 인코딩해 넣는다. state-param은 보안 관련, 우선 넘어간다.</p>
+<br>
+
+<img width="302" alt="OAuth 권한 승인 창" src="/images/2018-10-24/2018-10-24-05.png">
+
+<p>설정을 끝낸 뒤 링크를 누르면 인증 팝업 창이 뜬다.</p>
+<br>
+
+<ul>
+<li>위의 과정은 내부적으로 이렇게 동작한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. client가 웹사이트를 방문한 User(RO)에게 (인증) 주소를 준다.</span><br><span class="line">2. Client가 주소를 누르면 해당 Request는 RS에게 전달된다.</span><br><span class="line">2-1. Request에는 client_id는 ~고 redirect_uri는 ~라는 정보를 담아 전송한다.</span><br><span class="line">2-2. 이때 RS에서 redirect_uri를 확인하고, 등록하지 않은 redirect_uri는 RS가 거절한다.</span><br><span class="line">3. 이후 RS가 access_token을 랜덤하게 생성한다.</span><br><span class="line">4. RS에서 user_id가 ~인 사람의 access_token이라 저장한다. (어떤 user에 token을 발급했는지 저장)</span><br><span class="line">5. 이 후 access_token을 RO(정확히 말하면 사용자라기 보다는 사용하고 있는 웹페이지)를 통해 Client에게 전달한다.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<br>
+
+<ul>
+<li><p>로그인에 성공하면 아래와 같은 <code>리디렉션 URI</code>가 호출된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://localhost:8000/fb-low.html?#state=1234&amp;access_token=&#123;access_token_value&#125;&amp;expires_in=&#123;value&#125;&amp;reauthorize_required_in=&#123;value&#125;&amp;data_access_expiration_time=&#123;value&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uri의 <code>access_token</code>을 알게되면 facebook api를 호출할 수 있다.</p>
+</li>
+<li><p><code>state</code>는 보안과 관련 있는 필드이다. facebook 서버에게 access_token을 요청하는 링크를 만들어서 사용자가 클릭하면 페이스북 서버로 갔다가 준 결과가 위의 링크인데, 이때 내가 요청한 것이 온게 맞는지 확인하기 위해서 state를 통해 확인한다. 응답하는 RS는 state 값을 똑같이 돌려주도록 약속되어 있기 때문에 내가 설정한 값과 다른 값이 오면 잘못된 것이다. (SDK는 자동으로 처리해준다)</p>
+</li>
+<li><p><code>expires_in</code> : 유효기간</p>
+</li>
+</ul>
+<br>
+
+<h3 id="Facebook-API-사용"><a href="#Facebook-API-사용" class="headerlink" title="Facebook API 사용"></a>Facebook API 사용</h3><ol>
+<li>access_token을 얻는다 (SDK를 이용하지 않고)</li>
+<li>access_token으로 Facebook API를 가져와서 현재 사용자의 이름을 출력한다.</li>
+</ol>
+<ul>
+<li>우선 uri에서 access_token 값만을 추출해야한다.</li>
+</ul>
+<blockquote>
+<p>[검사]-console</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.href.match(<span class="string">'access_token=([^&amp;]*)'</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>location.href : 현재 열어놓은 웹페이지의 주소를 가져온다.</li>
+<li>.match : 매칭되는 문자열(value)을 추출</li>
+<li>^$ : and가 아니다(부정)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.href.match(<span class="string">'access_token=([^&amp;]*)'</span>)[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2번째 값임을 확인한 뒤 출력해본다</li>
+</ul>
+<br>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(atr)&#123; <span class="comment">// js의 null은 false, 값이 있으면 true</span></span><br><span class="line">  <span class="keyword">var</span> access_token = atr[<span class="number">1</span>];</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'access_token :'</span>, access_token);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2018-10-24/2018-10-24-06.png" alt="가져온 access token"></p>
+<ul>
+<li>access_token을 가져온 것을 확인하였다.</li>
+</ul>
+<br>
+- access_token 획득 후 Facebook API 서버에 접속해 유저 이름을 가져와야한다.
+
+<blockquote>
+<p>keyword : facebook user graph api</p>
+</blockquote>
+<ul>
+<li>Facebook에서 제공하는 그래프 API 탐색기를 통해 손쉽게 시뮬레이션 할 수 있다.</li>
+</ul>
+<blockquote>
+<p>참고 링크 : <a href="https://developers.facebook.com/tools/explorer/" target="_blank" rel="noopener">facebook for developer - 그래프 API 탐색기</a></p>
+</blockquote>
+<dl><dt>: 내가 생성한 앱의 토큰을 받아서 API를 적용해볼 수 있다.</dt><dd>어떤 정보를 가져오고 싶은지 구체적인 필드를 적용해 볼 수 있다.</dd></dl><br>
+
+<ul>
+<li>받아오고 싶은 정보의 필드를 설정한 뒤 하단의 [코드 받기]-[cURL]를 참고한다.</li>
+<li>해당 URL에 접속하면 설정한 정보를 받아올 수 있다.  </li>
+</ul>
+<p><em>// 모든 필드를 여기서 선택한다고 정보를 가져올 수 있는 것은 아니다. 추가적인 권한이나 설정같은 것이 필요한 경우가 많다.</em></p>
+<p><img src="/images/2018-10-24/2018-10-24-07.png" alt="URL로 받아온 정보들"></p>
+<br>
+
+<ul>
+<li>ajax를 이용해 정보를 가져와보자.</li>
+<li><code>fetch().then(){}</code>을 이용한다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 웹브라우저는 fetch의 url에 접속한다.</span><br><span class="line">2. 이후 then의 함수를 호출한다.</span><br><span class="line">3. 이때 첫번째 인자로 어떤 값을 인자로 넘긴다. 이 인자는 여러가지가 될 수 있다. 그 정보를 받아서 사용하기 쉽도록 가공하는 코드를 function 내부에 작성하면 된다.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(atr)&#123;</span><br><span class="line">  <span class="keyword">var</span> access_token = atr[<span class="number">1</span>];</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'access_token :'</span>, access_token);</span><br><span class="line"></span><br><span class="line">  fetch(<span class="string">"&#123;https://graph.facebook.com/을 통해 알아낸 URI&#125;"</span>)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">raw</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> raw.json();</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result.name, result.id);</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#welcome'</span>).innerHTML = <span class="string">'Welcome, '</span>+result.name;</span><br><span class="line">    <span class="comment">// #welcome : id값이 welcome인 태그를 선택.</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>받아온 정보를 <code>json</code>으로 가공해서 현재 로그인한 사용자의 이름을 출력하는 코드이다.</p>
+<ul>
+<li>위의 코드는 연습용 코드로 보안상의 문제가 있다.</li>
+</ul>
+<br>
+
+<h3 id="Facebook-SDK를-이용한-구현"><a href="#Facebook-SDK를-이용한-구현" class="headerlink" title="Facebook SDK를 이용한 구현"></a>Facebook SDK를 이용한 구현</h3><blockquote>
+<p>keyword : facebook sdk javascript<br>참고링크 : <a href="https://developers.facebook.com/docs/javascript/quickstart" target="_blank" rel="noopener">빠른 시작: Javascript용 Facebook SDK</a></p>
+</blockquote>
+<ul>
+<li>SDK란 ? (Software Development Kit)<br>Application이 제공하는 도구.<br>API를 직접 호출하지 않고 도구를 통해 간접적으로 API를 제어하는 것.</li>
+</ul>
+<br>
+우선 SDK를 사용하기 위해서는 웹페이지에 로드시켜야한다.
+- 기본 설정
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">window</span>.fbAsyncInit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    FB.init(&#123;</span><br><span class="line">      appId            : <span class="string">'your-app-id'</span>,</span><br><span class="line">      autoLogAppEvents : <span class="literal">true</span>,</span><br><span class="line">      xfbml            : <span class="literal">true</span>,</span><br><span class="line">      version          : <span class="string">'v3.2'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">d, s, id</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> js, fjs = d.getElementsByTagName(s)[<span class="number">0</span>];</span><br><span class="line">     <span class="keyword">if</span> (d.getElementById(id)) &#123;<span class="keyword">return</span>;&#125;</span><br><span class="line">     js = d.createElement(s); js.id = id;</span><br><span class="line">     js.src = <span class="string">"https://connect.facebook.net/en_US/sdk.js"</span>;</span><br><span class="line">     fjs.parentNode.insertBefore(js, fjs);</span><br><span class="line">   &#125;(<span class="built_in">document</span>, <span class="string">'script'</span>, <span class="string">'facebook-jssdk'</span>));</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>: 직접 만든 Facebook 앱의 ID를 <code>your-app-id</code>에 대체해야 한다.</p>
+<br>
+- 위와 같이 로그인 후 로그인한 사용자의 이름을 출력하는 기능을 SDK로 구현.
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 로그인 상태를 체크해서 동작하는 함수</span></span><br><span class="line">FB.getLoginStatus(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"response.state : "</span>+response.status);</span><br><span class="line"><span class="comment">// statusChangeCallback(response);</span></span><br><span class="line"><span class="keyword">if</span>(response.status == <span class="string">'connected'</span>)&#123;</span><br><span class="line">  <span class="comment">// 로그인되었을 때 처리</span></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'#authBtn'</span>).value = <span class="string">"Logout"</span>;</span><br><span class="line">  <span class="comment">// Welcome message 출력</span></span><br><span class="line">  FB.api(</span><br><span class="line">    <span class="string">'/me/'</span>,</span><br><span class="line">    <span class="string">'GET'</span>,</span><br><span class="line">    &#123;<span class="string">"fields"</span>:<span class="string">"id,name,email"</span>&#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// Insert your code here</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'API : '</span>, response);</span><br><span class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'#welcome'</span>).innerHTML = <span class="string">'Welcome, '</span>+response.name;</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 로그인되지 않았을 때 처리</span></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'#authBtn'</span>).value = <span class="string">"Login"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>참고 링크 : <a href="https://developers.facebook.com/docs/javascript/examples" target="_blank" rel="noopener">facebook for developer - Javascript SDK - Examples</a>  </p>
+</blockquote>
+<br>
+
+<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>어떤 기능에 대해 유효한가를 나타낸다.<br>페이스북은 기본적으로 ID와 이름 권한을 획득할 수 있다.<br>만약 사용자의 email 정보를 가져오고싶다면 scope를 추가해아한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FB.login(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">'Welcome'</span>);</span><br><span class="line">  location.reload();</span><br><span class="line">&#125;), &#123;<span class="attr">scope</span>: <span class="string">'public_profile,email'</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>로그인 시 scope 옵션을 통해 권한을 추가 요청한다.  </li>
+</ul>
+<br>
+
+<p><img src="/images/2018-10-24/2018-10-24-08.png" alt="그래프 API 탐색기로 정보 가져오기"></p>
+<ul>
+<li>그래프 API 탐색기를 통해 추가한 scope 기능을 받아오는 법을 확인한다.</li>
+</ul>
+<br>
+
+<ul>
+<li>증분 권한 ?<br>권한을 한번에 추가하는 것이 아니라 필요할 때마다 하나씩 추가하도록 하는 것. 증분 권한을 사용하는 것이 권장사항.</li>
+</ul>
+<img width="400" alt="증분 권한" src="/images/2018-10-24/2018-10-24-09.png">
+
+<p>위와 같이 필요한 기능을 그때그때 승인을 받는다.</p>
+<br>
+
+<h2 id="Google로-로그인"><a href="#Google로-로그인" class="headerlink" title="Google로 로그인"></a>Google로 로그인</h2><h3 id="Google-SDK-사용-설정"><a href="#Google-SDK-사용-설정" class="headerlink" title="Google SDK 사용 설정"></a>Google SDK 사용 설정</h3><blockquote>
+<p>keyword : google cloud console</p>
+</blockquote>
+<ol>
+<li>Google Cloud Console에서 프로젝트를 생성한다.  </li>
+</ol>
+<ul>
+<li>Google API 서비스를 사용하려면 프로젝트에서 해당 기능을 활성화 시켜야한다.</li>
+</ul>
+<ol start="2">
+<li><p>OAuth 클라이언트 아이디 생성</p>
+<ul>
+<li>API 및 서비스 &gt; 사용자 인증 정보 &gt; OAuth 클라이언트 ID<br><img src="/images/2018-10-24/2018-10-24-10.png" alt="OAuth 클라이언트 아이디 생성"></li>
+</ul>
+</li>
+<li><p>consent screen(동의 화면) 설정<br><img src="/images/2018-10-24/2018-10-24-11.png" alt="consent screen(동의 화면) 설정"></p>
+<ul>
+<li>애플리케이션 이름, 로고 등을 설정한다.</li>
+</ul>
+</li>
+<li><p>(3)이후 (2)를 진행한다.<br><img src="/images/2018-10-24/2018-10-24-12.png" alt="OAuth 클라이언트 아이디 생성"></p>
+<ul>
+<li>Domain과 리디렉션 URI를 입력한다.</li>
+</ul>
+</li>
+</ol>
+<br>
+
+<h3 id="Google-SDK-API를-이용한-Login-구현"><a href="#Google-SDK-API를-이용한-Login-구현" class="headerlink" title="Google SDK API를 이용한 Login 구현"></a>Google SDK API를 이용한 Login 구현</h3><blockquote>
+<p>keyword : google login web SDK</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'init'</span>);</span><br><span class="line">    gapi.load(<span class="string">'auth2'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// oauth2가 로드된 후 실행되는 함수</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'auth2 loaded'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;    </span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="https:/</span><span class="regexp">/apis.google.com/</span>js/platform.js?onload=init<span class="string">" async defer&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">// 앞의 .js 파일 로딩이 끝나면 init 함수를 호출한다는 의미</span></span><br></pre></td></tr></table></figure>
+
+<p>위 코드를 실행시키면 init이 출력된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'init'</span>);</span><br><span class="line">    gapi.load(<span class="string">'auth2'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// oauth2가 로드된 후 실행되는 함수</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'auth2 loaded'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">var</span> gauth = gapi.auth2.init(&#123; <span class="comment">// Auth setup, GoogleAuth object restores the user's sign-in state from the previous session.</span></span><br><span class="line">    client_id: <span class="string">'&#123;내가 생성한 project id&#125;'</span></span><br><span class="line">  &#125;);</span><br><span class="line">  gauth.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 성공한다면 앞의 파라매터, 실패한다면 뒤의 파라매터 호출</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'init success'</span>);</span><br><span class="line">    <span class="keyword">var</span> isLogined = gauth.isSignedIn.get();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'isLogined : '</span>, isLogined);</span><br><span class="line">    <span class="keyword">if</span>(isLogined)&#123;</span><br><span class="line">      <span class="comment">// 로그인 됨</span></span><br><span class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'#authBtn'</span>).value = <span class="string">'Logout'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 로그인 안됨</span></span><br><span class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'#authBtn'</span>).value = <span class="string">'Login'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'init fail'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;    </span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<blockquote>
+<p>Q. 실 서비스중 에러가 발생하면 어떡해야하는가?<br>A. 예를 들어 access_token이 만료가 되었다면, 다시 요청하는 UI를 만든다던지.. 실제 서비스할 때는 추가적으로 작업할 것들이 많다.</p>
+</blockquote>
+<br>
+
+<ul>
+<li>Google의 다른 기능을 사용하고 싶다면</li>
+</ul>
+<ol>
+<li>해당 기능의 페이지로 가서 활성화 시킨다.</li>
+<li>google drive keyword로 검색 (scope), 사용 방법을 찾아보자.</li>
+</ol>
+<br>
+
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>: 이번 세미나에서는 client-side로 OAuth 기능을 구현하였다. 이는 보안 문제가 발생할 수 있다.  </p>
+<br>
+
+<ul>
+<li>server-side로 구현한다면 실습 내용에서 조금 더 추가되는 과정이 있다.</li>
+</ul>
+<ol>
+<li>RO가 RS에 접속해서, C에게 ~기능을 달라고 요청(권한 허용 링크 클릭)하면<ul>
+<li>server-side에서 구현시 client-side처럼 access_token을 바로 주지 않는다.</li>
+</ul>
+</li>
+<li>RS가 RO에게 <code>authorization code</code>값을 준다. 그리고 어떤 <code>client</code>에게 발급했는지 기록한다.</li>
+<li>RO는 <code>authorization code</code>를 받아서 <code>client</code>로 보낸다.<ul>
+<li>client는 authorization code를 알게 된다.</li>
+</ul>
+</li>
+<li><code>Client</code>는 RS에 직접 접속해서 <code>client_id</code>와 <code>client_secret</code>, <code>authorization_code</code> 세 값을 RS에게 보내면서 <code>access_token</code>을 요청한다.</li>
+<li>RS는 <code>authorization_code</code>를 발급했는지 확인하고 어떤 <code>client_id</code>에 발급했는지 확인한다.<ul>
+<li>이후 <code>access_token</code>을 발행하고 <code>authorization_code</code>를 지운다.</li>
+</ul>
+</li>
+<li>이후 <code>client</code>에게 <code>access_token</code>을 응답한다.</li>
+<li>이후 Client(Server) 쪽에 <code>access_token</code>을 보관하고(DB 등) 여러가지 작업을 처리하게된다.</li>
+</ol>
+<br>
+
+<ul>
+<li>RS에서 RO의 아이디를 저장해서 Client에 넘겨줄 수도 있다.<br>: RS에서 <code>access_token</code>을 통해 <code>user_id</code>를 얻었다는 것은 우리 서버에서 <code>식별자</code>로 사용할 수 있다는 의미이다. (만약 Client에 저장한다면 id 그대로 저장하지 않고 facebook_id 등 변조해서 저장하는 것이 좋다)<br>: 이 아이디를 얻어냈다는 것 자체가 페이스북 인증에 성공했다는 것이기 때문에 해당 식별자의 주인이라는 것을 확인할 수 있다.<br>: 이를 이용하는 것이 ~로 로그인하기 기능이다.  </li>
+</ul>
+<br>
+
+<ul>
+<li>access_token을 발급한 뒤 만료됐을 때 <code>refresh</code>를 해야한다.  <blockquote>
+<dl><dt>keyword : refresh token<br>: <code>access_token</code>을 발급 받을 때 보통 <code>refresh_token</code>을 함께 준다.</dt><dd><code>access_token</code>이 만료 되었을 때 <code>refresh_token</code>을 RS에 주면서 <code>access_token</code>을 재발급 받는다. 이는 시스템마다 다를 수 있다.</dd></dl></blockquote>
+</li>
+</ul>
+<br>
+
+<ul>
+<li>여기서 추가적으로 공부하고 싶다면,<br>생활코딩에서 Cookie -&gt; Session -&gt; Passport -&gt; Multi user -&gt; google, facebook 로그인 순으로 공부를 추천.</li>
+</ul>
+<br>
+
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><blockquote>
+<p><a href="https://github.com/koda93/TIL/commit/9bddad4a0b6d15a00a92f5d1216bba80cffc1725" target="_blank" rel="noopener">실습 코드 repository</a></p>
+</blockquote>
+<br>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://kodakyung.github.io/2018/10/24/Web-2018-10-24-talkonseminar-oauth2/" data-id="ck7y1bbha00121l89i1ent6az" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Dakyung Ko"
+        },
+        "headline": "토크ON세미나 - OAuth2.0",
+        "image": "https://kodakyung.github.io/images/2018-10-24/2018-10-24-01.png",
+        "keywords": "OAuth2 Web Authrization Tacademy",
+        "genre": "Web",
+        "datePublished": "2018-10-24",
+        "dateCreated": "2018-10-24",
+        "dateModified": "2020-03-19",
+        "url": "https://kodakyung.github.io/2018/10/24/Web-2018-10-24-talkonseminar-oauth2/",
+        "description": "Date 2018.10.24 Wed / Time PM 1:00~6:00 / Place SK플래닛 T아카데미
+페이스북. 구글 로그인 하기로 배우는 OAuthOAuth는 인터넷 사용자들이 비밀번호를 제공하지 않고, 웹사이트 상의 자신들의 정보에 대한 접근권한을 특정 웹사이트나 애플리케이션에 제한적으로 부여할 수 있는 개방형 표준 인증기술.
+이번 세미나는 OAu"
+        "wordCount": 2431
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kodakyung" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="https://kodakyung.github.io/feed.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/25/Programming-Java-effective-java-2018-10-25-java-finalizer/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java - 종료자(finalizer)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/24/System-Shell-2018-11-08-fish-shell-alias/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Fish Shell - Alias 설정</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/troubleshooting/">Troubleshooting</a></p>
+                            <p class="item-title"><a href="/2020/02/01/Troubleshooting-20200201-reverting-invalid-git-merge/" class="title">git 커밋 중간에 잘못된 merge 되돌리기</a></p>
+                            <p class="item-date"><time datetime="2020-02-01T14:41:26.000Z" itemprop="datePublished">2020-02-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/think/">Think</a></p>
+                            <p class="item-title"><a href="/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/" class="title">Talk with Sonia from Microsoft - Inspiring Tech Women</a></p>
+                            <p class="item-date"><time datetime="2020-01-20T13:54:30.000Z" itemprop="datePublished">2020-01-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2020/01/19/Programming-common-20200119-encryption-vs-hash/" class="title">암호화 vs 해시</a></p>
+                            <p class="item-date"><time datetime="2020-01-19T12:03:04.000Z" itemprop="datePublished">2020-01-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/10/20/Programming-Java-20191020-java-stream/" class="title">Java - Stream 기초</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:54:07.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/programming/common/">Common</a></p>
+                            <p class="item-title"><a href="/2019/10/20/Programming-common-20191020-functional-thinking-ch7/" class="title">함수형 사고 - ch7 실용적 사고</a></p>
+                            <p class="item-date"><time datetime="2019-10-19T21:47:20.000Z" itemprop="datePublished">2019-10-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/">CS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cs/database/">DataBase</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cs/os/">OS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">Programming</a><span class="category-list-count">37</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/common/">Common</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/java/">Java</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/javascript/">Javascript</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/netty/">Netty</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/orm/">ORM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/test/">Test</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/">System</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/system/docker/">Docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/system/shell/">Shell</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/think/">Think</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/troubleshooting/">Troubleshooting</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">Web</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Dakyung Ko</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kodakyung';
+    
+    
+    var disqus_url = 'https://kodakyung.github.io/2018/10/24/Web-2018-10-24-talkonseminar-oauth2/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
