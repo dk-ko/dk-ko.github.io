@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://kodakyung.github.io/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/</loc>
+        <lastmod>2020-03-19T06:47:39.954Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://kodakyung.github.io/2018/09/20/web-2018-09-20-web-oauth2/</loc>
         <lastmod>2020-03-19T01:37:36.214Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -392,14 +400,6 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/06/16/troubleshooting-2019-06-16-springboot-react-cors/</loc>
-        <lastmod>2020-03-19T00:43:22.717Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://kodakyung.github.io/2018/11/09/troubleshooting-2018-11-09-git-gitignore-setting/</loc>
         <lastmod>2020-03-19T00:43:22.717Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -408,8 +408,8 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2020/01/20/think-20200120-women-who-code-talk-with-sonia-from-ms/</loc>
-        <lastmod>2020-03-19T00:43:22.705Z</lastmod>
+        <loc>https://kodakyung.github.io/2019/06/16/troubleshooting-2019-06-16-springboot-react-cors/</loc>
+        <lastmod>2020-03-19T00:43:22.717Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -544,7 +544,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/</loc>
+        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/</loc>
         <lastmod>2020-03-19T00:43:22.665Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -552,7 +552,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch1/</loc>
+        <loc>https://kodakyung.github.io/2019/10/16/programming-common-20191016-functional-thinking-ch2/</loc>
         <lastmod>2020-03-19T00:43:22.665Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -576,7 +576,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
+        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
         <lastmod>2020-03-19T00:43:22.654Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -584,7 +584,7 @@
     </url>
 
     <url>
-        <loc>https://kodakyung.github.io/2018/05/12/cs-database-20180512-mysql-file-import-for-mac/</loc>
+        <loc>https://kodakyung.github.io/2019/10/15/cs-database-20191015-mysql-transaction-and-concurrency-control/</loc>
         <lastmod>2020-03-19T00:43:22.654Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
