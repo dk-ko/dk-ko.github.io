@@ -52,13 +52,6 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/tags/functional-programming/</loc>
-        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://j2de.github.io/tags/hash/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,6 +60,13 @@
 
     <url>
         <loc>https://j2de.github.io/tags/encryption/</loc>
+        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/tags/functional-programming/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -108,14 +108,14 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/tags/oauth2/</loc>
+        <loc>https://j2de.github.io/tags/web/</loc>
         <lastmod>2020-03-19T01:37:36.214Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://j2de.github.io/tags/web/</loc>
+        <loc>https://j2de.github.io/tags/oauth2/</loc>
         <lastmod>2020-03-19T01:37:36.214Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

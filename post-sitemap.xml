@@ -32,7 +32,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-20-functional-thinking-ch7/</loc>
+        <loc>https://j2de.github.io/2019-10-20-java-stream/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -48,7 +48,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-20-java-stream/</loc>
+        <loc>https://j2de.github.io/2019-10-20-functional-thinking-ch7/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -568,7 +568,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-10-26-java-equals-method-override/</loc>
+        <loc>https://j2de.github.io/2018-11-04-java-comparable-comparator/</loc>
         <lastmod>2020-03-19T00:43:22.671Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -576,7 +576,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-11-04-java-comparable-comparator/</loc>
+        <loc>https://j2de.github.io/2018-10-26-java-equals-method-override/</loc>
         <lastmod>2020-03-19T00:43:22.671Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
