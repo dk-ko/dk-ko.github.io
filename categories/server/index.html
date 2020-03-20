@@ -1042,6 +1042,142 @@
                 <span class="level-item has-text-grey">
                     
                     
+                    16 minutes read (About 2403 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018-06-01-netty-embeddedchannel-unittest/">Netty EmbeddedChannel 이용한 단위 테스트</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="단위-테스트란"><a href="#단위-테스트란" class="headerlink" title="단위 테스트란?"></a>단위 테스트란?</h3><blockquote>
+<p>다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.</p>
+</blockquote>
+<p>Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 <code>EmbeddedChannel</code>을 통해 ChannelHandler의 단위 테스트를 제공한다.</p>
+<p>테스트하는 코드 모듈이나 단위를 보통 런타임 환경 밖에서 실행되므로 이를 실행하기 위한 프레임 워크나 도구가 필요하다. 여기서는 JUnit을 통해 테스트 해본다.</p>
+<br/>
+
+<h2 id="EmbeddedChannel"><a href="#EmbeddedChannel" class="headerlink" title="EmbeddedChannel"></a>EmbeddedChannel</h2><p><code>EmbeddedChannel</code>은 인바운드 또는 아웃바운드 데이터를 EmbeddedChannel에 기록하고 <code>ChannelPipeline</code> 끝에 도달하는 항목이 있는지 확인한다. 이를 통해 메세지가 인코딩 또는 디코딩 됐는지 확인할 수 있고 트리거 된 <code>ChannelHandler</code> 작업이 있는지 여부도 알 수 있다.</p>
+<ul>
+<li>EmbeddedChannel 주요 메소드</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>writeInbound(Object… msgs)</td>
+<td>EmbeddedChannel에 인바운드 메세지를 기록한다. EmbeddedChannel에서 readInbound()를 통해 데이터를 읽을 수 있는 경우 true 반환</td>
+</tr>
+<tr>
+<td>readInbound()</td>
+<td>EmbeddedChannel에서 인바운드 메세지 읽는다. 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 데이터가 없으면 null 반환</td>
+</tr>
+<tr>
+<td>writeOutbound(Object… msgs)</td>
+<td>EmbeddedChannel에 아웃바운드 메세지를 기록한다. EmbeddedChannel에서 readOutbound()를 통해 데이터를 읽을 수 있는 경우 true를 반환</td>
+</tr>
+<tr>
+<td>writeInbound()</td>
+<td>EmbeddedChannel에서 아웃바운드 메세지를 읽음 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 항목이 없으면 null 반환</td>
+</tr>
+<tr>
+<td>finish</td>
+<td>EmbeddedChannel을 완료로 표시하고 전체 인바운드 또는 아웃바운드 데이터를 읽을 수 있는 경우 true를 반환한다. 이 메소드는  EmbeddedChannel의 close()를 호출함</td>
+</tr>
+</tbody></table>
+<ul>
+<li>EmbeddedChannel 데이터 흐름</li>
+</ul>
+<img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg">
+
+<p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p>
+<p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p>
+<p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p>
+<br/>
+
+<h2 id="EmbeddedChannel을-이용한-ChannelHandler-테스트"><a href="#EmbeddedChannel을-이용한-ChannelHandler-테스트" class="headerlink" title="EmbeddedChannel을 이용한 ChannelHandler 테스트"></a>EmbeddedChannel을 이용한 ChannelHandler 테스트</h2><p>JUnit과 EmbeddedChannel을 이용해 ChannelHandler를 테스트 해보자  </p>
+<h3 id="Junit-Assert"><a href="#Junit-Assert" class="headerlink" title="Junit Assert"></a>Junit Assert</h3><blockquote>
+<p><code>org.junit.Assert</code> 클래스에는 테스트에 이용되는 여러 정적 메소드가 들어있다. 어설션이 실패하면 예외가 발생하고 현재 실행중인 테스트가 종료된다. 다음 import 문으로 사용할 수 있다. <code>import static org.junit.Assert.*;</code> 그리고 다음부터는 직접 Assert 메소드를 호출할 수 있다. <code>assertEquals(buf.readSlice(3), read);</code></p>
+</blockquote>
+<br/>
+
+<h3 id="인바운드-메세지-테스트"><a href="#인바운드-메세지-테스트" class="headerlink" title="인바운드 메세지 테스트"></a>인바운드 메세지 테스트</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 처리하고 이를 메세지로 디코딩하기 위해서</span></span><br><span class="line">  <span class="comment">// ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> frameLength;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FixedLengthFrameDecoder</span><span class="params">(<span class="keyword">int</span> frameLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성할 프레임의 길이 지정</span></span><br><span class="line">    <span class="keyword">if</span>(frameLength &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">        <span class="string">"frameLength must be a positive integer:"</span>+frameLength);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.frameLength = frameLength;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="comment">// 다음 프레임을 처리하는 데 충분하게 바이트를 읽을 수 있는지 확인</span></span><br><span class="line">      <span class="keyword">while</span> (in.readableBytes() &gt;= frameLength) &#123;</span><br><span class="line">        ByteBuf buf = in.readBytes(frameLength);</span><br><span class="line">        <span class="comment">// ByteBuf에서 새로운 프레임을 읽음</span></span><br><span class="line">        out.add(buf);</span><br><span class="line">        <span class="comment">// 디코딩 된 메세지의 List에 프레임을 추가함</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ByteToMessageDecoder</code>는 고정된 3바이트의 프레임을 생성한다. 이 코드는 데이터가 충분히 있는 경우 고정 크기의 프레임을 생성한다. 반면에 읽을 데이터가 충분하지 않으면 다음 데이터를 기다린다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoderTest</span></span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="comment">//JUnit이 메소드를 실행하도록 @Test 어노테이션을 지정해줌</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트 저장</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FixedLengthFrameDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 3바이트 길이의 프레임으로 테스트할</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가함</span></span><br><span class="line">    assertTrue(channel.writeInbound(input.retain()));</span><br><span class="line">    <span class="comment">// EmbeddedChannel에 바이트를 기록</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처리된 메세지를 읽고 각각 3바이트 프레임이 3개인지 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>),read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    assertNull(channel.readInbound());</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>testFrameDecoded()</code> 메소드는 읽을 수 있는 9바이트를 포함하는 ByteBuf 1개가 3바이트를 포함하는 ByteBuf 3개로 디코딩되는지 확인한다. 그리고 <code>writeInbound()</code>를 한번 호출해 ByteBuf는 읽기 가능한 9바이트로 채운다. 그 다음에 finish()를 실행해 EmbeddedChannel을 완료로 표시하고 마지막으로 <code>readInbound()</code>를 호출해 EmbeddedChannel에서 프레임 3개와 null 1개를 읽었다.</p>
+<br/>
+
+<h3 id="아웃바운드-메세지-테스트"><a href="#아웃바운드-메세지-테스트" class="headerlink" title="아웃바운드 메세지 테스트"></a>아웃바운드 메세지 테스트</h3><p>아웃바운드 메세지 테스트도 인바운드와 비슷하다. <code>ChannelOutboundHandler</code>는 메세지를 다른 포맷으로 변환하는 컴포넌트인 인코더 역할을 한다. 아래의 코드로 테스트 해보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoder</span> <span class="keyword">extends</span> <span class="title">MessageToMessageEncoder</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// MessageToMessageEncoder를 상속받아 메세지를 다른 포맷으로 인코딩 함</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(ChannelHandlerContext channelHandlerContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    ByteBuf in, List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(in.readableBytes() &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">// 인코딩할 바이트가 충분한지 확인</span></span><br><span class="line">        <span class="keyword">int</span> value = Math.abs(in.readint());</span><br><span class="line">        <span class="comment">// ByteBuf에서 다음 int를 읽고 절대값을 계산</span></span><br><span class="line">        out.add(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEncoded</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 음의 정수 9개 기록</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      buf.writeInd(i * -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> AbsIntegerEncoder());</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 테스트할 AbsIntegerEncoder를 추가</span></span><br><span class="line">    assertTrue(channel.writeOutbound(buf));</span><br><span class="line">    <span class="comment">// ByteBuf를 기록하고 readOutbound()가 데이터를 생성하는지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 값을 읽고 절댓 값을 포함하는지 확인</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      assertEquals(i, channel.readOutbound());</span><br><span class="line">    &#125;</span><br><span class="line">    assertNull(channel.readOutbound());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>ByteBuf</code>에 4바이트 음의 정수를 기록한다.</li>
+<li><code>EmbeddedChannel</code>을 생성하고 여기에 <code>AbsIntegerEncoder</code>를 할당한다.</li>
+<li><code>EmbeddedChannel</code>의 <code>writeOutbound()</code>를 호출해 ByteBuf를 기록한다.</li>
+<li><code>Channel</code>을 완료로 표시한다.</li>
+<li><code>EmbeddedChannel</code>의 아웃바운드 쪽에서 모든 정수를 읽고 절대값만 생성됐는지 확인한다.</li>
+</ol>
+<br/>
+
+<h2 id="예외-처리-테스트"><a href="#예외-처리-테스트" class="headerlink" title="예외 처리 테스트"></a>예외 처리 테스트</h2><p>데이터 변환외에도 입력이 잘못되거나 데이터가 너무 많은 경우 적절하게 처리해야할 필요가 있다 이런 경우 예외 처리를 따로 해줄 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 메세지로 디코딩하기 위해 ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> maxFrameSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FrameChunkDecoder</span><span class="params">(<span class="keyword">int</span> maxFrameSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxFrameSize = maxFrameSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> readableBytes = in.readableBytes();</span><br><span class="line">      <span class="comment">// 생성할 프레임의 최대 허용 길이를 지정</span></span><br><span class="line">      <span class="keyword">if</span> (readableBytes &gt; maxFrameSize) &#123;</span><br><span class="line">        <span class="comment">// 프레임이 너무 큰 경우 폐기하고 TooLongFrameException을 생성함</span></span><br><span class="line">        in.clear();</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TooLongFrameException();</span><br><span class="line">      &#125;</span><br><span class="line">      ByteBuf buf = in.readBytes(readableBytes);</span><br><span class="line">      <span class="comment">// 그렇지 않은 경우 ByteBuf로부터 새 프레임을 읽음</span></span><br><span class="line">      out.add(buf);</span><br><span class="line">      <span class="comment">// 디코딩된 메세지의 List에 프레임을 추가</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>생성할 프레임의 최대 허용 길이를 설정하고 프레임의 크기가 이것을 넘어갈 경우 초과하는 바이트가 폐기되고 <code>TooLongFrameException</code>이 발생한다. 이 예외는 파이프라인의 <code>다른 ChannelHandler</code>에서 <code>exceptionCaught()</code>를 이용해 처리하거나 무시할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트를 기록</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FrameChunkDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 프레임 크기가 3인</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가</span></span><br><span class="line"></span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">2</span>)));</span><br><span class="line">    <span class="comment">// 2바이트를 기록한 후 새로운 프레임이 생성되는지 확인</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      channel.writeInbound(input.readBytes(<span class="number">4</span>));</span><br><span class="line">      <span class="comment">// 4바이트 프레임을 기록하고 예상되는 TooLongFrameException을 포착</span></span><br><span class="line">      Assert.fail();</span><br><span class="line">      <span class="comment">// 예외가 발생하지 않은 경우 이 메소드가 적용되고 테스트가 실패함</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (TooLongFrameException e)&#123;</span><br><span class="line">      <span class="comment">// 예상된 예외</span></span><br><span class="line">    &#125;</span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">3</span>)));</span><br><span class="line">    <span class="comment">// 남은 2바이트를 기록하고 프레임이 올바른지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 메세지를 읽고 값을 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">2</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.skipBytes(<span class="number">4</span>).readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 코드의 <code>try/catch</code> 블록은 EmbeddedChannel에서 특수하게 작용한다. <code>wrtie*</code> 메소드 중 하나에서 확인된 Exception이 발생하는 경우 이 <code>Exception</code>이 <code>RuntimeException</code>에 래핑된다. 이 방법을 데이터를 처리하는 동안 Exception이 처리됐는지 여부를 쉽게 테스트 할 수 있다. 그리고 이 테스트 방법은 <code>Exception</code>을 생성하는 모든 <code>ChannelHandler</code> 구현에 이용할 수 있다.</p>
+<hr>
+<ul>
+<li>참고 서적<ul>
+<li>네티 인 액션</li>
+</ul>
+</li>
+</ul>
+<br/>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-05-31T15:00:00.000Z">2018-06-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/netty/">Netty</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
                     23 minutes read (About 3378 words)
                 </span>
                 
@@ -1301,142 +1437,6 @@
 </ul>
 <hr>
 
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-05-31T15:00:00.000Z">2018-06-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/netty/">Netty</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 minutes read (About 2403 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018-06-01-netty-embeddedchannel-unittest/">Netty EmbeddedChannel 이용한 단위 테스트</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="단위-테스트란"><a href="#단위-테스트란" class="headerlink" title="단위 테스트란?"></a>단위 테스트란?</h3><blockquote>
-<p>다른 모듈이나 데이터베이스 및 네트워크 등 런타임 의존성으로부터 최대한 격리된 가능한 작은 크기의 코드로 테스트하는 것. 테스트를 통해 모든 단위가 정상적으로 작동하는 것을 확인하면 문제가 생겼을 때 원인을 찾기가 수월해진다.</p>
-</blockquote>
-<p>Netty에서는 ChannelHandler가 아주 중요한 요소이다. 네티에서는 <code>EmbeddedChannel</code>을 통해 ChannelHandler의 단위 테스트를 제공한다.</p>
-<p>테스트하는 코드 모듈이나 단위를 보통 런타임 환경 밖에서 실행되므로 이를 실행하기 위한 프레임 워크나 도구가 필요하다. 여기서는 JUnit을 통해 테스트 해본다.</p>
-<br/>
-
-<h2 id="EmbeddedChannel"><a href="#EmbeddedChannel" class="headerlink" title="EmbeddedChannel"></a>EmbeddedChannel</h2><p><code>EmbeddedChannel</code>은 인바운드 또는 아웃바운드 데이터를 EmbeddedChannel에 기록하고 <code>ChannelPipeline</code> 끝에 도달하는 항목이 있는지 확인한다. 이를 통해 메세지가 인코딩 또는 디코딩 됐는지 확인할 수 있고 트리거 된 <code>ChannelHandler</code> 작업이 있는지 여부도 알 수 있다.</p>
-<ul>
-<li>EmbeddedChannel 주요 메소드</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>이름</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>writeInbound(Object… msgs)</td>
-<td>EmbeddedChannel에 인바운드 메세지를 기록한다. EmbeddedChannel에서 readInbound()를 통해 데이터를 읽을 수 있는 경우 true 반환</td>
-</tr>
-<tr>
-<td>readInbound()</td>
-<td>EmbeddedChannel에서 인바운드 메세지 읽는다. 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 데이터가 없으면 null 반환</td>
-</tr>
-<tr>
-<td>writeOutbound(Object… msgs)</td>
-<td>EmbeddedChannel에 아웃바운드 메세지를 기록한다. EmbeddedChannel에서 readOutbound()를 통해 데이터를 읽을 수 있는 경우 true를 반환</td>
-</tr>
-<tr>
-<td>writeInbound()</td>
-<td>EmbeddedChannel에서 아웃바운드 메세지를 읽음 반환되는 항목은 전체 ChannelPipeline을 통과한 것. 읽을 항목이 없으면 null 반환</td>
-</tr>
-<tr>
-<td>finish</td>
-<td>EmbeddedChannel을 완료로 표시하고 전체 인바운드 또는 아웃바운드 데이터를 읽을 수 있는 경우 true를 반환한다. 이 메소드는  EmbeddedChannel의 close()를 호출함</td>
-</tr>
-</tbody></table>
-<ul>
-<li>EmbeddedChannel 데이터 흐름</li>
-</ul>
-<img alt="EmbeddedChannel" src="/images/2018-06-01/01.jpg">
-
-<p>인바운드 데이터는 <code>ChannelInboundHandler</code>에 의해 처리되고 원격 피어에서 읽은 데이터를 나타낸다. 아웃바운드 데이터는 <code>ChannelOutboundHandler</code>에 의해 처리되고 원격 피어에 기록된 데이터를 나타낸다. 테스트하는 <code>ChannelHandler</code>를 어떻게 구성하느냐에 따라 구체적인 코드는 달라질 수 있다.  </p>
-<p>[그림]은 <code>EmbeddedChannel</code>의 메소드를 이용해 <code>ChannelPipeline</code>에서의 데이터 흐름을 보여준다. 메세지를 <code>Channel</code>에 기록하고 아웃바운드 방향으로 <code>ChannelPipeline</code>을 통과시키는데 <code>writeOutbound()</code>를 이용한다. 그리고 다음 처리된 메세지를 읽고 예상한 결과가 나왔는지 확인하는 데는 <code>readOutbound()</code>를 이용한다. 인바운드 데이터를 테스트할 때는 반대로 사용하면 된다. (<code>xxxInboud</code>)  </p>
-<p>메세지는 <code>ChannelPipeline</code>을 통과하고 해당하는 <code>ChannelInboundHandler</code>나 <code>ChannelOutboundHandler</code>를 통해 처리되는데 메세지가 소비되지 않은 경우 메세지가 처리된 후 <code>readInbound()</code>나 <code>readOutbound()</code>를 통해 이용해 <code>Channel</code>에서 읽을 수 있다.  </p>
-<br/>
-
-<h2 id="EmbeddedChannel을-이용한-ChannelHandler-테스트"><a href="#EmbeddedChannel을-이용한-ChannelHandler-테스트" class="headerlink" title="EmbeddedChannel을 이용한 ChannelHandler 테스트"></a>EmbeddedChannel을 이용한 ChannelHandler 테스트</h2><p>JUnit과 EmbeddedChannel을 이용해 ChannelHandler를 테스트 해보자  </p>
-<h3 id="Junit-Assert"><a href="#Junit-Assert" class="headerlink" title="Junit Assert"></a>Junit Assert</h3><blockquote>
-<p><code>org.junit.Assert</code> 클래스에는 테스트에 이용되는 여러 정적 메소드가 들어있다. 어설션이 실패하면 예외가 발생하고 현재 실행중인 테스트가 종료된다. 다음 import 문으로 사용할 수 있다. <code>import static org.junit.Assert.*;</code> 그리고 다음부터는 직접 Assert 메소드를 호출할 수 있다. <code>assertEquals(buf.readSlice(3), read);</code></p>
-</blockquote>
-<br/>
-
-<h3 id="인바운드-메세지-테스트"><a href="#인바운드-메세지-테스트" class="headerlink" title="인바운드 메세지 테스트"></a>인바운드 메세지 테스트</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 처리하고 이를 메세지로 디코딩하기 위해서</span></span><br><span class="line">  <span class="comment">// ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> frameLength;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FixedLengthFrameDecoder</span><span class="params">(<span class="keyword">int</span> frameLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성할 프레임의 길이 지정</span></span><br><span class="line">    <span class="keyword">if</span>(frameLength &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">        <span class="string">"frameLength must be a positive integer:"</span>+frameLength);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.frameLength = frameLength;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="comment">// 다음 프레임을 처리하는 데 충분하게 바이트를 읽을 수 있는지 확인</span></span><br><span class="line">      <span class="keyword">while</span> (in.readableBytes() &gt;= frameLength) &#123;</span><br><span class="line">        ByteBuf buf = in.readBytes(frameLength);</span><br><span class="line">        <span class="comment">// ByteBuf에서 새로운 프레임을 읽음</span></span><br><span class="line">        out.add(buf);</span><br><span class="line">        <span class="comment">// 디코딩 된 메세지의 List에 프레임을 추가함</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>ByteToMessageDecoder</code>는 고정된 3바이트의 프레임을 생성한다. 이 코드는 데이터가 충분히 있는 경우 고정 크기의 프레임을 생성한다. 반면에 읽을 데이터가 충분하지 않으면 다음 데이터를 기다린다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedLengthFrameDecoderTest</span></span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="comment">//JUnit이 메소드를 실행하도록 @Test 어노테이션을 지정해줌</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트 저장</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FixedLengthFrameDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 3바이트 길이의 프레임으로 테스트할</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가함</span></span><br><span class="line">    assertTrue(channel.writeInbound(input.retain()));</span><br><span class="line">    <span class="comment">// EmbeddedChannel에 바이트를 기록</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처리된 메세지를 읽고 각각 3바이트 프레임이 3개인지 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>),read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    assertNull(channel.readInbound());</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>testFrameDecoded()</code> 메소드는 읽을 수 있는 9바이트를 포함하는 ByteBuf 1개가 3바이트를 포함하는 ByteBuf 3개로 디코딩되는지 확인한다. 그리고 <code>writeInbound()</code>를 한번 호출해 ByteBuf는 읽기 가능한 9바이트로 채운다. 그 다음에 finish()를 실행해 EmbeddedChannel을 완료로 표시하고 마지막으로 <code>readInbound()</code>를 호출해 EmbeddedChannel에서 프레임 3개와 null 1개를 읽었다.</p>
-<br/>
-
-<h3 id="아웃바운드-메세지-테스트"><a href="#아웃바운드-메세지-테스트" class="headerlink" title="아웃바운드 메세지 테스트"></a>아웃바운드 메세지 테스트</h3><p>아웃바운드 메세지 테스트도 인바운드와 비슷하다. <code>ChannelOutboundHandler</code>는 메세지를 다른 포맷으로 변환하는 컴포넌트인 인코더 역할을 한다. 아래의 코드로 테스트 해보자.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoder</span> <span class="keyword">extends</span> <span class="title">MessageToMessageEncoder</span>&lt;<span class="title">ByteBuf</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// MessageToMessageEncoder를 상속받아 메세지를 다른 포맷으로 인코딩 함</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(ChannelHandlerContext channelHandlerContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    ByteBuf in, List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(in.readableBytes() &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">// 인코딩할 바이트가 충분한지 확인</span></span><br><span class="line">        <span class="keyword">int</span> value = Math.abs(in.readint());</span><br><span class="line">        <span class="comment">// ByteBuf에서 다음 int를 읽고 절대값을 계산</span></span><br><span class="line">        out.add(value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsIntegerEncoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEncoded</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 음의 정수 9개 기록</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      buf.writeInd(i * -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> AbsIntegerEncoder());</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 테스트할 AbsIntegerEncoder를 추가</span></span><br><span class="line">    assertTrue(channel.writeOutbound(buf));</span><br><span class="line">    <span class="comment">// ByteBuf를 기록하고 readOutbound()가 데이터를 생성하는지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 값을 읽고 절댓 값을 포함하는지 확인</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">      assertEquals(i, channel.readOutbound());</span><br><span class="line">    &#125;</span><br><span class="line">    assertNull(channel.readOutbound());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><code>ByteBuf</code>에 4바이트 음의 정수를 기록한다.</li>
-<li><code>EmbeddedChannel</code>을 생성하고 여기에 <code>AbsIntegerEncoder</code>를 할당한다.</li>
-<li><code>EmbeddedChannel</code>의 <code>writeOutbound()</code>를 호출해 ByteBuf를 기록한다.</li>
-<li><code>Channel</code>을 완료로 표시한다.</li>
-<li><code>EmbeddedChannel</code>의 아웃바운드 쪽에서 모든 정수를 읽고 절대값만 생성됐는지 확인한다.</li>
-</ol>
-<br/>
-
-<h2 id="예외-처리-테스트"><a href="#예외-처리-테스트" class="headerlink" title="예외 처리 테스트"></a>예외 처리 테스트</h2><p>데이터 변환외에도 입력이 잘못되거나 데이터가 너무 많은 경우 적절하게 처리해야할 필요가 있다 이런 경우 예외 처리를 따로 해줄 수 있다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoder</span> <span class="keyword">extends</span> <span class="title">ByteToMessageDecoder</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 인바운드 바이트를 메세지로 디코딩하기 위해 ByteToMessageDecoder를 상속 받음</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> maxFrameSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FrameChunkDecoder</span><span class="params">(<span class="keyword">int</span> maxFrameSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.maxFrameSize = maxFrameSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">decode</span><span class="params">(ChannelHandlerContext ctx, ByteBuf in,</span></span></span><br><span class="line"><span class="function"><span class="params">    List&lt;Object&gt; out)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> readableBytes = in.readableBytes();</span><br><span class="line">      <span class="comment">// 생성할 프레임의 최대 허용 길이를 지정</span></span><br><span class="line">      <span class="keyword">if</span> (readableBytes &gt; maxFrameSize) &#123;</span><br><span class="line">        <span class="comment">// 프레임이 너무 큰 경우 폐기하고 TooLongFrameException을 생성함</span></span><br><span class="line">        in.clear();</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TooLongFrameException();</span><br><span class="line">      &#125;</span><br><span class="line">      ByteBuf buf = in.readBytes(readableBytes);</span><br><span class="line">      <span class="comment">// 그렇지 않은 경우 ByteBuf로부터 새 프레임을 읽음</span></span><br><span class="line">      out.add(buf);</span><br><span class="line">      <span class="comment">// 디코딩된 메세지의 List에 프레임을 추가</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>생성할 프레임의 최대 허용 길이를 설정하고 프레임의 크기가 이것을 넘어갈 경우 초과하는 바이트가 폐기되고 <code>TooLongFrameException</code>이 발생한다. 이 예외는 파이프라인의 <code>다른 ChannelHandler</code>에서 <code>exceptionCaught()</code>를 이용해 처리하거나 무시할 수 있다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrameChunkDecoderTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFrameDecoded</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ByteBuf buf = Unpooled.buffer();</span><br><span class="line">    <span class="comment">// ByteBuf를 생성하고 9바이트를 기록</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; i++)&#123;</span><br><span class="line">      buf.writeByte(i);</span><br><span class="line">    &#125;</span><br><span class="line">    ByteBuf input = buf.duplicate();</span><br><span class="line"></span><br><span class="line">    EmbeddedChannel channel = <span class="keyword">new</span> EmbeddedChannel(</span><br><span class="line">      <span class="keyword">new</span> FrameChunkDecoder(<span class="number">3</span>));</span><br><span class="line">      <span class="comment">// EmbeddedChannel을 생성하고 프레임 크기가 3인</span></span><br><span class="line">      <span class="comment">// FixedLengthFrameDecoder를 추가</span></span><br><span class="line"></span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">2</span>)));</span><br><span class="line">    <span class="comment">// 2바이트를 기록한 후 새로운 프레임이 생성되는지 확인</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      channel.writeInbound(input.readBytes(<span class="number">4</span>));</span><br><span class="line">      <span class="comment">// 4바이트 프레임을 기록하고 예상되는 TooLongFrameException을 포착</span></span><br><span class="line">      Assert.fail();</span><br><span class="line">      <span class="comment">// 예외가 발생하지 않은 경우 이 메소드가 적용되고 테스트가 실패함</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (TooLongFrameException e)&#123;</span><br><span class="line">      <span class="comment">// 예상된 예외</span></span><br><span class="line">    &#125;</span><br><span class="line">    assertTrue(channel.writeInbound(input.readBytes(<span class="number">3</span>)));</span><br><span class="line">    <span class="comment">// 남은 2바이트를 기록하고 프레임이 올바른지 확인</span></span><br><span class="line">    assertTrue(channel.finish());</span><br><span class="line">    <span class="comment">// Channel을 완료로 표시</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 생성된 메세지를 읽고 값을 확인함</span></span><br><span class="line">    ByteBuf read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.readSlice(<span class="number">2</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line"></span><br><span class="line">    read = (ByteBuf) channel.readInbound();</span><br><span class="line">    assertEquals(buf.skipBytes(<span class="number">4</span>).readSlice(<span class="number">3</span>), read);</span><br><span class="line">    read.release();</span><br><span class="line">    buf.release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>위 코드의 <code>try/catch</code> 블록은 EmbeddedChannel에서 특수하게 작용한다. <code>wrtie*</code> 메소드 중 하나에서 확인된 Exception이 발생하는 경우 이 <code>Exception</code>이 <code>RuntimeException</code>에 래핑된다. 이 방법을 데이터를 처리하는 동안 Exception이 처리됐는지 여부를 쉽게 테스트 할 수 있다. 그리고 이 테스트 방법은 <code>Exception</code>을 생성하는 모든 <code>ChannelHandler</code> 구현에 이용할 수 있다.</p>
-<hr>
-<ul>
-<li>참고 서적<ul>
-<li>네티 인 액션</li>
-</ul>
-</li>
-</ul>
-<br/>
         </div>
         
         

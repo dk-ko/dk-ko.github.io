@@ -32,7 +32,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-20-java-stream/</loc>
+        <loc>https://j2de.github.io/2019-10-20-functional-thinking-ch7/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -48,7 +48,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-20-functional-thinking-ch7/</loc>
+        <loc>https://j2de.github.io/2019-10-20-java-stream/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -58,6 +58,14 @@
     <url>
         <loc>https://j2de.github.io/2019-09-26-how-junior-developers-get-it-information/</loc>
         <lastmod>2020-03-20T15:44:39.465Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019-10-16-functional-thinking-ch1/</loc>
+        <lastmod>2020-03-20T15:44:39.464Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -80,14 +88,6 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-16-functional-thinking-ch1/</loc>
-        <lastmod>2020-03-20T15:44:39.464Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://j2de.github.io/2018-05-12-mysql-file-import-for-mac/</loc>
         <lastmod>2020-03-20T15:44:39.458Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -96,7 +96,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-17-database-index/</loc>
+        <loc>https://j2de.github.io/2019-10-15-mysql-transaction-and-concurrency-control/</loc>
         <lastmod>2020-03-20T15:44:39.458Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +104,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019-10-15-mysql-transaction-and-concurrency-control/</loc>
+        <loc>https://j2de.github.io/2019-10-17-database-index/</loc>
         <lastmod>2020-03-20T15:44:39.458Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -568,7 +568,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-11-04-java-comparable-comparator/</loc>
+        <loc>https://j2de.github.io/2018-10-26-java-equals-method-override/</loc>
         <lastmod>2020-03-19T00:43:22.671Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -576,7 +576,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-10-26-java-equals-method-override/</loc>
+        <loc>https://j2de.github.io/2018-11-04-java-comparable-comparator/</loc>
         <lastmod>2020-03-19T00:43:22.671Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
