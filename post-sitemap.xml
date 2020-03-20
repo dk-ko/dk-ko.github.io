@@ -528,7 +528,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-11-25-spring-data-jpa-query/</loc>
+        <loc>https://j2de.github.io/2018-11-16-jpa-cascade/</loc>
         <lastmod>2020-03-19T00:43:22.691Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -536,7 +536,7 @@
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018-11-16-jpa-cascade/</loc>
+        <loc>https://j2de.github.io/2018-11-25-spring-data-jpa-query/</loc>
         <lastmod>2020-03-19T00:43:22.691Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
