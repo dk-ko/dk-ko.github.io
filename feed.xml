@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://j2de.github.io/"/>
-  <updated>2020-03-20T15:44:39.476Z</updated>
+  <updated>2020-03-21T10:41:48.564Z</updated>
   <id>https://j2de.github.io/</id>
   
   <author>
@@ -18,22 +18,16 @@
   
   <entry>
     <title>git 커밋 중간에 잘못된 merge 되돌리기</title>
-    <link href="https://j2de.github.io/2020-02-01-reverting-invalid-git-merge/"/>
-    <id>https://j2de.github.io/2020-02-01-reverting-invalid-git-merge/</id>
+    <link href="https://j2de.github.io/2020/02/01/reverting-invalid-git-merge/"/>
+    <id>https://j2de.github.io/2020/02/01/reverting-invalid-git-merge/</id>
     <published>2020-02-01T14:41:26.000Z</published>
-    <updated>2020-03-20T15:44:39.476Z</updated>
+    <updated>2020-03-21T10:41:48.564Z</updated>
     
-    <content type="html"><![CDATA[<p>어느날 오랜만에 커밋을 보니까,<br><code>master</code> 브랜치가 뭔가 잘못되어 있었다.</p><p><img src="01.png" alt="어.. 얘네가 여기 있으면 안되는데..?"></p><blockquote><p>deploy 브랜치에 있는 배포용 커밋이 master 브랜치에 있는 상황</p></blockquote><p>커밋 로그를 추적해보다가 <code>rebase conflict</code>를 해결하다 병합에 문제가 생긴걸 알았다.<br>(merge를 잘못해서 생긴것 일것으로 추측, 실수로 deploy 브랜치에서 작업 후 merge를 시도했다던지..)</p><blockquote><p>rebase는 커밋 이력이 남지 않아서, merge 실수를 일일히 찾아야한다.</p></blockquote><p><img src="02.png" alt="commit log"></p><p>과거의 내가 <code>fix: rebase conflict</code>라고 남겨놓아서 그나마 쉽게 찾을 수 있었다.</p><blockquote><p>오늘의 교훈 : 커밋 메세지를 잘남기자..</p></blockquote><p>아무튼 이걸 해결하려면 중간에 <code>잘못 머지한 이력</code>을 지우고 원래대로 <code>개발 완료한 커밋 내역</code>으로 돌려야한다.</p><p>검색해보니 <code>merge</code>를 되돌리기 위해서는 <code>reset</code>과 <code>revert</code>를 사용한다.<br><code>revert --mainline</code> 옵션으로 시도했지만 <code>revert</code>는 기존 커밋 내역을 보존하고 추가 커밋을 덧붙이는거라 지금 내 상황에 맞지 않았다.</p><p>만약 팀 프로젝트와 같이 <code>commit id</code>가 중요하면 <code>reset</code>과 같이 <strong>commit id가 변경</strong>되는 명령어를 쉽게 쓸 수 없었겠지만 상황상 <code>reset</code>으로 되돌리기를 시도했다.</p><p><img src="03.png" alt="git reset --merge [COMMIT_ID]"></p><p><code>git reset --merge [COMMIT_ID]</code> 적용 후 deploy 관련 커밋이 깔끔하게 삭제 되어 git graph가 깨끗해졌다. (기본 mixed 옵션으로 적용)</p><p><img src="04.png" alt="-111 커밋이 삭제된 master 브랜치"></p><p>이제 문제는 원래 개발했던 내용을 되돌려놓는 것</p><p>문제가 생겼던 프로젝트는 기존에 <code>git flow</code> 방식을 차용해서 커밋했기에 <code>develop branch</code>에<br>동작이 보증된 개발 완료된 코드들이 남아있었다.<br><code>master branch</code>는 <code>mixed option</code>으로 <code>reset</code> 했기에 stage가 깨끗해서 <code>develop</code>을 바로 master로 <code>merge</code>할 수 있다.</p><blockquote><p>만약 soft 옵션으로 reset 했다면 남아있는 파일을 모두 지우고 시도한다.</p></blockquote><blockquote><p>만약 branch 관리를 하지 않아 branch가 꼬여있었다면 이 방법으로 해결하지 못했을지도..</p></blockquote><p><img src="05.png" alt="develop 브랜치에 잘못 merge한 이후의 개발 이력이 남아있다."></p><p><img src="06.png" alt="master 브랜치에 develop을 merge한 뒤 3개 커밋이 추가되어 -108로 변경되었다."></p><p><img src="07.png" alt="최종적으로 정리된, develop merge 후 master 브랜치 log"></p><p><img src="08.png" alt="이전의, 중간 잘못된 merge commit 삭제 전 꼬여있는 master 브랜치 log"></p><p>이후 확인해보면 이력이 깨끗하게 정리된 것을 확인할 수 있다.</p><p>최종적으로 <code>master</code>에 푸시한다.<br><code>reset</code>으로 커밋 내역을 변경했기 때문에 당연히 <code>-f</code> 로 강제 push를 한다<br>강제 <code>push</code>는 브랜치에 protected가 걸려있으면 할 수 없다.<br>따라서 해당 방법은 아무래도 실무에서 여러가지 제약이 있으면 적용하기는 어려울 것 같고<br>실무에서는 잘못 merge시 revert를 통해 우회하는 방식을 사용해야할 것 같다.</p><p>git reset 후 변경 내역에 대해 새로 커밋을 하는 경우는 commit id가 변경되지만<br>기존에 있는 브랜치에서 병합했기 때문에 커밋 아이디는 변경되지 않았다.</p><h3 id="오늘-알게된-것"><a href="#오늘-알게된-것" class="headerlink" title="오늘 알게된 것."></a>오늘 알게된 것.</h3><ul><li>커밋을 잘 남기자.<ul><li>섣불리 rebase하지 말고 merge로 merge 이력을 남기자.</li></ul></li><li>브랜치를 잘 나눠서 사용하자</li></ul><h3 id="참고한-링크"><a href="#참고한-링크" class="headerlink" title="참고한 링크"></a>참고한 링크</h3><ul><li><a href="https://www.tuwlab.com/ece/22223">https://www.tuwlab.com/ece/22223</a></li><li><a href="https://victorydntmd.tistory.com/79">https://victorydntmd.tistory.com/79</a></li><li><a href="https://nesoy.github.io/articles/2018-07/Git-Revert">https://nesoy.github.io/articles/2018-07/Git-Revert</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>어느날 오랜만에 커밋을 보니까,<br><code>master</code> 브랜치가 뭔가 잘못되어 있었다.</p><a id="more"></a><p><img src="01.png" alt="어.. 얘네가 여기 있으면 안되는데..?"></p><blockquote><p>deploy 브랜치에 있는 배포용 커밋이 master 브랜치에 있는 상황</p></blockquote><p>커밋 로그를 추적해보다가 <code>rebase conflict</code>를 해결하다 병합에 문제가 생긴걸 알았다.<br>(merge를 잘못해서 생긴것 일것으로 추측, 실수로 deploy 브랜치에서 작업 후 merge를 시도했다던지..)</p><blockquote><p>rebase는 커밋 이력이 남지 않아서, merge 실수를 일일히 찾아야한다.</p></blockquote><p><img src="02.png" alt="commit log"></p><p>과거의 내가 <code>fix: rebase conflict</code>라고 남겨놓아서 그나마 쉽게 찾을 수 있었다.</p><blockquote><p>오늘의 교훈 : 커밋 메세지를 잘남기자..</p></blockquote><p>아무튼 이걸 해결하려면 중간에 <code>잘못 머지한 이력</code>을 지우고 원래대로 <code>개발 완료한 커밋 내역</code>으로 돌려야한다.</p><p>검색해보니 <code>merge</code>를 되돌리기 위해서는 <code>reset</code>과 <code>revert</code>를 사용한다.<br><code>revert --mainline</code> 옵션으로 시도했지만 <code>revert</code>는 기존 커밋 내역을 보존하고 추가 커밋을 덧붙이는거라 지금 내 상황에 맞지 않았다.</p><p>만약 팀 프로젝트와 같이 <code>commit id</code>가 중요하면 <code>reset</code>과 같이 <strong>commit id가 변경</strong>되는 명령어를 쉽게 쓸 수 없었겠지만 상황상 <code>reset</code>으로 되돌리기를 시도했다.</p><p><img src="03.png" alt="git reset --merge [COMMIT_ID]"></p><p><code>git reset --merge [COMMIT_ID]</code> 적용 후 deploy 관련 커밋이 깔끔하게 삭제 되어 git graph가 깨끗해졌다. (기본 mixed 옵션으로 적용)</p><p><img src="04.png" alt="-111 커밋이 삭제된 master 브랜치"></p><p>이제 문제는 원래 개발했던 내용을 되돌려놓는 것</p><p>문제가 생겼던 프로젝트는 기존에 <code>git flow</code> 방식을 차용해서 커밋했기에 <code>develop branch</code>에<br>동작이 보증된 개발 완료된 코드들이 남아있었다.<br><code>master branch</code>는 <code>mixed option</code>으로 <code>reset</code> 했기에 stage가 깨끗해서 <code>develop</code>을 바로 master로 <code>merge</code>할 수 있다.</p><blockquote><p>만약 soft 옵션으로 reset 했다면 남아있는 파일을 모두 지우고 시도한다.</p></blockquote><blockquote><p>만약 branch 관리를 하지 않아 branch가 꼬여있었다면 이 방법으로 해결하지 못했을지도..</p></blockquote><p><img src="05.png" alt="develop 브랜치에 잘못 merge한 이후의 개발 이력이 남아있다."></p><p><img src="06.png" alt="master 브랜치에 develop을 merge한 뒤 3개 커밋이 추가되어 -108로 변경되었다."></p><p><img src="07.png" alt="최종적으로 정리된, develop merge 후 master 브랜치 log"></p><p><img src="08.png" alt="이전의, 중간 잘못된 merge commit 삭제 전 꼬여있는 master 브랜치 log"></p><p>이후 확인해보면 이력이 깨끗하게 정리된 것을 확인할 수 있다.</p><p>최종적으로 <code>master</code>에 푸시한다.<br><code>reset</code>으로 커밋 내역을 변경했기 때문에 당연히 <code>-f</code> 로 강제 push를 한다<br>강제 <code>push</code>는 브랜치에 protected가 걸려있으면 할 수 없다.<br>따라서 해당 방법은 아무래도 실무에서 여러가지 제약이 있으면 적용하기는 어려울 것 같고<br>실무에서는 잘못 merge시 revert를 통해 우회하는 방식을 사용해야할 것 같다.</p><p>git reset 후 변경 내역에 대해 새로 커밋을 하는 경우는 commit id가 변경되지만<br>기존에 있는 브랜치에서 병합했기 때문에 커밋 아이디는 변경되지 않았다.</p><h3 id="오늘-알게된-것"><a href="#오늘-알게된-것" class="headerlink" title="오늘 알게된 것."></a>오늘 알게된 것.</h3><ul><li>커밋을 잘 남기자.<ul><li>섣불리 rebase하지 말고 merge로 merge 이력을 남기자.</li></ul></li><li>브랜치를 잘 나눠서 사용하자</li></ul><h3 id="참고한-링크"><a href="#참고한-링크" class="headerlink" title="참고한 링크"></a>참고한 링크</h3><ul><li><a href="https://www.tuwlab.com/ece/22223">https://www.tuwlab.com/ece/22223</a></li><li><a href="https://victorydntmd.tistory.com/79">https://victorydntmd.tistory.com/79</a></li><li><a href="https://nesoy.github.io/articles/2018-07/Git-Revert">https://nesoy.github.io/articles/2018-07/Git-Revert</a></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;어느날 오랜만에 커밋을 보니까,&lt;br&gt;&lt;code&gt;master&lt;/code&gt; 브랜치가 뭔가 잘못되어 있었다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;01.png&quot; alt=&quot;어.. 얘네가 여기 있으면 안되는데..?&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;dep
-      
+      &lt;p&gt;어느날 오랜만에 커밋을 보니까,&lt;br&gt;&lt;code&gt;master&lt;/code&gt; 브랜치가 뭔가 잘못되어 있었다.&lt;/p&gt;
     
     </summary>
     
@@ -48,8 +42,8 @@
   
   <entry>
     <title>Talk with Sonia from Microsoft - Inspiring Tech Women</title>
-    <link href="https://j2de.github.io/2020-01-20-women-who-code-talk-with-sonia-from-ms/"/>
-    <id>https://j2de.github.io/2020-01-20-women-who-code-talk-with-sonia-from-ms/</id>
+    <link href="https://j2de.github.io/2020/01/20/women-who-code-talk-with-sonia-from-ms/"/>
+    <id>https://j2de.github.io/2020/01/20/women-who-code-talk-with-sonia-from-ms/</id>
     <published>2020-01-20T13:54:30.000Z</published>
     <updated>2020-03-20T15:44:39.470Z</updated>
     
@@ -76,8 +70,8 @@
   
   <entry>
     <title>암호화 vs 해시</title>
-    <link href="https://j2de.github.io/2020-01-19-encryption-vs-hash/"/>
-    <id>https://j2de.github.io/2020-01-19-encryption-vs-hash/</id>
+    <link href="https://j2de.github.io/2020/01/19/encryption-vs-hash/"/>
+    <id>https://j2de.github.io/2020/01/19/encryption-vs-hash/</id>
     <published>2020-01-19T12:03:04.000Z</published>
     <updated>2020-03-20T15:44:39.465Z</updated>
     
@@ -108,8 +102,8 @@
   
   <entry>
     <title>Java - Stream 기초</title>
-    <link href="https://j2de.github.io/2019-10-20-java-stream/"/>
-    <id>https://j2de.github.io/2019-10-20-java-stream/</id>
+    <link href="https://j2de.github.io/2019/10/20/java-stream/"/>
+    <id>https://j2de.github.io/2019/10/20/java-stream/</id>
     <published>2019-10-19T21:54:07.000Z</published>
     <updated>2020-03-20T15:44:39.465Z</updated>
     
@@ -139,8 +133,8 @@
   
   <entry>
     <title>함수형 사고 - ch7 실용적 사고</title>
-    <link href="https://j2de.github.io/2019-10-20-functional-thinking-ch7/"/>
-    <id>https://j2de.github.io/2019-10-20-functional-thinking-ch7/</id>
+    <link href="https://j2de.github.io/2019/10/20/functional-thinking-ch7/"/>
+    <id>https://j2de.github.io/2019/10/20/functional-thinking-ch7/</id>
     <published>2019-10-19T21:47:20.000Z</published>
     <updated>2020-03-20T15:44:39.465Z</updated>
     
@@ -169,8 +163,8 @@
   
   <entry>
     <title>데이터베이스의 성능 향상(feat. 인덱스)</title>
-    <link href="https://j2de.github.io/2019-10-17-database-index/"/>
-    <id>https://j2de.github.io/2019-10-17-database-index/</id>
+    <link href="https://j2de.github.io/2019/10/17/database-index/"/>
+    <id>https://j2de.github.io/2019/10/17/database-index/</id>
     <published>2019-10-16T17:56:01.000Z</published>
     <updated>2020-03-20T15:44:39.458Z</updated>
     
@@ -199,8 +193,8 @@
   
   <entry>
     <title>함수형 사고 - ch2 전환</title>
-    <link href="https://j2de.github.io/2019-10-16-functional-thinking-ch2/"/>
-    <id>https://j2de.github.io/2019-10-16-functional-thinking-ch2/</id>
+    <link href="https://j2de.github.io/2019/10/16/functional-thinking-ch2/"/>
+    <id>https://j2de.github.io/2019/10/16/functional-thinking-ch2/</id>
     <published>2019-10-16T11:54:04.000Z</published>
     <updated>2020-03-20T15:44:39.464Z</updated>
     
@@ -227,8 +221,8 @@
   
   <entry>
     <title>함수형 사고 - ch1 왜?</title>
-    <link href="https://j2de.github.io/2019-10-16-functional-thinking-ch1/"/>
-    <id>https://j2de.github.io/2019-10-16-functional-thinking-ch1/</id>
+    <link href="https://j2de.github.io/2019/10/16/functional-thinking-ch1/"/>
+    <id>https://j2de.github.io/2019/10/16/functional-thinking-ch1/</id>
     <published>2019-10-16T11:26:14.000Z</published>
     <updated>2020-03-20T15:44:39.464Z</updated>
     
@@ -254,8 +248,8 @@
   
   <entry>
     <title>MySQL 트랜잭션과 동시성 제어</title>
-    <link href="https://j2de.github.io/2019-10-15-mysql-transaction-and-concurrency-control/"/>
-    <id>https://j2de.github.io/2019-10-15-mysql-transaction-and-concurrency-control/</id>
+    <link href="https://j2de.github.io/2019/10/15/mysql-transaction-and-concurrency-control/"/>
+    <id>https://j2de.github.io/2019/10/15/mysql-transaction-and-concurrency-control/</id>
     <published>2019-10-15T14:20:32.000Z</published>
     <updated>2020-03-20T15:44:39.458Z</updated>
     
@@ -281,8 +275,8 @@
   
   <entry>
     <title>🐥병아리 개발자가 IT 정보를 얻는 방법들</title>
-    <link href="https://j2de.github.io/2019-09-26-how-junior-developers-get-it-information/"/>
-    <id>https://j2de.github.io/2019-09-26-how-junior-developers-get-it-information/</id>
+    <link href="https://j2de.github.io/2019/09/26/how-junior-developers-get-it-information/"/>
+    <id>https://j2de.github.io/2019/09/26/how-junior-developers-get-it-information/</id>
     <published>2019-09-26T13:30:38.000Z</published>
     <updated>2020-03-20T15:44:39.465Z</updated>
     
@@ -306,8 +300,8 @@
   
   <entry>
     <title>Gradle로 빌드 시 현재 git branch 사용하기</title>
-    <link href="https://j2de.github.io/2019-08-31-using-gradle-build-current-git-branch/"/>
-    <id>https://j2de.github.io/2019-08-31-using-gradle-build-current-git-branch/</id>
+    <link href="https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/"/>
+    <id>https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/</id>
     <published>2019-08-31T09:38:55.000Z</published>
     <updated>2020-03-20T15:44:39.475Z</updated>
     
@@ -335,8 +329,8 @@
   
   <entry>
     <title>OS - 동기화(Synchronization)와 임계 영역(Critical Section)</title>
-    <link href="https://j2de.github.io/2019-07-17-os-synchronization-and-critical-section/"/>
-    <id>https://j2de.github.io/2019-07-17-os-synchronization-and-critical-section/</id>
+    <link href="https://j2de.github.io/2019/07/17/os-synchronization-and-critical-section/"/>
+    <id>https://j2de.github.io/2019/07/17/os-synchronization-and-critical-section/</id>
     <published>2019-07-17T14:46:37.000Z</published>
     <updated>2020-03-20T15:44:39.464Z</updated>
     
@@ -363,8 +357,8 @@
   
   <entry>
     <title>SpringBoot-ReactJS 프로젝트에서 OAuth 소셜 로그인 구현 중 마주친 CORS 문제</title>
-    <link href="https://j2de.github.io/2019-06-16-springboot-react-cors/"/>
-    <id>https://j2de.github.io/2019-06-16-springboot-react-cors/</id>
+    <link href="https://j2de.github.io/2019/06/16/springboot-react-cors/"/>
+    <id>https://j2de.github.io/2019/06/16/springboot-react-cors/</id>
     <published>2019-06-15T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.717Z</updated>
     
@@ -394,8 +388,8 @@
   
   <entry>
     <title>IntelliJ에서 SpringBoot DevTools 사용하기</title>
-    <link href="https://j2de.github.io/2019-06-11-intellij-devtools/"/>
-    <id>https://j2de.github.io/2019-06-11-intellij-devtools/</id>
+    <link href="https://j2de.github.io/2019/06/11/intellij-devtools/"/>
+    <id>https://j2de.github.io/2019/06/11/intellij-devtools/</id>
     <published>2019-06-10T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.692Z</updated>
     
@@ -424,8 +418,8 @@
   
   <entry>
     <title>Java - Use overloading judiciously</title>
-    <link href="https://j2de.github.io/2019-04-18-java-use-overloading-judiciously/"/>
-    <id>https://j2de.github.io/2019-04-18-java-use-overloading-judiciously/</id>
+    <link href="https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/"/>
+    <id>https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/</id>
     <published>2019-04-17T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:56.007Z</updated>
     
@@ -453,8 +447,8 @@
   
   <entry>
     <title>Java - Design method signatures carefully</title>
-    <link href="https://j2de.github.io/2019-04-17-java-design-method-signatures-carefully/"/>
-    <id>https://j2de.github.io/2019-04-17-java-design-method-signatures-carefully/</id>
+    <link href="https://j2de.github.io/2019/04/17/java-design-method-signatures-carefully/"/>
+    <id>https://j2de.github.io/2019/04/17/java-design-method-signatures-carefully/</id>
     <published>2019-04-16T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:50.260Z</updated>
     
@@ -482,8 +476,8 @@
   
   <entry>
     <title>Java - Make defensive copies when needed</title>
-    <link href="https://j2de.github.io/2019-04-10-java-make-defensive-copies-when-needed/"/>
-    <id>https://j2de.github.io/2019-04-10-java-make-defensive-copies-when-needed/</id>
+    <link href="https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/"/>
+    <id>https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/</id>
     <published>2019-04-09T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:44.230Z</updated>
     
@@ -511,8 +505,8 @@
   
   <entry>
     <title>Java - Prefer side-effect-free functions in streams</title>
-    <link href="https://j2de.github.io/2019-03-23-java-prefer-side-effect-free-functions-in-streams/"/>
-    <id>https://j2de.github.io/2019-03-23-java-prefer-side-effect-free-functions-in-streams/</id>
+    <link href="https://j2de.github.io/2019/03/23/java-prefer-side-effect-free-functions-in-streams/"/>
+    <id>https://j2de.github.io/2019/03/23/java-prefer-side-effect-free-functions-in-streams/</id>
     <published>2019-03-22T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:37.526Z</updated>
     
@@ -540,8 +534,8 @@
   
   <entry>
     <title>Java - Prefer method references to lambdas</title>
-    <link href="https://j2de.github.io/2019-02-21-java-prefer-method-references-to-lambdas/"/>
-    <id>https://j2de.github.io/2019-02-21-java-prefer-method-references-to-lambdas/</id>
+    <link href="https://j2de.github.io/2019/02/21/java-prefer-method-references-to-lambdas/"/>
+    <id>https://j2de.github.io/2019/02/21/java-prefer-method-references-to-lambdas/</id>
     <published>2019-02-20T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:27.326Z</updated>
     
@@ -569,8 +563,8 @@
   
   <entry>
     <title>Java - Use instance fields instead of ordinals</title>
-    <link href="https://j2de.github.io/2019-02-20-java-use-instance-fields-instead-of-ordinals/"/>
-    <id>https://j2de.github.io/2019-02-20-java-use-instance-fields-instead-of-ordinals/</id>
+    <link href="https://j2de.github.io/2019/02/20/java-use-instance-fields-instead-of-ordinals/"/>
+    <id>https://j2de.github.io/2019/02/20/java-use-instance-fields-instead-of-ordinals/</id>
     <published>2019-02-19T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:22.629Z</updated>
     
@@ -598,8 +592,8 @@
   
   <entry>
     <title>Java - Use bounded wildcards to increase API flexibility</title>
-    <link href="https://j2de.github.io/2019-01-31-java-use-bounded-wildcards-to-increase-api-flexibility/"/>
-    <id>https://j2de.github.io/2019-01-31-java-use-bounded-wildcards-to-increase-api-flexibility/</id>
+    <link href="https://j2de.github.io/2019/01/31/java-use-bounded-wildcards-to-increase-api-flexibility/"/>
+    <id>https://j2de.github.io/2019/01/31/java-use-bounded-wildcards-to-increase-api-flexibility/</id>
     <published>2019-01-30T15:00:00.000Z</published>
     <updated>2020-03-19T01:05:10.839Z</updated>
     
@@ -627,8 +621,8 @@
   
   <entry>
     <title>Java - Don&#39;t use raw types</title>
-    <link href="https://j2de.github.io/2019-01-28-java-don&#39;t-use-raw-types/"/>
-    <id>https://j2de.github.io/2019-01-28-java-don&#39;t-use-raw-types/</id>
+    <link href="https://j2de.github.io/2019/01/28/java-don&#39;t-use-raw-types/"/>
+    <id>https://j2de.github.io/2019/01/28/java-don&#39;t-use-raw-types/</id>
     <published>2019-01-27T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:56.335Z</updated>
     
@@ -656,8 +650,8 @@
   
   <entry>
     <title>Java - Limit source files to a single top-level class</title>
-    <link href="https://j2de.github.io/2019-01-27-java-limit-source-files-to-a-single-top-level-class/"/>
-    <id>https://j2de.github.io/2019-01-27-java-limit-source-files-to-a-single-top-level-class/</id>
+    <link href="https://j2de.github.io/2019/01/27/java-limit-source-files-to-a-single-top-level-class/"/>
+    <id>https://j2de.github.io/2019/01/27/java-limit-source-files-to-a-single-top-level-class/</id>
     <published>2019-01-26T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:48.623Z</updated>
     
@@ -685,8 +679,8 @@
   
   <entry>
     <title>Java - Prefer class hierarchies to tagged classes</title>
-    <link href="https://j2de.github.io/2019-01-24-java-prefer-class-hierarchies-to-tagged-classes/"/>
-    <id>https://j2de.github.io/2019-01-24-java-prefer-class-hierarchies-to-tagged-classes/</id>
+    <link href="https://j2de.github.io/2019/01/24/java-prefer-class-hierarchies-to-tagged-classes/"/>
+    <id>https://j2de.github.io/2019/01/24/java-prefer-class-hierarchies-to-tagged-classes/</id>
     <published>2019-01-23T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:40.943Z</updated>
     
@@ -714,8 +708,8 @@
   
   <entry>
     <title>Java - Minimize mutability</title>
-    <link href="https://j2de.github.io/2019-01-21-java-minimize-mutability/"/>
-    <id>https://j2de.github.io/2019-01-21-java-minimize-mutability/</id>
+    <link href="https://j2de.github.io/2019/01/21/java-minimize-mutability/"/>
+    <id>https://j2de.github.io/2019/01/21/java-minimize-mutability/</id>
     <published>2019-01-20T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:33.128Z</updated>
     
@@ -743,8 +737,8 @@
   
   <entry>
     <title>Java - Use interfaces only to define types</title>
-    <link href="https://j2de.github.io/2019-01-18-java-use-interfaces-only-to-define-types/"/>
-    <id>https://j2de.github.io/2019-01-18-java-use-interfaces-only-to-define-types/</id>
+    <link href="https://j2de.github.io/2019/01/18/java-use-interfaces-only-to-define-types/"/>
+    <id>https://j2de.github.io/2019/01/18/java-use-interfaces-only-to-define-types/</id>
     <published>2019-01-17T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:26.662Z</updated>
     
@@ -772,8 +766,8 @@
   
   <entry>
     <title>Java - Design interfaces for posterity</title>
-    <link href="https://j2de.github.io/2019-01-17-java-design-interfaces-for-posterity/"/>
-    <id>https://j2de.github.io/2019-01-17-java-design-interfaces-for-posterity/</id>
+    <link href="https://j2de.github.io/2019/01/17/java-design-interfaces-for-posterity/"/>
+    <id>https://j2de.github.io/2019/01/17/java-design-interfaces-for-posterity/</id>
     <published>2019-01-16T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:19.628Z</updated>
     
@@ -801,8 +795,8 @@
   
   <entry>
     <title>Java - Favor composition over inheritance</title>
-    <link href="https://j2de.github.io/2019-01-13-java-favor-composition-over-inheritance/"/>
-    <id>https://j2de.github.io/2019-01-13-java-favor-composition-over-inheritance/</id>
+    <link href="https://j2de.github.io/2019/01/13/java-favor-composition-over-inheritance/"/>
+    <id>https://j2de.github.io/2019/01/13/java-favor-composition-over-inheritance/</id>
     <published>2019-01-12T15:00:00.000Z</published>
     <updated>2020-03-19T01:04:12.668Z</updated>
     
@@ -830,8 +824,8 @@
   
   <entry>
     <title>Java - Prefer interfaces to abstract classes</title>
-    <link href="https://j2de.github.io/2019-01-12-java-prefer-interfaces-to-abstract-classes/"/>
-    <id>https://j2de.github.io/2019-01-12-java-prefer-interfaces-to-abstract-classes/</id>
+    <link href="https://j2de.github.io/2019/01/12/java-prefer-interfaces-to-abstract-classes/"/>
+    <id>https://j2de.github.io/2019/01/12/java-prefer-interfaces-to-abstract-classes/</id>
     <published>2019-01-11T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.674Z</updated>
     
@@ -859,8 +853,8 @@
   
   <entry>
     <title>Java - Design and document for inheritance or else prohibit it</title>
-    <link href="https://j2de.github.io/2019-01-11-java-design-and-document-for-inheritance/"/>
-    <id>https://j2de.github.io/2019-01-11-java-design-and-document-for-inheritance/</id>
+    <link href="https://j2de.github.io/2019/01/11/java-design-and-document-for-inheritance/"/>
+    <id>https://j2de.github.io/2019/01/11/java-design-and-document-for-inheritance/</id>
     <published>2019-01-10T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.672Z</updated>
     
@@ -888,8 +882,8 @@
   
   <entry>
     <title>Test - Stub</title>
-    <link href="https://j2de.github.io/2018-12-05-test-stub/"/>
-    <id>https://j2de.github.io/2018-12-05-test-stub/</id>
+    <link href="https://j2de.github.io/2018/12/05/test-stub/"/>
+    <id>https://j2de.github.io/2018/12/05/test-stub/</id>
     <published>2018-12-04T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.694Z</updated>
     
@@ -917,8 +911,8 @@
   
   <entry>
     <title>Spring Data JPA - Query Method</title>
-    <link href="https://j2de.github.io/2018-11-25-spring-data-jpa-query/"/>
-    <id>https://j2de.github.io/2018-11-25-spring-data-jpa-query/</id>
+    <link href="https://j2de.github.io/2018/11/25/spring-data-jpa-query/"/>
+    <id>https://j2de.github.io/2018/11/25/spring-data-jpa-query/</id>
     <published>2018-11-24T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.691Z</updated>
     
@@ -946,8 +940,8 @@
   
   <entry>
     <title>JPA - Cascade</title>
-    <link href="https://j2de.github.io/2018-11-16-jpa-cascade/"/>
-    <id>https://j2de.github.io/2018-11-16-jpa-cascade/</id>
+    <link href="https://j2de.github.io/2018/11/16/jpa-cascade/"/>
+    <id>https://j2de.github.io/2018/11/16/jpa-cascade/</id>
     <published>2018-11-15T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.691Z</updated>
     
@@ -974,8 +968,8 @@
   
   <entry>
     <title>JPA - Proxy / Eager &amp; Lazy Loading</title>
-    <link href="https://j2de.github.io/2018-11-15-jpa-proxy/"/>
-    <id>https://j2de.github.io/2018-11-15-jpa-proxy/</id>
+    <link href="https://j2de.github.io/2018/11/15/jpa-proxy/"/>
+    <id>https://j2de.github.io/2018/11/15/jpa-proxy/</id>
     <published>2018-11-14T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.690Z</updated>
     
@@ -1003,8 +997,8 @@
   
   <entry>
     <title>JPA 테스트의 특징</title>
-    <link href="https://j2de.github.io/2018-11-10-jpa-junit-test/"/>
-    <id>https://j2de.github.io/2018-11-10-jpa-junit-test/</id>
+    <link href="https://j2de.github.io/2018/11/10/jpa-junit-test/"/>
+    <id>https://j2de.github.io/2018/11/10/jpa-junit-test/</id>
     <published>2018-11-09T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.693Z</updated>
     
@@ -1034,8 +1028,8 @@
   
   <entry>
     <title>Git - .gitignore 설정 후 적용되지 않는 경우</title>
-    <link href="https://j2de.github.io/2018-11-09-git-gitignore-setting/"/>
-    <id>https://j2de.github.io/2018-11-09-git-gitignore-setting/</id>
+    <link href="https://j2de.github.io/2018/11/09/git-gitignore-setting/"/>
+    <id>https://j2de.github.io/2018/11/09/git-gitignore-setting/</id>
     <published>2018-11-08T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.717Z</updated>
     
@@ -1062,8 +1056,8 @@
   
   <entry>
     <title>Java - Comparable / Comparator</title>
-    <link href="https://j2de.github.io/2018-11-04-java-comparable-comparator/"/>
-    <id>https://j2de.github.io/2018-11-04-java-comparable-comparator/</id>
+    <link href="https://j2de.github.io/2018/11/04/java-comparable-comparator/"/>
+    <id>https://j2de.github.io/2018/11/04/java-comparable-comparator/</id>
     <published>2018-11-03T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.671Z</updated>
     
@@ -1091,8 +1085,8 @@
   
   <entry>
     <title>Java - equals method 재정의</title>
-    <link href="https://j2de.github.io/2018-10-26-java-equals-method-override/"/>
-    <id>https://j2de.github.io/2018-10-26-java-equals-method-override/</id>
+    <link href="https://j2de.github.io/2018/10/26/java-equals-method-override/"/>
+    <id>https://j2de.github.io/2018/10/26/java-equals-method-override/</id>
     <published>2018-10-25T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.671Z</updated>
     
@@ -1120,8 +1114,8 @@
   
   <entry>
     <title>Java - 종료자(finalizer)</title>
-    <link href="https://j2de.github.io/2018-10-25-java-finalizer/"/>
-    <id>https://j2de.github.io/2018-10-25-java-finalizer/</id>
+    <link href="https://j2de.github.io/2018/10/25/java-finalizer/"/>
+    <id>https://j2de.github.io/2018/10/25/java-finalizer/</id>
     <published>2018-10-24T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.670Z</updated>
     
@@ -1149,8 +1143,8 @@
   
   <entry>
     <title>Fish Shell - Alias 설정</title>
-    <link href="https://j2de.github.io/2018-10-24-fish-shell-alias/"/>
-    <id>https://j2de.github.io/2018-10-24-fish-shell-alias/</id>
+    <link href="https://j2de.github.io/2018/10/24/fish-shell-alias/"/>
+    <id>https://j2de.github.io/2018/10/24/fish-shell-alias/</id>
     <published>2018-10-23T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.696Z</updated>
     
@@ -1179,8 +1173,8 @@
   
   <entry>
     <title>토크ON세미나 - OAuth2.0</title>
-    <link href="https://j2de.github.io/2018-10-24-talkonseminar-oauth2/"/>
-    <id>https://j2de.github.io/2018-10-24-talkonseminar-oauth2/</id>
+    <link href="https://j2de.github.io/2018/10/24/talkonseminar-oauth2/"/>
+    <id>https://j2de.github.io/2018/10/24/talkonseminar-oauth2/</id>
     <published>2018-10-23T15:00:00.000Z</published>
     <updated>2020-03-19T00:43:22.770Z</updated>
     
@@ -1211,8 +1205,8 @@
   
   <entry>
     <title>Java - Private 생성자</title>
-    <link href="https://j2de.github.io/2018-10-15-java-private-constructor/"/>
-    <id>https://j2de.github.io/2018-10-15-java-private-constructor/</id>
+    <link href="https://j2de.github.io/2018/10/15/java-private-constructor/"/>
+    <id>https://j2de.github.io/2018/10/15/java-private-constructor/</id>
     <published>2018-10-14T15:00:00.000Z</published>
     <updated>2020-03-19T01:14:24.132Z</updated>
     
@@ -1240,8 +1234,8 @@
   
   <entry>
     <title>Java - 싱글턴 패턴(Singleton Pattern)</title>
-    <link href="https://j2de.github.io/2018-10-14-java-singleton-pattern/"/>
-    <id>https://j2de.github.io/2018-10-14-java-singleton-pattern/</id>
+    <link href="https://j2de.github.io/2018/10/14/java-singleton-pattern/"/>
+    <id>https://j2de.github.io/2018/10/14/java-singleton-pattern/</id>
     <published>2018-10-13T15:00:00.000Z</published>
     <updated>2020-03-19T01:14:07.525Z</updated>
     
@@ -1271,8 +1265,8 @@
   
   <entry>
     <title>STS - The selection cannot be run on any server.</title>
-    <link href="https://j2de.github.io/2018-09-29-sts-cannot-be-run-on-server/"/>
-    <id>https://j2de.github.io/2018-09-29-sts-cannot-be-run-on-server/</id>
+    <link href="https://j2de.github.io/2018/09/29/sts-cannot-be-run-on-server/"/>
+    <id>https://j2de.github.io/2018/09/29/sts-cannot-be-run-on-server/</id>
     <published>2018-09-28T15:00:00.000Z</published>
     <updated>2020-03-19T01:36:46.386Z</updated>
     
@@ -1301,8 +1295,8 @@
   
   <entry>
     <title>Refactoring과 Test/TDD</title>
-    <link href="https://j2de.github.io/2018-09-24-refactoring-and-tdd/"/>
-    <id>https://j2de.github.io/2018-09-24-refactoring-and-tdd/</id>
+    <link href="https://j2de.github.io/2018/09/24/refactoring-and-tdd/"/>
+    <id>https://j2de.github.io/2018/09/24/refactoring-and-tdd/</id>
     <published>2018-09-23T15:00:00.000Z</published>
     <updated>2020-03-19T01:34:09.436Z</updated>
     
@@ -1332,8 +1326,8 @@
   
   <entry>
     <title>WEB - HTTP</title>
-    <link href="https://j2de.github.io/2018-09-21-web-http/"/>
-    <id>https://j2de.github.io/2018-09-21-web-http/</id>
+    <link href="https://j2de.github.io/2018/09/21/web-http/"/>
+    <id>https://j2de.github.io/2018/09/21/web-http/</id>
     <published>2018-09-20T15:00:00.000Z</published>
     <updated>2020-03-19T01:37:32.510Z</updated>
     
@@ -1362,8 +1356,8 @@
   
   <entry>
     <title>WEB - OAuth2.0</title>
-    <link href="https://j2de.github.io/2018-09-20-web-oauth2/"/>
-    <id>https://j2de.github.io/2018-09-20-web-oauth2/</id>
+    <link href="https://j2de.github.io/2018/09/20/web-oauth2/"/>
+    <id>https://j2de.github.io/2018/09/20/web-oauth2/</id>
     <published>2018-09-19T15:00:00.000Z</published>
     <updated>2020-03-19T01:37:36.214Z</updated>
     
@@ -1394,8 +1388,8 @@
   
   <entry>
     <title>STS - CLI 환경에서 git pull/clone 후 STS에서 프로젝트 import 하기</title>
-    <link href="https://j2de.github.io/2018-09-11-import-project-from-sts-after-git-pull-clone-in-cli/"/>
-    <id>https://j2de.github.io/2018-09-11-import-project-from-sts-after-git-pull-clone-in-cli/</id>
+    <link href="https://j2de.github.io/2018/09/11/import-project-from-sts-after-git-pull-clone-in-cli/"/>
+    <id>https://j2de.github.io/2018/09/11/import-project-from-sts-after-git-pull-clone-in-cli/</id>
     <published>2018-09-10T15:00:00.000Z</published>
     <updated>2020-03-19T01:33:57.374Z</updated>
     
@@ -1430,8 +1424,8 @@
   
   <entry>
     <title>Java equals method, instanceof, @Override</title>
-    <link href="https://j2de.github.io/2018-08-28-java-equals-method-instanceof-override/"/>
-    <id>https://j2de.github.io/2018-08-28-java-equals-method-instanceof-override/</id>
+    <link href="https://j2de.github.io/2018/08/28/java-equals-method-instanceof-override/"/>
+    <id>https://j2de.github.io/2018/08/28/java-equals-method-instanceof-override/</id>
     <published>2018-08-27T15:00:00.000Z</published>
     <updated>2020-03-19T01:06:31.211Z</updated>
     
@@ -1462,8 +1456,8 @@
   
   <entry>
     <title>Java 기본 자료형과 참조형 / String Class</title>
-    <link href="https://j2de.github.io/2018-08-27-java-primary-refference-type/"/>
-    <id>https://j2de.github.io/2018-08-27-java-primary-refference-type/</id>
+    <link href="https://j2de.github.io/2018/08/27/java-primary-refference-type/"/>
+    <id>https://j2de.github.io/2018/08/27/java-primary-refference-type/</id>
     <published>2018-08-26T15:00:00.000Z</published>
     <updated>2020-03-19T01:06:21.176Z</updated>
     
@@ -1493,8 +1487,8 @@
   
   <entry>
     <title>코딩야학 Javascript 12일차</title>
-    <link href="https://j2de.github.io/2018-08-25-codingyahac-javascript-12/"/>
-    <id>https://j2de.github.io/2018-08-25-codingyahac-javascript-12/</id>
+    <link href="https://j2de.github.io/2018/08/25/codingyahac-javascript-12/"/>
+    <id>https://j2de.github.io/2018/08/25/codingyahac-javascript-12/</id>
     <published>2018-08-24T15:00:00.000Z</published>
     <updated>2020-03-19T01:09:18.125Z</updated>
     
@@ -1522,8 +1516,8 @@
   
   <entry>
     <title>코딩야학 Javascript 11일차</title>
-    <link href="https://j2de.github.io/2018-08-24-codingyahac-javascript-11/"/>
-    <id>https://j2de.github.io/2018-08-24-codingyahac-javascript-11/</id>
+    <link href="https://j2de.github.io/2018/08/24/codingyahac-javascript-11/"/>
+    <id>https://j2de.github.io/2018/08/24/codingyahac-javascript-11/</id>
     <published>2018-08-23T15:00:00.000Z</published>
     <updated>2020-03-19T01:09:12.677Z</updated>
     
@@ -1551,8 +1545,8 @@
   
   <entry>
     <title>코딩야학 Javascript 10일차</title>
-    <link href="https://j2de.github.io/2018-08-23-codingyahac-javascript-10/"/>
-    <id>https://j2de.github.io/2018-08-23-codingyahac-javascript-10/</id>
+    <link href="https://j2de.github.io/2018/08/23/codingyahac-javascript-10/"/>
+    <id>https://j2de.github.io/2018/08/23/codingyahac-javascript-10/</id>
     <published>2018-08-22T15:00:00.000Z</published>
     <updated>2020-03-19T01:09:07.336Z</updated>
     
@@ -1580,8 +1574,8 @@
   
   <entry>
     <title>코딩야학 Javascript 9일차</title>
-    <link href="https://j2de.github.io/2018-08-22-codingyahac-javascript-9/"/>
-    <id>https://j2de.github.io/2018-08-22-codingyahac-javascript-9/</id>
+    <link href="https://j2de.github.io/2018/08/22/codingyahac-javascript-9/"/>
+    <id>https://j2de.github.io/2018/08/22/codingyahac-javascript-9/</id>
     <published>2018-08-21T15:00:00.000Z</published>
     <updated>2020-03-19T01:09:01.879Z</updated>
     
@@ -1609,8 +1603,8 @@
   
   <entry>
     <title>코딩야학 Javascript 5,6일차</title>
-    <link href="https://j2de.github.io/2018-08-17-codingyahac-javascript-5-6/"/>
-    <id>https://j2de.github.io/2018-08-17-codingyahac-javascript-5-6/</id>
+    <link href="https://j2de.github.io/2018/08/17/codingyahac-javascript-5-6/"/>
+    <id>https://j2de.github.io/2018/08/17/codingyahac-javascript-5-6/</id>
     <published>2018-08-16T15:00:00.000Z</published>
     <updated>2020-03-19T01:08:57.915Z</updated>
     
@@ -1638,8 +1632,8 @@
   
   <entry>
     <title>코딩야학 Javascript 4일차</title>
-    <link href="https://j2de.github.io/2018-08-16-codingyahac-javascript-4/"/>
-    <id>https://j2de.github.io/2018-08-16-codingyahac-javascript-4/</id>
+    <link href="https://j2de.github.io/2018/08/16/codingyahac-javascript-4/"/>
+    <id>https://j2de.github.io/2018/08/16/codingyahac-javascript-4/</id>
     <published>2018-08-15T15:00:00.000Z</published>
     <updated>2020-03-19T01:08:52.846Z</updated>
     
@@ -1667,8 +1661,8 @@
   
   <entry>
     <title>코딩야학 Javascript 3일차</title>
-    <link href="https://j2de.github.io/2018-08-15-codingyahac-javascript-3/"/>
-    <id>https://j2de.github.io/2018-08-15-codingyahac-javascript-3/</id>
+    <link href="https://j2de.github.io/2018/08/15/codingyahac-javascript-3/"/>
+    <id>https://j2de.github.io/2018/08/15/codingyahac-javascript-3/</id>
     <published>2018-08-14T15:00:00.000Z</published>
     <updated>2020-03-19T01:08:48.721Z</updated>
     
@@ -1696,8 +1690,8 @@
   
   <entry>
     <title>코딩야학 Javascript 2일차</title>
-    <link href="https://j2de.github.io/2018-08-14-codingyahac-javascript-2/"/>
-    <id>https://j2de.github.io/2018-08-14-codingyahac-javascript-2/</id>
+    <link href="https://j2de.github.io/2018/08/14/codingyahac-javascript-2/"/>
+    <id>https://j2de.github.io/2018/08/14/codingyahac-javascript-2/</id>
     <published>2018-08-13T15:00:00.000Z</published>
     <updated>2020-03-19T01:08:45.135Z</updated>
     
@@ -1725,8 +1719,8 @@
   
   <entry>
     <title>코딩야학 Javascript 1일차</title>
-    <link href="https://j2de.github.io/2018-08-13-codingyahac-javascript-1/"/>
-    <id>https://j2de.github.io/2018-08-13-codingyahac-javascript-1/</id>
+    <link href="https://j2de.github.io/2018/08/13/codingyahac-javascript-1/"/>
+    <id>https://j2de.github.io/2018/08/13/codingyahac-javascript-1/</id>
     <published>2018-08-12T15:00:00.000Z</published>
     <updated>2020-03-19T01:08:32.013Z</updated>
     
@@ -1754,8 +1748,8 @@
   
   <entry>
     <title>Docker 스터디 3차</title>
-    <link href="https://j2de.github.io/2018-07-17-docker-study-3/"/>
-    <id>https://j2de.github.io/2018-07-17-docker-study-3/</id>
+    <link href="https://j2de.github.io/2018/07/17/docker-study-3/"/>
+    <id>https://j2de.github.io/2018/07/17/docker-study-3/</id>
     <published>2018-07-16T15:00:00.000Z</published>
     <updated>2020-03-19T01:34:36.481Z</updated>
     
@@ -1784,8 +1778,8 @@
   
   <entry>
     <title>Docker 스터디 2차</title>
-    <link href="https://j2de.github.io/2018-07-10-docker-study-2/"/>
-    <id>https://j2de.github.io/2018-07-10-docker-study-2/</id>
+    <link href="https://j2de.github.io/2018/07/10/docker-study-2/"/>
+    <id>https://j2de.github.io/2018/07/10/docker-study-2/</id>
     <published>2018-07-09T15:00:00.000Z</published>
     <updated>2020-03-19T01:34:31.858Z</updated>
     
@@ -1814,8 +1808,8 @@
   
   <entry>
     <title>Docker 스터디 개요, 1차</title>
-    <link href="https://j2de.github.io/2018-07-09-docker-study-1/"/>
-    <id>https://j2de.github.io/2018-07-09-docker-study-1/</id>
+    <link href="https://j2de.github.io/2018/07/09/docker-study-1/"/>
+    <id>https://j2de.github.io/2018/07/09/docker-study-1/</id>
     <published>2018-07-08T15:00:00.000Z</published>
     <updated>2020-03-19T01:34:25.652Z</updated>
     
@@ -1844,8 +1838,8 @@
   
   <entry>
     <title>Netty EmbeddedChannel 이용한 단위 테스트</title>
-    <link href="https://j2de.github.io/2018-06-01-netty-embeddedchannel-unittest/"/>
-    <id>https://j2de.github.io/2018-06-01-netty-embeddedchannel-unittest/</id>
+    <link href="https://j2de.github.io/2018/06/01/netty-embeddedchannel-unittest/"/>
+    <id>https://j2de.github.io/2018/06/01/netty-embeddedchannel-unittest/</id>
     <published>2018-05-31T15:00:00.000Z</published>
     <updated>2020-03-19T01:13:13.342Z</updated>
     
@@ -1874,8 +1868,8 @@
   
   <entry>
     <title>Netty Codec Framework</title>
-    <link href="https://j2de.github.io/2018-06-01-netty-codec-framework/"/>
-    <id>https://j2de.github.io/2018-06-01-netty-codec-framework/</id>
+    <link href="https://j2de.github.io/2018/06/01/netty-codec-framework/"/>
+    <id>https://j2de.github.io/2018/06/01/netty-codec-framework/</id>
     <published>2018-05-31T15:00:00.000Z</published>
     <updated>2020-03-19T01:13:24.547Z</updated>
     
@@ -1904,8 +1898,8 @@
   
   <entry>
     <title>Netty 채널 이벤트와 이벤트핸들러, 그리고 파이프라인</title>
-    <link href="https://j2de.github.io/2018-05-25-netty-channel-event-and-eventhandler-and-pipeline/"/>
-    <id>https://j2de.github.io/2018-05-25-netty-channel-event-and-eventhandler-and-pipeline/</id>
+    <link href="https://j2de.github.io/2018/05/25/netty-channel-event-and-eventhandler-and-pipeline/"/>
+    <id>https://j2de.github.io/2018/05/25/netty-channel-event-and-eventhandler-and-pipeline/</id>
     <published>2018-05-24T15:00:00.000Z</published>
     <updated>2020-03-19T01:12:26.932Z</updated>
     
@@ -1933,8 +1927,8 @@
   
   <entry>
     <title>Netty의 데이터 컨테이너(ByteBuf)</title>
-    <link href="https://j2de.github.io/2018-05-23-netty-datacontainer-bytebuf/"/>
-    <id>https://j2de.github.io/2018-05-23-netty-datacontainer-bytebuf/</id>
+    <link href="https://j2de.github.io/2018/05/23/netty-datacontainer-bytebuf/"/>
+    <id>https://j2de.github.io/2018/05/23/netty-datacontainer-bytebuf/</id>
     <published>2018-05-22T15:00:00.000Z</published>
     <updated>2020-03-19T01:11:35.332Z</updated>
     
@@ -1965,8 +1959,8 @@
   
   <entry>
     <title>Netty Network Transport API</title>
-    <link href="https://j2de.github.io/2018-05-22-netty-network-transport-api/"/>
-    <id>https://j2de.github.io/2018-05-22-netty-network-transport-api/</id>
+    <link href="https://j2de.github.io/2018/05/22/netty-network-transport-api/"/>
+    <id>https://j2de.github.io/2018/05/22/netty-network-transport-api/</id>
     <published>2018-05-21T15:00:00.000Z</published>
     <updated>2020-03-19T01:11:19.939Z</updated>
     
@@ -1995,8 +1989,8 @@
   
   <entry>
     <title>Netty 컴포넌트(Component)</title>
-    <link href="https://j2de.github.io/2018-05-21-netty-component/"/>
-    <id>https://j2de.github.io/2018-05-21-netty-component/</id>
+    <link href="https://j2de.github.io/2018/05/21/netty-component/"/>
+    <id>https://j2de.github.io/2018/05/21/netty-component/</id>
     <published>2018-05-20T15:00:00.000Z</published>
     <updated>2020-03-19T01:11:04.400Z</updated>
     
@@ -2024,8 +2018,8 @@
   
   <entry>
     <title>Spring MVC - Neither BindingResult nor plain target object for bean name.. Error</title>
-    <link href="https://j2de.github.io/2018-05-20-springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/"/>
-    <id>https://j2de.github.io/2018-05-20-springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/</id>
+    <link href="https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/"/>
+    <id>https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/</id>
     <published>2018-05-19T15:00:00.000Z</published>
     <updated>2020-03-19T01:36:40.953Z</updated>
     
@@ -2054,8 +2048,8 @@
   
   <entry>
     <title>Spring MVC - Server 강제 종료 후 실행 오류(for Mac)</title>
-    <link href="https://j2de.github.io/2018-05-19-springmvc-server-shutdown-and-execution-error-for-mac/"/>
-    <id>https://j2de.github.io/2018-05-19-springmvc-server-shutdown-and-execution-error-for-mac/</id>
+    <link href="https://j2de.github.io/2018/05/19/springmvc-server-shutdown-and-execution-error-for-mac/"/>
+    <id>https://j2de.github.io/2018/05/19/springmvc-server-shutdown-and-execution-error-for-mac/</id>
     <published>2018-05-18T15:00:00.000Z</published>
     <updated>2020-03-19T01:36:02.119Z</updated>
     
@@ -2082,8 +2076,8 @@
   
   <entry>
     <title>MySQL 터미널에서 SQL파일 import/export 하기(for Mac)</title>
-    <link href="https://j2de.github.io/2018-05-12-mysql-file-import-for-mac/"/>
-    <id>https://j2de.github.io/2018-05-12-mysql-file-import-for-mac/</id>
+    <link href="https://j2de.github.io/2018/05/12/mysql-file-import-for-mac/"/>
+    <id>https://j2de.github.io/2018/05/12/mysql-file-import-for-mac/</id>
     <published>2018-05-11T15:00:00.000Z</published>
     <updated>2020-03-20T15:44:39.458Z</updated>
     
@@ -2112,8 +2106,8 @@
   
   <entry>
     <title>Maven으로 Netty 프로젝트 시작하기</title>
-    <link href="https://j2de.github.io/2018-05-11-start-a-netty-project-with-maven/"/>
-    <id>https://j2de.github.io/2018-05-11-start-a-netty-project-with-maven/</id>
+    <link href="https://j2de.github.io/2018/05/11/start-a-netty-project-with-maven/"/>
+    <id>https://j2de.github.io/2018/05/11/start-a-netty-project-with-maven/</id>
     <published>2018-05-10T15:00:00.000Z</published>
     <updated>2020-03-19T01:12:49.194Z</updated>
     
@@ -2143,8 +2137,8 @@
   
   <entry>
     <title>Netty 특징과 아키텍처</title>
-    <link href="https://j2de.github.io/2018-05-09-netty-features-architecture/"/>
-    <id>https://j2de.github.io/2018-05-09-netty-features-architecture/</id>
+    <link href="https://j2de.github.io/2018/05/09/netty-features-architecture/"/>
+    <id>https://j2de.github.io/2018/05/09/netty-features-architecture/</id>
     <published>2018-05-08T15:00:00.000Z</published>
     <updated>2020-03-19T01:10:10.144Z</updated>
     
