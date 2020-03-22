@@ -80,7 +80,7 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -99,9 +99,6 @@
                 
                 <a class="navbar-item"
                 href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
                 
                 <a class="navbar-item"
                 href="/tags">Tags</a>
@@ -127,7 +124,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
@@ -138,6 +135,86 @@
     </div>
 </div>
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-10-13T15:00:00.000Z">2018-10-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 773 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/10/14/java-singleton-pattern/">Java - 싱글턴 패턴(Singleton Pattern)</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Effective-Java-규칙-3"><a href="#Effective-Java-규칙-3" class="headerlink" title="Effective Java 규칙 3"></a>Effective Java 규칙 3</h2><blockquote>
+<p>private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</p>
+</blockquote>
+<h2 id="Singleton-이란"><a href="#Singleton-이란" class="headerlink" title="Singleton 이란 ?"></a>Singleton 이란 ?</h2><blockquote>
+<p>객체를 하나만 만들 수 있는 클래스<br>보통 유일할 수 밖에 없는 시스템 컴포넌트를 나타낸다.</p>
+</blockquote>
+<h3 id="Singleton을-구현하는-방법"><a href="#Singleton을-구현하는-방법" class="headerlink" title="Singleton을 구현하는 방법"></a>Singleton을 구현하는 방법</h3><ol>
+<li>private 생성자의 이용</li>
+<li>정적 팩터리 메소드 이용 // <em>JDK 1.5 이전의 구현 방식</em></li>
+<li>enum 자료형의 사용 // <em>Effective Java의 추천 방식</em></li>
+<li>Initialization on demand holder idiom // <em>현재 많이 쓰이는 방식</em></li>
+</ol>
+<h3 id="1-private-생성자-이용"><a href="#1-private-생성자-이용" class="headerlink" title="1. private 생성자 이용"></a>1. private 생성자 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2) <code>private 생성자</code>는 (1)의 Elvis.INSTANCE를 초기화할 때 한번 호출 된다. 생성자가 private이므로 한번 생성된 후에는 다시 객체가 생성되지 않는다.</p>
+<h3 id="2-static-factory-method-이용"><a href="#2-static-factory-method-이용" class="headerlink" title="2. static factory method 이용"></a>2. static factory method 이용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elvis</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Elvis INSTANCE = <span class="keyword">new</span> Elvis(); <span class="comment">// (1)</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Elvis</span><span class="params">()</span> </span>&#123;...&#125; <span class="comment">// (2)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Elvis <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> INSTACE; &#125; <span class="comment">// (3)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(1)에서 객체를 생성 한 뒤 (3)의 <code>getInstance</code>에서 항상 같은 참조를 반환한다. (2) 생성자가 <code>private</code>이므로 외부에서 <code>new</code> 연산자로 객체를 생성하지 못한다.</p>
+<p>1과 2 방식 모두 <code>Eagar Initialization</code>으로 객체가 사용되기 전에 미리 생성한다. 항상 싱글톤 객체가 필요하거나 객체 생성비용이 크지 않을 때 사용한다. 이 방식들은 <code>thread safe</code>하지 않다. 또한 Java의 <code>reflection</code> 기능을 통해 <code>private</code> 생성자를 호출하여 싱글톤 패턴을 깨드릴 수 있다.</p>
+<h3 id="Lazy-Initialization"><a href="#Lazy-Initialization" class="headerlink" title="Lazy Initialization"></a>Lazy Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> fianl LazyInitialization INSTANCE; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazyInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyInitialization <span class="title">getInstance</span> <span class="params">()</span></span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (INSTACE == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> LazyInitialization();</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>LazyInitialization 방식은 객체가 사용되는 시점에 (3) 객체를 만들어서 반환한다. 이 방식 또한 <code>thread safe</code>하지 않으며 <code>reflection</code> 으로 패턴을 깨뜨릴 수 있다.</p>
+<h3 id="Thread-Safe-Initialization"><a href="#Thread-Safe-Initialization" class="headerlink" title="Thread Safe Initialization"></a>Thread Safe Initialization</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadSafeInitialization</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadSafeInitialization instance; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">ThreadSafeInitialization</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (2)</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> ThreadSafeInitialization <span class="title">getInstance</span> <span class="params">()</span> </span>&#123; <span class="comment">// (3)</span></span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> ThreadSafeInitialization();</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>thread safe</code>하기 위해 (3)<code>synchronized</code>를 사용했다. <code>multi thread</code> 문제는 해소됐지만, 수많은 스레드들이 <code>getInstance</code>를 호출한다면 프로그램의 성능 저하가 일어날 수 있다.</p>
+<h3 id="3-enum-자료형의-사용"><a href="#3-enum-자료형의-사용" class="headerlink" title="3. enum 자료형의 사용"></a>3. enum 자료형의 사용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumInitialization &#123;</span><br><span class="line">  INSTACE;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EnumInitialization <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INSTACE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>enum 자료형을 사용하는 경우 직렬화(Serializable) 클래스를 만들어도 문제가 없으며, reflection 공격에도 안전하다. 또한 instance가 생성될 때 multi thread에도 안전하다.</p>
+<h3 id="4-Initialization-on-demand-holder-idiom"><a href="#4-Initialization-on-demand-holder-idiom" class="headerlink" title="4. Initialization on demand holder idiom"></a>4. Initialization on demand holder idiom</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitializationOnDemandHolderIdom</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">InitializationOnDemandHolderIdom</span> <span class="params">()</span> </span>&#123;&#125; <span class="comment">// (1)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">singletonHolder</span> </span>&#123; <span class="comment">// (2)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InitializationOnDemandHolderIdom instance = <span class="keyword">new</span> InitializationOnDemandHolderIdom(); <span class="comment">// (3)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InitializationOnDemandHolderIdom <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">// (4)</span></span><br><span class="line">    <span class="keyword">return</span> singletonHolder.instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>holder를 이용한 초기화 방식으로 클래스 내부에 (2) 내부 클래스에 instance를 생성한다. (4)의 <code>getInstance</code>가 호출될 때 내부 클래스가 참조되며 instance가 (3) static final로 선언되어 있어서 처음 클래스가 로드될 때 최초 한번 객체가 생성된다. 클래스가 생성되는 순간은 <code>thread safe</code>하기 때문에 multi thread 문제에도 안전하다. 현재 Java의 singleton은 이 방식을 많이 사용한다.</p>
+<h3 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h3><ul>
+<li><a href="https://blog.seotory.com/post/2016/03/java-singleton-pattern">java singleton pattern</a></li>
+<li><a href="http://limkydev.tistory.com/67">[Design_Pattern] Singleton(싱글톤)의 고도화</a></li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -221,11 +298,12 @@
 
 </div>
                 
+                
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
     
         
 <div class="card widget">
@@ -494,625 +572,6 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
-    </div>
-</div>
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T14:41:26.000Z">2020-02-01</time></div>
-                    <a href="/2020/02/01/reverting-invalid-git-merge/" class="title has-link-black-ter is-size-6 has-text-weight-normal">git 커밋 중간에 잘못된 merge 되돌리기</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/troubleshooting/">Troubleshooting</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:54:30.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/women-who-code-talk-with-sonia-from-ms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Talk with Sonia from Microsoft - Inspiring Tech Women</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/think/">Think</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T12:03:04.000Z">2020-01-19</time></div>
-                    <a href="/2020/01/19/encryption-vs-hash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">암호화 vs 해시</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:54:07.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/java-stream/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java - Stream 기초</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:47:20.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/functional-thinking-ch7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수형 사고 - ch7 실용적 사고</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">10</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">11</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">9</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/authrization/">
-                        <span class="tag">Authrization</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/design-pattern/">
-                        <span class="tag">Design Pattern</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/docker/">
-                        <span class="tag">Docker</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/effective-java/">
-                        <span class="tag">Effective Java</span>
-                        <span class="tag is-grey">21</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/encryption/">
-                        <span class="tag">Encryption</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/fish-shell/">
-                        <span class="tag">Fish Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-programming/">
-                        <span class="tag">Functional Programming</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-thinking/">
-                        <span class="tag">Functional Thinking</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gradle/">
-                        <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">HTTP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hash/">
-                        <span class="tag">Hash</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hibernate/">
-                        <span class="tag">Hibernate</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/intellij/">
-                        <span class="tag">IntelliJ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jpa/">
-                        <span class="tag">JPA</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">25</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">Javascript</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/junit/">
-                        <span class="tag">Junit</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/maven/">
-                        <span class="tag">Maven</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/meetup/">
-                        <span class="tag">Meetup</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mysql/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/netty/">
-                        <span class="tag">Netty</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/network/">
-                        <span class="tag">Network</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/oauth2/">
-                        <span class="tag">OAuth2</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/os/">
-                        <span class="tag">OS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/reactjs/">
-                        <span class="tag">ReactJS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/refactoring/">
-                        <span class="tag">Refactoring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/sts/">
-                        <span class="tag">STS</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/shell/">
-                        <span class="tag">Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/spring/">
-                        <span class="tag">Spring</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springboot/">
-                        <span class="tag">SpringBoot</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/stub/">
-                        <span class="tag">Stub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/study/">
-                        <span class="tag">Study</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tdd/">
-                        <span class="tag">TDD</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tacademy/">
-                        <span class="tag">Tacademy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/test/">
-                        <span class="tag">Test</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/think/">
-                        <span class="tag">Think</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/troubleshooting/">
-                        <span class="tag">Troubleshooting</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">Web</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/women-who-code/">
-                        <span class="tag">Women Who Code</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/생활코딩/">
-                        <span class="tag">생활코딩</span>
-                        <span class="tag is-grey">11</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
             Recent
         </h3>
         
@@ -1402,306 +861,6 @@
         </li>
         
         </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/authrization/">
-                        <span class="tag">Authrization</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/design-pattern/">
-                        <span class="tag">Design Pattern</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/docker/">
-                        <span class="tag">Docker</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/effective-java/">
-                        <span class="tag">Effective Java</span>
-                        <span class="tag is-grey">21</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/encryption/">
-                        <span class="tag">Encryption</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/fish-shell/">
-                        <span class="tag">Fish Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-programming/">
-                        <span class="tag">Functional Programming</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-thinking/">
-                        <span class="tag">Functional Thinking</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gradle/">
-                        <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">HTTP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hash/">
-                        <span class="tag">Hash</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hibernate/">
-                        <span class="tag">Hibernate</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/intellij/">
-                        <span class="tag">IntelliJ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jpa/">
-                        <span class="tag">JPA</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">25</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">Javascript</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/junit/">
-                        <span class="tag">Junit</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/maven/">
-                        <span class="tag">Maven</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/meetup/">
-                        <span class="tag">Meetup</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mysql/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/netty/">
-                        <span class="tag">Netty</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/network/">
-                        <span class="tag">Network</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/oauth2/">
-                        <span class="tag">OAuth2</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/os/">
-                        <span class="tag">OS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/reactjs/">
-                        <span class="tag">ReactJS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/refactoring/">
-                        <span class="tag">Refactoring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/sts/">
-                        <span class="tag">STS</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/shell/">
-                        <span class="tag">Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/spring/">
-                        <span class="tag">Spring</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springboot/">
-                        <span class="tag">SpringBoot</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/stub/">
-                        <span class="tag">Stub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/study/">
-                        <span class="tag">Study</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tdd/">
-                        <span class="tag">TDD</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tacademy/">
-                        <span class="tag">Tacademy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/test/">
-                        <span class="tag">Test</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/think/">
-                        <span class="tag">Think</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/troubleshooting/">
-                        <span class="tag">Troubleshooting</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">Web</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/women-who-code/">
-                        <span class="tag">Women Who Code</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/생활코딩/">
-                        <span class="tag">생활코딩</span>
-                        <span class="tag is-grey">11</span>
-                    </a>
-                </div>
-                
-            </div>
         </div>
     </div>
 </div>

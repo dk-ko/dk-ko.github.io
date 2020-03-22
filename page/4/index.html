@@ -80,7 +80,7 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -99,9 +99,6 @@
                 
                 <a class="navbar-item"
                 href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
                 
                 <a class="navbar-item"
                 href="/tags">Tags</a>
@@ -127,7 +124,69 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-04T15:00:00.000Z">2018-12-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/test/">Test</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 452 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/05/test-stub/">Test - Stub</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="스텁-Stub-이란"><a href="#스텁-Stub-이란" class="headerlink" title="스텁(Stub)이란?"></a>스텁(Stub)이란?</h2><p>호출자를 실제 구현물로부터 격리시킬 목적으로 런타임에 실제 코드 대신 삽입되는 코드 조각이다. 실제 코드의 일부를 독립적으로 테스트하기 위해 쓰인다.<br>스텁은 로직이 없고 값만을 반환하기 때문에, 테스트 시 무조건 정해진 값을 반환한다고 가정한 경우 사용할 수 있다.<br>행위에 대한 검증은 mock을 이용한다. </p>
+<h3 id="스텁을-사용하는-경우"><a href="#스텁을-사용하는-경우" class="headerlink" title="스텁을 사용하는 경우"></a>스텁을 사용하는 경우</h3><ul>
+<li>시스템이 너무 복잡하고 깨지기 쉬워 수정이 불가한 경우</li>
+<li>하부 시스템 간의 통합 테스트처럼 포괄적인 테스트를 수행하는 경우</li>
+</ul>
+<blockquote>
+<p>스텁을 이용한 테스트의 신뢰도는 높은 편이다. 왜냐하면 대상 객체를 수정할 필요가 없어 production용 제품과 동일하기 때문이다.</p>
+</blockquote>
+<h3 id="스텁의-단점"><a href="#스텁의-단점" class="headerlink" title="스텁의 단점"></a>스텁의 단점</h3><ul>
+<li>스텁은 대체하려는 코드와 동일한 로직을 갖추어야하므로 검증할 시스템이 복잡할수록 제작하기 어렵다.</li>
+<li>제작이 복잡해 스텁 자체를 디버깅하는 상황도 발생한다.</li>
+<li>복잡성 때문에 유지보수가 어려울 수 있다.</li>
+<li>상세한(fine-grained) 테스트에 적합하지 않다.</li>
+<li>상황에 따라 다른 스텁 정책이 요구된다.</li>
+</ul>
+<blockquote>
+<p>일반적으로 포괄적인 코드 블록을 대체하는 것에 적합하다.<br>파일 시스템, 서버와의 커넥션, 데이터베이스 등 외부 시스템 전체를 대체하는데 주로 사용한다.<br>특정 메소드 하나를 대체하는 경우는 mock 객체로 상세한 테스트를 진행하는 것이 좋다.</p>
+</blockquote>
+<br/>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -191,6 +250,139 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-24T15:00:00.000Z">2018-11-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/orm/">ORM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1046 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/25/spring-data-jpa-query/">Spring Data JPA - Query Method</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="쿼리-메소드-Query-Method"><a href="#쿼리-메소드-Query-Method" class="headerlink" title="쿼리 메소드 (Query Method)"></a>쿼리 메소드 (Query Method)</h2><ul>
+<li>메소드 이름만으로 쿼리를 생성하는 기능.</li>
+<li>인터페이스에 메소드를 선언만 하면 해당 메소드 이름으로 적절한 JPQL 쿼리를 생성해 실행한다.</li>
+</ul>
+<br/>
+
+<h3 id="스프링-데이터-JPA가-제공하는-쿼리-메소드-기능"><a href="#스프링-데이터-JPA가-제공하는-쿼리-메소드-기능" class="headerlink" title="스프링 데이터 JPA가 제공하는 쿼리 메소드 기능"></a>스프링 데이터 JPA가 제공하는 쿼리 메소드 기능</h3><ol>
+<li>메소드 이름으로 <code>쿼리 생성</code></li>
+<li>메소드 이름으로 JPA <code>NamedQuery 호출</code></li>
+<li><code>@Query</code> 어노테이션 사용해 리포지토리 인터페이스에 <code>쿼리 직접 정의</code></li>
+</ol>
+<blockquote>
+<p>이 세가지 기능들만으로도 필요한 대부분의 쿼리 기능을 개발할 수 있다.</p>
+</blockquote>
+<br/>
+
+<h4 id="1-메소드-이름으로-쿼리-생성"><a href="#1-메소드-이름으로-쿼리-생성" class="headerlink" title="1. 메소드 이름으로 쿼리 생성"></a>1. 메소드 이름으로 쿼리 생성</h4><ul>
+<li>예) 이메일과 이름으로 회원을 조회하려면<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">Repository</span>&lt;<span class="title">Memeber</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function">List&lt;Member&gt; <span class="title">findByEmailAndName</span><span class="params">(String email, String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>인터페이스에 정의한 <code>findByEmailAndName</code>를 실행하면 스프링 JPA가 메소드 이름을 분석해 JPQL을 생성하고 실행한다.</p>
+<ul>
+<li>아래와 같은 SQL이 실행된다.<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> m <span class="keyword">from</span> <span class="keyword">Member</span> m <span class="keyword">where</span> m.email = ?<span class="number">1</span> <span class="keyword">and</span> m.name = ?<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>정해진 규칙에 따라 이름을 지어야한다.</p>
+<blockquote>
+<p><a href="https://docs.spring.io/spring-data/jpa/docs/1.8.0.RELEASE/reference/html/">참고</a></p>
+</blockquote>
+<br/>
+
+<h4 id="2-메소드-이름으로-JPA-NamedQuery-호출"><a href="#2-메소드-이름으로-JPA-NamedQuery-호출" class="headerlink" title="2. 메소드 이름으로 JPA NamedQuery 호출"></a>2. 메소드 이름으로 JPA NamedQuery 호출</h4><ul>
+<li><p>스프링 데이터 JPA는 메소드 이름으로 JPA NamedQuery를 호출할 수 있다.  </p>
+</li>
+<li><p>JPA NamedQuery는 쿼리에 이름을 부여해 사용하는 방법을 칭한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NamedQuery</span>(</span><br><span class="line">  name=<span class="string">"Member.findByUsername"</span>,</span><br><span class="line">  query=<span class="string">"select m from Member m where m.username = :username"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>위와 같이 어노테이션에 쿼리를 정의할 수 있다.</p>
+</li>
+</ul>
+<br/>
+
+<ul>
+<li>또는 xml에 쿼리를 정의할 수 있다.<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">named-query</span> <span class="attr">name</span>=<span class="string">"Member.findByUsername"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">query</span>&gt;</span><span class="tag">&lt;<span class="name">CDATA[</span></span></span><br><span class="line"><span class="tag">      <span class="attr">select</span> <span class="attr">m</span></span></span><br><span class="line"><span class="tag">      <span class="attr">from</span> <span class="attr">Member</span> <span class="attr">m</span></span></span><br><span class="line"><span class="tag">      <span class="attr">where</span> <span class="attr">m.username</span> = <span class="string">:username</span></span></span><br><span class="line"><span class="tag">      ]&gt;</span><span class="tag">&lt;/<span class="name">query</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">named-query</span>&gt;</span></span><br><span class="line">  ```  </span><br><span class="line">- 위와 같은 방법들로 Named 네이티브 쿼리도 지원한다.</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">- 정의한 NamedQuery를 직접 호출하려면 아래와 같이 작성한다.</span><br><span class="line">  ```java</span><br><span class="line">  pulic class MemberRepository &#123;</span><br><span class="line">    public List<span class="tag">&lt;<span class="name">Member</span>&gt;</span> findByUsername(String username) &#123;</span><br><span class="line">      ...</span><br><span class="line">      List<span class="tag">&lt;<span class="name">Member</span>&gt;</span> resultList =</span><br><span class="line">        em.createNamedQuery("Member.findByUsername", Member.class)</span><br><span class="line">          .setParameter("username", "회원1")</span><br><span class="line">          .getResultList();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<br/>
+
+<ul>
+<li><p>스프링 데이터 JPA를 사용하면 메소드 이름만으로 NamedQuery를 호출할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span></span></span><br><span class="line"><span class="class">  <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt; </span>&#123; <span class="comment">// 여기 선언한 Member 도메인 클래스</span></span><br><span class="line"></span><br><span class="line">  <span class="function">List&lt;Member&gt; <span class="title">findByUsername</span><span class="params">(@Param(<span class="string">"username"</span>)</span> String username)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&quot;도메인 클래스 + . + 메소드 이름&quot;</code>으로 NamedQuery를 찾기 때문에 Member.findByUsername이라는 NamedQuery를 찾아 실행하게 된다.</p>
+</li>
+</ul>
+<br/>
+
+<h4 id="3-Query-어노테이션-사용해-리포지토리-인터페이스에-쿼리-직접-정의"><a href="#3-Query-어노테이션-사용해-리포지토리-인터페이스에-쿼리-직접-정의" class="headerlink" title="3. @Query 어노테이션 사용해 리포지토리 인터페이스에 쿼리 직접 정의"></a>3. @Query 어노테이션 사용해 리포지토리 인터페이스에 쿼리 직접 정의</h4><ul>
+<li><p>리포지토리 메소드에 직접 쿼리를 정의하는 경우 @Query 어노테이션 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@Query</span>(<span class="string">"select m from Member m where m.username= ?1"</span>)</span><br><span class="line">  <span class="function">Member <span class="title">findByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>위 방법은 실행할 메소드에 정적 쿼리를 직접 작성해서 이름 없는 NamedQuery이다.</p>
+</li>
+</ul>
+<br/>
+
+<ul>
+<li>Native SQL을 사용하려면 @Query 어노테이션에 nativeQuery = true 옵션을 준다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@Query</span>(value=<span class="string">"SELECT * FROM MEMBER USERNAME = ?0"</span>, nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">  <span class="function">Member <span class="title">findByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<br/>
+
+<h3 id="파라미터-바인딩"><a href="#파라미터-바인딩" class="headerlink" title="파라미터 바인딩"></a>파라미터 바인딩</h3><p>스프링 데이터 JPA는 위치 기반 파라미터 바인딩과 이름 기반 파라미터 바인딩을 모두 지원한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> m <span class="keyword">from</span> <span class="keyword">Member</span> m <span class="keyword">where</span> m.username = ?<span class="number">1</span> // 위치 기반</span><br><span class="line"><span class="keyword">select</span> m <span class="keyword">from</span> <span class="keyword">Member</span> m <span class="keyword">where</span> m.username = :<span class="keyword">name</span> // 이름 기반</span><br></pre></td></tr></table></figure>
+
+<p>이름 기반 파라미터 바인딩을 사용하려면 <code>@Param(org.springframework.data.repository.query.Param)</code> 어노테이션을 사용해야한다. 코드 가독성과 유지 보수를 위해 이름 기반 파라미터 바인딩을 사용하는 것이 좋다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@Query</span>(<span class="string">"select m from Member m where m.username = :name"</span>)</span><br><span class="line">  <span class="function">Member <span class="title">findByUsername</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String username)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="반환-타입"><a href="#반환-타입" class="headerlink" title="반환 타입"></a>반환 타입</h3><p>스프링 데이터 JPA의 반환 타입은 유연해서, 결과가 한 건 이상이면 컬렉션 인터페이스를, 한 건이면 반환 타입을 지정해주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Member&gt; <span class="title">findByName</span><span class="params">(String name)</span></span>; <span class="comment">// Collection (1)</span></span><br><span class="line"><span class="function">Member <span class="title">findByEmail</span><span class="params">(String email)</span></span>; <span class="comment">// return type (2)</span></span><br></pre></td></tr></table></figure>
+
+<p>만약 조회 결과가 없다면 (1)은 빈 컬렉션을, (2)는 null을 반환한다.<br>(2)와 같이 작성하고 반환 결과가 2건 이상이면 <code>javax.persistence.NonUniqueResultException</code> 예외가 발생한다.<br>그리고 한 건을 조회 했을 때 JPA 내부에서 <code>Query.getSingleResult()</code>를 호출하는데, 이 메소드는 조회 결과가 없으면 <code>javax.persistence.NoResultException</code> 예외가 발생한다. 이 예외가 발생했을 때 스프링 데이터 JPA는 예외를 무시하고 null을 반환한다.</p>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -325,6 +517,153 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-15T15:00:00.000Z">2018-11-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/orm/">ORM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 854 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/16/jpa-cascade/">JPA - Cascade</a>
+            
+        </h1>
+        <div class="content">
+            <p>영속성 전이와 고아 객체</p>
+<h2 id="영속성-전이-Transitive-Persistence"><a href="#영속성-전이-Transitive-Persistence" class="headerlink" title="영속성 전이(Transitive Persistence)"></a>영속성 전이(Transitive Persistence)</h2><ul>
+<li>연관된 객체를 함께 저장하거나 함께 삭제할 수 있는 JPA에서 제공하는 기능.</li>
+<li>특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶은 경우 사용.</li>
+<li><code>CASCADE</code> 옵션</li>
+</ul>
+<blockquote>
+<p>즉, 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장할 수 있다.</p>
+</blockquote>
+<br>
+
+<ul>
+<li>CASCADE 설정이 없는 경우</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// save parent</span></span><br><span class="line">Parent parent = <span class="keyword">new</span> Parent();</span><br><span class="line">em.persist(parent);</span><br><span class="line"></span><br><span class="line"><span class="comment">// save child1</span></span><br><span class="line">Child child1 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.setParent(parent); <span class="comment">// child1 &gt; parent 연관관계 설정</span></span><br><span class="line">parent.getChildren().add(child1); <span class="comment">// parent &gt; child1</span></span><br><span class="line">em.persist(child1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// save child2</span></span><br><span class="line">Child child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child2.setParent(parent); <span class="comment">// child2 &gt; parent</span></span><br><span class="line">parent.getChildren().add(child2); <span class="comment">// parent &gt; child2</span></span><br><span class="line">em.persist(child2);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JPA에서 Entity를 저장할 때 연관된 모든 엔티티가 영속 상태여야 하기 때문에 관련된 모든 엔티티를 각각 영속화했다.</li>
+</ul>
+<br>
+
+<h3 id="영속성-전이-저장"><a href="#영속성-전이-저장" class="headerlink" title="영속성 전이: 저장"></a>영속성 전이: 저장</h3><ul>
+<li>CASCADE 설정</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@OneToMany</span>(mappedBy = <span class="string">"parent"</span>, cascade = CascadeType.PERSIST) <span class="comment">// (1)</span></span><br><span class="line">  <span class="keyword">private</span> List&lt;Child&gt; children = <span class="keyword">new</span> ArrayList&lt;Child&gt;();</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(1) 부모를 영속화할 때 연관된 자식들도 함께 영속화 하는 옵션이다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Child child1 = <span class="keyword">new</span> Child();</span><br><span class="line">Child child2 = <span class="keyword">new</span> Child();</span><br><span class="line"></span><br><span class="line">Parent parent = <span class="keyword">new</span> Parent();</span><br><span class="line">child1.setParent(parent); <span class="comment">// 연관관계 설정</span></span><br><span class="line">child2.setParent(parent); <span class="comment">// 연관관계 설정</span></span><br><span class="line">parent.getChildren().add(child1);</span><br><span class="line">parent.getChildren().add(child2);</span><br><span class="line"></span><br><span class="line">em.persist(parent) <span class="comment">// 부모, 자식 한번에 저장</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="영속성-전이-삭제"><a href="#영속성-전이-삭제" class="headerlink" title="영속성 전이: 삭제"></a>영속성 전이: 삭제</h3><ul>
+<li>CASCADE 설정이 없는 경우  </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Parent findParent = em.find(Parent.class, <span class="number">1l</span>);</span><br><span class="line">Child findChild1 = em.find(Child.class, <span class="number">1l</span>);</span><br><span class="line">Child findChild2 = em.find(Child.class, <span class="number">2l</span>);</span><br><span class="line"></span><br><span class="line">em.remove(findChild1);</span><br><span class="line">em.remove(findChild2);</span><br><span class="line">em.remove(findParent);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>각각 엔티티를 하나씩 제거해야한다.</p>
+</li>
+<li><p>CASCADE 설정(<code>CascadeType.REMOVE</code>)</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parent findParent = em.find(Parent.class, <span class="number">1l</span>);</span><br><span class="line">em.remove(findParent);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>연관된 엔티티를 모두 삭제한다(내부적으로 DELETE SQL을 3번 호출한다)</li>
+<li>CascadeType.REMOVE를 설정하지 않고 위 코드를 실행하면 <code>외래키 무결성 예외</code>가 발생한다.</li>
+</ul>
+<br>
+
+<h3 id="CASCADE-종류"><a href="#CASCADE-종류" class="headerlink" title="CASCADE 종류"></a>CASCADE 종류</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> CascadeType &#123;</span><br><span class="line">  ALL,      <span class="comment">// 모두 적용</span></span><br><span class="line">  PERSIST,  <span class="comment">// 영속</span></span><br><span class="line">  MERGE,    <span class="comment">// 병합</span></span><br><span class="line">  REMOVE,   <span class="comment">// 삭제</span></span><br><span class="line">  REFRESH,  <span class="comment">// REFRESH</span></span><br><span class="line">  DETACH    <span class="comment">// DETACH</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>여러 속성을 같이 사용할 수 있다.</li>
+<li>PERSIST, REMOVE는 em.persist(), em.remove()할 때 전이가 일어나는 것이 아닌 flush할 때 전이가 발생한다.</li>
+</ul>
+<br>
+
+<h2 id="고아-객체-ORPHAN"><a href="#고아-객체-ORPHAN" class="headerlink" title="고아 객체(ORPHAN)"></a>고아 객체(ORPHAN)</h2><p>부모 Entity와 연관관계가 끊어진 자식 Entity를 자동으로 삭제하는 기능을 고아 객체 제거라 한다.<br>즉, 부모 Entity의 컬렉션에서 자식 Entity의 참조만 제거하면 자식 Entity가 자동으로 삭제된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Id</span> <span class="meta">@GeneratedValue</span></span><br><span class="line">  <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@OneToMany</span>(mappedBy = <span class="string">"parent"</span>, orphanRemoval = <span class="keyword">true</span>) <span class="comment">// (1)</span></span><br><span class="line">  <span class="keyword">private</span> List&lt;Child&gt; children = <span class="keyword">new</span> ArrayList&lt;Child&gt;();</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parent parent1 = em.find(Parent.class, id);</span><br><span class="line">parent1.getChildren().remove(<span class="number">0</span>); <span class="comment">// 자식 Entity를 컬렉션에서 제거</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>실행 결과 SQL</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">child</span> <span class="keyword">where</span> <span class="keyword">id</span>=?</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>고아 객체 제거 기능은 flush 시점에 적용된다.</li>
+</ul>
+<br>
+
+<h3 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h3><ul>
+<li>참조가 제거된 엔티티는 다른 곳에서 참조하지 않으므로 삭제한다.</li>
+<li>참조하는 곳이 하나일 때만 사용해야 한다.</li>
+<li>따라서 <code>@OneToOne</code>, <code>@OneToMany</code>에서만 사용가능하다.</li>
+<li>부모 객체를 제거하면 자식도 같이 제거된다. ( = <code>CascadeType.REMOVE</code>)</li>
+</ul>
+<br>
+
+<h2 id="영속성-전이-고아-객체-생명주기"><a href="#영속성-전이-고아-객체-생명주기" class="headerlink" title="영속성 전이 + 고아 객체, 생명주기"></a>영속성 전이 + 고아 객체, 생명주기</h2><ul>
+<li><p><code>CascadeType.All</code> + <code>orphanRemoval = true</code>를 동시에 사용한다면 ?</p>
+<blockquote>
+<p>부모 엔티티를 통해 자식 엔티티 생명주기를 관리할 수 있다.</p>
+</blockquote>
+</li>
+<li><p>자식을 저장하려면 부모에 등록만 하면 된다.</p>
+</li>
+<li><p>자식을 삭제하려면 부모에서 제거하면 된다.</p>
+</li>
+</ul>
+<br>
+
+<ul>
+<li>참고<blockquote>
+<p>영속성 전이는 DDD의 Aggregate Root 구현시 편리하다.</p>
+</blockquote>
+</li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -473,6 +812,259 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-14T15:00:00.000Z">2018-11-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/orm/">ORM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 minutes read (About 2521 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/15/jpa-proxy/">JPA - Proxy / Eager &amp; Lazy Loading</a>
+            
+        </h1>
+        <div class="content">
+            <p>프록시와 즉시로딩, 지연로딩</p>
+<h2 id="프록시-Proxy"><a href="#프록시-Proxy" class="headerlink" title="프록시(Proxy)"></a>프록시(Proxy)</h2><ul>
+<li><p>프록시를 사용하면 연관된 객체를 DB에서 처음부터 조회하는 것이 아니라, 실제 사용하는 시점에 DB에서 조최할 수 있다(<code>Lazy Loading</code>). 하지만 자주 함께 사용하는 객체들은 조인을 사용해서 함께 조회하는 것이 효과적이다(<code>Eager Loading</code>). 이를 즉시 로딩과 지연 로딩 두 가지 방식으로 사용할 수 있다.</p>
+</li>
+<li><p>지연 로딩 기능을 사용하려면 실제 엔티티 객체 대신 DB 조회를 지연할 수 있는 가짜 객체가 필요하다. 이를 프록시 객체라 한다.</p>
+</li>
+</ul>
+<blockquote>
+<p>JPA 지연 로딩의 구현 방법을 JPA 구현체에 위임했기 때문에 JPA마다 다르다.<br>참고하는 자료는 Hibernate 기준으로 작성되었다.</p>
+</blockquote>
+<br>
+
+<h3 id="프록시-기초"><a href="#프록시-기초" class="headerlink" title="프록시 기초"></a>프록시 기초</h3><ul>
+<li><p>JPA에서 식별자로 Entity 하나를 조회할 경우</p>
+<blockquote>
+<p>EntityManager.find()</p>
+</blockquote>
+<ul>
+<li>이렇게 엔티티를 조회하면 엔티티 사용여부와 상관없이 DB를 직접 조회하게 된다.</li>
+</ul>
+</li>
+<li><p>사용 시점까지 Entity 조회를 미루고 싶은 경우</p>
+<blockquote>
+<p>EntityManager.getReference()</p>
+</blockquote>
+<ul>
+<li>이 메소드를 호출하면 JPA가 DB를 바로 조회하지 않고 엔티티 객체를 생성하지도 않는다. 대신 DB 접근을 위임한 프록시 객체를 반환한다.</li>
+<li>Proxy { Entity target = null / getId() / getName()}</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h4 id="프록시의-특징"><a href="#프록시의-특징" class="headerlink" title="프록시의 특징"></a>프록시의 특징</h4><h5 id="프록시의-구조"><a href="#프록시의-구조" class="headerlink" title="프록시의 구조"></a>프록시의 구조</h5><ul>
+<li>프록시 클래스는 실제 클래스를 상속 받아 만들어지기 때문에 실제 클래스와 겉 모양이 같다. 따라서 사용자는 실제 객체인지 프록시 객체인지 구분하지 않고 사용할 수 있다.</li>
+<li>ex) Entity가 id, name, getId(), getName()으로 되어있다면 Proxy는 Entity target, getId(), getName()으로 되어있음</li>
+</ul>
+<h5 id="프록시-위임"><a href="#프록시-위임" class="headerlink" title="프록시 위임"></a>프록시 위임</h5><ul>
+<li>프록시 객체는 실제 객체에 대한 참조(<code>target</code>)를 보관하고, 프록시 객체의 메소드를 호출할 때 프록시 객체가 실제 객체의 메소드를 호출한다.</li>
+</ul>
+<h4 id="프록시-객체의-초기화"><a href="#프록시-객체의-초기화" class="headerlink" title="프록시 객체의 초기화"></a>프록시 객체의 초기화</h4><ul>
+<li><p>프록시 객체는 실제 사용될 때(ex-member.getName() 등) DB를 조회해 실제 엔티티 객체를 생성하는데 이것이 프록시 객체의 초기화이다.</p>
+</li>
+<li><p>예제</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Entity</span></span><br><span class="line"><span class="comment">// MemberProxy 반환</span></span><br><span class="line">Member member = em.getReference(Member.class, <span class="string">"id"</span>);</span><br><span class="line">member.getName(); <span class="comment">// (1) getName();</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Proxy</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MemberProxy</span> <span class="keyword">extends</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">  Member target = <span class="keyword">null</span>; <span class="comment">// 실제 엔티티 참조</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(target == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="comment">// (2) 초기화 (영속성 컨텍스트로) 요청</span></span><br><span class="line">      <span class="comment">// (3) DB 조회</span></span><br><span class="line">      <span class="comment">// (4) 실제 엔티티 생성 및 참조 보관</span></span><br><span class="line">      <span class="keyword">this</span>.target = ... ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// (5) target.getName();</span></span><br><span class="line">    <span class="keyword">return</span> target.getName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(2) 실제 엔티티가 생성되어 있지 않으면 영속성 컨텍스트에 <code>엔티티 생성을 요청</code>하는데 이것을 <code>프록시 초기화</code>라 한다.</li>
+<li>(3) 영속성 컨텍스트가 DB를 조회해 실제 엔티티 객체를 생성한다.</li>
+<li>(4) 그리고 생성한 실제 엔티티 객체의 참조를 <code>target</code> 변수에 보관한다.</li>
+</ul>
+<br>
+
+<h4 id="프록시의-특징-1"><a href="#프록시의-특징-1" class="headerlink" title="프록시의 특징"></a>프록시의 특징</h4><ul>
+<li>처음 사용할 때 한 번만 초기화 된다.</li>
+<li>프록시 객체를 초기화한다고해서 프록시 객체가 실제 엔티티로 바뀌는 것은 아니고, 프록시 객체 초기화 후 프록시 객체를 통해 실제 엔티티에 접근할 수 있는 것이다.</li>
+<li>프록시 객체는 원본 엔티티를 상속받은 객체이므로 타입 체크 시 주의해서 사용해야한다.</li>
+<li>영속성 컨텍스트에 찾는 엔티티가 이미 있다면 DB를 조회할 필요가 없으므로 <code>em.getReference()</code>를 호출해도 실제 엔티티를 반환한다.</li>
+<li>초기화는 영속성 컨텍스트의 도움을 받아야 가능하기 때문에, <code>준영속 상태</code>의 프록시를 초기화하면 문제가 생긴다.<ul>
+<li><code>org.hibernate.LazyInitializationException</code> Hibernate의 예외 발생</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h4 id="준영속-상태와-초기화"><a href="#준영속-상태와-초기화" class="headerlink" title="준영속 상태와 초기화"></a>준영속 상태와 초기화</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MemberProxy 반환</span></span><br><span class="line">Member member = em.getReference(Member.class, <span class="string">"id"</span>);</span><br><span class="line">transaction.commit();</span><br><span class="line">em.close(); <span class="comment">// 영속성 컨텍스트 종료</span></span><br><span class="line"></span><br><span class="line">member.getName(); <span class="comment">// 준영속 상태 초기화 시도 &gt; 예외 발생</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="프록시와-식별자"><a href="#프록시와-식별자" class="headerlink" title="프록시와 식별자"></a>프록시와 식별자</h3><ul>
+<li>Entity를 Proxy로 조회할 때 식별자(Primary Key)값을 파라미터로 전달한다. 이 때 프록시 객체는 이 식별자 값을 보관한다. 따라서 식별자 값을 조회하는 Entity.getId()를 호출해도 프록시를 초기화하지 않는다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Member member = em.getReference(Member.class, <span class="string">"id"</span>); <span class="comment">// 식별자 보관</span></span><br><span class="line">member.getId(); <span class="comment">// 초기화되지 않는다.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>엔티티 접근 방식을 <code>@Access(AccessType.PROPERTY))</code>로 설정한 경우에만 초기화하지 않는다.</li>
+<li>엔티티 접근 방식을 <code>@Access(AccessType.FIELD))</code>로 설정하면 id만 조회하는지 아닌지 구분할 수 없어서 프록시 객체를 초기화한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Member member = em.find(Member.class, <span class="string">"member_id"</span>);</span><br><span class="line">Team team = em.getReference(Team.class, <span class="string">"team_id"</span>); <span class="comment">// sql을 실행하지 않는다.</span></span><br><span class="line">member.setTeam(team);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="프록시-확인"><a href="#프록시-확인" class="headerlink" title="프록시 확인"></a>프록시 확인</h3><ul>
+<li>JPA의 <code>PersistenceUnitUtil.isLoaded(Object entity)</code> 메소드를 사용하면 프록시 인스턴스 초기화 여부를 알 수 있다. 결과는 boolean 값이다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> isLoad = em.getEntityManager.Factory()</span><br><span class="line">                    .getPersistenceUnitUtil().isLoaded(entity);</span><br><span class="line"><span class="comment">// Or boolean isLoad = emf.getPersistenceUnitUtil.isLoaded(entity);</span></span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"isLoad = "</span> + isLoad); <span class="comment">// 초기화 여부</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>조회한 엔티티가 프록시인지 아닌지 확인하려면 클래스명을 출력해보면된다. 클래스 명 뒤에 <code>..javassist..</code>가 있다면 프록시이다. 출력은 라이브러리에 따라 달라질 수 있다.</li>
+</ul>
+<br>
+
+<h2 id="즉시-로딩과-지연-로딩"><a href="#즉시-로딩과-지연-로딩" class="headerlink" title="즉시 로딩과 지연 로딩"></a>즉시 로딩과 지연 로딩</h2><blockquote>
+<p>member1이 team1에 소속되어 있는 경우</p>
+</blockquote>
+<h3 id="즉시-로딩"><a href="#즉시-로딩" class="headerlink" title="즉시 로딩"></a>즉시 로딩</h3><ul>
+<li>엔티티를 조회할 때 연관된 엔티티도 함께 조회한다.</li>
+<li>ex) <code>em.find(Member.class, &quot;member1&quot;);</code> 호출 시 회원 엔티티와 연관된 팀 엔티티도 함께 조회.</li>
+<li>설정 : <code>@ManyToOne(fetch = FetchType.EAGER)</code></li>
+</ul>
+<br/>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@ManyToOne</span>(fetch = FetchType.EAGER)</span><br><span class="line">  <span class="meta">@JoinColumn</span>(name = <span class="string">"TEAM_ID"</span>)</span><br><span class="line">  <span class="keyword">private</span> Team team;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Member member = em.find(Member.class, <span class="string">"member1"</span>); <span class="comment">// (1)</span></span><br><span class="line">Team team = member.getTeam(); <span class="comment">// (2) 객체 그래프 탐색</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(1) 회원을 조회하는 순간 팀도 함께 조회한다.</li>
+<li>(1)(2) 쿼리를 여러번 실행하는 것이 아닌, 보통 최적화를 위해 <code>join</code>쿼리를 사용해 쿼리 한번에 두 엔티티를 조회한다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">  m.memeber_id <span class="keyword">as</span> member_id,</span><br><span class="line">  m.team_id <span class="keyword">as</span> team_id,</span><br><span class="line">  m.username <span class="keyword">as</span> username,</span><br><span class="line">  t.team_id <span class="keyword">as</span> team_id,</span><br><span class="line">  t.name <span class="keyword">as</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">  <span class="keyword">member</span> m <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> team t <span class="comment">-- (1) outer join</span></span><br><span class="line">    <span class="keyword">on</span> m.team_id = t.team_id</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">  m.member_id = <span class="string">'member1'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Null-제약-조건"><a href="#Null-제약-조건" class="headerlink" title="Null 제약 조건"></a>Null 제약 조건</h4><ul>
+<li><p>현재 회원 테이블의 team_id 외래키에 null값이 허용되어 있기 때문에 외부 조인(outer join)을 사용한다.</p>
+</li>
+<li><p>최적화를 위해 내부 조인(inner join)을 사용하려면 외래키에 <code>not null</code> 제약 조건을 걸어야 한다.</p>
+</li>
+<li><p>그리고 JPA에 알려주는 설정을 해야한다.</p>
+</li>
+<li><p><code>@JoinColumn(nullable = true)</code> : null 허용, 외부 조인 사용, 기본값</p>
+</li>
+<li><p><code>@JoinColumn(nullable = false)</code> : null 허용하지 않음, 내부 조인 사용</p>
+</li>
+<li><p><code>@ManyToOne(fetch = FetchType.EAGER, optional = false)</code> : 이 설정도 내부 조인을 사용한다.</p>
+</li>
+</ul>
+<blockquote>
+<p>선택적 관계면 외부 조인, 필수 관계면 내부 조인을 사용</p>
+</blockquote>
+<br>
+
+<h3 id="지연로딩"><a href="#지연로딩" class="headerlink" title="지연로딩"></a>지연로딩</h3><ul>
+<li>연관된 엔티티를 실제 사용할 때 조회한다.</li>
+<li>ex) <code>member.getTeam().getName()</code>과 같이 조회한 팀 엔티티를 실제 사용하는 시점에 JPA가 SQL을 호출해 팀 엔티티를 조회한다.</li>
+<li>설정 : <code>@ManyToOne(fetch = FetchType.LAZY)</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@ManyToOne</span>(fetch = FetchType.LAZY)</span><br><span class="line">  <span class="meta">@JoinColumn</span>(name = <span class="string">"team_id"</span>)</span><br><span class="line">  <span class="keyword">private</span> Team team;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Member member = em.find(Member.class, <span class="string">"member1"</span>); <span class="comment">// (1)</span></span><br><span class="line">Team team = member.getTeam(); <span class="comment">// (2) 객체 그래프 탐색</span></span><br><span class="line">team.getName(); <span class="comment">// (3) 팀 객체 실제 사용</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(1)에서 회원 조회시 회원만 조회하고 회원의 팀 변수에(<code>Member.team</code>)에 프록시 객체를 넣는다.</li>
+<li>(2)에서 반환하는 것은 프록시 객체이다.</li>
+<li>이 프록시 객체가 실제 사용될 때(3)까지 데이터 로딩을 미룬다.</li>
+<li>즉 데이터가 필요한 순간에 데이터베이스를 조회해서 프록시 객체를 초기화한다.</li>
+</ul>
+<br>
+
+<ul>
+<li>(1) 호출 시 실행되는 SQL</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">member</span></span><br><span class="line"><span class="keyword">where</span> member_id = <span class="string">'member1'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(3) 호출 시 실행되는 SQL</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> team</span><br><span class="line"><span class="keyword">where</span> team_id = <span class="string">'team1'</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h2><ul>
+<li>지연 로딩(Lazy Loading) : 연관된 엔티티를 프록시로 조회. 프록시를 실제 사용할 때 초기화하면서 DB를 조회한다.</li>
+<li>즉시 로딩(Eager Loading) : 연관된 엔티티를 즉시 조회, Hibernate라면 가능한 SQL join을 사용해 한번에 조회한다.</li>
+</ul>
+<br>
+
+<h3 id="지연-로딩의-활용"><a href="#지연-로딩의-활용" class="headerlink" title="지연 로딩의 활용"></a>지연 로딩의 활용</h3><h4 id="프록시와-컬렉션-래퍼"><a href="#프록시와-컬렉션-래퍼" class="headerlink" title="프록시와 컬렉션 래퍼"></a>프록시와 컬렉션 래퍼</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Member member = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line">List&lt;Order&gt; orders = member.getOrders(); <span class="comment">// (1)</span></span><br><span class="line">System.out.println(<span class="string">"orders = "</span> + orders.getClass().getName()); <span class="comment">// (2)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Hibernate는 Entity를 영속 상태로 만들 때 Entity에 컬렉션이 있으면 컬렉션을 추적, 관리할 목적으로 원본 컬렉션을 Hibernate가 제공하는 내장 컬렉션으로 변경한다. 이를 컬렉션 래퍼라 한다.</p>
+</li>
+<li><p>(2)의 출력 결과는 <code>org.hibernate.collection.internal.PersistentBag</code>이다.</p>
+</li>
+<li><p>Entity 지연 로딩할 때는 프록시 객체를 사용해 지연 로딩을 수행한다. 하지만 컬렉션은 컬렉션 래퍼가 지연 로딩을 수행한다. 컬랙션 래퍼는 컬렉션에 대한 프록시 역할을 한다.</p>
+</li>
+<li><p>(1)을 호출해도 컬렉션이 초기화되지 않는다. <code>member.getOrders.get(0)</code>과 같이 실제 데이터를 조회할 때 DB에서 조회해서 초기화한다.</p>
+</li>
+</ul>
+<br>
+
+<h4 id="JPA-기본-Fetch-전략"><a href="#JPA-기본-Fetch-전략" class="headerlink" title="JPA 기본 Fetch 전략"></a>JPA 기본 Fetch 전략</h4><ul>
+<li>@ManyToOne, @OneToOne : FetchType.EAGER</li>
+<li>@OneToMany, @ManyToMany : FetchType.LAZY</li>
+</ul>
+<blockquote>
+<p>기본적으로 연관된 엔티티가 하나면 즉시 로딩, 컬렉션이면 지연 로딩</p>
+</blockquote>
+<ul>
+<li>개발 시 모든 연관관계에 지연 로딩을 사용하고, 앱 개발이 완료 단계가 되었을 때 실제 사용 상황을 보고 필요한 곳만 즉시 로딩을 사용하도록하는 것이 좋다.<ul>
+<li>SQL을 직접 사용할 경우 이런식의 변경은 어렵다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="컬렉션에-FetchType-EAGER-사용-시-주의점"><a href="#컬렉션에-FetchType-EAGER-사용-시-주의점" class="headerlink" title="컬렉션에 FetchType.EAGER 사용 시 주의점"></a>컬렉션에 FetchType.EAGER 사용 시 주의점</h4><ul>
+<li>컬렉션을 하나 이상 즉시 로딩하는 것은 좋지 않다.</li>
+<li>컬렉션 즉시 로딩은 항상 외부조인(outer join)을 사용한다.</li>
+</ul>
+<br>
+
+<h4 id="기본-조인-전략-정리"><a href="#기본-조인-전략-정리" class="headerlink" title="기본 조인 전략 정리"></a>기본 조인 전략 정리</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- @ManyToOne, @OneToOne</span><br><span class="line">  - (optional = false) : inner join</span><br><span class="line">  - (optional = true) : outer join</span><br><span class="line">- @OneToMany, @ManyToMany</span><br><span class="line">  - (optional = false) : outer join</span><br><span class="line">  - (optional = true) : outer join</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>자바 ORM 표준 JPA 프로그래밍</li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -727,6 +1319,97 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-09T15:00:00.000Z">2018-11-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/server/">Server</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/server/test/">Test</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 726 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/10/jpa-junit-test/">JPA 테스트의 특징</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="JPA-TEST"><a href="#JPA-TEST" class="headerlink" title="JPA TEST"></a>JPA TEST</h2><p>JPA는 <code>엔티티 매핑</code> / <code>API 호출</code> 두 부분으로 나뉜다.  </p>
+<ol>
+<li>처음에는 객체가 어떻게 DB 테이블에 매핑되는지 정의한다.<ul>
+<li>보통 자바 Annotation 이용</li>
+</ul>
+</li>
+<li>다음으로 EntityManager 객체를 이용해 이 객체들을 DB에 저장하거나 읽어온다.<ul>
+<li>JPA 쿼리를 사용해 객체를 만들고 지우고 전달하는 등의 작업</li>
+</ul>
+</li>
+</ol>
+<p>따라서 위의 두가지를 독립적으로 테스트해야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 올바르게 매핑되었는지 검증하는 테스트.</span><br><span class="line">2. 영속 코드 자체(예-DAO 등)를 위한 단위 테스트.</span><br></pre></td></tr></table></figure>
+
+<h2 id="임베디드-데이터베이스"><a href="#임베디드-데이터베이스" class="headerlink" title="임베디드 데이터베이스"></a>임베디드 데이터베이스</h2><p> 임베디드 데이터베이스의 경우 애플리케이션이 사용할 데이터베이스와 100% 호환이 되지 않을 수있다는 단점이 있다. 하지만 JPA를 사용하면 일반적인 경우 호환성에 문제가 생기진 않는다. JPA 벤더가 SQL 코드를 생성하기 때문이다. <strong>따라서 단위 테스트에 임베디드 데이터베이스(H2 등)을 사용하는 것이 좋다.</strong><br> 프로젝트는 기본적으로 임베디드 데이터베이스를 사용하고, 데이터베이스를 쉽게 변경 가능하도록 만드는 것이 좋다. 개발자는 임베디드데이터베이스를 이용하고 공식 빌드에서 실제 DB로 교체하는 등으로 사용한다.</p>
+<h2 id="위임-수준-commitment-level"><a href="#위임-수준-commitment-level" class="headerlink" title="위임 수준(commitment level)"></a>위임 수준(commitment level)</h2><h3 id="JPA-연산의-특징"><a href="#JPA-연산의-특징" class="headerlink" title="JPA 연산의 특징"></a>JPA 연산의 특징</h3><ul>
+<li>트랜잭션 안에서 발생</li>
+<li>보통 벤더별로 특화된 세션으로 전이됨</li>
+<li>트랜잭션과 세션 생명주기 관리에 의존적임</li>
+<li>객체는 캐싱되고, 새로운 SQL명령은 지연관계 설정 시마다 발행.</li>
+</ul>
+<h3 id="트랜잭션-커밋-방식"><a href="#트랜잭션-커밋-방식" class="headerlink" title="트랜잭션 커밋 방식"></a>트랜잭션 커밋 방식</h3><ul>
+<li>비용이 비쌈</li>
+<li>DB를 영구적으로 변경시킴.</li>
+</ul>
+<h3 id="트랜잭션-롤백-방식"><a href="#트랜잭션-롤백-방식" class="headerlink" title="트랜잭션 롤백 방식"></a>트랜잭션 롤백 방식</h3><ul>
+<li>따라서 테스트 케이스의 tearDown 도중에 트랜잭션을 롤백한다.</li>
+<li>많은 프레임워크가 이 방식을 따름(Spring의 TestContext 등)</li>
+</ul>
+<br/>
+하지만 임베디드 데이터베이스를 사용한다면 트랜잭션 커밋 방식을 사용해도 괜찮다.
+
+<hr>
+<ul>
+<li>임베디드 데이터 베이스는 속도가 빠르다. 매번 전체 DB를 새로 만들어도 괜찮을 정도.</li>
+<li>필요하면 tearDown 중 데이터베이스를 정리할 수 있다. 임베디드 DB에선 저렴한 연산.</li>
+<li>트랜잭션을 롤백하면 JPA 벤더가 DB 실제 SQL을 전송하지 않을 수 있다.<ul>
+<li>이 경우 테스트 케이스는 통과하지만 실제 환경에서 실패하게 된다.</li>
+</ul>
+</li>
+<li>JPA 트랜잭션이나 세션 밖에서 영구 저장된 객체의 동작을 테스트해보길 원할경우 사용할 수 있다.</li>
+</ul>
+<hr>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li>Junit in Action</li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -819,6 +1502,57 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-08T15:00:00.000Z">2018-11-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/troubleshooting/">Troubleshooting</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 56 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/09/git-gitignore-setting/">Git - .gitignore 설정 후 적용되지 않는 경우</a>
+            
+        </h1>
+        <div class="content">
+            <p>git에 업로드 되는 파일을 막는 <code>.gitignore</code>를 설정한 후에도 설정이 적용되지 않는 경우</p>
+<br/>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git rm -r --cached .</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git commit -m <span class="string">"commit_message"</span></span></span><br></pre></td></tr></table></figure>
+
+<p>위 코드 사용시 설정이 적용된다.</p>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -871,6 +1605,186 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-03T15:00:00.000Z">2018-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 minutes read (About 2341 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/04/java-comparable-comparator/">Java - Comparable / Comparator</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Effective-Java-규칙-12"><a href="#Effective-Java-규칙-12" class="headerlink" title="Effective Java 규칙 12"></a>Effective Java 규칙 12</h2><blockquote>
+<p>Comparable 구현을 고려하라</p>
+</blockquote>
+<h2 id="Comparable-compareTo"><a href="#Comparable-compareTo" class="headerlink" title="Comparable.compareTo"></a>Comparable.compareTo</h2><ul>
+<li>Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다.</li>
+<li>Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.</li>
+</ul>
+<blockquote>
+<p>Arrays.sort(a);</p>
+</blockquote>
+<ul>
+<li><p>Comparable을 구현한 객체들은 정렬, 최대/최소 계산 등을 하기 쉽다.</p>
+</li>
+<li><p>Comparable을 구현한 클래스는 Comparable 인터페이스를 이용하도록 작성된 컬렉션 구현체와 전부 연동이 가능하다. 이들은 자바 플랫폼 라이브러리에 포함된 <code>거의 모든 값 클래스(value class)</code>에 해당된다.  </p>
+</li>
+<li><p>알파벳 순서, 값의 크기, 시간적 선후관계 등 명확한 <code>자연적 순서</code>를 따르는 값 클래스를 구현할 때는 Comparable 인터페이스 구현을 반드시 고려야해야한다.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="compareTo의-일반-규약"><a href="#compareTo의-일반-규약" class="headerlink" title="compareTo의 일반 규약"></a>compareTo의 일반 규약</h3><ul>
+<li>compareTo의 일반 규약은 <a href="https://kodakyung.github.io/2018/10/26/old-post-EffectiveJava-2018-10-26-java-equals-method-override/">equals</a>와 비슷하다.</li>
+<li>이 메소드는 this 객체와 주어진 객체를 비교한다.<ul>
+<li>Comparable.compareTo는 비교할 클래스에 implements한 뒤 override한다.</li>
+</ul>
+</li>
+<li>this 객체의 값이 인자로 주어진 객체보다 작으면 음수, 크면 양수, 같으면 0을 반환.</li>
+<li>인자로 전달된 객체의 자료형이 this 객체와 비교 불가능한 자료형인 경우에는 <code>ClassCastException</code> 예외를 던진다.</li>
+<li>equals와 마찬가지로 compareTo 규약을 만족하면서 클래스를 계승하여 새로운 값 컴포넌트를 추가할 방법은 없다.</li>
+<li>우회 방법은 equals와 같이, 원래 클래스를 계승하는 것이 아닌 원래 클래스 객체를 필드로 포함하는 새로운 클래스를 만들고, 원래 클래스 객체를 반환하는 view 메소드를 추가한다.</li>
+<li>보통 객체 사이에 자연적 순서가 존재하기만 하면 이 규약을 만족한다.</li>
+</ul>
+<br/>
+
+<ol>
+<li><p>compareTo를 구현시 모든 x와 y에 대해 sgn(x.compareTo(y)) == -sgn(y.compareTo(x))가 만족되도록 해야한다.</p>
+<blockquote>
+<ul>
+<li>반사성</li>
+<li>객체 참조를 비교하는 방향을 뒤집어도 객체 간 대소 관계는 같아야한다.  </li>
+<li>ex) 첫 번째 객체가 두 번째 객체보다 작다면 두 번째 객체는 첫 번째 객체보다 큰 객체여야함.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>(x.compareTo(y) &gt; 0 &amp;&amp; y.compareTo(z) &gt; 0) 이면, x.compareTo(z) &gt; 0를 성립한다.</p>
+<blockquote>
+<ul>
+<li>대칭성</li>
+<li>first 객체가 second 객체보다 크고, second 객체가 third 객체보다 클 경우, first 객체는 반드시 third 객체보다 커야한다.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>(x.compareTo(y) == 0) 이면 sgn(x.compareTo(z)) == sgn(y.compareTo(z))의 관계가 모든 z에 대해 성립하도록 해야한다.</p>
+<blockquote>
+<ul>
+<li>추이성</li>
+<li>비교 결과 같다고 판정된 모든 객체 각각을 다른 어떤 객체와 비교할 경우, 그 비교 결과는 전부 동일해야 한다.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>필수는 아니지만 (x.compareTo(y) == 0) == (x.equals(y))를 만족하도록 구현해야하며, 그렇지 않은 클래스는 반드시 그 사실을 명시해주어야한다.</p>
+<blockquote>
+<ul>
+<li>동치성  </li>
+<li>컬렉션 인터페이스(Collection, Set, Map)와 같은 인터페이스들은 일반 규약이 equals 기반으로 작성되었지만, 실제 동치성은 equals 대신 compareTo를 통해 검사하기 때문에 (4) 항목을 만족하지 않는 경우 오동작할 수 있다.</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h4 id="서로-다른-객체의-비교"><a href="#서로-다른-객체의-비교" class="headerlink" title="서로 다른 객체의 비교"></a>서로 다른 객체의 비교</h4><ul>
+<li>equals와 달리 서로 다른 클래스에 적용될 필요가 없다.</li>
+<li>비교 대상인 객체가 서로 다른 클래스인 경우 <code>ClassCastException</code>을 던지는 것이 허용된다는 의미이다.</li>
+<li>compareTo가 속한 클래스가 제네릭인 경우에도, 적절한 형인자가 선언되었다면 제대로 동작할 것이다.</li>
+<li>compareTo 규약에서 서로 다른 클래스의 비교를 금지하지는 않지만 버전 1.6 이상의 플랫폼 라이브러리에 속한 모든 클래스가 비교를 허용하지 않는다.</li>
+</ul>
+<h4 id="Side-Effect"><a href="#Side-Effect" class="headerlink" title="Side Effect"></a>Side Effect</h4><p>hashCode 규약을 따르지 않는 클래스는 해시를 써서 구현한 클래스를 오동작 시킬 수 있는 것처럼, compareTo 규약을 준수하지 않는 클래스는 <code>비교 연산에 기반한 클래스들</code>을 오동작시킬 수 있다.</p>
+<ul>
+<li><code>TreeSet</code>, <code>TreeMap</code>와 같은 <code>sorted collection</code></li>
+<li><code>Arrays</code>, <code>Collections</code> 같은 <code>유틸리티 클래스</code>들이 해당.</li>
+<li>탐색과 정렬 알고리즘을 포함하는 클래스  </li>
+</ul>
+<h3 id="compareTo-vs-equals"><a href="#compareTo-vs-equals" class="headerlink" title="compareTo vs equals"></a>compareTo vs equals</h3><ul>
+<li>Comparable 인터페이스는 자료형을 인자로 받는 제네릭 인터페이스므로, compareTo 메소드의 인자 자료형은 컴파일 시간에 정적으로 결정된다.</li>
+<li>따라서 인자로 받은 객체의 자료형을 검사하거나 형 변환할 필요가 없다.</li>
+<li>잘못된 자료형 객체를 인자로 넘기면 아예 컴파일이 되지 않는다.</li>
+<li>null이 인자로 전달되는 경우에도 <code>NullPointerException</code> 예외를 발생시켜야하며, 실제로 자동으로 예외가 발생한다.</li>
+</ul>
+<h3 id="compareTo의-비교방식"><a href="#compareTo의-비교방식" class="headerlink" title="compareTo의 비교방식"></a>compareTo의 비교방식</h3><ul>
+<li>compareTo는 동치성 검사가 아닌 순서 비교.</li>
+<li>객체 참조 필드는 compareTo 메소드를 재귀적으로 호출해 비교한다.</li>
+<li>비교할 필드가 Comparable을 구현하지 않거나 특이한 순서 관계를 사용해야하는 경우 Comparator를 명시적으로 사용할 수 있다.</li>
+<li>Comparator를 직접 작성할 수도 있고, 작성된 Comparator를 사용할 수도 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveString</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">CaseInsensitiveString</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(CaseInsensitiveString cis)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.CASE_INSENSITIVE_ORDER.compare(s, cis.s);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CaseInsensitiveString 클래스는 Comparable<CaseInsensitiveString>을 구현하고 있다. 따라서 CaseInsensitiveString 객체 참조만 비교할 수 있다.</li>
+<li>compareTo의 인자는 Object가 아닌 CaseInsensitiveString이다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String.class</span></span><br><span class="line"><span class="comment">// public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class가 Comparable을 implements한 후 compareTo를 Override한 것</span></span><br><span class="line"><span class="comment">// 일반적인 순서를 비교하고 있다.</span></span><br><span class="line"><span class="comment">// ex) s.compareTo("string"); // s는 String 객체</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(String anotherString)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len1 = value.length;</span><br><span class="line">    <span class="keyword">int</span> len2 = anotherString.value.length;</span><br><span class="line">    <span class="keyword">int</span> lim = Math.min(len1, len2);</span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; lim) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = v1[k];</span><br><span class="line">        <span class="keyword">char</span> c2 = v2[k];</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            <span class="keyword">return</span> c1 - c2;</span><br><span class="line">        &#125;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len1 - len2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class 내부에 static으로 선언된 Comparator</span></span><br><span class="line"><span class="comment">// 인자가 String이라면 String.class의 Comparator.compare을 이용해 비교할 수 있다.</span></span><br><span class="line"><span class="comment">// 특이한 순서 관계를 따로 구현한 것</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Comparator&lt;String&gt; CASE_INSENSITIVE_ORDER</span><br><span class="line">                                         = <span class="keyword">new</span> CaseInsensitiveComparator();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveComparator</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    ..</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> n1 = s1.length();</span><br><span class="line">      <span class="keyword">int</span> n2 = s2.length();</span><br><span class="line">      <span class="keyword">int</span> min = Math.min(n1, n2);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = s1.charAt(i);</span><br><span class="line">        <span class="keyword">char</span> c2 = s2.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">          c1 = Character.toUpperCase(c1);</span><br><span class="line">          c2 = Character.toUpperCase(c2);</span><br><span class="line">          <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            c1 = Character.toLowerCase(c1);</span><br><span class="line">            c2 = Character.toLowerCase(c2);</span><br><span class="line">            <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">              <span class="comment">// No overflow because of numeric promotion</span></span><br><span class="line">              <span class="keyword">return</span> c1 - c2;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> n1 - n2;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer.class</span></span><br><span class="line"><span class="comment">// public final class Integer extends Number implements Comparable&lt;Integer&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Comparable.compareTo</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer anotherInteger)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> compare(<span class="keyword">this</span>.value, anotherInteger.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이름이 compare인 것.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (x &lt; y) ? -<span class="number">1</span> : ((x == y) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>정수형의 기본자료형 필드는 관계연산자 &lt;,&gt;를 이용해 비교한다.</li>
+<li>부동소수점 필드는 Double.compare나 Float.compare를 사용한다.</li>
+<li>배열 필드는 원소마다 적용해야한다.</li>
+<li>클래스에 선언된 중요 필드가 여러 개인 경우, 가장 중요한 필드부터 차례로 비교하고, 비교결과가 0이 아닌 경우 비교를 중단하고 결과를 반환한다. 모든 필드가 같을 때 0을 반환한다.</li>
+</ul>
+<h3 id="Comparable-vs-Comparator"><a href="#Comparable-vs-Comparator" class="headerlink" title="Comparable vs Comparator"></a>Comparable vs Comparator</h3><ul>
+<li>일반적으로 Comparable의 compareTo는 비교 기준이 하나일 경우 비교할 대상인 클래스에 Comparable을 상속 받아 compareTo를 구현한다.</li>
+<li>compareTo 메소드는 같은 객체 타입 하나의 인자를 받아 비교한다. 따라서 여러 비교 기준을 적용할 수 없다.</li>
+<li>Comparator의 compare는 비교 기준이 여러개일 경우 적용할 수 있다. Comparator용 클래스를 생성한 뒤 Comparator를 implements 후 내부에 compare을 구현한다.</li>
+<li>이때 compare 내부에 여러 비교 조건을 적용할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Fruit o1, Fruit o2)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">return</span> o1.price - o2.price; <span class="comment">// ASC Price</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">return</span> o2.price - o1.price; <span class="comment">// DESC Price</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">return</span> o1.getName().compareTo(o2.getName()); <span class="comment">// ASC Name</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">return</span> o2.getName().compareTo(o1.getName()); <span class="comment">// DESC Name</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Comparator 객체를 생성할 때 받는 n값(1,2,3,4)을 통해 조건을 선택한다.</p>
+</li>
+<li><p>이때 enum 객체를 이용하면 코드를 좀 더 명확하게 작성할 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Compare &#123;BY_NAME_ASC, BY_NAME_DESC, BY_PRICE_ASC, BY_PRICE_DESC&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Compare cp;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Fruit o1, Fruit o2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">switch</span>(cp)&#123;</span><br><span class="line">		<span class="keyword">case</span> BY_PRICE_ASC: <span class="keyword">return</span> o1.price - o2.price; <span class="comment">// ASC Price</span></span><br><span class="line">		<span class="keyword">case</span> BY_PRICE_DESC: <span class="keyword">return</span> o2.price - o1.price; <span class="comment">// DESC Price</span></span><br><span class="line">		<span class="keyword">case</span> BY_NAME_ASC: <span class="keyword">return</span> o1.getName().compareTo(o2.getName()); <span class="comment">// ASC Name</span></span><br><span class="line">		<span class="keyword">case</span> BY_NAME_DESC: <span class="keyword">return</span> o2.getName().compareTo(o1.getName()); <span class="comment">// DESC Name</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TestComparator cp = <span class="keyword">new</span> TestComparator(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 코드가 명확하지 않음</span></span><br><span class="line">TestComparator cp2 = <span class="keyword">new</span> TestComparator(Compare.BY_NAME_DESC);</span><br><span class="line"><span class="comment">// 어떤 비교 기준인지 명시적으로 확인할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(비교할_객체); <span class="comment">// 비교할 객체의 natural ordering의 따라 sort함</span></span><br><span class="line">Arrays.sort(비교할_객체, Comparator_객체); <span class="comment">// 특정 기준으로 비교할 수 있음</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Comparable.compareTo든 Comparator.compare든 모든 필드에 대한 조건을 넣어주는 것이 좋다.</li>
+<li>한 가지 필드에 대한 조건만 구현하는 경우 나머지 조건에 대해 의도하지 않은 결과가 나올 수 있기 때문이다.</li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -1052,6 +1966,227 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-10-25T15:00:00.000Z">2018-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 minutes read (About 2539 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/10/26/java-equals-method-override/">Java - equals method 재정의</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Effective-Java-규칙-8"><a href="#Effective-Java-규칙-8" class="headerlink" title="Effective Java 규칙 8"></a>Effective Java 규칙 8</h2><blockquote>
+<p>equals를 재정의할 때는 일반 규약을 따르라</p>
+</blockquote>
+<h2 id="모든-객체의-공통-메소드"><a href="#모든-객체의-공통-메소드" class="headerlink" title="모든 객체의 공통 메소드"></a>모든 객체의 공통 메소드</h2><p><code>Object</code>는 객체 생성이 가능한 클래스(<code>concrete class</code>)지만 기본적으로는 <code>계승</code>해서 사용하도록 설계된 클래스이다. Object에 정의된 <code>비-final 메소드</code>(equals, hashCode, toString, clone, finalize)에는 재정의(<code>override</code>)하도록 설계된 메소드이기 때문에, 명시적인 일반 규약(<code>general contract</code>)가 있다.  </p>
+<p>따라서 이 메소드들을 재정의하는 클래스는 그 규약을 따라주어야하며, 그렇지 않은 경우 <code>HashMap</code>, <code>HashSet</code>과 같이 해당 규약에 의존하는 클래스와 사용시 문제가 생긴다.</p>
+<br>
+
+<h3 id="equals-재정의가-필요-없는-경우"><a href="#equals-재정의가-필요-없는-경우" class="headerlink" title="equals 재정의가 필요 없는 경우"></a>equals 재정의가 필요 없는 경우</h3><ul>
+<li>각각의 객체가 고유한 경우<ul>
+<li>값(value) 대신 활성 객체(active entity)를 나타내는 Thread 같은 경우.</li>
+</ul>
+</li>
+<li>클래스에 논리적 동일성(logical equality) 검사 방법이 있든 없든 상관 없는 경우<ul>
+<li>java.util.Random 클래스는 난수를 발생 시키는데 일반적으로 두 난수가 같은지 비교할 필요가 없기 때문에.</li>
+</ul>
+</li>
+<li>상위 클래스에서 재정의한 equals가 하위 클래스에서 사용하기 적합한 경우<ul>
+<li>대부분의 Set 클래스는 AbstractSet의 equals 메소드를 그대로 사용한다. Map 또한 마찬가지.</li>
+</ul>
+</li>
+<li>클래스가 private 또는 package-private으로 선언되고, equals 메소드를 호출할 일이 없는 경우<ul>
+<li>이런 경우 필요는 없지만, 실수로 equals를 호출할 경우를 대비해 재정의해준다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Boolean <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(); <span class="comment">// 호출되면 안되는 메소드를 호출했다는 뜻.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="equals-재정의가-필요한-경우"><a href="#equals-재정의가-필요한-경우" class="headerlink" title="equals 재정의가 필요한 경우"></a>equals 재정의가 필요한 경우</h3><ul>
+<li>객체 동일성(object equality)가 아닌 논리적 동일성(logic equality)의 개념을 지원하는 클래스인 경우.</li>
+<li>상위 클래스의 equals가 하위 클래스의 필요를 충족하지 못할 때.<ul>
+<li>값 클래스(value class)가 대체로 해당됨</li>
+<li>예) Integer, Date ,,</li>
+</ul>
+</li>
+</ul>
+<h4 id="equals-메소드를-재정의할-필요가-없는-값-클래스"><a href="#equals-메소드를-재정의할-필요가-없는-값-클래스" class="headerlink" title="equals 메소드를 재정의할 필요가 없는 값 클래스"></a>equals 메소드를 재정의할 필요가 없는 값 클래스</h4><ul>
+<li>개체 통제 기능을 사용해 값마다 최대 하나의 객체만 존재하도록 제한한 클래스</li>
+<li>열거 자료형(enum)</li>
+<li>해당 클래스들은 객체의 동일성이 곧 논리적 동일성이다.</li>
+</ul>
+<br>
+
+<h3 id="equals-메소드를-정의할-때-준수해야할-일반-규약-JavaSE6-기준"><a href="#equals-메소드를-정의할-때-준수해야할-일반-규약-JavaSE6-기준" class="headerlink" title="equals 메소드를 정의할 때 준수해야할 일반 규약(JavaSE6 기준)"></a>equals 메소드를 정의할 때 준수해야할 일반 규약(JavaSE6 기준)</h3><ul>
+<li>반사성 : null 아닌 참조 x가 있을 때, x.equals(x)는 true를 반환.<ul>
+<li>모든 객체는 자기 자신과 같아야 한다.</li>
+</ul>
+</li>
+<li>대칭성 : null 아닌 참조 x와 y가 있을 때, x.equals(y)는 y.equals(x)가 true일 때만 true를 반환.<ul>
+<li>두 객체에게 서로 같은지 물으면 같은 답이 나와야 한다.</li>
+</ul>
+</li>
+<li>추이성 : null 아닌 참조 x,y,z가 있을 때, x.equals(y)가 true고, y.equals(z)가 true면 x.equals(z)도 true.</li>
+<li>일관성 : null 아닌 참조 x, y가 있을 때, equals를 통해 비교되는 정보에 아무 변화가 없다면, x.equals(y) 호출 결과는 호출 횟수에 상관없이 항상 같아야 한다.</li>
+<li>null 아닌 참조 x에 대해서, x.equals(null)은 항상 false이다.</li>
+</ul>
+<br>
+
+<h3 id="대칭성-위반한-사례"><a href="#대칭성-위반한-사례" class="headerlink" title="대칭성 위반한 사례"></a>대칭성 위반한 사례</h3><p>: 대칭성은 x.equals(y)가 true이면 y.equals(x)도 true인 것.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveString</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String s;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CaseInsensitiveString</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>)</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">this</span>.s = s;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 대칭성 위반</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o <span class="keyword">instanceof</span> CaseInsensitiveString) <span class="comment">// (1)</span></span><br><span class="line">      <span class="keyword">return</span> s.equalsIgnoreCase(</span><br><span class="line">        ((CaseInsensitiveString) o).s);</span><br><span class="line">    <span class="keyword">if</span>(o <span class="keyword">instanceof</span> String) <span class="comment">// (2) 이 방향으로만 정상 동작함.</span></span><br><span class="line">      <span class="keyword">return</span> s.equalsIgnoreCase((String) o);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CaseInsensitiveString cis = <span class="keyword">new</span> CaseInsensitiveString(<span class="string">"Polish"</span>);</span><br><span class="line">String s = <span class="string">"polish"</span>;</span><br><span class="line"></span><br><span class="line">cis.equals(s); <span class="comment">// (3) true</span></span><br><span class="line">s.equals(cis); <span class="comment">// (4) false</span></span><br></pre></td></tr></table></figure>
+
+<p>CaseInsensitiveString 객체의 equals 메소드는 CaseInsensitiveString 객체(1)와 String 객체(2) 둘다 비교 할 수 있다.<br>하지만 String의 equals는 String을 인자로만 받고 CaseInsensitiveString 클래스를 모르기 때문에 return값은 항상 false이다.(4)</p>
+<br>
+
+<h3 id="추이성-위반한-사례"><a href="#추이성-위반한-사례" class="headerlink" title="추이성 위반한 사례"></a>추이성 위반한 사례</h3><p>: x,y,z가 있을 때 x와 y가 같고, y와 z가 같으면 x와 z도 같아야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> x;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> y;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Point</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> Point)) <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// (1)</span></span><br><span class="line">    Point p = (Point) o;</span><br><span class="line">    <span class="keyword">return</span> p.x == x &amp;&amp; p.y == y; <span class="comment">// (2)</span></span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 클래스를 계승(상속)해 필드를 추가하는 경우, equals를 재정의해야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Color color;</span><br><span class="line"></span><br><span class="line">  <span class="function">pulbic <span class="title">ColorPoint</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, Color color)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(x, y);</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 대칭성 위반</span></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// (3)</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">super</span>.equals(o) &amp;&amp; ((ColorPoint) o).color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Point p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">ColorPoint cp = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>, <span class="number">2</span>, Color.RED);</span><br></pre></td></tr></table></figure>
+
+<p>p.equals(cp)는 ColorPoint가 Point의 instance가 될 수 있어서 (1)은 통과하지만, Point 객체로 형변환 후, Point에 있는 필드만 비교하기 때문에 (2) true가 나온다.<br>cp.equals(p)는 Point 객체가 ColorPoint의 instance가 될 수 없기 때문에(3) 항상 false가 반환된다.</p>
+<br>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 추이성 위반</span></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> Point)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// o가 Point객체면 color는 비교하지 않음</span></span><br><span class="line">  <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> o.equals(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// o가 ColorPoint면 모든 정보를 비교</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">super</span>.equals(o) &amp;&amp; ((ColorPoint)o).color == color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 코드는 대칭성은 보존되지만 추이성이 깨진다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ColorPoint p1 = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>,<span class="number">2</span>,Color.RED);</span><br><span class="line">Point p2 = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">ColorPoint p3 = <span class="keyword">new</span> ColorPoint(<span class="number">1</span>,<span class="number">2</span>,Color.BLUE);</span><br><span class="line"></span><br><span class="line">p1.equals(p2); <span class="comment">// (1) true</span></span><br><span class="line">p2.equals(p3); <span class="comment">// (2) true</span></span><br><span class="line">p1.equals(p3); <span class="comment">// (3) false</span></span><br></pre></td></tr></table></figure>
+
+<p>(1)과 (2)의 경우 color 필드를 무시해서 true가 되지만, (3)의 경우 color를 비교해서 false가 된다.</p>
+<ul>
+<li>상위 클래스에 없는 새로운 값 컴포넌트를 하위 클래스에 추가하는 상황이라면, equals에게 비교할 새로운 정보가 추가되어야 한다.</li>
+<li>이 때 <em>상위 클래스가 변경 불가능(Immutable Class)한 객체라면, 객체 지향 언어에서 동치 관계를 구현할 때 발생하는 본질적 문제로, equals 규약을 어기지 않을 방법이 없다.</em></li>
+<li>getClass를 사용하는 경우 리스코프 대체 원칙이 적용되지 않아서 무조건 false가 출력된다.<ul>
+<li>HashSet 같은 컬렉션은 객체 포함 여부를 판단할 때 equals를 사용하기 때문.</li>
+<li>CounterPoint 객체는 어떤 Point 객체와도 같은 수 없기 때문.</li>
+</ul>
+</li>
+</ul>
+<h4 id="equals-규약-위반하지-않으며-값-컴포넌트-추가"><a href="#equals-규약-위반하지-않으며-값-컴포넌트-추가" class="headerlink" title="equals 규약 위반하지 않으며 값 컴포넌트 추가"></a>equals 규약 위반하지 않으며 값 컴포넌트 추가</h4><ul>
+<li>계승(상속)하는 대신 구성하라.</li>
+<li>Point를 계승해 ColorPoint를 만드는 것이 아닌, ColorPoint안에 <code>private Point</code> 필드를 두고 <code>public view</code> 메소드를 하나 만드는 것.</li>
+<li>이 view 메소드는 ColorPoint가 가리키는 위치를 Point 객체로 반환한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Point point;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Color color;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// ColorPoint의 Point 뷰 반환</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Point <span class="title">asPoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> point;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(o <span class="keyword">instanceof</span> ColorPoint)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    ColorPoint cp = (ColorPoint) o;</span><br><span class="line">    <span class="keyword">return</span> cp.point.equals(point) &amp;&amp; cp.color.equals(color);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java.sql.Timestamp는 java.util.Date를 계승해 nanoseconds 필드를 추가한 것.</li>
+<li>Timestamp 클래스의 equals는 대칭성을 위반해 Timestamp와 Date객체를 같은 컬렉션에 보관하거나 섞어쓰면 문제가될 수 있다.</li>
+</ul>
+<br>
+
+<h3 id="일관성"><a href="#일관성" class="headerlink" title="일관성"></a>일관성</h3><ul>
+<li>일단 같다고 판정된 객체들은 추후 변경되지 않는 한 계속 같아야 한다.</li>
+<li>변경 가능한 객체들 간의 동치 관계는 시간에 따라 달라질 수 있지만, 변경 불가능한 객체들 간의 동치 관계는 시간에 따라 달라질 수 없다.</li>
+<li>신뢰성이 보장되지 않는 자원들을 비교하는 equals 구현을 삼가라.<ul>
+<li>예를 들면 URL에 대한 equals</li>
+<li>equals 메소드는 메모리에 존재하는 객체들만 사용해서 결정적 계산을 수행하도록 구현되어야한다.</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="Null에-대한-비-동치성-Non-nullity"><a href="#Null에-대한-비-동치성-Non-nullity" class="headerlink" title="Null에 대한 비 동치성(Non-nullity)"></a>Null에 대한 비 동치성(Non-nullity)</h3><ul>
+<li>모든 객체는 null과 같아선 안된다.<ul>
+<li>예) o.equals(null) 의 결과가 true가 되면 안된다.</li>
+</ul>
+</li>
+<li>equals 내부에서 <code>null 조건</code>을 명시적으로 검사해서 <code>NullPointerException</code>이 발생하지 않도록 한다.</li>
+<li>인자와의 비교를 위해 equals 메소드는 인자를 먼저 형변환해야한다.</li>
+<li>형변환 이전에 instanceof 연산자를 사용해 인자의 자료형을 먼저 검사해야한다.</li>
+</ul>
+<br>
+
+<h2 id="좋은-equals-메소드를-구현하기-위해-따라야할-지침들"><a href="#좋은-equals-메소드를-구현하기-위해-따라야할-지침들" class="headerlink" title="좋은 equals 메소드를 구현하기 위해 따라야할 지침들"></a>좋은 equals 메소드를 구현하기 위해 따라야할 지침들</h2><ol>
+<li><code>== 연산자</code>를 사용해 equals 인자가 자기 자신인지 검사한다.<ul>
+<li>그렇다면 true를 반환한다. 성능 최적화가 이루어진다.</li>
+</ul>
+</li>
+<li><code>instanceof</code> 연산자를 사용해 인자의 자료형을 정확히 검사한다.<ul>
+<li>그렇지 않다면 false를 반환한다.</li>
+</ul>
+</li>
+<li><code>equals</code> 인자를 정확한 자료형으로 변환한다.<ul>
+<li>그 앞에 instanceof 연산자를 사용했으므로 형변환은 반드시 성공한다.</li>
+</ul>
+</li>
+<li>“중요” 필드 각각이 인자로 주어진 객체의 해당 필드와 일치하는지 검사한다.<ul>
+<li>필드가 모두 일치하는 경우에만 true를 반환</li>
+<li>인터페이스라면 인터페이스 메소드를 통해, 클래스라면 권한이 있다면 직접 접근도 가능</li>
+<li>float나 double이외의 기본 자료형은 ==로</li>
+<li>float는 Float.compare로 double은 Double.compare로</li>
+<li>Null이 허용되는 객체의 경우 내부적으로 null check를 따로 해주어야 한다.</li>
+</ul>
+</li>
+<li>equals 메소드 구현을 끝냈다면, 대칭성, 추이성, 일관성 세 속성이 만족되는지 검토하라.<ul>
+<li>단위 테스트(unit test)를 진행한다.</li>
+</ul>
+</li>
+</ol>
+<h4 id="null이-허용되는-객체의-경우"><a href="#null이-허용되는-객체의-경우" class="headerlink" title="null이 허용되는 객체의 경우"></a>null이 허용되는 객체의 경우</h4><p>equals 메소드는 내부에 NullPointerException이 발생하면 안되기 때문에, Null 여부를 검사를 따로 해주어야 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(field == <span class="keyword">null</span> ? o.field == <span class="keyword">null</span> : field.equals(o.field))</span><br></pre></td></tr></table></figure>
+
+<p>NullPointerException을 피하기 위해 null 여부를 확인하고 이 후에 값을 비교한다.</p>
+<br>
+
+<h2 id="equals-구현시-주의해야할-사항-몇-가지들"><a href="#equals-구현시-주의해야할-사항-몇-가지들" class="headerlink" title="equals 구현시 주의해야할 사항 몇 가지들"></a>equals 구현시 주의해야할 사항 몇 가지들</h2><ol>
+<li>equals를 구현할 때는 hashCode도 재정의하라.</li>
+<li>equals 메소드의 인자형을 Object에서 다른 것으로 바꾸지 마라.<ul>
+<li>Object equals의 인자는 Object이기 때문에 다른 타입의 인자를 쓰면 Override 하지 못한다.</li>
+<li>@Override 어노테이션을 사용하면 위와 같은 실수를 줄일 수 있다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li>instanceof  <ul>
+<li><a href="https://programmers.co.kr/learn/questions/505">https://programmers.co.kr/learn/questions/505</a></li>
+</ul>
+</li>
+</ul>
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -1274,6 +2409,115 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-10-24T15:00:00.000Z">2018-10-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1516 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/10/25/java-finalizer/">Java - 종료자(finalizer)</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Effective-Java-규칙-7"><a href="#Effective-Java-규칙-7" class="headerlink" title="Effective Java 규칙 7"></a>Effective Java 규칙 7</h2><blockquote>
+<p>종료자 사용을 피하라</p>
+</blockquote>
+<h3 id="종료자란"><a href="#종료자란" class="headerlink" title="종료자란 ?"></a>종료자란 ?</h3><p><strong>Object.finalize()</strong><br>객체를 생성 하고 사용한 뒤 JVM의 가비지 컬렉션이 자동으로 메모리를 정리할 때 호출되는 메소드<br>프로그래머가 종료자를 직접 사용하는 것은 예측 불가능하고, 위험하고, 불필요하다.  </p>
+<h3 id="종료자-사용시-단점들"><a href="#종료자-사용시-단점들" class="headerlink" title="종료자 사용시 단점들."></a>종료자 사용시 단점들.</h3><ul>
+<li>즉시 실행된다는 보장이 없다.</li>
+<li>종료 시점이 JVM마다 다르다.</li>
+<li>객체 메모리 반환이 오히려 지연된다.</li>
+<li>자바는 프로그램 종료될 때까지 객체가 남은 상태로 종료되어도 괜찮다.</li>
+<li>종료자 안에서 무점검 예외가 발생해도 경고 문구가 출력되지 않는다.</li>
+<li>종료자 사용시 프로그램 성능이 오히려 떨어진다.</li>
+</ul>
+<h2 id="명시적-종료-메소드-termination-method"><a href="#명시적-종료-메소드-termination-method" class="headerlink" title="명시적 종료 메소드 (termination method)"></a>명시적 종료 메소드 (termination method)</h2><blockquote>
+<p>Q. 파일이나 스레드 처럼 명시적으로 반환하거나 삭제해야하는 자원을 포함하는 객체의 클래스는 어떻게 작성해야하는가?<br>A. 명시적인 종료 메소드(termination method)를 정의하고. 더이상 필요하지 않은 객체라면 클라이언트가 해당 메소드를 호출하게 한다.</p>
+</blockquote>
+<ul>
+<li>유효하지 않은 객체임을 표시하는 private 필드를 하나 두고, 모든 메소드 앞에 해당 필드를 검사하는 코드를 둬서, 이미 종료된 객체에 메소드를 호출하면 <code>IllegalStateException</code>이 던져지도록.</li>
+<li>예) OutputSteam, InputStream, java.sql.Connection에 정의된 close 메소드</li>
+<li>java.util.Timer의 cancle 메소드</li>
+<li>java.awt의 Graphics.dispose, Window.dispose</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Object closeLock = <span class="keyword">new</span> Object();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> closed = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (closeLock) &#123;</span><br><span class="line">      <span class="keyword">if</span> (closed) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      closed = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (channel != <span class="keyword">null</span>) &#123;</span><br><span class="line">      channel.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fd.closeAll(<span class="keyword">new</span> Closeable() &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        close0();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>명시적 종료 메소드는 보통 <code>try-finally</code> 문과 함께 쓰이지만 자바 7에 <code>try with resource</code>문이 생겨서 이를 보통 쓴다. 리소스가 자동으로 해제된다.</li>
+</ul>
+<h2 id="종료자를-정말-써야하는-경우"><a href="#종료자를-정말-써야하는-경우" class="headerlink" title="종료자를 정말 써야하는 경우"></a>종료자를 정말 써야하는 경우</h2><ol>
+<li>명시적 종료 메소드 호출을 잊을 경우에 대비하는 안전망의 역할<ul>
+<li>이런 경우 자원 반환이 늦어지더라도 어쨌든 반환이 되는 것이 더 좋기 때문에. 종료자가 언제 호출될지 모르는 것은 마찬가지이다. 종료자가 반환되지 않은 자원을 발견하게 될 경우 반드시 경로 메세지를 로그로 남겨야한다.</li>
+<li>종료자로 이런 안전망을 구현하려하는 경우 추가적인 비용을 감당하면서 구현할 가치가 있는 일인지 신중하게 생각해보아야 함.</li>
+</ul>
+</li>
+<li>네이티브 피어(native peer)와 연결된 객체를 다룰 때.</li>
+</ol>
+<h3 id="네이티브-피어란"><a href="#네이티브-피어란" class="headerlink" title="네이티브 피어란?"></a>네이티브 피어란?</h3><p>JNI와 같이 일반적인 자바 객체가 아닌 경우, 가비지 콜렉터가 알 수 없고, 자바측 피어 객체(Java peer)가 반환될 때 같이 반환할 수도 없다. 네이티브 피어가 중요한 자원을 점유하고 있는 것이 아니라면 종료자를 사용하는 것이 적합하다.  </p>
+<p>즉시 종료해야하는 경우 명시적인 종료 메소드를 클래스에 추가해야한다.</p>
+<p>이때 종료자 연결이 자동으로 이루지지 않으므로, 수동 종료자 연결을 해주어야한다.</p>
+<h3 id="수동-종료자-연결"><a href="#수동-종료자-연결" class="headerlink" title="수동 종료자 연결"></a>수동 종료자 연결</h3><p>Object 아닌 어떤 클래스가 종료자를 갖고 있고 하위 클래스가 해당 메소드를 재정의하는 경우, 하위 클래스 종료자는 상위 클래스 종료자를 명시적으로 호출해야한다. 그렇지 않으면 상위 클래스 종료자는 절대 호출되지 않는다.<br>하위 클래스 종료자는 try문 상위 클래스 종료자는 finally문에서 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 수동 종료자 연결(Manual finalizer chaining</span></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    .. <span class="comment">// 하위 클래스의 상태 종료</span></span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.finalize();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="종료-보호자-패턴-finalizer-guardian"><a href="#종료-보호자-패턴-finalizer-guardian" class="headerlink" title="종료 보호자 패턴(finalizer guardian)"></a>종료 보호자 패턴(finalizer guardian)</h3><p>종료되어야 하는 객체의 클래스 안에 종료자를 정의하는 대신, 익명 클래스 안에 종료자를 정의한다. 이 익명 클래스로 만든 객체를 <code>종료 보호자</code>라한다. 종료되어야 하는 객체 안에 하나씩 넣는다.<br>종료 보호자 바깥 객체에는 종료 보호자를 참조하는 private 필드가 있고, 따라서 바깥 객체에 대한 모든 참조가 사라지면 종료 보호자의 종료자도 실행 가능한 상태가 된다.</p>
+<ul>
+<li>객체에 대한 모든 참조가 사라지면 GC이 객체를 삭제하려고 finalize()를 실행하기 때문</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 종료 보호자 숙어(Finallaizer Guardian idiom)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 이 객체를 바깥 객체(Foo)를 종료 시키는 역할만 수행</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Object finalizerGuardian = <span class="keyword">new</span> Object() &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">      ... <span class="comment">// 바깥 Foo 객체를 종료 시킴</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이 기법은 종료자가 있는 비-final 클래스를 구현할 때 반드시 고려해야한다.</p>
+<h2 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h2><ol>
+<li>자원 반환에 대한 최종적 안정장치를 구현하거나, 중요하지 않은 네이티브 자원을 종료시키려는 것이 아니라면 종료자는 사용하지 말아라.</li>
+<li>굳이 종료자를 사용하게 되었다면 super, finalize 호출을 하라.</li>
+<li>자원 반환 안전망을 구현하는 경우 종료자가 호출될 때마다 클라이언트 코드가 잘못되었음을 알리는 로그를 남겨라.</li>
+<li>하위 클래스 정의가 가능한 public 클래스에 종료자를 추가해야한다면, 하위 클래스에서 실수로 super.finalize 호출을 잊어도 문제가 없도록 종료 보호자 패턴을 도입할지 고려해보자.</li>
+</ol>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li>종료자<ul>
+<li><a href="http://plposer.tistory.com/72">http://plposer.tistory.com/72</a></li>
+<li><a href="https://wedul.tistory.com/262?category=648587">https://wedul.tistory.com/262?category=648587</a></li>
+</ul>
+</li>
+<li>try with resource<ul>
+<li><a href="http://javacan.tistory.com/entry/my-interesting-java7-five-features">http://javacan.tistory.com/entry/my-interesting-java7-five-features</a></li>
+</ul>
+</li>
+</ul>
+<br>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -1384,6 +2628,73 @@
 
 
 
+    <!-- 
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-10-23T15:00:00.000Z">2018-10-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/system/">System</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/system/shell/">Shell</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 189 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/10/24/fish-shell-alias/">Fish Shell - Alias 설정</a>
+            
+        </h1>
+        <div class="content">
+            <p>일반적으로 <code>bash</code>와 같은 쉘들은 <code>alias</code> 명령을 통해 <code>alias</code>를 지정해준다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># ~/.bashrc</span></span><br><span class="line"><span class="built_in">alias</span> name=<span class="string">"#statement"</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<p>fish shell은 <code>alias</code>가 따로 존재하지 않고 함수(<code>function</code>)로 이를 처리한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env fish</span></span><br><span class="line">&gt; <span class="keyword">function</span> name</span><br><span class="line">  <span class="comment">#statements</span></span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2018-11-08/01.png" alt="fish shell  function alias example"></p>
+<br>
+
+<p>fish의 인수는 숫자가 매겨진 변수(<code>$1</code>)가 아닌 <code>$argv</code> 단일 목록으로 전달된다.</p>
+<p><img src="/images/2018-11-08/02.png" alt="fish shell  function alias argv example"></p>
+<br>
+
+<p><code>function</code>을 영구적으로 저장하고 싶다면 <code>~/.config/fish/functions/</code>경로에 <code>function_name.fish</code> 파일을 생성해야한다.</p>
+<p><img src="/images/2018-11-08/03.png" alt="fish 파일 생성"><br><img src="/images/2018-11-08/04.png" alt="fish 파일 확인"><br><img src="/images/2018-11-08/05.png" alt="명령어 실행 확인"></p>
+<br>
+
+<p>전체 함수의 목록은 아래 명령어로 확인할 수 있다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env fish</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">functions</span></span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+ -->
     
 <div class="card">
     
@@ -1483,11 +2794,12 @@
 </div>
 </div>
                 
+                
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
     
         
 <div class="card widget">
@@ -1756,625 +3068,6 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/authrization/" style="font-size: 11.11px;">Authrization</a> <a href="/tags/design-pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/effective-java/" style="font-size: 18.89px;">Effective Java</a> <a href="/tags/encryption/" style="font-size: 10px;">Encryption</a> <a href="/tags/fish-shell/" style="font-size: 10px;">Fish Shell</a> <a href="/tags/functional-programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/functional-thinking/" style="font-size: 12.22px;">Functional Thinking</a> <a href="/tags/git/" style="font-size: 11.11px;">Git</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/hash/" style="font-size: 10px;">Hash</a> <a href="/tags/hibernate/" style="font-size: 12.22px;">Hibernate</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jpa/" style="font-size: 10px;">JPA</a> <a href="/tags/java/" style="font-size: 20px;">Java</a> <a href="/tags/javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/junit/" style="font-size: 10px;">Junit</a> <a href="/tags/maven/" style="font-size: 10px;">Maven</a> <a href="/tags/meetup/" style="font-size: 10px;">Meetup</a> <a href="/tags/mysql/" style="font-size: 12.22px;">MySQL</a> <a href="/tags/netty/" style="font-size: 15.56px;">Netty</a> <a href="/tags/network/" style="font-size: 15.56px;">Network</a> <a href="/tags/oauth2/" style="font-size: 12.22px;">OAuth2</a> <a href="/tags/os/" style="font-size: 10px;">OS</a> <a href="/tags/reactjs/" style="font-size: 10px;">ReactJS</a> <a href="/tags/refactoring/" style="font-size: 10px;">Refactoring</a> <a href="/tags/sts/" style="font-size: 11.11px;">STS</a> <a href="/tags/shell/" style="font-size: 10px;">Shell</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 12.22px;">SpringBoot</a> <a href="/tags/stub/" style="font-size: 10px;">Stub</a> <a href="/tags/study/" style="font-size: 12.22px;">Study</a> <a href="/tags/tdd/" style="font-size: 10px;">TDD</a> <a href="/tags/tacademy/" style="font-size: 10px;">Tacademy</a> <a href="/tags/test/" style="font-size: 12.22px;">Test</a> <a href="/tags/think/" style="font-size: 10px;">Think</a> <a href="/tags/troubleshooting/" style="font-size: 14.44px;">Troubleshooting</a> <a href="/tags/web/" style="font-size: 12.22px;">Web</a> <a href="/tags/women-who-code/" style="font-size: 10px;">Women Who Code</a> <a href="/tags/생활코딩/" style="font-size: 17.78px;">생활코딩</a>
-    </div>
-</div>
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T14:41:26.000Z">2020-02-01</time></div>
-                    <a href="/2020/02/01/reverting-invalid-git-merge/" class="title has-link-black-ter is-size-6 has-text-weight-normal">git 커밋 중간에 잘못된 merge 되돌리기</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/troubleshooting/">Troubleshooting</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:54:30.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/women-who-code-talk-with-sonia-from-ms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Talk with Sonia from Microsoft - Inspiring Tech Women</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/think/">Think</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T12:03:04.000Z">2020-01-19</time></div>
-                    <a href="/2020/01/19/encryption-vs-hash/" class="title has-link-black-ter is-size-6 has-text-weight-normal">암호화 vs 해시</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:54:07.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/java-stream/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java - Stream 기초</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T21:47:20.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/functional-thinking-ch7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수형 사고 - ch7 실용적 사고</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/programming/common/">Common</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">10</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">11</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">9</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/authrization/">
-                        <span class="tag">Authrization</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/design-pattern/">
-                        <span class="tag">Design Pattern</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/docker/">
-                        <span class="tag">Docker</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/effective-java/">
-                        <span class="tag">Effective Java</span>
-                        <span class="tag is-grey">21</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/encryption/">
-                        <span class="tag">Encryption</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/fish-shell/">
-                        <span class="tag">Fish Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-programming/">
-                        <span class="tag">Functional Programming</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-thinking/">
-                        <span class="tag">Functional Thinking</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gradle/">
-                        <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">HTTP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hash/">
-                        <span class="tag">Hash</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hibernate/">
-                        <span class="tag">Hibernate</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/intellij/">
-                        <span class="tag">IntelliJ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jpa/">
-                        <span class="tag">JPA</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">25</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">Javascript</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/junit/">
-                        <span class="tag">Junit</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/maven/">
-                        <span class="tag">Maven</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/meetup/">
-                        <span class="tag">Meetup</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mysql/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/netty/">
-                        <span class="tag">Netty</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/network/">
-                        <span class="tag">Network</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/oauth2/">
-                        <span class="tag">OAuth2</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/os/">
-                        <span class="tag">OS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/reactjs/">
-                        <span class="tag">ReactJS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/refactoring/">
-                        <span class="tag">Refactoring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/sts/">
-                        <span class="tag">STS</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/shell/">
-                        <span class="tag">Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/spring/">
-                        <span class="tag">Spring</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springboot/">
-                        <span class="tag">SpringBoot</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/stub/">
-                        <span class="tag">Stub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/study/">
-                        <span class="tag">Study</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tdd/">
-                        <span class="tag">TDD</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tacademy/">
-                        <span class="tag">Tacademy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/test/">
-                        <span class="tag">Test</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/think/">
-                        <span class="tag">Think</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/troubleshooting/">
-                        <span class="tag">Troubleshooting</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">Web</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/women-who-code/">
-                        <span class="tag">Women Who Code</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/생활코딩/">
-                        <span class="tag">생활코딩</span>
-                        <span class="tag is-grey">11</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
             Recent
         </h3>
         
@@ -2664,306 +3357,6 @@
         </li>
         
         </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/authrization/">
-                        <span class="tag">Authrization</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/design-pattern/">
-                        <span class="tag">Design Pattern</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/docker/">
-                        <span class="tag">Docker</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/effective-java/">
-                        <span class="tag">Effective Java</span>
-                        <span class="tag is-grey">21</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/encryption/">
-                        <span class="tag">Encryption</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/fish-shell/">
-                        <span class="tag">Fish Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-programming/">
-                        <span class="tag">Functional Programming</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/functional-thinking/">
-                        <span class="tag">Functional Thinking</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gradle/">
-                        <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">HTTP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hash/">
-                        <span class="tag">Hash</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hibernate/">
-                        <span class="tag">Hibernate</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/intellij/">
-                        <span class="tag">IntelliJ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jpa/">
-                        <span class="tag">JPA</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">25</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">Javascript</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/junit/">
-                        <span class="tag">Junit</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/maven/">
-                        <span class="tag">Maven</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/meetup/">
-                        <span class="tag">Meetup</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mysql/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/netty/">
-                        <span class="tag">Netty</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/network/">
-                        <span class="tag">Network</span>
-                        <span class="tag is-grey">8</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/oauth2/">
-                        <span class="tag">OAuth2</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/os/">
-                        <span class="tag">OS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/reactjs/">
-                        <span class="tag">ReactJS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/refactoring/">
-                        <span class="tag">Refactoring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/sts/">
-                        <span class="tag">STS</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/shell/">
-                        <span class="tag">Shell</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/spring/">
-                        <span class="tag">Spring</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springboot/">
-                        <span class="tag">SpringBoot</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/stub/">
-                        <span class="tag">Stub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/study/">
-                        <span class="tag">Study</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tdd/">
-                        <span class="tag">TDD</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tacademy/">
-                        <span class="tag">Tacademy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/test/">
-                        <span class="tag">Test</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/think/">
-                        <span class="tag">Think</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/troubleshooting/">
-                        <span class="tag">Troubleshooting</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">Web</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/women-who-code/">
-                        <span class="tag">Women Who Code</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/생활코딩/">
-                        <span class="tag">생활코딩</span>
-                        <span class="tag is-grey">11</span>
-                    </a>
-                </div>
-                
-            </div>
         </div>
     </div>
 </div>
