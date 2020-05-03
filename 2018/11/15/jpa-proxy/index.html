@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="프록시와 즉시로딩, 지연로딩 프록시(Proxy) 프록시를 사용하면 연관된 객체를 DB에서 처음부터 조회하는 것이 아니라, 실제 사용하는 시점에 DB에서 조최할 수 있다(Lazy Loading). 하지만 자주 함께 사용하는 객체들은 조인을 사용해서 함께 조회하는 것이 효과적이다(Eager Loading). 이를 즉시 로딩과 지연 로딩 두 가지 방식으로 사용할">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-19T00:43:22.690Z">
+<meta property="og:updated_time" content="2020-03-19T00:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JPA - Proxy &#x2F; Eager &amp; Lazy Loading">
 <meta name="twitter:description" content="프록시와 즉시로딩, 지연로딩 프록시(Proxy) 프록시를 사용하면 연관된 객체를 DB에서 처음부터 조회하는 것이 아니라, 실제 사용하는 시점에 DB에서 조최할 수 있다(Lazy Loading). 하지만 자주 함께 사용하는 객체들은 조인을 사용해서 함께 조회하는 것이 효과적이다(Eager Loading). 이를 즉시 로딩과 지연 로딩 두 가지 방식으로 사용할">
@@ -296,7 +296,7 @@ ga('send', 'pageview');
 <li>ex) <code>em.find(Member.class, &quot;member1&quot;);</code> 호출 시 회원 엔티티와 연관된 팀 엔티티도 함께 조회.</li>
 <li>설정 : <code>@ManyToOne(fetch = FetchType.EAGER)</code></li>
 </ul>
-<br/>
+<br>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@ManyToOne</span>(fetch = FetchType.EAGER)</span><br><span class="line">  <span class="meta">@JoinColumn</span>(name = <span class="string">"TEAM_ID"</span>)</span><br><span class="line">  <span class="keyword">private</span> Team team;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -400,7 +400,7 @@ ga('send', 'pageview');
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li>자바 ORM 표준 JPA 프로그래밍</li>
 </ul>
-<br/>
+<br>
 
         </div>
         <footer class="article-footer">
@@ -408,7 +408,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2018/11/15/jpa-proxy/" data-id="ck88j8wzk005cgl89m4sive11" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2018/11/15/jpa-proxy/" data-id="ck9r06yrd0052nn6k6mdtot5h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

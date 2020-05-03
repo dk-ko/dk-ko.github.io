@@ -9,79 +9,7 @@
 
     <url>
         <loc>https://j2de.github.io/2020/02/01/reverting-invalid-git-merge/</loc>
-        <lastmod>2020-03-21T10:41:48.564Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/</loc>
-        <lastmod>2020-03-20T15:44:39.475Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2020/01/20/women-who-code-talk-with-sonia-from-ms/</loc>
-        <lastmod>2020-03-20T15:44:39.470Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/10/20/functional-thinking-ch7/</loc>
-        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/10/20/java-stream/</loc>
-        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2020/01/19/encryption-vs-hash/</loc>
-        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/09/26/how-junior-developers-get-it-information/</loc>
-        <lastmod>2020-03-20T15:44:39.465Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/07/17/os-synchronization-and-critical-section/</loc>
-        <lastmod>2020-03-20T15:44:39.464Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/10/16/functional-thinking-ch1/</loc>
-        <lastmod>2020-03-20T15:44:39.464Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/10/16/functional-thinking-ch2/</loc>
-        <lastmod>2020-03-20T15:44:39.464Z</lastmod>
+        <lastmod>2020-03-21T10:41:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -89,7 +17,7 @@
 
     <url>
         <loc>https://j2de.github.io/2018/05/12/mysql-file-import-for-mac/</loc>
-        <lastmod>2020-03-20T15:44:39.458Z</lastmod>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -97,7 +25,15 @@
 
     <url>
         <loc>https://j2de.github.io/2019/10/15/mysql-transaction-and-concurrency-control/</loc>
-        <lastmod>2020-03-20T15:44:39.458Z</lastmod>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/10/16/functional-thinking-ch1/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -105,247 +41,55 @@
 
     <url>
         <loc>https://j2de.github.io/2019/10/17/database-index/</loc>
-        <lastmod>2020-03-20T15:44:39.458Z</lastmod>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/09/20/web-oauth2/</loc>
-        <lastmod>2020-03-19T01:37:36.214Z</lastmod>
+        <loc>https://j2de.github.io/2020/01/19/encryption-vs-hash/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/09/21/web-http/</loc>
-        <lastmod>2020-03-19T01:37:32.510Z</lastmod>
+        <loc>https://j2de.github.io/2019/10/16/functional-thinking-ch2/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/09/29/sts-cannot-be-run-on-server/</loc>
-        <lastmod>2020-03-19T01:36:46.386Z</lastmod>
+        <loc>https://j2de.github.io/2019/10/20/functional-thinking-ch7/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/</loc>
-        <lastmod>2020-03-19T01:36:40.953Z</lastmod>
+        <loc>https://j2de.github.io/2019/09/26/how-junior-developers-get-it-information/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/05/19/springmvc-server-shutdown-and-execution-error-for-mac/</loc>
-        <lastmod>2020-03-19T01:36:02.119Z</lastmod>
+        <loc>https://j2de.github.io/2020/01/20/women-who-code-talk-with-sonia-from-ms/</loc>
+        <lastmod>2020-03-20T15:44:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2018/07/17/docker-study-3/</loc>
-        <lastmod>2020-03-19T01:34:36.481Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/07/10/docker-study-2/</loc>
-        <lastmod>2020-03-19T01:34:31.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/07/09/docker-study-1/</loc>
-        <lastmod>2020-03-19T01:34:25.652Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/09/24/refactoring-and-tdd/</loc>
-        <lastmod>2020-03-19T01:34:09.436Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/09/11/import-project-from-sts-after-git-pull-clone-in-cli/</loc>
-        <lastmod>2020-03-19T01:33:57.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/10/15/java-private-constructor/</loc>
-        <lastmod>2020-03-19T01:14:24.132Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/10/14/java-singleton-pattern/</loc>
-        <lastmod>2020-03-19T01:14:07.525Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/06/01/netty-codec-framework/</loc>
-        <lastmod>2020-03-19T01:13:24.547Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/06/01/netty-embeddedchannel-unittest/</loc>
-        <lastmod>2020-03-19T01:13:13.342Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/11/start-a-netty-project-with-maven/</loc>
-        <lastmod>2020-03-19T01:12:49.194Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/25/netty-channel-event-and-eventhandler-and-pipeline/</loc>
-        <lastmod>2020-03-19T01:12:26.932Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/23/netty-datacontainer-bytebuf/</loc>
-        <lastmod>2020-03-19T01:11:35.332Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/22/netty-network-transport-api/</loc>
-        <lastmod>2020-03-19T01:11:19.939Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/21/netty-component/</loc>
-        <lastmod>2020-03-19T01:11:04.400Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/05/09/netty-features-architecture/</loc>
-        <lastmod>2020-03-19T01:10:10.144Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/25/codingyahac-javascript-12/</loc>
-        <lastmod>2020-03-19T01:09:18.125Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/24/codingyahac-javascript-11/</loc>
-        <lastmod>2020-03-19T01:09:12.677Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/23/codingyahac-javascript-10/</loc>
-        <lastmod>2020-03-19T01:09:07.336Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/22/codingyahac-javascript-9/</loc>
-        <lastmod>2020-03-19T01:09:01.879Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/17/codingyahac-javascript-5-6/</loc>
-        <lastmod>2020-03-19T01:08:57.915Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/16/codingyahac-javascript-4/</loc>
-        <lastmod>2020-03-19T01:08:52.846Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/15/codingyahac-javascript-3/</loc>
-        <lastmod>2020-03-19T01:08:48.721Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/14/codingyahac-javascript-2/</loc>
-        <lastmod>2020-03-19T01:08:45.135Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/13/codingyahac-javascript-1/</loc>
-        <lastmod>2020-03-19T01:08:32.013Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/08/28/java-equals-method-instanceof-override/</loc>
-        <lastmod>2020-03-19T01:06:31.211Z</lastmod>
+        <loc>https://j2de.github.io/2019/07/17/os-synchronization-and-critical-section/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -353,231 +97,39 @@
 
     <url>
         <loc>https://j2de.github.io/2018/08/27/java-primary-refference-type/</loc>
-        <lastmod>2020-03-19T01:06:21.176Z</lastmod>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/</loc>
-        <lastmod>2020-03-19T01:05:56.007Z</lastmod>
+        <loc>https://j2de.github.io/2018/08/28/java-equals-method-instanceof-override/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019/04/17/java-design-method-signatures-carefully/</loc>
-        <lastmod>2020-03-19T01:05:50.260Z</lastmod>
+        <loc>https://j2de.github.io/2018/10/15/java-private-constructor/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/</loc>
-        <lastmod>2020-03-19T01:05:44.230Z</lastmod>
+        <loc>https://j2de.github.io/2019/10/20/java-stream/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://j2de.github.io/2019/03/23/java-prefer-side-effect-free-functions-in-streams/</loc>
-        <lastmod>2020-03-19T01:05:37.526Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/02/21/java-prefer-method-references-to-lambdas/</loc>
-        <lastmod>2020-03-19T01:05:27.326Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/02/20/java-use-instance-fields-instead-of-ordinals/</loc>
-        <lastmod>2020-03-19T01:05:22.629Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/31/java-use-bounded-wildcards-to-increase-api-flexibility/</loc>
-        <lastmod>2020-03-19T01:05:10.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/28/java-don%27t-use-raw-types/</loc>
-        <lastmod>2020-03-19T01:04:56.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/27/java-limit-source-files-to-a-single-top-level-class/</loc>
-        <lastmod>2020-03-19T01:04:48.623Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/24/java-prefer-class-hierarchies-to-tagged-classes/</loc>
-        <lastmod>2020-03-19T01:04:40.943Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/21/java-minimize-mutability/</loc>
-        <lastmod>2020-03-19T01:04:33.128Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/18/java-use-interfaces-only-to-define-types/</loc>
-        <lastmod>2020-03-19T01:04:26.662Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/17/java-design-interfaces-for-posterity/</loc>
-        <lastmod>2020-03-19T01:04:19.628Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/13/java-favor-composition-over-inheritance/</loc>
-        <lastmod>2020-03-19T01:04:12.668Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/10/24/talkonseminar-oauth2/</loc>
-        <lastmod>2020-03-19T00:43:22.770Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/09/git-gitignore-setting/</loc>
-        <lastmod>2020-03-19T00:43:22.717Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/06/16/springboot-react-cors/</loc>
-        <lastmod>2020-03-19T00:43:22.717Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/10/24/fish-shell-alias/</loc>
-        <lastmod>2020-03-19T00:43:22.696Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/12/05/test-stub/</loc>
-        <lastmod>2020-03-19T00:43:22.694Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/10/jpa-junit-test/</loc>
-        <lastmod>2020-03-19T00:43:22.693Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/06/11/intellij-devtools/</loc>
-        <lastmod>2020-03-19T00:43:22.692Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/16/jpa-cascade/</loc>
-        <lastmod>2020-03-19T00:43:22.691Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/25/spring-data-jpa-query/</loc>
-        <lastmod>2020-03-19T00:43:22.691Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/15/jpa-proxy/</loc>
-        <lastmod>2020-03-19T00:43:22.690Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/12/java-prefer-interfaces-to-abstract-classes/</loc>
-        <lastmod>2020-03-19T00:43:22.674Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2019/01/11/java-design-and-document-for-inheritance/</loc>
-        <lastmod>2020-03-19T00:43:22.672Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/10/26/java-equals-method-override/</loc>
-        <lastmod>2020-03-19T00:43:22.671Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://j2de.github.io/2018/11/04/java-comparable-comparator/</loc>
-        <lastmod>2020-03-19T00:43:22.671Z</lastmod>
+        <loc>https://j2de.github.io/2018/10/14/java-singleton-pattern/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -585,7 +137,455 @@
 
     <url>
         <loc>https://j2de.github.io/2018/10/25/java-finalizer/</loc>
-        <lastmod>2020-03-19T00:43:22.670Z</lastmod>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/11/java-design-and-document-for-inheritance/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/12/java-prefer-interfaces-to-abstract-classes/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/13/java-favor-composition-over-inheritance/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/10/26/java-equals-method-override/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/04/java-comparable-comparator/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/17/java-design-interfaces-for-posterity/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/18/java-use-interfaces-only-to-define-types/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/21/java-minimize-mutability/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/24/java-prefer-class-hierarchies-to-tagged-classes/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/27/java-limit-source-files-to-a-single-top-level-class/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/02/20/java-use-instance-fields-instead-of-ordinals/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/02/21/java-prefer-method-references-to-lambdas/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/28/java-don%27t-use-raw-types/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/01/31/java-use-bounded-wildcards-to-increase-api-flexibility/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/04/17/java-design-method-signatures-carefully/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/03/23/java-prefer-side-effect-free-functions-in-streams/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/14/codingyahac-javascript-2/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/13/codingyahac-javascript-1/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/16/codingyahac-javascript-4/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/17/codingyahac-javascript-5-6/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/15/codingyahac-javascript-3/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/22/codingyahac-javascript-9/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/23/codingyahac-javascript-10/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/24/codingyahac-javascript-11/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/09/netty-features-architecture/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/08/25/codingyahac-javascript-12/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/11/start-a-netty-project-with-maven/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/21/netty-component/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/23/netty-datacontainer-bytebuf/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/25/netty-channel-event-and-eventhandler-and-pipeline/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/22/netty-network-transport-api/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/06/01/netty-embeddedchannel-unittest/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/15/jpa-proxy/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/06/01/netty-codec-framework/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/09/11/import-project-from-sts-after-git-pull-clone-in-cli/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/06/11/intellij-devtools/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/16/jpa-cascade/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/09/24/refactoring-and-tdd/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/10/jpa-junit-test/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/25/spring-data-jpa-query/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/12/05/test-stub/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/07/10/docker-study-2/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/10/24/fish-shell-alias/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/07/09/docker-study-1/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/07/17/docker-study-3/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/05/19/springmvc-server-shutdown-and-execution-error-for-mac/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/09/29/sts-cannot-be-run-on-server/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2019/06/16/springboot-react-cors/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/09/20/web-oauth2/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/09/21/web-http/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/10/24/talkonseminar-oauth2/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://j2de.github.io/2018/11/09/git-gitignore-setting/</loc>
+        <lastmod>2020-03-19T00:43:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="Neither BindingResult nor plain target object for bean name ‘command’ available as request attribute …  commandName을 지정한 객체와 연결이 안되서 나오는 에러. 객체와 연결이 되었는데 에러가 발생하는 경우 오타 여부를 확인 해보자.      Controller 부분">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-19T01:36:40.953Z">
+<meta property="og:updated_time" content="2020-03-19T00:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring MVC - Neither BindingResult nor plain target object for bean name.. Error">
 <meta name="twitter:description" content="Neither BindingResult nor plain target object for bean name ‘command’ available as request attribute …  commandName을 지정한 객체와 연결이 안되서 나오는 에러. 객체와 연결이 되었는데 에러가 발생하는 경우 오타 여부를 확인 해보자.      Controller 부분">
@@ -196,15 +196,15 @@ ga('send', 'pageview');
 <p>Neither BindingResult nor plain target object for bean name ‘command’ available as request attribute …</p>
 </blockquote>
 <p>commandName을 지정한 객체와 연결이 안되서 나오는 에러. 객체와 연결이 되었는데 에러가 발생하는 경우 오타 여부를 확인 해보자.  </p>
-<br/>
+<br>
 
 <ul>
 <li><strong>Controller 부분</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">CommandName commandName = <span class="keyword">new</span> CommandName();</span><br><span class="line">model.addAttribute(<span class="string">"commandName"</span>, commandName); <span class="comment">// 객체 정보 넘겨줌</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<br/>
-<br/>
+<br>
+<br>
 나같은 경우 view에서 form 태그의 attribute를 받는 부분에서 오타가 있어서 에러가 발생했다.
 
 <ul>
@@ -219,7 +219,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/" data-id="ck88j8x01006rgl89pgptktwr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2018/05/20/springmvc-neither-bindingresult-nor-plain-target-object-for-bean-name-error/" data-id="ck9r06yta006gnn6kvtyu1zd0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

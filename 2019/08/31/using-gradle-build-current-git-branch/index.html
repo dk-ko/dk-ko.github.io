@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="현재 대외 IT 동아리인 YAPP에서 동아리 프로젝트 아카이빙 프로젝트를 진행하고 있다.기존에는 AWS를 이용해 프로젝트를 진행하고 배포까지 했으나 동아리에서 네이버 클라우드 플랫폼(Naver Cloud Platform, 이하 NCP)을 지원 받게 되어 서버 이전 작업을 진행중이다.AWS로 프로젝트를 진행할 때에는 Travis CI를 이용해 테스트와 CI를">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-20T15:44:39.475Z">
+<meta property="og:updated_time" content="2020-03-19T00:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle로 빌드 시 현재 git branch 사용하기">
 <meta name="twitter:description" content="현재 대외 IT 동아리인 YAPP에서 동아리 프로젝트 아카이빙 프로젝트를 진행하고 있다.기존에는 AWS를 이용해 프로젝트를 진행하고 배포까지 했으나 동아리에서 네이버 클라우드 플랫폼(Naver Cloud Platform, 이하 NCP)을 지원 받게 되어 서버 이전 작업을 진행중이다.AWS로 프로젝트를 진행할 때에는 Travis CI를 이용해 테스트와 CI를">
@@ -206,8 +206,8 @@ ga('send', 'pageview');
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugin 없이 사용하는 경우 </span></span><br><span class="line"><span class="keyword">def</span> gitBranch() &#123;</span><br><span class="line">    <span class="keyword">def</span> branch = <span class="string">""</span></span><br><span class="line">    <span class="keyword">def</span> proc = <span class="string">"git rev-parse --abbrev-ref HEAD"</span>.execute()</span><br><span class="line">    proc.in.<span class="keyword">eachLine</span> &#123; line -&gt; branch = line &#125;</span><br><span class="line">    proc.err.<span class="keyword">eachLine</span> &#123; line -&gt; <span class="keyword">println</span> line &#125;</span><br><span class="line">    proc.waitFor()</span><br><span class="line">    branch</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://stackoverflow.com/questions/15061277/how-can-i-get-the-current-git-branch-in-gradle">https://stackoverflow.com/questions/15061277/how-can-i-get-the-current-git-branch-in-gradle</a></li>
-<li><a href="http://coders-kitchen.com/2013/11/01/gradle-git-how-to-map-your-branch-to-a-deployment-profile/">http://coders-kitchen.com/2013/11/01/gradle-git-how-to-map-your-branch-to-a-deployment-profile/</a></li>
+<li><a href="https://stackoverflow.com/questions/15061277/how-can-i-get-the-current-git-branch-in-gradle" target="_blank" rel="noopener">https://stackoverflow.com/questions/15061277/how-can-i-get-the-current-git-branch-in-gradle</a></li>
+<li><a href="http://coders-kitchen.com/2013/11/01/gradle-git-how-to-map-your-branch-to-a-deployment-profile/" target="_blank" rel="noopener">http://coders-kitchen.com/2013/11/01/gradle-git-how-to-map-your-branch-to-a-deployment-profile/</a></li>
 </ul>
 
         </div>
@@ -216,7 +216,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/" data-id="ck88j8x0b007rgl89iapcydd1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/" data-id="ck9r06ytq006tnn6knnbgez5h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -292,10 +292,10 @@ ga('send', 'pageview');
         "genre": "Troubleshooting",
         "datePublished": "2019-08-31",
         "dateCreated": "2019-08-31",
-        "dateModified": "2020-03-21",
+        "dateModified": "2020-03-19",
         "url": "https://j2de.github.io/2019/08/31/using-gradle-build-current-git-branch/",
         "description": "현재 대외 IT 동아리인 YAPP에서 동아리 프로젝트 아카이빙 프로젝트를 진행하고 있다.기존에는 AWS를 이용해 프로젝트를 진행하고 배포까지 했으나 동아리에서 네이버 클라우드 플랫폼(Naver Cloud Platform, 이하 NCP)을 지원 받게 되어 서버 이전 작업을 진행중이다.AWS로 프로젝트를 진행할 때에는 Travis CI를 이용해 테스트와 CI를"
-        "wordCount": 298
+        "wordCount": 302
     }
 </script>
 

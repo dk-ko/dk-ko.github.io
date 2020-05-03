@@ -10,17 +10,17 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Effective Java,Java">
+        <meta name="keywords" content="Java,Effective Java">
     
     <meta name="description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
-<meta name="keywords" content="Effective Java,Java">
+<meta name="keywords" content="Java,Effective Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java - Comparable &#x2F; Comparator">
 <meta property="og:url" content="https://j2de.github.io/2018/11/04/java-comparable-comparator/index.html">
 <meta property="og:site_name" content="Jade&#39;s Blog">
 <meta property="og:description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-19T00:43:22.671Z">
+<meta property="og:updated_time" content="2020-03-19T00:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java - Comparable &#x2F; Comparator">
 <meta name="twitter:description" content="Effective Java 규칙 12 Comparable 구현을 고려하라  Comparable.compareTo Object의 equals와 비슷하지만, 단순 동치성 검사 외에 순서 비교가 가능하며, 좀 더 일반적이다. Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 순서(natural ordering)을 갖게된다.   Arrays.sor">
@@ -213,7 +213,7 @@ ga('send', 'pageview');
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="compareTo의-일반-규약"><a href="#compareTo의-일반-규약" class="headerlink" title="compareTo의 일반 규약"></a>compareTo의 일반 규약</h3><ul>
-<li>compareTo의 일반 규약은 <a href="https://kodakyung.github.io/2018/10/26/old-post-EffectiveJava-2018-10-26-java-equals-method-override/">equals</a>와 비슷하다.</li>
+<li>compareTo의 일반 규약은 <a href="https://kodakyung.github.io/2018/10/26/old-post-EffectiveJava-2018-10-26-java-equals-method-override/" target="_blank" rel="noopener">equals</a>와 비슷하다.</li>
 <li>이 메소드는 this 객체와 주어진 객체를 비교한다.<ul>
 <li>Comparable.compareTo는 비교할 클래스에 implements한 뒤 override한다.</li>
 </ul>
@@ -224,7 +224,7 @@ ga('send', 'pageview');
 <li>우회 방법은 equals와 같이, 원래 클래스를 계승하는 것이 아닌 원래 클래스 객체를 필드로 포함하는 새로운 클래스를 만들고, 원래 클래스 객체를 반환하는 view 메소드를 추가한다.</li>
 <li>보통 객체 사이에 자연적 순서가 존재하기만 하면 이 규약을 만족한다.</li>
 </ul>
-<br/>
+<br>
 
 <ol>
 <li><p>compareTo를 구현시 모든 x와 y에 대해 sgn(x.compareTo(y)) == -sgn(y.compareTo(x))가 만족되도록 해야한다.</p>
@@ -288,12 +288,12 @@ ga('send', 'pageview');
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveString</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">CaseInsensitiveString</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(CaseInsensitiveString cis)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.CASE_INSENSITIVE_ORDER.compare(s, cis.s);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>CaseInsensitiveString 클래스는 Comparable<CaseInsensitiveString>을 구현하고 있다. 따라서 CaseInsensitiveString 객체 참조만 비교할 수 있다.</li>
+<li>CaseInsensitiveString 클래스는 Comparable<caseinsensitivestring>을 구현하고 있다. 따라서 CaseInsensitiveString 객체 참조만 비교할 수 있다.</caseinsensitivestring></li>
 <li>compareTo의 인자는 Object가 아닌 CaseInsensitiveString이다.</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String.class</span></span><br><span class="line"><span class="comment">// public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class가 Comparable을 implements한 후 compareTo를 Override한 것</span></span><br><span class="line"><span class="comment">// 일반적인 순서를 비교하고 있다.</span></span><br><span class="line"><span class="comment">// ex) s.compareTo("string"); // s는 String 객체</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(String anotherString)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len1 = value.length;</span><br><span class="line">    <span class="keyword">int</span> len2 = anotherString.value.length;</span><br><span class="line">    <span class="keyword">int</span> lim = Math.min(len1, len2);</span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; lim) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = v1[k];</span><br><span class="line">        <span class="keyword">char</span> c2 = v2[k];</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            <span class="keyword">return</span> c1 - c2;</span><br><span class="line">        &#125;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len1 - len2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String Class 내부에 static으로 선언된 Comparator</span></span><br><span class="line"><span class="comment">// 인자가 String이라면 String.class의 Comparator.compare을 이용해 비교할 수 있다.</span></span><br><span class="line"><span class="comment">// 특이한 순서 관계를 따로 구현한 것</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Comparator&lt;String&gt; CASE_INSENSITIVE_ORDER</span><br><span class="line">                                         = <span class="keyword">new</span> CaseInsensitiveComparator();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseInsensitiveComparator</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    ..</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> n1 = s1.length();</span><br><span class="line">      <span class="keyword">int</span> n2 = s2.length();</span><br><span class="line">      <span class="keyword">int</span> min = Math.min(n1, n2);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> c1 = s1.charAt(i);</span><br><span class="line">        <span class="keyword">char</span> c2 = s2.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">          c1 = Character.toUpperCase(c1);</span><br><span class="line">          c2 = Character.toUpperCase(c2);</span><br><span class="line">          <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">            c1 = Character.toLowerCase(c1);</span><br><span class="line">            c2 = Character.toLowerCase(c2);</span><br><span class="line">            <span class="keyword">if</span> (c1 != c2) &#123;</span><br><span class="line">              <span class="comment">// No overflow because of numeric promotion</span></span><br><span class="line">              <span class="keyword">return</span> c1 - c2;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> n1 - n2;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<br/>
+<br>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer.class</span></span><br><span class="line"><span class="comment">// public final class Integer extends Number implements Comparable&lt;Integer&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Comparable.compareTo</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer anotherInteger)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> compare(<span class="keyword">this</span>.value, anotherInteger.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이름이 compare인 것.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (x &lt; y) ? -<span class="number">1</span> : ((x == y) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -327,7 +327,7 @@ ga('send', 'pageview');
 <li>Comparable.compareTo든 Comparator.compare든 모든 필드에 대한 조건을 넣어주는 것이 좋다.</li>
 <li>한 가지 필드에 대한 조건만 구현하는 경우 나머지 조건에 대해 의도하지 않은 결과가 나올 수 있기 때문이다.</li>
 </ul>
-<br/>
+<br>
 
         </div>
         <footer class="article-footer">
@@ -335,7 +335,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2018/11/04/java-comparable-comparator/" data-id="ck88j8wyb0021gl89naac5fl5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2018/11/04/java-comparable-comparator/" data-id="ck9r06ynl0025nn6kxxc03h0r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -407,7 +407,7 @@ ga('send', 'pageview');
         },
         "headline": "Java - Comparable / Comparator",
         "image": "https://j2de.github.io",
-        "keywords": "Effective Java Java",
+        "keywords": "Java Effective Java",
         "genre": "Programming Java",
         "datePublished": "2018-11-04",
         "dateCreated": "2018-11-04",
@@ -422,7 +422,7 @@ Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적 �
 
 
 Arrays.sor"
-        "wordCount": 1780
+        "wordCount": 1782
     }
 </script>
 
