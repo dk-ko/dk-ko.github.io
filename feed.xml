@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://j2de.github.io/"/>
-  <updated>2021-03-03T12:27:02.024Z</updated>
+  <updated>2021-03-03T23:36:11.071Z</updated>
   <id>https://j2de.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>post test</title>
+    <link href="https://j2de.github.io/2021/03/04/post-test/"/>
+    <id>https://j2de.github.io/2021/03/04/post-test/</id>
+    <published>2021-03-03T23:33:53.000Z</published>
+    <updated>2021-03-03T23:36:11.071Z</updated>
+    
+    <content type="html"><![CDATA[<p>test</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;test&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>git 커밋 중간에 잘못된 merge 되돌리기</title>
