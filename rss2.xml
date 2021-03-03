@@ -8,28 +8,8 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>An archive for daily discovery</description>
-    <pubDate>Wed, 03 Mar 2021 23:36:11 GMT</pubDate>
+    <pubDate>Wed, 03 Mar 2021 12:27:02 GMT</pubDate>
     <generator>http://hexo.io/</generator>
-    
-    <item>
-      <title>post test</title>
-      <link>https://j2de.github.io/2021/03/04/post-test/</link>
-      <guid>https://j2de.github.io/2021/03/04/post-test/</guid>
-      <pubDate>Wed, 03 Mar 2021 23:33:53 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;test&lt;/p&gt;
-
-        
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p>test</p>]]></content:encoded>
-      
-      <comments>https://j2de.github.io/2021/03/04/post-test/#disqus_thread</comments>
-    </item>
     
     <item>
       <title>git 커밋 중간에 잘못된 merge 되돌리기</title>
