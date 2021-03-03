@@ -90,13 +90,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
                             
@@ -105,14 +105,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -202,7 +202,7 @@ ga('send', 'pageview');
 <li>자기 자신 외에는 가변 필드에 접근할 수 없도록해야 완벽한 캡슐화이다.</li>
 </ul>
 <h3 id="가변-매개변수를-받는-경우"><a href="#가변-매개변수를-받는-경우" class="headerlink" title="가변 매개변수를 받는 경우"></a>가변 매개변수를 받는 경우</h3><ul>
-<li>책의 <a href="https://github.com/WegraLee/effective-java-3e-source-code/blob/master/src/effectivejava/chapter8/item50/Period.java#L15" target="_blank" rel="noopener">Period</a> 객체를 보면 불변 같아 보이지만 생성자로 받는 <code>Date</code>가 가변이기 때문에 불변식이 깨진다.</li>
+<li>책의 <a href="https://github.com/WegraLee/effective-java-3e-source-code/blob/master/src/effectivejava/chapter8/item50/Period.java#L15" rel="external nofollow noopener noreferrer" target="_blank">Period</a> 객체를 보면 불변 같아 보이지만 생성자로 받는 <code>Date</code>가 가변이기 때문에 불변식이 깨진다.</li>
 <li>불변식을 유지하기 위해 간단하게는 대신할 수 있는 <code>불변 아이템</code>을 사용하거나 가변 매개변수를 각각 <code>방어적으로 복사</code>해야한다.</li>
 </ul>
 <h4 id="방어적-복사-defensive-copy"><a href="#방어적-복사-defensive-copy" class="headerlink" title="방어적 복사(defensive copy)"></a>방어적 복사(defensive copy)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Period</span><span class="params">(Date start, Date end)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 생성자에서 방어적 복사 수행</span></span><br><span class="line">    <span class="comment">// 가변 인자를 받아서 새 객체를 생성해 복사한다.</span></span><br><span class="line">    <span class="keyword">this</span>.start = <span class="keyword">new</span> Date(start.getTime()); </span><br><span class="line">    <span class="keyword">this</span>.end = <span class="keyword">new</span> Date(end.getTime());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 방어적 복사를 진행한 뒤 유효성을 검사한다.</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.start.compareTo(<span class="keyword">this</span>.end) &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="keyword">this</span>.start + <span class="string">" after "</span> + <span class="keyword">this</span>.end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -246,7 +246,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/" data-id="ckltggi9e003gni89k5vblpj4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2019/04/10/java-make-defensive-copies-when-needed/" data-id="cklteezfi001wcv89vvcd8jpi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -332,7 +332,7 @@ ga('send', 'pageview');
 어떤 객체든 허락없이 외부에서 내부를 수정하는 일은 불가해야한다. 
 가변 타입으로 작성된 코드도 불변식을 깨지지 않게 하기 위해 필요하다.
 자기 자신 외에는 가변 필드에 접근할"
-        "wordCount": 437
+        "wordCount": 435
     }
 </script>
 
@@ -361,7 +361,7 @@ ga('send', 'pageview');
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -564,4 +564,4 @@ ga('send', 'pageview');
 
     </div>
 </body>
-</html>
+

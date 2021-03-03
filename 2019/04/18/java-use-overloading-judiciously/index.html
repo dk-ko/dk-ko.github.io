@@ -90,13 +90,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
                             
@@ -105,14 +105,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -202,7 +202,7 @@ ga('send', 'pageview');
 <h4 id="Overriding-예"><a href="#Overriding-예" class="headerlink" title="Overriding 예"></a>Overriding 예</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Class Wine &#123;</span><br><span class="line">  <span class="function">String <span class="title">name</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="string">"포도주"</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line">Class SparklingWine extends Wine &#123;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function">String <span class="title">name</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="string">"발포성 포도주"</span>&#125;; <span class="comment">// Overriding</span></span><br><span class="line">&#125;</span><br><span class="line">Class Champagne extends SparklingWine &#123;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function">String <span class="title">name</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="string">"샴페인"</span>&#125;; <span class="comment">// Overriding</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Class Overriding &#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Wine&gt; wineList = List.of(</span><br><span class="line">      <span class="keyword">new</span> Wine(), <span class="keyword">new</span> SparklingWine(), <span class="keyword">new</span> Champagne());</span><br><span class="line">    <span class="keyword">for</span>(Wine wine : wineList)</span><br><span class="line">      System.out.println(wine.name()); <span class="comment">// Overriding한 메소드 호출</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><a href="https://github.com/WegraLee/effective-java-3e-source-code/tree/master/src/effectivejava/chapter8/item52" target="_blank" rel="noopener">출처</a></p>
+<p><a href="https://github.com/WegraLee/effective-java-3e-source-code/tree/master/src/effectivejava/chapter8/item52" rel="external nofollow noopener noreferrer" target="_blank">출처</a></p>
 </blockquote>
 <ul>
 <li>기대한 대로 “포도주, “발포성 포도주”, “샴페인”순으로 출력된다.</li>
@@ -211,7 +211,7 @@ ga('send', 'pageview');
 <h4 id="Overloading-예"><a href="#Overloading-예" class="headerlink" title="Overloading 예"></a>Overloading 예</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionClassifier</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">classify</span><span class="params">(Set&lt;?&gt; s)</span></span>&#123; <span class="comment">// Overloading</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"집합"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">classify</span><span class="params">(List&lt;?&gt; list)</span></span>&#123; <span class="comment">// Overloading</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"리스트"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">classify</span><span class="params">(Collection&lt;?&gt; c)</span></span>&#123; <span class="comment">// Overloading</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"그 외"</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Collection&lt;?&gt;[] collections = &#123;</span><br><span class="line">      <span class="keyword">new</span> HashSet&lt;String&gt;(),</span><br><span class="line">      <span class="keyword">new</span> ArrayList&lt;BigInteger&gt;(),</span><br><span class="line">      <span class="keyword">new</span> HashMap&lt;String, String&gt;().values()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(Collection&lt;?&gt; c : collections)</span><br><span class="line">      System.out.println(classify(c)); <span class="comment">// Overloading한 메소드 호출</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><a href="https://github.com/WegraLee/effective-java-3e-source-code/tree/master/src/effectivejava/chapter8/item52" target="_blank" rel="noopener">출처</a></p>
+<p><a href="https://github.com/WegraLee/effective-java-3e-source-code/tree/master/src/effectivejava/chapter8/item52" rel="external nofollow noopener noreferrer" target="_blank">출처</a></p>
 </blockquote>
 <ul>
 <li>예상과는 다르게 “그 외”를 3회 출력한다.</li>
@@ -267,7 +267,7 @@ ga('send', 'pageview');
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li>Effective Java (3rd Edition)</li>
-<li><a href="https://jeong-pro.tistory.com/148" target="_blank" rel="noopener">JVM 구조와 자바 런타임 메모리 구조</a></li>
+<li><a href="https://jeong-pro.tistory.com/148" rel="external nofollow noopener noreferrer" target="_blank">JVM 구조와 자바 런타임 메모리 구조</a></li>
 </ul>
 <br>
         </div>
@@ -276,7 +276,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/" data-id="ckltggi9a0036ni89t81agasq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2019/04/18/java-use-overloading-judiciously/" data-id="cklteezfm0027cv89pbdnr8sg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -362,7 +362,7 @@ Overriding한 메소드는 동적으로 선택되고, Overloading한 메소드�
 따라서 Overloading의 경우 해당 객체의  타입이 어떤 메소드를 호출할지 기준이 된다.
 
 Overriding "
-        "wordCount": 759
+        "wordCount": 753
     }
 </script>
 
@@ -391,7 +391,7 @@ Overriding "
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -594,4 +594,4 @@ Overriding "
 
     </div>
 </body>
-</html>
+

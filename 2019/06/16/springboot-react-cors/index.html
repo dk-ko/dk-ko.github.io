@@ -92,13 +92,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/database/">DataBase</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cs/os/">OS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/">Programming</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/common/">Common</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programming/javascript/">Javascript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/netty/">Netty</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/orm/">ORM</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/test/">Test</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/">System</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/system/shell/">Shell</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/think/">Think</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/troubleshooting/">Troubleshooting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web/">Web</a></li></ul>
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
                             
@@ -107,14 +107,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -201,7 +201,7 @@ ga('send', 'pageview');
 <p>우선 OAuth 로그인 프로세스를 살펴보면 여러가지 승인 타입이 있는데 이 중 <code>권한 부여 코드 승인 타입(Authorization Code Grant Type)</code>을 이용해 로그인을 구현하였다. 페이스북이나 구글, 카카오 등에서 위 타입의 방식으로 웹 서버 클라이언트를 지원한다.</p>
 <h3 id="권한-부여-코드-승인-타입-Authorization-Code-Grant-Type"><a href="#권한-부여-코드-승인-타입-Authorization-Code-Grant-Type" class="headerlink" title="권한 부여 코드 승인 타입(Authorization Code Grant Type)"></a>권한 부여 코드 승인 타입(Authorization Code Grant Type)</h3><p><img src="/images/2019-06-16/auth_code_flow.png" alt="authorization-code-grant-type"></p>
 <blockquote>
-<p><a href="http://www.bubblecode.net/en/2016/01/22/understanding-oauth2/" target="_blank" rel="noopener">이미지 출처</a></p>
+<p><a href="http://www.bubblecode.net/en/2016/01/22/understanding-oauth2/" rel="external nofollow noopener noreferrer" target="_blank">이미지 출처</a></p>
 </blockquote>
 <p>인증 과정을 살펴보면 처음에 <code>client</code>가 <code>Authorization Code Request</code>를 한뒤 <code>Authorization Server</code>에서 <code>client_id</code>와 <code>redirect_uri</code>, <code>response_type</code>을 확인한 뒤 <code>Resource Owner</code>가 로그인할 수 있도록 한다. 이후 <code>Resource Owner</code>가 로그인을 하면 뒤의 인증과정이 더 이루어지는 것이다.</p>
 <p>여기서 <code>Authorization Server</code> 즉 소셜로그인을 하려는 대상인 서버(현 프로젝트에서는 Google)에서 필요한 조건들을 확인한 뒤 <code>Login</code>창으로 <code>Redirect</code>를 해주는데 현 프로젝트에서 <code>CORS</code> 에러가 발생한 부분이 이 부분이었다.<br>즉 처음 <code>Request</code>를 보내고 정상적으로 동작한다면 <code>302</code> code를 받고 로그인 창으로 이동하고, 유저가 로그인을 하면 내부적으로 인증 과정이 동작해야하는데 <code>302</code> 코드가 아닌 <code>405</code> 코드를 반환하면서 에러가 발생했다.</p>
@@ -223,7 +223,7 @@ ga('send', 'pageview');
 <p>curl에서는 정상적으로 <code>302</code> 코드를 반환하였다. 즉 서버의 문제가 아닌 <code>React</code>와 합쳐서 배포하는 과정에서 생긴 이슈인 것을 알았다.</p>
 <hr>
 <ul>
-<li><p>CORS 동작과정 (<a href="https://www.popit.kr/corss-domain-api-서버-구성/" target="_blank" rel="noopener">참고링크</a>)</p>
+<li><p>CORS 동작과정 (<a href="https://www.popit.kr/corss-domain-api-서버-구성/" rel="external nofollow noopener noreferrer" target="_blank">참고링크</a>)</p>
 <ul>
 <li>브라우저는 다른 도메인으로 Ajax 등의 호출을 보내기 전에 다음과 같은 순서로 동작합니다.  </li>
 </ul>
@@ -237,26 +237,26 @@ ga('send', 'pageview');
 <hr>
 <p>위 에러 메세지를 기반으로 여러가지를 찾아봤는데 초기에는 Front 쪽에서 API를 호출할 때 Header에 CORS 허용을 하지 않아서(<code>Access-Control-Allow-Origin</code> 설정) 많은 시간을 허비했다. 하지만 이 이후에도 CORS 에러가 해결되지 않았다. 그리고 위 링크에서 Spring을 사용하는 경우 <code>@CrossOrigin</code> 어노테이션으로 쉽게 해결할 수 있다 했지만 OAuth Social Login Endpoint의 경우 <strong>컨트롤러를 직접 만드는 것이 아니기 때문에 위 문제로 해결할 수 없었다.</strong><br>(login / logout endpoint외에는 전부 Controller로 작성했기 때문에 CORS 관련 Config 설정을 하기 전에 임시로 @CrossOrigin 어노테이션을 붙여뒀다. 이 어노테이션을 붙이는 경우 Front에서 <code>Access-Control-Allow-Origin</code> 설정을 하지 않아도 API 호출에 CORS 에러가 발생하지 않는다. 이 부분 때문에 좀 더 헷갈렸던 것도 있다.)</p>
 <p><code>405</code>를 반환한다는 것은 허용되지 않은 메소드를 호출했다는 것인데 그래서 이후에는 <code>preflight</code> 확인 요청을 <code>OPTIONS method</code>로 보내는 과정에 문제가 있는지 찾아보았다.</p>
-<p>이 <a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" target="_blank" rel="noopener">링크</a>를 참고해서 <code>Spring Security Config</code>에 <code>PreFlightRequest</code>를 허용해주었지만 이 코드도 동작하지 않았다.</p>
+<p>이 <a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" rel="external nofollow noopener noreferrer" target="_blank">링크</a>를 참고해서 <code>Spring Security Config</code>에 <code>PreFlightRequest</code>를 허용해주었지만 이 코드도 동작하지 않았다.</p>
 <p>혹시나해서 Front쪽에서 <code>axios</code>가 아닌 <code>XMLHttpRequest</code>를 직접 사용해봤지만 새로운 에러만 발생했다. </p>
 <blockquote>
 <p>찾아본 바로는 오히려 OAuth 기반 서비스는 XHR이나 Fetch API를 사용하면 안된다고 한다.</p>
 </blockquote>
 <p><code>Spring Security Config</code>에 <code>OPTIONS</code>를 전부 허용하고(permitAll), <code>CORS Filter</code>를 인증 필터 제일 앞단에 위치하도록 코드도 작성했지만 이 문제도 실패했다.</p>
-<p>이쯤 되니 혹시 배포 서버에 설정한 <code>Reverse Proxy Server</code>의 <code>Nginx</code> 설정이 문제일까 의심이 들어서 설정을 몇개 수정해보았지만 감이 잡히지 않았다. (<a href="http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/" target="_blank" rel="noopener">Avoid cors with nginx proxy pass 참고</a>) (Nginx 설정은 지정한 도메인으로 http나 https 요청이 들어오면 https를 가리키도록 하는 것이 다였다.)</p>
+<p>이쯤 되니 혹시 배포 서버에 설정한 <code>Reverse Proxy Server</code>의 <code>Nginx</code> 설정이 문제일까 의심이 들어서 설정을 몇개 수정해보았지만 감이 잡히지 않았다. (<a href="http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/" rel="external nofollow noopener noreferrer" target="_blank">Avoid cors with nginx proxy pass 참고</a>) (Nginx 설정은 지정한 도메인으로 http나 https 요청이 들어오면 https를 가리키도록 하는 것이 다였다.)</p>
 <p>아무리 생각해도 코드 레벨에서 서버에서 할 수 있는 모든 설정을 다 한 것 같았다. 처음 <code>get</code>으로 login uri를 호출할 때는 Server 기준에서 호출하는데 이후 302 코드를 받고 자동으로 다시 리다이렉트 uri를 호출하는 과정에 Front 기준으로 호출해서 이런 에러가 발생한 것 같았다.</p>
-<p>이후 찾아본 <a href="https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error" target="_blank" rel="noopener">StackOverFlow 링크</a>에서 힌트를 얻었다.</p>
+<p>이후 찾아본 <a href="https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error" rel="external nofollow noopener noreferrer" target="_blank">StackOverFlow 링크</a>에서 힌트를 얻었다.</p>
 <p>3xx의 상태코드를 받으면 브라우저가 자동으로 클라이언트를 대신해 반환된 위치로 <code>get</code> 요청을 보내는데 이를 Front에서 캐치해서 수동으로 redirection을 하라는 답변이었다.<br>여기에 힌트를 얻어서 Front에서 <code>window.locaion</code>으로 새창을 띄워 login api를 호출하니 자동으로 redirect되며 문제가 해결되었다. 새로 띄운 창에서는 Front 코드의 영향을 받지 않아서 Server의 설정대로 잘 동작을 한 것 같다. </p>
 <h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>이번 프로젝트로 <code>CORS</code>의 동작방식과 <code>OPTIONS</code> 메소드와 <code>preflight</code>에 대해 많이 알게되었다. <del>지금 해결한 방식이 완벽한 해결방식은 아니고 우회한 방법에 가깝다고 생각하지만 현재로써는 이 이상 해결하긴 어려울 것 같다.</del> (2019.9 - CORS로 시작했지만 결과적으로 <strong>인증</strong>의 문제였던 것 같다.) 그리고 아예 MSA로 분리하면 분리했지 애매하게 붙여서 배포하는 것이 에러가 발생했을 때 더 확인하기 어렵다는 것을 알았다. Front와 Server를 분리해서 개발하면서 배포는 함께 하니까 이렇게 <em>배포했을 때 어느 부분에서 에러가 발생했는지 조차 모르는 경우 에러를 추적하기가 어려웠다.</em>   </p>
 <p>팀원과 함께 오류를 찾으며 느낀 것은 <em>내가 개발한/맡은 부분이 잘못되었을 수 있다는 생각을 갖는게 중요하다는 점이었다.</em> 만약 나 또는 상대 개발자가 서로 자신의 코드가 잘못되었을 수 있다는 가정을 하지 않았다면 이 문제를 해결하는데 더 오래걸렸을 것 같다. 이전 프로젝트에서도 자신의 코드가 무조건 옳다고 주장해서 팀원의 코드를 전부 뜯어보느라 해결하는데 오래 걸린 경우가 있었다.<br>알고있는 분야가 서로 다르므로 서로 열린 마음으로 자신이 아는 부분, 고민하는 부분을 함께 교류하고 소통해야한다고 생각한다. 그리고 그렇게해서 이 문제를 해결할 수 있었던 것 같다. 개발자로써 좀 더 상대방과 소통할 수 있는 개발자가 되어야겠다는 생각이 든다. </p>
 <h3 id="참고한-링크들"><a href="#참고한-링크들" class="headerlink" title="참고한 링크들"></a>참고한 링크들</h3><ul>
-<li><a href="https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/" target="_blank" rel="noopener">https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/</a></li>
-<li><a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" target="_blank" rel="noopener">https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/</a></li>
-<li><a href="https://www.popit.kr/cors-preflight-인증-처리-관련-삽질/" target="_blank" rel="noopener">https://www.popit.kr/cors-preflight-인증-처리-관련-삽질/</a></li>
-<li><a href="https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/" target="_blank" rel="noopener">https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/</a></li>
-<li><a href="https://medium.com/@muiruri/spring-oauth2-and-cors-configuration-3529337525b4" target="_blank" rel="noopener">https://medium.com/@muiruri/spring-oauth2-and-cors-configuration-3529337525b4</a></li>
-<li><a href="http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/" target="_blank" rel="noopener">http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/</a></li>
-<li><a href="https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error" target="_blank" rel="noopener">https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error</a></li>
+<li><a href="https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/" rel="external nofollow noopener noreferrer" target="_blank">https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/</a></li>
+<li><a href="https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/" rel="external nofollow noopener noreferrer" target="_blank">https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/</a></li>
+<li><a href="https://www.popit.kr/cors-preflight-인증-처리-관련-삽질/" rel="external nofollow noopener noreferrer" target="_blank">https://www.popit.kr/cors-preflight-인증-처리-관련-삽질/</a></li>
+<li><a href="https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/" rel="external nofollow noopener noreferrer" target="_blank">https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/</a></li>
+<li><a href="https://medium.com/@muiruri/spring-oauth2-and-cors-configuration-3529337525b4" rel="external nofollow noopener noreferrer" target="_blank">https://medium.com/@muiruri/spring-oauth2-and-cors-configuration-3529337525b4</a></li>
+<li><a href="http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/" rel="external nofollow noopener noreferrer" target="_blank">http://oskarhane.com/avoid-cors-with-nginx-proxy_pass/</a></li>
+<li><a href="https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error" rel="external nofollow noopener noreferrer" target="_blank">https://stackoverflow.com/questions/45602875/trying-to-redirect-client-to-google-oauth-getting-405-error</a></li>
 </ul>
 
         </div>
@@ -265,7 +265,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://j2de.github.io/2019/06/16/springboot-react-cors/" data-id="ckltggiar0077ni893r3qrpkn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://j2de.github.io/2019/06/16/springboot-react-cors/" data-id="cklteezgr005vcv89h0slv9ds" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -344,7 +344,7 @@ ga('send', 'pageview');
         "dateModified": "2020-03-19",
         "url": "https://j2de.github.io/2019/06/16/springboot-react-cors/",
         "description": "SpringBoot 프로젝트에 OAuth2 소셜 로그인을 구현하는 프로젝트에서 발생한 문제이다. 작은 규모의 프로젝트였기 때문에 SpringBoot와 View단의 ReactJS를 따로 호스팅하지 않고 SpringBoot의 정적 리소스에 React Build 파일을 포함해 배포를 하였다. 여기서 React에서 Login API를 호출하는데 CORS 에러가 발"
-        "wordCount": 1036
+        "wordCount": 1012
     }
 </script>
 
@@ -373,7 +373,7 @@ ga('send', 'pageview');
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="github" href="https://github.com/j2de" target="_blank" rel="external nofollow noopener noreferrer">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -576,4 +576,4 @@ ga('send', 'pageview');
 
     </div>
 </body>
-</html>
+
